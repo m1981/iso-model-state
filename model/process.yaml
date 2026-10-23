@@ -1,0 +1,342 @@
+# Model stanów produktów pracy (ISO/IEC 29110-5-1-2, profil Basic) dla zespołu „użytkownik i agent LLM”.
+# Jedno źródło dla: dowodów TLA+ (E3), testów pytest i Hypothesis (E2), programu sprawdzającego repozytoria (E5).
+# Identyfikatory bez polskich znaków. Warunki i skutki w notacji opisanej w sekcji `notacja`.
+
+model: proces-iso29110-basic
+wersja: 0.1
+status: PROPOZYCJA            # do przeglądu użytkownika (bramka E1)
+
+notacja:
+  e: "element, którego dotyczy przejście"
+  zal(e): "elementy, od których e zależy (bezpośrednio)"
+  zalezne(e): "elementy, które zależą od e (bezpośrednio i pośrednio)"
+  w_zakresie(e): "e należy do zakresu bieżącego wydania"
+  "x in S": "stan x należy do zbioru S"
+
+parametry:
+  N_POPRAWEK: 2               # ile razy użytkownik może odrzucić jedną wersję elementu, zanim musi zdecydować inaczej (INT-011)
+
+aktorzy:
+  U:
+    nazwa: uzytkownik
+    role_iso: [CUS, PJM]                  # INT-009: klient i kierownik projektu to jedna osoba
+  A:
+    nazwa: agent_autor
+    role_iso: [AN, DES, PR, TL]
+  R:
+    nazwa: agent_recenzent
+    role_iso: []
+    uwagi: "osobny przebieg bez historii tworzenia; niezależna weryfikacja (SI.O7, uwaga 2)"
+
+# ---------------------------------------------------------------------------
+# Elementy (produkty pracy prowadzone jako elementy z ID)
+# ---------------------------------------------------------------------------
+
+stany_elementu:
+  szkic:          {iso: [Initiated, Preliminary, Corrected], aktywny: true,  koncowy: false}
+  zweryfikowany:  {iso: [Verified, Evaluated],              aktywny: true,  koncowy: false}
+  zatwierdzony:   {iso: [Approved, Validated, Reviewed],    aktywny: true,  koncowy: false}
+  bazowy:         {iso: [Baselined],                        aktywny: true,  koncowy: false}
+  odlozony:       {iso: [Postponed/deferred],               aktywny: false, koncowy: false}
+  zastapiony:     {iso: [Deleted],                          aktywny: false, koncowy: true}
+  wycofany:       {iso: [Cancelled, Rejected],              aktywny: false, koncowy: true}
+
+zmienne_elementu:
+  stan:       {typ: stany_elementu, poczatkowo: brak}   # brak = element jeszcze nie istnieje
+  wersja:     {typ: int, poczatkowo: 0}
+  poprawki:   {typ: "0..N_POPRAWEK", poczatkowo: 0, uwagi: "liczba odrzuceń bieżącej wersji"}
+  podejrzany: {typ: bool, poczatkowo: false, uwagi: "zależność zmieniła się po ostatnim przeglądzie (INT-012)"}
+
+typy_elementow:
+  KARTA: {iso_wp: [WP.02, WP.10], zalezy_od: [],         wymaga_zatwierdzenia: true}
+  REQ:   {iso_wp: [WP.13],        zalezy_od: [KARTA],    wymaga_zatwierdzenia: true}
+  AT:    {iso_wp: [WP.19],        zalezy_od: [REQ],      wymaga_zatwierdzenia: true}
+  DES:   {iso_wp: [WP.16],        zalezy_od: [REQ],      wymaga_zatwierdzenia: false, uwagi: "decyzje agenta, do podważenia przez T06 (INT-013)"}
+  KOD:   {iso_wp: [WP.14, WP.15], zalezy_od: [DES, AT],  wymaga_zatwierdzenia: false, uwagi: "zweryfikowany = testy przechodzą; zatwierdzenie przez odbiór wydania"}
+
+przejscia_elementu:
+  - id: T00
+    nazwa: utworz
+    z: [brak]
+    do: szkic
+    aktor: A
+    warunek: "true"
+    skutki: ["wersja := 1"]
+    iso: [SI.02.02, SI.03.03, SI.03.06, SI.04.03, PM.01.11]
+
+  - id: T01
+    nazwa: weryfikuj
+    z: [szkic]
+    do: zweryfikowany
+    aktor: A
+    warunek: "not podejrzany and forall z in zal(e): z.stan in {zatwierdzony, bazowy} and sprawdzenia_ok(e)"
+    skutki: []
+    iso: [SI.02.04, SI.03.05, SI.03.08, SI.04.05, PM.01.13]
+    uwagi: "sprawdzenia_ok: reguły śledzenia, testy elementu; zależności muszą być zatwierdzone (zapobiega budowaniu na niezatwierdzonym)"
+
+  - id: T02
+    nazwa: zatwierdz
+    z: [zweryfikowany]
+    do: zatwierdzony
+    aktor: U
+    warunek: "typ(e).wymaga_zatwierdzenia and not podejrzany"
+    skutki: []
+    dowod: "DEC z cytatem użytkownika"
+    iso: [SI.02.05, PM.01.14, PM.02.03]
+
+  - id: T03
+    nazwa: odrzuc
+    z: [zweryfikowany]
+    do: szkic
+    aktor: U
+    warunek: "poprawki < N_POPRAWEK"
+    skutki: ["poprawki := poprawki + 1"]
+    iso: [SI.02.05]
+    uwagi: "„popraw, aż zatwierdzi”; po N_POPRAWEK odrzuceniach zostają T02, T07, T08, T09 (eskalacja)"
+
+  - id: T04
+    nazwa: zbazuj
+    z: [zatwierdzony, zweryfikowany]
+    do: bazowy
+    aktor: U
+    warunek: "not podejrzany and (stan = zatwierdzony or not typ(e).wymaga_zatwierdzenia) and forall z in zal(e): z.stan = bazowy"
+    skutki: []
+    dowod: "commit lub tag na polecenie użytkownika"
+    iso: [SI.02.08, SI.03.09, SI.04.07, PM.01.16]
+
+  - id: T05
+    nazwa: otworz_zmiane
+    z: [zweryfikowany, zatwierdzony, bazowy]
+    do: szkic
+    aktor: U
+    warunek: "istnieje Q rozstrzygniete dotyczace e"
+    skutki: ["wersja := wersja + 1", "poprawki := 0", "podejrzany := false", "forall d in zalezne(e): d.podejrzany := true", "uniewaznij_wydanie(e)"]
+    iso: [PM.02.02, PM.02.03, PM.03.03, PM.03.04]
+
+  - id: T06
+    nazwa: podwaz
+    z: [zweryfikowany, bazowy]
+    do: szkic
+    aktor: U
+    warunek: "not typ(e).wymaga_zatwierdzenia"
+    skutki: ["wersja := wersja + 1", "poprawki := 0", "forall d in zalezne(e): d.podejrzany := true", "uniewaznij_wydanie(e)"]
+    iso: [PM.02.05]
+    uwagi: "użytkownik podważa decyzję agenta (DES, KOD) bez formalnego Q"
+
+  - id: T07
+    nazwa: zastap
+    z: [szkic, zweryfikowany, zatwierdzony, bazowy, odlozony]
+    do: zastapiony
+    aktor: U
+    warunek: "istnieje Q rozstrzygniete dotyczace e"
+    skutki: ["forall d in zalezne(e): d.podejrzany := true", "uniewaznij_wydanie(e)"]
+    iso: [PM.02.03, PM.03.04]
+    uwagi: "nowy element powstaje przez T00 z odwołaniem do e"
+
+  - id: T08
+    nazwa: wycofaj
+    z: [szkic, zweryfikowany, zatwierdzony, bazowy, odlozony]
+    do: wycofany
+    aktor: U
+    warunek: "true"
+    skutki: ["forall d in zalezne(e): d.podejrzany := true", "uniewaznij_wydanie(e)"]
+    iso: [PM.02.03]
+
+  - id: T09
+    nazwa: odloz
+    z: [szkic, zweryfikowany]
+    do: odlozony
+    aktor: U
+    warunek: "true"
+    skutki: ["uniewaznij_wydanie(e)"]
+    iso: [PM.03.04]
+
+  - id: T10
+    nazwa: wznow
+    z: [odlozony]
+    do: szkic
+    aktor: U
+    warunek: "true"
+    skutki: ["poprawki := 0"]
+    iso: [PM.03.04]
+
+  - id: T11
+    nazwa: przejrzyj_bez_wplywu
+    z: [szkic, zweryfikowany, zatwierdzony, bazowy]
+    do: "="                     # stan bez zmian
+    aktor: A
+    warunek: "podejrzany and forall z in zal(e): z.stan not in {zastapiony, wycofany}"
+    skutki: ["podejrzany := false"]
+    uwagi: "gdy zależność zastąpiono lub wycofano, element musi się zmienić (T12) albo zniknąć; inaczej aktywny element wskazywałby wycofany (S6)"
+    dowod: "wpis w kolumnie Przejrzane decyzji, która wywołała zmianę; decyzja agenta do podważenia"
+    iso: [SI.03.04, SI.04.06]
+
+  - id: T12
+    nazwa: zglos_zmiane
+    z: [zweryfikowany, zatwierdzony, bazowy]
+    do: "="
+    aktor: A
+    warunek: "podejrzany"
+    skutki: ["utworz Q(typ=zmiana, dotyczy=e)"]
+    iso: [PM.02.02, PM.03.03]
+    uwagi: "zmiana treści elementu zaakceptowanego idzie przez użytkownika (T05)"
+
+  - id: T13
+    nazwa: popraw_szkic
+    z: [szkic]
+    do: szkic
+    aktor: A
+    warunek: "podejrzany"
+    skutki: ["podejrzany := false"]
+    iso: [SI.02.04, SI.03.05]
+    uwagi: "szkic agent poprawia sam, bez pytania"
+
+# ---------------------------------------------------------------------------
+# Pytania i wnioski o zmianę (rejestr pytań)
+# ---------------------------------------------------------------------------
+
+stany_pytania:
+  otwarte:       {koncowy: false}
+  zadane:        {koncowy: false}
+  rozstrzygniete: {koncowy: true}
+  odlozone:      {koncowy: false}
+
+zmienne_pytania:
+  stan:     {typ: stany_pytania, poczatkowo: brak}
+  blokuje:  {typ: bool, uwagi: "pytanie blokuje wydanie"}
+  wiek:     {typ: int, uwagi: "kolejność zgłoszenia; do reguły FIFO"}
+
+przejscia_pytania:
+  - id: P00
+    nazwa: zglos
+    z: [brak]
+    do: otwarte
+    aktor: [A, R, U]
+    warunek: "true"
+    skutki: []
+    iso: [PM.02.02, PM.03.03]
+
+  - id: P01
+    nazwa: zadaj
+    z: [otwarte]
+    do: zadane
+    aktor: A
+    warunek: "liczba(zadane) = 0 and q = najstarsze(otwarte, blokujace_najpierw)"
+    skutki: []
+    iso: [PM.02.05]
+    uwagi: "jedna decyzja na wiadomość (WSPOLPRACA §3); FIFO z priorytetem blokujących zapobiega zagłodzeniu"
+
+  - id: P02
+    nazwa: rozstrzygnij
+    z: [zadane]
+    do: rozstrzygniete
+    aktor: U
+    warunek: "odpowiedz_jednoznaczna"
+    skutki: ["zapisz DEC z cytatem"]
+    iso: [PM.02.03, PM.03.04]
+
+  - id: P03
+    nazwa: odpowiedz_niejednoznacznie
+    z: [zadane]
+    do: otwarte
+    aktor: U
+    warunek: "true"
+    skutki: []
+    uwagi: "nie tworzy DEC (INT-010, lekcja DEC-VCS-021); pytanie wraca do kolejki jako najstarsze"
+
+  - id: P04
+    nazwa: odloz_pytanie
+    z: [otwarte, zadane]
+    do: odlozone
+    aktor: U
+    warunek: "not blokuje"
+    skutki: []
+    iso: [PM.03.04]
+
+  - id: P05
+    nazwa: wznow_pytanie
+    z: [odlozone]
+    do: otwarte
+    aktor: [U, A]
+    warunek: "true"
+    skutki: []
+    uwagi: "agent wznawia na początku etapu, któremu pytanie przypisano"
+
+# ---------------------------------------------------------------------------
+# Wydanie (linia bazowa produktu i odbiór)
+# ---------------------------------------------------------------------------
+
+stany_wydania:
+  w_przygotowaniu: {koncowy: false}
+  gotowe:          {koncowy: false}
+  przejrzane:      {koncowy: false}
+  odebrane:        {koncowy: true}
+
+przejscia_wydania:
+  - id: W01
+    nazwa: zglos_gotowosc
+    z: [w_przygotowaniu]
+    do: gotowe
+    aktor: A
+    warunek: "forall e: w_zakresie(e) => (e.stan in {bazowy, odlozony, zastapiony, wycofany} and (e.stan = bazowy => not e.podejrzany)) and testy_ok and not exists q: q.blokuje and q.stan in {otwarte, zadane}"
+    uwagi: "elementy odłożone, zastąpione i wycofane wypadają z wydania; muszą mieć zapis w rejestrze pytań lub DEC"
+    skutki: []
+    iso: [SI.05.11, SI.06.05, SI.06.06]
+
+  - id: W02
+    nazwa: przeglad_ok
+    z: [gotowe]
+    do: przejrzane
+    aktor: R
+    warunek: "true"
+    skutki: []
+    iso: [SI.O7]
+
+  - id: W03
+    nazwa: przeglad_uwagi
+    z: [gotowe]
+    do: w_przygotowaniu
+    aktor: R
+    warunek: "true"
+    skutki: ["dla każdej uwagi: P00 zglos (blokuje = true)"]
+    iso: [SI.O7, PM.03.02]
+
+  - id: W04
+    nazwa: odbierz
+    z: [przejrzane]
+    do: odebrane
+    aktor: U
+    warunek: "true"
+    skutki: ["zapisz protokół odbioru z cytatem"]
+    iso: [PM.04.01, PM.04.02]
+
+  - id: W05
+    nazwa: odrzuc_odbior
+    z: [przejrzane]
+    do: w_przygotowaniu
+    aktor: U
+    warunek: "true"
+    skutki: ["P00 zglos (blokuje = true)"]
+    iso: [PM.04.01]
+
+# Skutek pomocniczy używany przez T05–T09.
+skutki_pomocnicze:
+  uniewaznij_wydanie(e): "jeśli w_zakresie(e) i wydanie.stan in {gotowe, przejrzane}: wydanie.stan := w_przygotowaniu"
+
+# ---------------------------------------------------------------------------
+# Instancja do kontroli modelu (hipoteza małego zakresu)
+# ---------------------------------------------------------------------------
+
+instancja_testowa:
+  elementy:
+    k1:  {typ: KARTA, zalezy_od: []}
+    r1:  {typ: REQ,   zalezy_od: [k1]}
+    r2:  {typ: REQ,   zalezy_od: [k1]}
+    d1:  {typ: DES,   zalezy_od: [r1]}
+    a1:  {typ: AT,    zalezy_od: [r1]}
+    a2:  {typ: AT,    zalezy_od: [r2]}
+    c1:  {typ: KOD,   zalezy_od: [d1, a1]}
+  zakres_wydania: [k1, r1, r2, d1, a1, a2, c1]
+  granice:
+    max_pytan: 3
+    max_wersja: 3
