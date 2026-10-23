@@ -2,7 +2,7 @@
 
 Ten dokument określa, jak agent pracuje i komunikuje się z użytkownikiem. Obowiązuje w każdej sesji i ma pierwszeństwo przed domyślnymi nawykami agenta.
 
-Przeniesiony z szablonu projektu 2026-10-23. W tym repozytorium dokumenty zamiaru to `PLAN.md`, `model/process.yaml`, `docs/WLASCIWOSCI.md`, `docs/INTERPRETACJE.md` i `docs/STAN.md`; pozostałe nazwy plików niżej dotyczą szablonu.
+Przeniesiony z szablonu projektu 2026-10-23. W tym repozytorium dokumenty zamiaru to `PLAN.md`, `model/process.yaml`, `docs/WLASCIWOSCI.md`, `docs/INTERPRETACJE.md` i `docs/STAN.md`; pozostałe nazwy plików niżej dotyczą szablonu. Folder `informative/` jest niewiążący: przy sprzeczności rozstrzygają dokumenty zamiaru (`informative/README.md`).
 
 ## Cel
 
