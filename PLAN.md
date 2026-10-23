@@ -14,7 +14,7 @@ Zgoda: DEC-PRO-001, 2026-10-23, użytkownik: „d1 tak” na DoD 1–10 i stos n
 4. Żywotność: L1–L5 przy jawnych założeniach sprawiedliwości F1–F3.
 5. Dowód TLC w podanych granicach; wynik jako OBS.
 6. Test mutacyjny: każda właściwość pada na co najmniej jednym celowo zepsutym modelu.
-7. Ścieżki świadkowie ŚW1–ŚW4 przejrzane przez użytkownika.
+7. Ścieżki świadkowie WIT1–WIT4 przejrzane przez użytkownika.
 8. Powiązania: każdy stan i przejście → zadanie lub efekt ISO albo INT; każdy efekt PM.O1–O7, SI.O1–O7 pokryty.
 9. Zgodność: sprawdzenia czytają ten sam plik modelu; odtworzenie historii vcs-lite wykrywa znane naruszenia.
 10. Niezależny przegląd i podpis użytkownika.
@@ -47,4 +47,4 @@ Kolejność jest ścisła: bez zgody na E1 nie piszemy kodu, bo kod i dowody wyw
 | RSK-PRO-002 | Właściwość spełniona w pusty sposób | test mutacyjny (DoD 6) |
 | RSK-PRO-003 | Model i program sprawdzający się rozjadą | oba czytają `model/process.yaml` (DoD 9) |
 | RSK-PRO-004 | Działania poza modelem (ręczna edycja plików) | odtwarzanie historii w E4, kontrola repozytorium w E5 |
-| RSK-PRO-005 | Wybuch przestrzeni stanów w TLC | mała instancja (`instancja_testowa`), hipoteza małego zakresu |
+| RSK-PRO-005 | Wybuch przestrzeni stanów w TLC | mała instancja (`test_instance`), hipoteza małego zakresu |

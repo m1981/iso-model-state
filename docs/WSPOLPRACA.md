@@ -106,5 +106,5 @@ Alternatywa: format lokalny.
 
 ## Zasady projektu bez zmian
 
-- Język polski; identyfikatory w modelu bez polskich znaków (dla TLA+ i Pythona).
+- **Język (DEC-PRO-002):** kody, identyfikatory, atrybuty, klucze, nazwy stanów i przejść, nazwy plików z kodem, nazwy testów i kod źródłowy po angielsku, w terminologii ISO/IEC 29110 tam, gdzie norma ją podaje. Po polsku: proza dokumentów, opisy (`description`), komentarze, komunikaty dla użytkownika i cytaty.
 - Agent pracuje na gałęziach i wypycha je; scalenie do `main` tylko po zgodzie użytkownika.
