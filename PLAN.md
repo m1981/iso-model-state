@@ -10,11 +10,11 @@ Zgoda: DEC-PRO-001, 2026-10-23, użytkownik: „d1 tak” na DoD 1–10 i stos n
 
 1. Zamknięty słownik w `model/process.yaml`; każdy stan z Tabeli 12 normy albo z INT.
 2. Struktura: osiągalność, wykonalność przejść, brak ślepych stanów, determinizm, kompletność.
-3. Bezpieczeństwo: niezmienniki S1–S9, w tym brak obejść bramek użytkownika.
+3. Bezpieczeństwo: S1–S10 (S7 zastąpione przez S7a i S7b), w tym brak obejść bramek użytkownika i niezmienność odebranych wydań (DEC-PRO-003).
 4. Żywotność: L1–L5 przy jawnych założeniach sprawiedliwości F1–F3.
 5. Dowód TLC w podanych granicach; wynik jako OBS.
 6. Test mutacyjny: każda właściwość pada na co najmniej jednym celowo zepsutym modelu.
-7. Ścieżki świadkowie WIT1–WIT4 przejrzane przez użytkownika.
+7. Ścieżki świadkowie WIT1–WIT5 przejrzane przez użytkownika.
 8. Powiązania: każdy stan i przejście → zadanie lub efekt ISO albo INT; każdy efekt PM.O1–O7, SI.O1–O7 pokryty.
 9. Zgodność: sprawdzenia czytają ten sam plik modelu; odtworzenie historii vcs-lite wykrywa znane naruszenia.
 10. Niezależny przegląd i podpis użytkownika.

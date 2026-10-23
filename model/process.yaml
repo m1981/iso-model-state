@@ -3,16 +3,21 @@
 # Identyfikatory po angielsku, w terminologii normy (DEC-PRO-002). Opisy (`description`) po polsku.
 
 model: iso29110-basic-process
-version: 0.2
+version: 0.3
 status: verified              # sprawdzony skryptem spójności; czeka na zatwierdzenie użytkownika (bramka E1)
 
 notation:
   e: "element, którego dotyczy przejście"
   q: "pytanie, którego dotyczy przejście"
+  n: "lokalny skrót numeru bieżącego wydania sprzed W06; nie jest zmienną trwałą"
   type(e): "typ elementu z sekcji item_types"
   deps(e): "elementy, od których e zależy bezpośrednio"
   dependents(e): "elementy, które zależą od e bezpośrednio i pośrednio"
-  in_scope(e): "e należy do zakresu bieżącego wydania"
+  release: "releases[current_release]: bieżący rekord wydania; zmiana wskaźnika nie zmienia poprzedniego rekordu"
+  release_scope: "release.scope: zbiór ID rozpatrywanych w bieżącym wydaniu, także elementów wyłączonych z dostawy"
+  in_scope(e): "e.id należy do release.scope"
+  snapshot(scope): "kopia wartości type, depends_on i wszystkich item_variables elementów z scope; nie referencje do żywych elementów"
+  newly_suspect: "zbiór elementów, dla których suspect zmieniło się z false na true w danym kroku"
   checks_ok(e): "reguły śledzenia powiązań i testy elementu przechodzą (założone, nie modelowane)"
   tests_ok: "pełny przebieg testów przechodzi (założone, nie modelowane)"
   resolved_question(e): "istnieje pytanie w stanie resolved, które dotyczy e"
@@ -162,8 +167,9 @@ item_transitions:
     to: draft
     actor: U
     guard: "true"
-    effects: ["rejections := 0"]
+    effects: ["rejections := 0", "invalidate_release(e)"]
     iso: [PM.03.04]
+    description: "DEC-PRO-004: wznowienie zmienia kompletność bieżącego zakresu; przed odbiorem cofa gotowość, po odbiorze wymusza W06"
 
   - id: T11
     name: review_no_impact
@@ -277,6 +283,27 @@ release_states:
   reviewed:       {final: false}
   accepted:       {final: true}
 
+# DEC-PRO-003 / INT-017: produkty robocze są zmienne, odebrane wydania są migawkami.
+release_variables:
+  number:     {type: positive_int, initial: 1, description: "tożsamość rekordu; kolejne wydanie otrzymuje poprzedni numer + 1"}
+  state:      {type: release_states, initial: in_preparation}
+  scope:      {type: item_id_set, initial: test_instance.release_scope, description: "własna kopia zbioru ID, nie alias zakresu poprzedniego wydania"}
+  snapshot:   {type: item_snapshot, initial: none, description: "migawka z chwili W04; poza accepted brak migawki odbioru"}
+  acceptance: {type: acceptance_record, initial: none, description: "numer wydania i cytat użytkownika zapisane w W04"}
+
+release_control_variables:
+  releases: {type: "map[positive_int, release_variables]", initial: "{1: initial release_variables}", description: "historia rekordów; odebranych rekordów nie usuwamy ani nie nadpisujemy"}
+  current_release: {type: positive_int, initial: 1, description: "klucz najnowszego rekordu; jedyne wydanie, na którym mogą działać W01–W05"}
+  next_release_required: {type: bool, initial: false, description: "trwały znacznik zmiany po odbiorze; poza odebranym rekordem; kasuje go wyłącznie W06"}
+
+release_semantics:
+  default_target: "W01–W05 zmieniają releases[current_release]; accepted jest końcowe dla konkretnego rekordu"
+  new_release_target: "W06 czyta stary rekord, lecz from/to opisują zmianę bieżącego wydania: to i skutki dotyczą nowego rekordu numer n + 1; stary rekord pozostaje identyczny"
+  frame: "pola niewymienione w skutkach pozostają bez zmian; T i P zmieniają produkty robocze i pytania, nigdy zapisane migawki"
+  scope_copy: "W06 kopiuje scope poprzedniego wydania, włącznie z elementami wyłączonymi z dostawy; nie zatwierdza nowego zakresu ani zmian produktów"
+  pending_priority: "gdy next_release_required = true, następnym przejściem jest W06; nie wolno pominąć W06 po cofnięciu flagi suspect"
+  bounds: "max_releases jest granicą eksploracji, nie warunkiem W06 w procesie; próba utworzenia wydania poza granicą to granica badania, nie zakleszczenie ani dowód zakończenia"
+
 release_transitions:
   - id: W01
     name: declare_ready
@@ -312,7 +339,7 @@ release_transitions:
     to: accepted
     actor: U
     guard: "true"
-    effects: ["record acceptance with user quote"]
+    effects: ["release.snapshot := snapshot(release.scope)", "release.acceptance := record acceptance with release.number and user quote"]
     iso: [PM.04.01, PM.04.02]
 
   - id: W05
@@ -324,9 +351,32 @@ release_transitions:
     effects: ["P00 raise (blocking = true)"]
     iso: [PM.04.01]
 
-# Skutek pomocniczy używany przez T05–T09.
+  - id: W06
+    name: open_next_release
+    from: [accepted]
+    to: in_preparation
+    target: new_release
+    actor: A
+    guard: "next_release_required"
+    effects:
+      - "n := current_release"
+      - "releases[n + 1] := {number: n + 1, state: in_preparation, scope: copy(releases[n].scope), snapshot: none, acceptance: none}"
+      - "current_release := n + 1"
+      - "next_release_required := false"
+    iso: [SI.06.05, PM.04.01, PCM.02.04]
+    interpretation: INT-017
+    description: "techniczne otwarcie następnego wydania po T05–T10 w zakresie lub pojawieniu się suspect w zakresie po odbiorze; bez zmiany odebranego rekordu i bez zastępowania bramek U (DEC-PRO-003, DEC-PRO-004)"
+
+# Skutek pomocniczy używany przez T05–T10.
 helper_effects:
-  invalidate_release(e): "jeśli in_scope(e) i release.state in {ready, reviewed}: release.state := in_preparation"
+  invalidate_release(e): "jeśli in_scope(e) i release.state in {ready, reviewed}: release.state := in_preparation; jeśli in_scope(e) i release.state = accepted: next_release_required := true, bez zmiany odebranego rekordu"
+
+# Obserwator jest atomową częścią kroku, po skutkach przejścia, przed kolejnym krokiem.
+post_step_effects:
+  - id: detect_post_acceptance_change
+    guard: "release.state = accepted and exists e in newly_suspect: in_scope(e)"
+    effects: ["next_release_required := true"]
+    description: "wychwytuje także wpływ zmiany elementu spoza zakresu na element z zakresu; znacznik nie znika po przeglądzie bez wpływu"
 
 # ---------------------------------------------------------------------------
 # Instancja do kontroli modelu (hipoteza małego zakresu)
@@ -345,3 +395,4 @@ test_instance:
   bounds:
     max_questions: 3
     max_version: 3
+    max_releases: 2
