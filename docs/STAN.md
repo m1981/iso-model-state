@@ -1,6 +1,6 @@
 # Stan prac
 
-Nadpisywany na końcu każdej sesji. Zaktualizowano: 2026-10-24, model v0.4, propozycja roadmapy i gotowość do implementacji WIT1.
+Nadpisywany na końcu każdej sesji. Zaktualizowano: 2026-10-24, model v0.4, rozróżnienie WIT1, eksperymentów i pilotażu oraz propozycja izolacji pracy eksperymentalnej.
 
 ## Gdzie jesteśmy
 
@@ -64,7 +64,20 @@ Przyjęta przez DEC-PRO-005. Korekta G3/G6 zatwierdzona przez DEC-PRO-006 nie zm
 - Proponowana kolejność implementacji w E2: WIT1 → WIT2/WIT4 (pytania potrzebne do T05) → WIT5 → WIT3 → pełne sprawdzenia i mutanty. Następnie E3 (TLC), E4 (historia), E5 (pakiet wdrożeniowy).
 - E2 wykonuje podaną ścieżkę jako test integracyjny; formalne generowanie i przegląd świadków pozostają w E3. Każde rozszerzenie lub zmiana przyjętej semantyki wraca do decyzji użytkownika.
 - Nie podano terminów ani twierdzenia o najdroższym przyroście: brak pomiarów. Oszacowania należy uzupełnić po pierwszym wykonawcy WIT1 i rozpoznaniu semantyki.
-- W tej sesji zmieniono wyłącznie dokumentację planowania i punkt wznowienia; nie uruchamiano ponownie testów niezmienionego kodu. Nie zapisano nowej DEC.
+- Podczas przygotowania roadmapy zmieniono wyłącznie dokumentację planowania i punkt wznowienia; nie uruchamiano ponownie testów niezmienionego kodu. Nie zapisano nowej DEC.
+
+## Eksperymenty i pilotaż — wyjaśnienie na pytanie użytkownika
+
+- WIT1 w E2 to test integracyjny wykonujący zadaną ścieżkę na sztucznej instancji. Pilotaż z rzeczywistym projektem ma inny cel: sprawdzenie użyteczności, kosztu obsługi i skutków narzędzia w pracy. Sam pozytywny WIT1 nie rozstrzyga tych kwestii.
+- Sprawdzono lokalny tekst ISO/IEC 29110-5-1-2: §5 dopuszcza różne podejścia wytwórcze; PM.01.09 obejmuje ryzyka, PM.01.10 strategię wersjonowania i linie bazowe, PM.01.15 repozytorium, PM.02.02–03 ocenę i zatwierdzanie zmian, PM.03.04 zgodę na zmianę wymagań/planu. Nie wyprowadzamy z tego obowiązku konkretnego katalogu ani osobnego typu EXP w modelu.
+- Źródło przykładu praktyki: NASA NPR 7120.7A §5.1.b–c rozróżnia PoC, prototyp w środowisku testowym oraz pilotaż dla ograniczonej grupy w środowisku produkcyjnym. To przykład zasad NASA, nie dodatkowe wymaganie dla naszego projektu: https://nodis3.gsfc.nasa.gov/displayDir.cfm?Internal_ID=N_PR_7120_007A_&page_name=Chapter5.
+- Rekomendacja: rozdzielać cel artefaktu (produkt/test/przykład/eksperyment/dowód), jego dojrzałość oraz moc wiążącą. Zapisanie pliku w Git i pomyślna weryfikacja raportu nie oznaczają zatwierdzenia zawartych w nim zaleceń.
+- Proponowana izolacja: osobny branch i opcjonalny worktree dla prób; osobne dane, katalogi wyników i środowisko wykonania. Worktree dzieli część metadanych Git i nie jest granicą uprawnień ani izolacją usług. Źródło: https://git-scm.com/docs/git-worktree. W przypadku agentów ograniczenia dostępu trzeba egzekwować uprawnieniami narzędzi, nie samą instrukcją w pliku.
+- Proponowany przepływ wiedzy: pytanie i kryterium rozstrzygnięcia → wykonanie w określonym limicie → dowody i ograniczenia → przegląd → propozycja zmiany → decyzja w zakresie wymaganym kontraktem → aktualizacja specyfikacji/testów/kodu. Zachowywać także wyniki negatywne i nierozstrzygające; kod eksperymentu nie musi wejść do produktu.
+- Minimalny zapis próby: ID, pytanie/hipoteza, bazowy commit i wersja modelu, wejście, polecenie i środowisko, kryterium wyniku, limit, wynik z dowodami, ograniczenia oraz odwołanie do dalszej decyzji. Operator ustala cel i granice; agent wykonuje i raportuje; niezależny przegląd ocenia dowody; operator rozstrzyga zmiany wymagające jego zgody. W ramach wcześniej udzielonego zakresu agent działa bez ponawiania pytań.
+- Dla WIT1 rekomendowane są dane i testy w tests/ oraz wspólny wykonawca w src/isomodel; przykład powinien używać tego samego wykonawcy. Symulowane decyzje U i accepted muszą pozostać w instancji testowej, bez aktualizacji rzeczywistych DEC i protokołu odbioru projektu.
+- Ewentualne metadane context_id/purpose/base_commit należą na początek do opisu uruchomienia. Nie są dziś polami wiążącego modelu. Jeżeli izolacja eksperymentów miałaby być dowodzoną właściwością procesu, potrzebna będzie osobna propozycja modelu, właściwości i mutantów, potem decyzja użytkownika.
+- To wyjaśnienie i rekomendacja, bez nowej DEC, zmiany semantyki v0.4, planu ani rozpoczęcia pilotażu. Następny krok pozostaje WIT1. W tej sesji zmieniono tylko punkt wznowienia; testy kodu nie były ponawiane.
 
 ## Repozytorium
 
