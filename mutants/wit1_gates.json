@@ -1,0 +1,145 @@
+[
+  {
+    "id": "wit1_author_baseline",
+    "property": "S1",
+    "prefix_steps": 3,
+    "attempt": {
+      "transition": "T04",
+      "actor": "A",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-MUTANT",
+        "reference": "SIM-TAG-MUTANT",
+        "quote": "Zgoda testowa"
+      },
+      "item": "p1"
+    },
+    "field": "actor",
+    "replacement": "A",
+    "expected_code": "actor"
+  },
+  {
+    "id": "wit1_skip_approval",
+    "property": "S2",
+    "prefix_steps": 6,
+    "attempt": {
+      "transition": "T04",
+      "actor": "U",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-MUTANT",
+        "reference": "SIM-TAG-MUTANT",
+        "quote": "Zgoda testowa"
+      },
+      "item": "r1"
+    },
+    "field": "guard",
+    "replacement": "not suspect and forall d in deps(e): d.state = baselined",
+    "expected_code": "guard"
+  },
+  {
+    "id": "wit1_skip_verification",
+    "property": "S3",
+    "prefix_steps": 5,
+    "attempt": {
+      "transition": "T02",
+      "actor": "U",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-MUTANT",
+        "reference": "SIM-TAG-MUTANT",
+        "quote": "Zgoda testowa"
+      },
+      "item": "r1"
+    },
+    "field": "from",
+    "replacement": [
+      "draft"
+    ],
+    "expected_code": "state"
+  },
+  {
+    "id": "wit1_unready_dependency",
+    "property": "S4",
+    "prefix_steps": 1,
+    "attempt": {
+      "transition": "T01",
+      "actor": "A",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-MUTANT",
+        "reference": "SIM-TAG-MUTANT",
+        "quote": "Zgoda testowa"
+      },
+      "item": "r1"
+    },
+    "field": "guard",
+    "replacement": "not suspect and checks_ok(e)",
+    "expected_code": "guard",
+    "setup_events": [
+      {
+        "transition": "T00",
+        "actor": "A",
+        "item": "r1"
+      }
+    ]
+  },
+  {
+    "id": "wit1_incomplete_ready",
+    "property": "S7a",
+    "prefix_steps": 25,
+    "attempt": {
+      "transition": "W01",
+      "actor": "A",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-MUTANT",
+        "reference": "SIM-TAG-MUTANT",
+        "quote": "Zgoda testowa"
+      }
+    },
+    "field": "guard",
+    "replacement": "true",
+    "expected_code": "guard"
+  },
+  {
+    "id": "wit1_incomplete_acceptance",
+    "property": "S7b",
+    "prefix_steps": 25,
+    "attempt": {
+      "transition": "W04",
+      "actor": "U",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-MUTANT",
+        "reference": "SIM-TAG-MUTANT",
+        "quote": "Zgoda testowa"
+      }
+    },
+    "field": "from",
+    "replacement": [
+      "in_preparation"
+    ],
+    "expected_code": "state"
+  },
+  {
+    "id": "wit1_skip_review",
+    "property": "S8",
+    "prefix_steps": 27,
+    "attempt": {
+      "transition": "W04",
+      "actor": "U",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-MUTANT",
+        "reference": "SIM-TAG-MUTANT",
+        "quote": "Zgoda testowa"
+      }
+    },
+    "field": "from",
+    "replacement": [
+      "ready"
+    ],
+    "expected_code": "state"
+  }
+]

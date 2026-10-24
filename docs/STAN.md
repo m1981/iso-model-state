@@ -1,17 +1,21 @@
 # Stan prac
 
-Nadpisywany na końcu każdej sesji. Zaktualizowano: 2026-10-24, model v0.4, rozróżnienie WIT1, eksperymentów i pilotażu oraz propozycja izolacji pracy eksperymentalnej.
+Nadpisywany na końcu każdej sesji. Zaktualizowano: 2026-10-24, model v0.4, WIT1 wykonany w E2: 29 kroków, 108 testów, 7 wybranych mutantów wykrytych.
 
 ## Gdzie jesteśmy
 
 - **Etap:** E2 w toku. Model v0.3 przyjęty przez DEC-PRO-005; korekta v0.4 przyjęta przez DEC-PRO-006. Nie ma oczekującej decyzji o G3/G6.
 - **Ostatnio zrobione:**
+  - wykonano WIT1 na przyjętym modelu v0.4: 7 elementów, 29 kroków, wydanie 1 accepted z odrębną migawką i protokołem demonstracyjnym;
+  - dodano interpreter wyrażeń, atomowy wykonawca, odtworzenie scenariusza i raport; odrzucony krok nie zmienia stanu;
+  - 108 testów przechodzi; siedem wybranych mutantów bramek wykrytych; test polecenia potwierdza powtarzalność i brak zmian dokumentów/modelu;
+  - instrukcja i zapisany raport: `examples/wit1/README.md`, `examples/wit1/report.md`; pełny ślad lokalny: `artifacts/wit1/trace.json` (odtwarzalny, pomijany przez Git);
   - zastosowano korektę adnotacji ISO: wszystkie przejścia mają iso, a jawne powiązania obejmują 14 efektów PM/SI;
   - zastąpiono nieskutecznego mutanta G3: aktywny usuwa T07/T08/T10; poprzedni zachowano jako superseded;
-  - 31 testów przechodzi, w tym dwa uprzednio czerwone kryteria G3/G6; testy korekty sprawdzają teraz model wiążący;
+  - wcześniejszy przyrost strukturalny miał 31 testów, w tym dwa uprzednio czerwone kryteria G3/G6; są częścią obecnego zestawu;
   - na prośbę użytkownika przygotowano informacyjny przewodnik, trzy diagramy SVG/PNG i mapowanie wsparcia dziewięciu pakietów Aneksu E: `informative/WIZUALIZACJA-2026-10-24.md`;
   - diagramy generuje `scripts/render_process.py` z YAML przez dostępny Graphviz; nie jest to symulator.
-- **Następny krok:** rozpocząć wykonywalny WIT1 w ramach zaakceptowanego E2: czerwone testy scenariusza i bramek, potem wykonawca potrzebnych warunków/skutków oraz raport 29 kroków. Zakres opisany w informative/ROADMAPA-2026-10-24.md. Dalsze G/S, mutanty i dowody pozostają w planie; nie uznawać E2 za zakończone.
+- **Następny krok:** WIT2/WIT4 w ramach E2: rozpoznać schemat i semantykę pytań, przygotować testy odrzuceń, kolejki oraz odpowiedzi niejednoznacznej. Zidentyfikowane wcześniej kind/about i ewentualne zmiany przyjętego modelu przedstawić jako konkretną propozycję przed implementacją. Następnie WIT5 i WIT3, dalsze G/S oraz mutanty. Nie uznawać E2 za zakończone.
 
 ## Bramka E1
 
@@ -30,9 +34,9 @@ Przyjęta przez DEC-PRO-005. Korekta G3/G6 zatwierdzona przez DEC-PRO-006 nie zm
 
 ## Weryfikacja i lista kontrolna zmiany
 
-- `uv run --locked --offline pytest -q`: **31 passed**; bez xfail i pomijania testów. G3/G6 poprawiono według przyjętej propozycji, nie wyłączono kryteriów.
+- `uv run --locked --offline pytest -q`: **108 passed w 3,29 s**; bez xfail i pomijania testów. W tym 31 wcześniejszych testów oraz 77 przypadków przyrostu WIT1. G3/G6 pozostają zielone.
 - `uv run --locked --offline python scripts/check_model.py`: **336 sprawdzeń spójności OK**; obejmuje także cytat i „Zmienia” ⊆ „Przejrzane” dla DEC-PRO-005/006. `git diff --check` bez błędów.
-- Zachowanie: porównanie z poprzednim commitem potwierdza identyczne from/to/actor/guard/effects i pozostałe reguły; w modelu zmieniono tylko wersję i adnotacje iso.
+- W przyroście WIT1 `git diff --exit-code -- model/process.yaml docs/WLASCIWOSCI.md docs/INTERPRETACJE.md PLAN.md uv.lock pyproject.toml` potwierdza brak zmian modelu, właściwości, interpretacji, planu i zależności. Wcześniejsza korekta G3/G6 zmieniała tylko wersję i adnotacje ISO, bez zachowania przejść.
 - Diagramy wygenerowano i obejrzano jako PNG; wersje SVG służą do powiększania i publikacji. Przewodnik jest migawką informacyjną, nie nowym źródłem reguł.
 - Przejrzano model, właściwości, interpretacje, testy, mutanty, uzasadnienie adnotacji, README, plan i stan. Zaktualizowane definicje oraz odwołania są w tej samej zmianie. Stary mutant jest jawnie zastąpiony.
 - Przeczytano lokalny Aneks E. Ocena wsparcia jest mapowaniem tematów a–i na model, nie audytem pełnej zawartości osobno publikowanych pakietów. Żaden pakiet nie jest uznany za w pełni wdrożony.
@@ -42,29 +46,41 @@ Przyjęta przez DEC-PRO-005. Korekta G3/G6 zatwierdzona przez DEC-PRO-006 nie zm
 
 - Wczytywanie YAML, część walidacji G0/G4, projekcja grafów G1/G3, macierz G5 i audyt adnotacji G6 są zaimplementowane.
 - Projekcje grafów ignorują guard/effects; dodatni wynik jest tylko warunkiem koniecznym osiągalności i braku ślepych stanów.
-- Obecne Hypothesis bada odrzucanie powtórzonych kluczy YAML; testy bezpieczeństwa S1–S10 przez maszynę stanów są jeszcze przed nami.
-- G2, interpretacja warunków/skutków, pełna mutacja, wygenerowane świadki i dowody TLA+ nie są wykonane. Ręcznie opisano WIT1–WIT5, w tym zmianę po odbiorze i przypadek T10.
+- Wykonawca interpretuje warunki i skutki potrzebne T00/T01/T02/T04/W01/W02/W04 oraz obserwator zmiany po odbiorze. Reguły są danymi z YAML; nie ma drugiej tabeli zachowania według ID. Nieobsługiwane reguły są jawnie raportowane, a odrzucone kroki atomowe.
+- Hypothesis bada odrzucanie powtórzonych kluczy YAML oraz kombinacje stanów zależności, aktorów, suspect i checks_ok dla T01(CODE). Pełne S1–S10 przez maszynę stanów są jeszcze przed nami.
+- Pełne G2, pozostała semantyka, pełna mutacja, świadki wygenerowane przez TLC i dowody TLA+ nie są wykonane. Opisano WIT1–WIT5; WIT1 ma teraz wykonanie deterministyczne w E2, bez zastępowania E3.
 - Zależności: PyYAML 6.0.3, networkx 3.6.1, pytest 9.1.1, Hypothesis 6.151.10 w pyproject.toml/uv.lock; lokalne .venv. Wizualizacja korzysta z już zainstalowanego Graphviz, bez nowych zależności Pythona.
 
 ## Ocena używalności — na pytanie użytkownika
 
 - Klasyfikacja: dokumentacja zarządzania tym projektem; specyfikacja projektowanego procesu; prototyp narzędzi analizy modelu; materiały wdrożeniowe i edukacyjne. To różne poziomy gotowości, nie jeden gotowy produkt.
 - Używalne obecnie: kontrakt współpracy i rejestr decyzji w pracy ręcznej, model i diagramy do przeglądu reguł, skrypty do analizy samego modelu, szablon jako punkt startowy do adaptacji.
-- Brak gotowości do automatycznego sprawdzania rzeczywistego projektu: nie ma wykonania guard/effects, trwałej instancji projektu i zdarzeń, adaptera do dokumentów/historii repozytorium ani raportu naruszeń dla użytkownika projektu. Pełne testy zachowania i dowody pozostają przed nami.
+- Brak gotowości do automatycznego sprawdzania rzeczywistego projektu: jest wykonanie podzbioru guard/effects i zdarzeń WIT1, lecz brakuje pełnej semantyki, obsługi trwałego stanu rzeczywistego projektu oraz adaptera do dokumentów/historii repozytorium. Raport WIT1 dotyczy sztucznej instancji; pełne testy zachowania i dowody pozostają przed nami.
 - Szablon odwołuje się do tests/test_traceability.py i generowanego TRACE.md, lecz nie dostarcza tego programu; wymaga dopracowania i pilotażu przed uznaniem za gotowy pakiet wdrożeniowy.
-- Perspektywa PO: brakuje demonstracji pełnego przypadku użycia z wynikiem dla użytkownika. Perspektywa PM: plan i bramki istnieją, ale E2 trwa, a E3–E5 nie są dostarczone. Perspektywa developera: działa część biblioteki walidacji i analizy grafów, nie pełny silnik procesu.
+- Perspektywa PO: WIT1 dostarcza pierwszą demonstrację od początku do odbioru na sztucznej instancji; użyteczność w rzeczywistym projekcie pozostaje do zbadania. Perspektywa PM: E2 trwa, E3–E5 nie są dostarczone. Perspektywa developera: działa biblioteka walidacji, analizy grafów i wykonawca podzbioru procesu, nie pełny silnik.
 - Skorygowane uzasadnienie sprawdzianów: wycofanie/zastąpienie REQ wybrano heurystycznie na podstawie znanego ryzyka, bez wykazania największego kosztu lub przekrojowości. Pierwszą demonstracją powinien być WIT1; WIT5 i WIT3 uzupełniają go o kolejne wydania i wpływ zmian. Demonstracja na przykładzie w E2 nie zastępuje odtworzenia rzeczywistego projektu w E4/E5.
 - To ocena i rekomendacja, bez zmiany modelu, kolejności etapów, DoD ani rozszerzenia zakresu o interfejs graficzny. Nie zapisano nowej decyzji użytkownika.
 
 ## Roadmapa i gotowość do WIT1
 
 - Na pytanie użytkownika przygotowano `informative/ROADMAPA-2026-10-24.md`: propozycję kolejności dostaw w ramach istniejących E2–E5, bez zmiany PLAN.md, modelu i DoD.
-- Gotowość: można rozpocząć implementację WIT1 na obecnym modelu i środowisku; nie ma jeszcze wykonywalnej ścieżki ani silnika procesu. Nie zidentyfikowano nowej decyzji biznesowej blokującej rozpoczęcie tego przyrostu.
-- Najbliższy wynik: 7 elementów, 29 kroków T00/T01/T02/T04/W01/W02/W04, jedno wydanie accepted z migawką; jawne dane checks_ok/tests_ok i dowody demonstracyjne; raport kroków oraz odrzucania prób obejścia bramek. Liczba kroków jest wyprowadzona ręcznie, nie pochodzi z wykonania symulatora.
+- WIT1 wykonano na polecenie użytkownika: „wykonaj rzeteleni wit1”. Realizacja mieści się w zaakceptowanym E2, nie wymagała zmiany semantyki ani nowej DEC.
+- Uzyskany wynik: 7 elementów, 29 kroków T00/T01/T02/T04/W01/W02/W04, jedno wydanie accepted z migawką; jawne dane checks_ok/tests_ok i dowody demonstracyjne; raport kroków oraz odrzucania prób obejścia bramek. Liczba kroków i stany zostały potwierdzone wykonaniem.
 - Proponowana kolejność implementacji w E2: WIT1 → WIT2/WIT4 (pytania potrzebne do T05) → WIT5 → WIT3 → pełne sprawdzenia i mutanty. Następnie E3 (TLC), E4 (historia), E5 (pakiet wdrożeniowy).
 - E2 wykonuje podaną ścieżkę jako test integracyjny; formalne generowanie i przegląd świadków pozostają w E3. Każde rozszerzenie lub zmiana przyjętej semantyki wraca do decyzji użytkownika.
-- Nie podano terminów ani twierdzenia o najdroższym przyroście: brak pomiarów. Oszacowania należy uzupełnić po pierwszym wykonawcy WIT1 i rozpoznaniu semantyki.
+- Nie podano terminów ani twierdzenia o najdroższym przyroście. WIT1 daje pierwszy pomiar wykonania sprawdzeń, nie wiarygodną estymację prac nad resztą semantyki i dowodami.
 - Podczas przygotowania roadmapy zmieniono wyłącznie dokumentację planowania i punkt wznowienia; nie uruchamiano ponownie testów niezmienionego kodu. Nie zapisano nowej DEC.
+
+## WIT1 — wynik implementacji i ograniczenia
+
+- TDD: pierwsze 50 testów było czerwonych (`NotImplementedError` wykonawcy). Następnie dodano interpreter, atomowe kroki, odtworzenie oraz kolejne testy wejść, obserwatora, granic, Hypothesis, mutantów i polecenia. Końcowy wynik całego repozytorium: 108 passed.
+- `uv run --locked --offline python scripts/run_wit1.py --output artifacts/wit1`: completed, 29 kroków. Wszystkie elementy baselined w wersji 1, bez suspect; wydanie 1 accepted. Raport zawiera rzeczywiste stany, aktorów, warunki i cytaty demonstracyjne oraz SHA-256 danych i kodu. Kopia Markdown w examples/wit1/report.md została przeczytana i sprawdzona względem wyniku JSON.
+- Siedem celowych uszkodzeń z mutants/wit1_gates.json wykryto: role, pominięcie zatwierdzenia/weryfikacji, niegotowa zależność, niekompletna gotowość/odbiór, pominięcie przeglądu R. To przypadki S1/S2/S3/S4/S7a/S7b/S8, nie 100% mutacji E2.
+- W testach izolacji zmiana zwróconego stanu nie zmienia wcześniejszych kroków ani migawki; wejściowy model i scenariusz pozostają identyczne. Dwukrotne uruchomienie polecenia daje identyczne wyniki i nie zmienia dokumentów/modelu repozytorium. Dowody symulacyjne nie stają się rzeczywistymi DEC ani tagami.
+- Decyzje agenta: mały interpreter bez eval, stan przekazywany jawnie i kopiowany, osobny format dowodów demonstracyjnych, pełny ślad JSON odtwarzany w ignorowanym artifacts/, raport Markdown w repozytorium. Uzasadnienia i format wejść: examples/wit1/README.md.
+- Wykonawca jest przyrostem ograniczonym do WIT1. Nie obsługuje jeszcze helperów zmian, pytań, nowego wydania ani pustego zakresu. Dla pustego zakresu długie wiązanie kwantyfikatora w W01 może zmienić znaczenie globalnych testów/pytania; przypadek jest jawnie unsupported, nie przemilczany. Przed poszerzeniem potrzebna jest analiza jednoznacznego zapisu W01. Obecna instancja WIT1 ma niepusty zakres i nie wymaga zmiany modelu.
+- Wstrzykiwane stany w części testów są testami warunków, nie świadkami osiągalności. checks_ok/tests_ok są założeniami. R jest rolą symulowanego zdarzenia, nie rzeczywistym niezależnym recenzentem tej implementacji. Przegląd niezależny i bramka użytkownika pozostają na koniec etapu E2.
+- Lista kontrolna: przejrzano model, właściwości, roadmapę WIT1, kod, testy, scenariusz, mutanty, raport, README i stan prac. Nie zmieniono zaakceptowanej semantyki, planu ani zależności. Nie ogłoszono zakończenia E2 ani spełnienia DoD 7.
 
 ## Eksperymenty i pilotaż — wyjaśnienie na pytanie użytkownika
 
@@ -77,7 +93,7 @@ Przyjęta przez DEC-PRO-005. Korekta G3/G6 zatwierdzona przez DEC-PRO-006 nie zm
 - Minimalny zapis próby: ID, pytanie/hipoteza, bazowy commit i wersja modelu, wejście, polecenie i środowisko, kryterium wyniku, limit, wynik z dowodami, ograniczenia oraz odwołanie do dalszej decyzji. Operator ustala cel i granice; agent wykonuje i raportuje; niezależny przegląd ocenia dowody; operator rozstrzyga zmiany wymagające jego zgody. W ramach wcześniej udzielonego zakresu agent działa bez ponawiania pytań.
 - Dla WIT1 rekomendowane są dane i testy w tests/ oraz wspólny wykonawca w src/isomodel; przykład powinien używać tego samego wykonawcy. Symulowane decyzje U i accepted muszą pozostać w instancji testowej, bez aktualizacji rzeczywistych DEC i protokołu odbioru projektu.
 - Ewentualne metadane context_id/purpose/base_commit należą na początek do opisu uruchomienia. Nie są dziś polami wiążącego modelu. Jeżeli izolacja eksperymentów miałaby być dowodzoną właściwością procesu, potrzebna będzie osobna propozycja modelu, właściwości i mutantów, potem decyzja użytkownika.
-- To wyjaśnienie i rekomendacja, bez nowej DEC, zmiany semantyki v0.4, planu ani rozpoczęcia pilotażu. Następny krok pozostaje WIT1. W tej sesji zmieniono tylko punkt wznowienia; testy kodu nie były ponawiane.
+- To wyjaśnienie i rekomendacja z sesji poprzedzającej wykonanie WIT1, bez nowej DEC, zmiany semantyki v0.4, planu ani rozpoczęcia pilotażu. W tamtej sesji zmieniono tylko punkt wznowienia; testy kodu nie były ponawiane. WIT1 wykonano później zgodnie z zapisem powyżej.
 
 ## Repozytorium
 
@@ -89,6 +105,7 @@ Przyjęta przez DEC-PRO-005. Korekta G3/G6 zatwierdzona przez DEC-PRO-006 nie zm
 | Sprawa | Właściciel | Następny krok |
 |---|---|---|
 | Pozostała implementacja E2: G2, warunki/skutki, bezpieczeństwo i mutanty | agent | kontynuować od przyjętego modelu v0.4; odbiór E2 dopiero po spełnieniu kryteriów |
+| Zakres kwantyfikatora W01 przy pustym zakresie wydania | agent | przed rozszerzeniem wykonawcy przeanalizować jednoznaczny zapis globalnych testów/pytania; ewentualną zmianę modelu przedstawić do decyzji; nie blokuje wykonanego WIT1 |
 | Historyczne materiały informative/ | agent | przy E5 uwzględnić INT-017 w nowym materiale; nie przepisywać migawek sesji 2026-10-23 |
 | REQ-210 i REQ-211 dla szablonu | użytkownik | decyzja; opis w informative/SESJA-2026-10-23.md §5 |
 | Instalacja Javy i TLA+ (E3) | użytkownik | zgoda przed E3 |

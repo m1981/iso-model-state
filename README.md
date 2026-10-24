@@ -26,11 +26,17 @@ Identyfikatory tego repozytorium mają prefiks `PRO`.
 
 `uv run --locked pytest -q` instaluje zależności z `uv.lock` w lokalnym `.venv` i uruchamia testy. Wymagany Python 3.12+. Kolejne uruchomienia z dostępną pamięcią pakietów mogą użyć `--offline`.
 
-Po korekcie DEC-PRO-006 model v0.4 ma **31 przechodzących testów**. Usunięto wykazane wcześniej luki G3/G6: mutant G3 usuwa wszystkie wyjścia z `deferred`, a każde przejście ma adnotacje ISO, łącznie obejmujące 14 efektów PM/SI. Przyjęte uzasadnienie korekty zachowano w `model/proposals/e2-structure.yaml`; testy czytają model wiążący. Zielony wynik obecnego zestawu nie oznacza zakończenia E2.
+Po korekcie DEC-PRO-006 usunięto wykazane wcześniej luki G3/G6: mutant G3 usuwa wszystkie wyjścia z `deferred`, a każde przejście ma adnotacje ISO, łącznie obejmujące 14 efektów PM/SI. Przyjęte uzasadnienie korekty zachowano w `model/proposals/e2-structure.yaml`; testy czytają model wiążący. Przyrost WIT1 dodaje wykonanie ścieżki, testy bramek i wybrane mutanty. Zielony wynik obecnego zestawu nie oznacza zakończenia E2; aktualny wynik jest w `docs/STAN.md`.
 
-`src/isomodel/` wczytuje model, sprawdza część strukturalną G0/G4, buduje projekcję grafu dla G1/G3, raport G5 i audyt adnotacji G6. Projekcja pomija warunki przejść, więc nie dowodzi osiągalności ani braku zakleszczeń całego systemu. G2, interpretacja warunków i skutków, niezmienniki przez Hypothesis oraz pełny raport mutacji pozostają do wykonania w E2. Obecne użycie Hypothesis sprawdza jedynie odrzucanie powtórzonych kluczy YAML.
+`src/isomodel/` wczytuje model, sprawdza część strukturalną G0/G4, buduje projekcję grafu dla G1/G3, raport G5 i audyt adnotacji G6. Projekcja pomija warunki przejść, więc nie dowodzi osiągalności ani braku zakleszczeń całego systemu. Wykonawca interpretuje warunki i skutki potrzebne WIT1. Pełne G2, pozostała semantyka, maszyna stanów Hypothesis oraz pełny raport mutacji pozostają do wykonania w E2. Hypothesis sprawdza obecnie powtórzone klucze YAML oraz kombinacje wejść weryfikacji CODE.
 
 Starszy skrypt spójności E1: `uv run --locked python scripts/check_model.py`. Wynik tego skryptu nie zastępuje testów E2 ani dowodów E3. Bieżące decyzje i punkt wznowienia: `docs/STAN.md`.
+
+## Wykonywalny WIT1
+
+`uv run --locked --offline python scripts/run_wit1.py --output artifacts/wit1` wykonuje 29 kroków na siedmiu elementach i zapisuje raport Markdown oraz pełny ślad JSON. Osiągnięte `accepted` i wszystkie cytaty dotyczą wyłącznie symulacji. Skrypt sprawdza też siedem prób obejścia bramek i odpowiadające im mutanty.
+
+[Instrukcja, zakres i ograniczenia](examples/wit1/README.md) · [Raport wykonanego przebiegu](examples/wit1/report.md). Nie jest to dowód TLC ani odbiór E2.
 
 ## Wizualizacja procesu i pakiety wdrożeniowe
 
