@@ -4,7 +4,7 @@
 
 model: iso29110-basic-process
 version: 0.3
-status: verified              # sprawdzony skryptem spójności; czeka na zatwierdzenie użytkownika (bramka E1)
+status: approved              # DEC-PRO-005: przyjęty jako podstawa E2; nie oznacza dowodu G/S/L
 
 notation:
   e: "element, którego dotyczy przejście"

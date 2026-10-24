@@ -1,0 +1,38 @@
+# Propozycja do zatwierdzenia; nie jest wejściem wiążącego modelu.
+status: draft
+based_on_version: 0.3
+description: "Naprawa adnotacji G6 i nieskutecznego mutanta G3; bez zmiany zachowania procesu"
+
+add_iso:
+  T00: [PM.01.09, PM.O5]
+  T01: [PM.O7, SI.O1, SI.O4]
+  T02: [PM.O1]
+  T04: [PM.O6, SI.O2, SI.O3]
+  T12: [PM.O3]
+  P02: [PM.O4]
+  P03: [PM.02.05]
+  P05: [PM.03.04]
+  W01: [SI.O5, SI.O6]
+  W04: [PM.O2]
+
+rationale:
+  T00: "Dla PLAN: PM.01.11 obejmuje plan zawierający ryzyka; PM.01.09 precyzuje ich identyfikację. Treść planu pozostaje abstrakcją sprawdzaną przez checks_ok."
+  T01: "PM.O7: weryfikacja produktów; SI.O1: bramka pracy na zatwierdzonym PLAN przez łańcuch zależności; SI.O4: weryfikacja CODE i testów jednostkowych. Szczegóły wykonania planu i testów nie są symulowane."
+  T02: "PM.O1: zatwierdzenie PLAN przez użytkownika; pozostałe typy nie są świadkiem tej adnotacji."
+  T04: "PM.O6: kontrolowana linia bazowa; SI.O2: dla REQ; SI.O3: dla DES. Szczegóły treści i komunikowania baz nie są symulowane."
+  T12: "PM.O3: zgłoszenie potrzeby zmiany do rozstrzygnięcia przez użytkownika."
+  P02: "PM.O4: zapis jednoznacznego uzgodnienia jako DEC; pozostałe kroki pytań śledzą uzgodnienie."
+  P03: "PM.02.05 jako podstawa ponownego wyjaśnienia; brak odpowiedzi jednoznacznej rozstrzyga INT-010."
+  P05: "PM.03.04 jako podstawa wznowienia rozpatrywania odłożonej sprawy, analogicznie do P04."
+  W01: "SI.O5: bramka pełnych testów; SI.O6: kompletność bazowego produktu przed dostawą. Zawartość dokumentacji i raportów należy do checks_ok/tests_ok, nie dodatkowych automatów."
+  W04: "PM.O2: część dotycząca zamknięcia i udokumentowanego odbioru; pozostaje jedynym jawnym powiązaniem PM.O2 dla mutanta G6."
+
+g3_mutant:
+  before: [T10]
+  after: [T07, T08, T10]
+  description: "Usunąć wszystkie przejścia wychodzące z deferred; sam brak wznowienia nie tworzy ślepego stanu"
+
+limits:
+  - "G6 potwierdza jawne śledzenie powiązań; nie dowodzi wszystkich składowych efektu ISO ani zgodności całego projektu z normą."
+  - "Adnotacja dla przejścia wielotypowego oznacza istnienie właściwego zastosowania, a nie zastosowanie do każdego typu elementu."
+  - "Założenia checks_ok/tests_ok oraz poziom abstrakcji pozostają jak w v0.3."

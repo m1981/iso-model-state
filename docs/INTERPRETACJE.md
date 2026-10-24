@@ -1,6 +1,6 @@
 # Rejestr interpretacji normy
 
-Gdzie ISO/IEC 29110-5-1-2 jest niejednoznaczna lub sama sobie przeczy, tutaj zapisujemy jedno rozstrzygnięcie. INT-001–INT-016 pozostają propozycjami agenta do bramki E1; INT-017 przyjęto przez DEC-PRO-003 i doprecyzowano przez DEC-PRO-004. Odwołania do normy według jej numeracji; tekst normy streszczony, nie cytowany.
+Gdzie ISO/IEC 29110-5-1-2 jest niejednoznaczna lub sama sobie przeczy, tutaj zapisujemy jedno rozstrzygnięcie. INT-001–INT-016 przyjęto wraz z modelem v0.3 w bramce E1 przez DEC-PRO-005; INT-017 przyjęto przez DEC-PRO-003 i doprecyzowano przez DEC-PRO-004. Odwołania do normy według jej numeracji; tekst normy streszczony, nie cytowany.
 
 | ID | Problem w normie | Rozstrzygnięcie | Gdzie w modelu |
 |---|---|---|---|

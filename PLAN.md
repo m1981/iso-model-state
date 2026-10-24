@@ -32,6 +32,8 @@ Zgoda: DEC-PRO-001, 2026-10-23, użytkownik: „d1 tak” na DoD 1–10 i stos n
 
 Kolejność jest ścisła: bez zgody na E1 nie piszemy kodu, bo kod i dowody wywodzą się z modelu.
 
+Stan etapów: E1 przyjęty jako podstawa E2 przez DEC-PRO-005 (2026-10-24); E2 rozpoczęty. Akceptacja modelu nie jest potwierdzeniem spełnienia właściwości G/S/L.
+
 ## Narzędzia
 
 | Narzędzie | Etap | Uwagi |

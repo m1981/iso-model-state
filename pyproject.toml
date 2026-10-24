@@ -1,0 +1,14 @@
+[project]
+name = "iso-model-state"
+version = "0.1.0"
+description = "Sprawdzenia modelu stanów produktów pracy ISO/IEC 29110"
+requires-python = ">=3.12"
+dependencies = ["PyYAML==6.0.3", "networkx==3.6.1"]
+
+[dependency-groups]
+dev = ["pytest==9.1.1", "hypothesis==6.151.10"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-ra"

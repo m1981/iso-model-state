@@ -1,4 +1,4 @@
-Kontynuujemy projekt iso-model-state: model stanów produktów pracy według ISO/IEC 29110-5-1-2 (profil Basic) dla pracy użytkownika z agentem LLM, z dowodami poprawności (pytest, Hypothesis, TLA+). Repozytorium: https://github.com/m1981/iso-model-state, gałąź robocza `e1-model`.
+Kontynuujemy projekt iso-model-state: model stanów produktów pracy według ISO/IEC 29110-5-1-2 (profil Basic) dla pracy użytkownika z agentem LLM, z dowodami poprawności (pytest, Hypothesis, TLA+). Repozytorium: https://github.com/m1981/iso-model-state. Bieżąca gałąź robocza jest wskazana w docs/STAN.md.
 
 Ten plik mówi tylko, co przeczytać i jakie zasady obowiązują. Nie zawiera stanu prac: stan jest wyłącznie w docs/STAN.md.
 

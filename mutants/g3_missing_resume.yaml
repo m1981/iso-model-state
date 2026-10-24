@@ -1,0 +1,4 @@
+property: G3
+status: active
+remove_transitions: [T10]
+description: "Mutant z zaakceptowanego kryterium; przeżywa, ponieważ istnieją T07 i T08"

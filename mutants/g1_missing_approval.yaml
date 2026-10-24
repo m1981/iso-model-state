@@ -1,0 +1,4 @@
+property: G1
+status: active
+remove_transitions: [T02]
+description: "Stan approved traci jedyne wejście"
