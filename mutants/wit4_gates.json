@@ -1,0 +1,122 @@
+[
+  {
+    "id": "wit4_two_asked",
+    "property": "S9",
+    "prefix_steps": 4,
+    "attempt": {
+      "transition": "P01",
+      "actor": "A",
+      "question": "q2"
+    },
+    "field": "guard",
+    "replacement": "q = oldest(open, blocking_first)",
+    "expected_code": "guard"
+  },
+  {
+    "id": "wit4_lifo",
+    "property": "L2",
+    "prefix_steps": 5,
+    "attempt": {
+      "transition": "P01",
+      "actor": "A",
+      "question": "q2"
+    },
+    "field": "guard",
+    "replacement": "count(asked) = 0 and q = newest(open, blocking_first)",
+    "expected_code": "guard"
+  },
+  {
+    "id": "wit4_ambiguous_resolution",
+    "property": "WIT4",
+    "prefix_steps": 2,
+    "attempt": {
+      "transition": "P02",
+      "actor": "U",
+      "question": "q1",
+      "inputs": {
+        "unambiguous_answer": false
+      },
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-PROBE",
+        "quote": "Odpowiedź demonstracyjna."
+      }
+    },
+    "field": "guard",
+    "replacement": "true",
+    "expected_code": "guard"
+  },
+  {
+    "id": "wit4_defer_blocking",
+    "property": "WIT4",
+    "prefix_steps": 2,
+    "attempt": {
+      "transition": "P04",
+      "actor": "U",
+      "question": "q1"
+    },
+    "field": "guard",
+    "replacement": "true",
+    "expected_code": "guard"
+  },
+  {
+    "id": "wit4_lost_age",
+    "property": "WIT4",
+    "prefix_steps": 4,
+    "attempt": {
+      "transition": "P03",
+      "actor": "U",
+      "question": "q1"
+    },
+    "field": "effects",
+    "replacement": [
+      "age := age + 10"
+    ],
+    "preserve_path": [
+      "questions",
+      "q1",
+      "age"
+    ]
+  },
+  {
+    "id": "wit4_ambiguous_decision",
+    "property": "WIT4",
+    "prefix_steps": 4,
+    "attempt": {
+      "transition": "P03",
+      "actor": "U",
+      "question": "q1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-PROBE",
+        "quote": "Odpowiedź demonstracyjna."
+      }
+    },
+    "field": "effects",
+    "replacement": [
+      "record DEC with user quote"
+    ],
+    "expected_records": 0
+  },
+  {
+    "id": "wit4_missing_decision",
+    "property": "WIT4",
+    "prefix_steps": 2,
+    "attempt": {
+      "transition": "P02",
+      "actor": "U",
+      "question": "q1",
+      "inputs": {
+        "unambiguous_answer": true
+      },
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-PROBE",
+        "quote": "Odpowiedź demonstracyjna."
+      }
+    },
+    "field": "effects",
+    "replacement": [],
+    "expected_records": 1
+  }
+]

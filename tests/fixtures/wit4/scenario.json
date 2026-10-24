@@ -1,0 +1,110 @@
+{
+  "id": "WIT4",
+  "simulation": true,
+  "description": "Odpowiedź niejednoznaczna, powrót do FIFO, rozstrzygnięcia oraz odłożenie i wznowienie pytania.",
+  "inputs": {},
+  "events": [
+    {
+      "transition": "P00",
+      "actor": "A",
+      "question": "q1",
+      "attributes": {
+        "blocking": true
+      }
+    },
+    {
+      "transition": "P01",
+      "actor": "A",
+      "question": "q1"
+    },
+    {
+      "transition": "P00",
+      "actor": "R",
+      "question": "q2",
+      "attributes": {
+        "blocking": true
+      }
+    },
+    {
+      "transition": "P00",
+      "actor": "U",
+      "question": "q3",
+      "attributes": {
+        "blocking": false
+      }
+    },
+    {
+      "transition": "P03",
+      "actor": "U",
+      "question": "q1",
+      "evidence": {
+        "simulation": true,
+        "quote": "Nie wiem, doprecyzuj — odpowiedź demonstracyjna."
+      }
+    },
+    {
+      "transition": "P01",
+      "actor": "A",
+      "question": "q1"
+    },
+    {
+      "transition": "P02",
+      "actor": "U",
+      "question": "q1",
+      "inputs": {
+        "unambiguous_answer": true
+      },
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-q1",
+        "quote": "Rozstrzygam q1 — cytat demonstracyjny."
+      }
+    },
+    {
+      "transition": "P01",
+      "actor": "A",
+      "question": "q2"
+    },
+    {
+      "transition": "P02",
+      "actor": "U",
+      "question": "q2",
+      "inputs": {
+        "unambiguous_answer": true
+      },
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-q2",
+        "quote": "Rozstrzygam q2 — cytat demonstracyjny."
+      }
+    },
+    {
+      "transition": "P04",
+      "actor": "U",
+      "question": "q3"
+    },
+    {
+      "transition": "P05",
+      "actor": "A",
+      "question": "q3"
+    },
+    {
+      "transition": "P01",
+      "actor": "A",
+      "question": "q3"
+    },
+    {
+      "transition": "P02",
+      "actor": "U",
+      "question": "q3",
+      "inputs": {
+        "unambiguous_answer": true
+      },
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-q3",
+        "quote": "Rozstrzygam q3 — cytat demonstracyjny."
+      }
+    }
+  ]
+}

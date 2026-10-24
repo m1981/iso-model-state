@@ -1,0 +1,28 @@
+[
+  {
+    "id": "wit2_third_rejection",
+    "property": "L4",
+    "prefix_steps": 10,
+    "attempt": {
+      "transition": "T03",
+      "actor": "U",
+      "item": "r1"
+    },
+    "field": "guard",
+    "replacement": "true",
+    "expected_code": "guard"
+  },
+  {
+    "id": "wit2_author_rejection",
+    "property": "S1",
+    "prefix_steps": 6,
+    "attempt": {
+      "transition": "T03",
+      "actor": "A",
+      "item": "r1"
+    },
+    "field": "actor",
+    "replacement": "A",
+    "expected_code": "actor"
+  }
+]

@@ -46,7 +46,7 @@ Wynik: siedem elementów `baselined`, wersja 1, bez `suspect`; wydanie 1 `accept
 - Początkowe wartości produktów i wydania pochodzą z deklaracji modelu. Migawka kopiuje wartości `type`, `depends_on` i wszystkich `item_variables`. Historia raportu, stan końcowy, model i wejściowy scenariusz nie współdzielą zmiennych struktur.
 - Dowód T02 ma pola `decision`, `quote`; T04 — `reference`, `quote`; W04 — `quote`. Każdy dowód ma `simulation: true`. To format wejścia symulatora realizujący opisane w YAML dowody; nie nowy rodzaj zatwierdzenia. Odwołania `SIM-*` są demonstracyjne i nie tworzą rzeczywistych DEC ani tagów.
 - Weryfikacja aktora R sprawdza rolę zdarzenia; nie uruchamia ani nie poświadcza rzeczywistego niezależnego przeglądu implementacji.
-- Nieobsługiwane konstrukcje, helpery, pytania i tworzenie kolejnego wydania kończą się jawnym `unsupported`. Ten przyrost nie obsługuje pustego zakresu wydania. Przy niepustym zakresie W01 sprawdza zarówno kompletność, jak i globalne testy/pytania; przed poszerzeniem o pusty zakres trzeba ujednoznacznić wiązanie kwantyfikatora i globalnych członów W01. Nie zmieniono przyjętego YAML ani nie ustanowiono zakazu pustego zakresu w procesie.
+- Nieobsługiwane konstrukcje, helpery zmian i tworzenie kolejnego wydania kończą się jawnym `unsupported`. Pytania dodano w kolejnym [przyroście WIT2/WIT4](../questions/README.md). Wykonawca nie obsługuje pustego zakresu wydania. Przy niepustym zakresie W01 sprawdza zarówno kompletność, jak i globalne testy/pytania; przed poszerzeniem o pusty zakres trzeba ujednoznacznić wiązanie kwantyfikatora i globalnych członów W01. Nie zmieniono przyjętego YAML ani nie ustanowiono zakazu pustego zakresu w procesie.
 - Przekroczenie granicy eksploracji jest raportowane osobno jako `boundary`, nie jako niedozwolone przejście lub zakleszczenie. Obsługa W06 i granicy wielu wydań wymaga dalszego przyrostu.
 
 ## Dowody i ich ograniczenia
@@ -56,6 +56,6 @@ Wynik: siedem elementów `baselined`, wersja 1, bez `suspect`; wydanie 1 `accept
 - Hypothesis generuje kombinacje stanów DES i AT, aktora, suspect oraz wyniku checks_ok dla T01(CODE), porównując wykonawcę z niezależnie zapisanym kryterium. To jeszcze nie pełna maszyna stanów S1–S10.
 - Siedem mutantów w `mutants/wit1_gates.json` dotyczy wybranych przypadków S1, S2, S3, S4, S7a, S7b i S8. Poprawny model odrzuca próbę, mutant przyjmuje ten sam krok. Zmiany istnieją wyłącznie w kopii modelu w pamięci.
 - Test polecenia uruchamia przykład dwukrotnie z innego katalogu, porównuje raporty i sprawdza niezmienność dokumentów oraz plików modelu.
-- Rozdzielenie kopii migawki jest testowane, lecz pełny S10 podczas zmian po odbiorze wymaga WIT5. WIT2–WIT5, pełne G/S/L, mutacje wszystkich właściwości i dowód TLC pozostają w planie.
+- Rozdzielenie kopii migawki jest testowane, lecz pełny S10 podczas zmian po odbiorze wymaga WIT5. WIT2/WIT4 mają już osobne wykonanie w E2. WIT5/WIT3, pełne G/S/L, mutacje wszystkich właściwości i dowód TLC pozostają w planie.
 
 Początkowy przebieg TDD: 50 nieprzechodzących przypadków, z błędem `NotImplementedError` wykonawcy. Zapis wyniku końcowego i punkt wznowienia: `docs/STAN.md`.

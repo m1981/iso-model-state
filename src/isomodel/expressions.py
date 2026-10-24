@@ -2,7 +2,7 @@
 
 Kwantyfikator wiąże wyrażenie do końca bieżącego nawiasu/tekstu.
 Całe drzewo jest sprawdzane przed oceną, także puste kwantyfikatory.
-Trace: WIT1, G0, S2, S4, S7a.
+Trace: WIT1, WIT2, WIT4, G0, S2, S4, S7a, S9, L2, L4.
 """
 
 import re
@@ -19,7 +19,8 @@ class InputError(ModelError):
 
 
 TOKEN = re.compile(r"\s*(=>|[(){}.,:=+<]|[A-Za-z_][A-Za-z_0-9]*|[0-9]+)")
-FUNCTIONS = {"deps": 1, "type": 1, "checks_ok": 1, "in_scope": 1, "snapshot": 1}
+FUNCTIONS = {"deps": 1, "type": 1, "checks_ok": 1, "in_scope": 1, "snapshot": 1,
+             "count": 1, "oldest": 2, "newest": 2}
 
 
 class Parser:
@@ -148,8 +149,10 @@ class Parser:
 
 def compile_expression(text, model):
     node = Parser(text).parse()
-    names = {"e", "release", "tests_ok", "newly_suspect", "all_items", "all_questions", "none"}
+    names = {"e", "q", "release", "tests_ok", "unambiguous_answer", "blocking_first",
+             "newly_suspect", "all_items", "all_questions", "none"}
     names |= set(model["parameters"]) | set(model["item_variables"]) | set(model["release_control_variables"])
+    names |= set(model["question_variables"])
     names |= set().union(*(model[f"{kind}_states"] for kind in ("item", "question", "release")))
     attributes = {"id", "type", "depends_on", "requires_approval"}
     attributes |= set().union(*(model[f"{kind}_variables"] for kind in ("item", "question", "release")))
