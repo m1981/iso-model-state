@@ -3,8 +3,8 @@
 # Identyfikatory po angielsku, w terminologii normy (DEC-PRO-002). Opisy (`description`) po polsku.
 
 model: iso29110-basic-process
-version: 0.3
-status: approved              # DEC-PRO-005: przyjęty jako podstawa E2; nie oznacza dowodu G/S/L
+version: 0.4
+status: approved              # DEC-PRO-005/006: podstawa E2 z korektą G3/G6; nie oznacza dowodu G/S/L
 
 notation:
   e: "element, którego dotyczy przejście"
@@ -72,7 +72,7 @@ item_transitions:
     actor: A
     guard: "true"
     effects: ["version := 1"]
-    iso: [SI.02.02, SI.03.03, SI.03.06, SI.04.03, PM.01.11]
+    iso: [SI.02.02, SI.03.03, SI.03.06, SI.04.03, PM.01.11, PM.01.09, PM.O5]
 
   - id: T01
     name: verify
@@ -81,7 +81,7 @@ item_transitions:
     actor: A
     guard: "not suspect and checks_ok(e) and forall d in deps(e): d.state in {approved, baselined}"
     effects: []
-    iso: [SI.02.04, SI.03.05, SI.03.08, SI.04.05, PM.01.13]
+    iso: [SI.02.04, SI.03.05, SI.03.08, SI.04.05, PM.01.13, PM.O7, SI.O1, SI.O4]
     description: "zależności muszą być zatwierdzone; zapobiega budowaniu na niezatwierdzonym"
 
   - id: T02
@@ -92,7 +92,7 @@ item_transitions:
     guard: "type(e).requires_approval and not suspect"
     effects: []
     evidence: "DEC z cytatem użytkownika"
-    iso: [SI.02.05, PM.01.14, PM.02.03]
+    iso: [SI.02.05, PM.01.14, PM.02.03, PM.O1]
 
   - id: T03
     name: reject
@@ -112,7 +112,7 @@ item_transitions:
     guard: "not suspect and (state = approved or not type(e).requires_approval) and forall d in deps(e): d.state = baselined"
     effects: []
     evidence: "commit lub tag na polecenie użytkownika"
-    iso: [SI.02.08, SI.03.09, SI.04.07, PM.01.16]
+    iso: [SI.02.08, SI.03.09, SI.04.07, PM.01.16, PM.O6, SI.O2, SI.O3]
 
   - id: T05
     name: open_change
@@ -189,7 +189,7 @@ item_transitions:
     actor: A
     guard: "suspect"
     effects: ["create question(kind = change, about = e, blocking = true)"]
-    iso: [PM.02.02, PM.03.03]
+    iso: [PM.02.02, PM.03.03, PM.O3]
     description: "zmiana treści elementu zaakceptowanego idzie przez użytkownika (T05)"
 
   - id: T13
@@ -244,7 +244,7 @@ question_transitions:
     actor: U
     guard: "unambiguous_answer"
     effects: ["record DEC with user quote"]
-    iso: [PM.02.03, PM.03.04]
+    iso: [PM.02.03, PM.03.04, PM.O4]
 
   - id: P03
     name: answer_ambiguously
@@ -253,6 +253,7 @@ question_transitions:
     actor: U
     guard: "true"
     effects: []
+    iso: [PM.02.05]
     description: "nie tworzy DEC (INT-010, lekcja DEC-VCS-021); pytanie wraca do kolejki jako najstarsze"
 
   - id: P04
@@ -271,6 +272,7 @@ question_transitions:
     actor: [U, A]
     guard: "true"
     effects: []
+    iso: [PM.03.04]
     description: "agent wznawia na początku etapu, któremu pytanie przypisano"
 
 # ---------------------------------------------------------------------------
@@ -312,7 +314,7 @@ release_transitions:
     actor: A
     guard: "forall e: in_scope(e) => (e.state in {baselined, deferred, superseded, withdrawn} and (e.state = baselined => not e.suspect)) and tests_ok and not exists q: q.blocking and q.state in {open, asked}"
     effects: []
-    iso: [SI.05.11, SI.06.05, SI.06.06]
+    iso: [SI.05.11, SI.06.05, SI.06.06, SI.O5, SI.O6]
     description: "elementy odłożone, zastąpione i wycofane wypadają z wydania; muszą mieć zapis w rejestrze pytań lub DEC"
 
   - id: W02
@@ -340,7 +342,7 @@ release_transitions:
     actor: U
     guard: "true"
     effects: ["release.snapshot := snapshot(release.scope)", "release.acceptance := record acceptance with release.number and user quote"]
-    iso: [PM.04.01, PM.04.02]
+    iso: [PM.04.01, PM.04.02, PM.O2]
 
   - id: W05
     name: reject_acceptance

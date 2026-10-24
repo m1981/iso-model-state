@@ -18,3 +18,4 @@ Ten folder jest **informacyjny** w sensie norm ISO: wyjaśnia, uzasadnia i przec
 | `NORMA.md` | Gdzie jest pełny tekst ISO/IEC 29110-5-1-2 i jak z niego korzystać; wykryte w normie niespójności | 2026-10-23 |
 | `PRZEGLAD-VCS-LITE.md` | Przegląd projektu vcs-lite względem normy: niespójności, luki, co działa | 2026-10-23 |
 | `szablon-projektu/` | Szablon dokumentów dla nowych projektów (wejście do etapu E5) | 2026-10-23 |
+| `WIZUALIZACJA-2026-10-24.md`, `visuals-v0.4/` | Przewodnik po modelu v0.4, trzy diagramy i mapowanie tematów dziewięciu pakietów Aneksu E | 2026-10-24 |

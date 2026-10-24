@@ -1,0 +1,5 @@
+property: G3
+status: active
+decision: DEC-PRO-006
+remove_transitions: [T07, T08, T10]
+description: "Przyjęty zamiennik mutanta G3; deferred traci wszystkie wyjścia"

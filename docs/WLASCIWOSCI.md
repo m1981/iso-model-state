@@ -1,6 +1,6 @@
 # Właściwości modelu i Definition of Done
 
-Właściwości, które model `model/process.yaml` musi spełniać. Każda ma: zapis formalny, narzędzie, które ją sprawdza, i **mutanta**: celowo zepsuty model, na którym musi paść (DoD 6). Status `approved`: przyjęte jako podstawa E2 przez DEC-PRO-005 (2026-10-24). Spełnienie właściwości wymaga jeszcze testów i dowodów.
+Właściwości, które model `model/process.yaml` musi spełniać. Każda ma: zapis formalny, narzędzie, które ją sprawdza, i **mutanta**: celowo zepsuty model, na którym musi paść (DoD 6). Status `approved`: przyjęte jako podstawa E2 przez DEC-PRO-005 (2026-10-24). Korekta G3/G6 przyjęta przez DEC-PRO-006. Spełnienie właściwości wymaga jeszcze testów i dowodów.
 
 Notacja: `G` zawsze, `F` kiedyś, `X` w następnym kroku, `O` kiedyś w przeszłości (LTL z przeszłością); `AG`, `EF`, `EX` z CTL. `e` to dowolny element, `q` dowolne pytanie, `rel` rekord wydania o ustalonym numerze `n`. `current ≡ releases[current_release]`; `pre` i `post` oznaczają stan przed i po kroku. Identyfikatory jak w modelu (DEC-PRO-002).
 
@@ -35,10 +35,12 @@ Semantyka wielu wydań (DEC-PRO-003, INT-017): W04 utrwala własną kopię zakre
 | G0 | Słownik zamknięty | każdy stan użyty w `from` i `to` jest zdefiniowany; każdy aktor istnieje; każdy stan elementu ma `iso`; zbiory stanów w `guard` istnieją | stan `approved` przemianowany tylko w jednym przejściu |
 | G1 | Osiągalność | każdy stan osiągalny ze stanu początkowego: `none` dla elementów i pytań, `in_preparation` dla wydania; W06 tworzy nowy rekord, nie wychodzi z końcowego stanu starego | usunięte T02 → `approved` nieosiągalny dla REQ |
 | G2 | Brak martwych przejść | każde przejście jest możliwe w jakimś osiągalnym stanie systemu (warunek spełnialny) | `guard` T04 wymaga `state = approved` także dla CODE |
-| G3 | Brak ślepych stanów | każdy stan niekońcowy ma przejście wyjściowe | usunięte T10 → `deferred` bez wyjścia |
+| G3 | Brak ślepych stanów | każdy stan niekońcowy ma przejście wyjściowe | usunięte T07, T08 i T10 → `deferred` bez wyjścia (DEC-PRO-006) |
 | G4 | Determinizm | z danego stanu dane przejście prowadzi do dokładnie jednego stanu; cel W06 to jednoznacznie nowy rekord numer `current_release + 1` | T03 z dwoma stanami docelowymi |
 | G5 | Kompletność | dla każdej pary (stan, przejście) przejście jest zdefiniowane albo jawnie niedozwolone | — (raport, nie test) |
 | G6 | Pokrycie ISO | każdy efekt PM.O1–O7, SI.O1–O7 wskazany przez co najmniej jedno przejście | usunięte W04 → PM.O2 (odbiór) niepokryty |
+
+G6 sprawdza jawne powiązania zapisane w polach `iso`, w tym PM.O1–PM.O7 i SI.O1–SI.O7 (DEC-PRO-006). Nie dowodzi realizacji wszystkich składowych efektu ISO. Dla przejścia wielotypowego adnotacja dotyczy właściwego zastosowania, np. PM.O1 dla T02 na PLAN. Uzasadnienia przyjętych adnotacji: `model/proposals/e2-structure.yaml`; źródłem danych testów pozostaje `model/process.yaml`.
 
 ## Bezpieczeństwo (S) — Hypothesis w E2, TLC w E3
 

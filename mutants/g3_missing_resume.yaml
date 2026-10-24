@@ -1,4 +1,6 @@
 property: G3
-status: active
+status: superseded
+replaced_by: g3_missing_deferred_exits.yaml
+decision: DEC-PRO-006
 remove_transitions: [T10]
 description: "Mutant z zaakceptowanego kryterium; przeżywa, ponieważ istnieją T07 i T08"

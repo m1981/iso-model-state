@@ -1,4 +1,0 @@
-property: G3
-status: draft
-remove_transitions: [T07, T08, T10]
-description: "Proponowany zamiennik mutanta, oczekuje na decyzję; deferred traci wszystkie wyjścia"

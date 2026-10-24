@@ -10,9 +10,9 @@ from conftest import ROOT
 
 
 def test_G3_specified_mutant_must_have_dead_end(model):
-    mutant = yaml.safe_load((ROOT / "mutants/g3_missing_resume.yaml").read_text())
+    mutant = yaml.safe_load((ROOT / "mutants/g3_missing_deferred_exits.yaml").read_text())
     model["item_transitions"] = [t for t in model["item_transitions"] if t["id"] not in mutant["remove_transitions"]]
-    assert "deferred" in dead_ends(model, "item"), "Mutant G3 przeżywa: deferred nadal ma T07 i T08"
+    assert "deferred" in dead_ends(model, "item"), "Mutant G3 powinien usunąć wszystkie wyjścia z deferred"
 
 
 def test_G6_model_must_cover_all_outcomes_and_annotate_each_transition(model):

@@ -1,5 +1,6 @@
-# Propozycja do zatwierdzenia; nie jest wejściem wiążącego modelu.
-status: draft
+# Przyjęta zmiana DEC-PRO-006; zapis uzasadnienia. Źródłem modelu pozostaje process.yaml.
+status: applied
+decision: DEC-PRO-006
 based_on_version: 0.3
 description: "Naprawa adnotacji G6 i nieskutecznego mutanta G3; bez zmiany zachowania procesu"
 
