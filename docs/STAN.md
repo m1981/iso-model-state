@@ -1,6 +1,6 @@
 # Stan prac
 
-Nadpisywany na końcu każdej sesji. Zaktualizowano: 2026-10-24, model v0.4 i ocena używalności z perspektyw PO/PM/developera.
+Nadpisywany na końcu każdej sesji. Zaktualizowano: 2026-10-24, model v0.4, propozycja roadmapy i gotowość do implementacji WIT1.
 
 ## Gdzie jesteśmy
 
@@ -11,7 +11,7 @@ Nadpisywany na końcu każdej sesji. Zaktualizowano: 2026-10-24, model v0.4 i oc
   - 31 testów przechodzi, w tym dwa uprzednio czerwone kryteria G3/G6; testy korekty sprawdzają teraz model wiążący;
   - na prośbę użytkownika przygotowano informacyjny przewodnik, trzy diagramy SVG/PNG i mapowanie wsparcia dziewięciu pakietów Aneksu E: `informative/WIZUALIZACJA-2026-10-24.md`;
   - diagramy generuje `scripts/render_process.py` z YAML przez dostępny Graphviz; nie jest to symulator.
-- **Następny krok:** kontynuować E2: wykonanie warunków i skutków, G2, osiągalność z uwzględnieniem warunków, testy niezmienników przez Hypothesis i pełny raport mutacji. Przed kodem odpowiednie czerwone testy. Nie uznawać E2 za zakończone.
+- **Następny krok:** rozpocząć wykonywalny WIT1 w ramach zaakceptowanego E2: czerwone testy scenariusza i bramek, potem wykonawca potrzebnych warunków/skutków oraz raport 29 kroków. Zakres opisany w informative/ROADMAPA-2026-10-24.md. Dalsze G/S, mutanty i dowody pozostają w planie; nie uznawać E2 za zakończone.
 
 ## Bramka E1
 
@@ -53,8 +53,18 @@ Przyjęta przez DEC-PRO-005. Korekta G3/G6 zatwierdzona przez DEC-PRO-006 nie zm
 - Brak gotowości do automatycznego sprawdzania rzeczywistego projektu: nie ma wykonania guard/effects, trwałej instancji projektu i zdarzeń, adaptera do dokumentów/historii repozytorium ani raportu naruszeń dla użytkownika projektu. Pełne testy zachowania i dowody pozostają przed nami.
 - Szablon odwołuje się do tests/test_traceability.py i generowanego TRACE.md, lecz nie dostarcza tego programu; wymaga dopracowania i pilotażu przed uznaniem za gotowy pakiet wdrożeniowy.
 - Perspektywa PO: brakuje demonstracji pełnego przypadku użycia z wynikiem dla użytkownika. Perspektywa PM: plan i bramki istnieją, ale E2 trwa, a E3–E5 nie są dostarczone. Perspektywa developera: działa część biblioteki walidacji i analizy grafów, nie pełny silnik procesu.
-- Rekomendowany sprawdzian użyteczności w istniejącym zakresie E4/E5: na przykładowym repozytorium wycofanie REQ powoduje raport wskazujący zależne AT/DES/CODE, blokadę wydania i wymagany krok użytkownika; raport wskazuje źródłowe ID i dowód. Najpierw wykonanie semantyki i weryfikacja E2/E3, potem odtworzenie historii i wdrożenie według planu.
+- Skorygowane uzasadnienie sprawdzianów: wycofanie/zastąpienie REQ wybrano heurystycznie na podstawie znanego ryzyka, bez wykazania największego kosztu lub przekrojowości. Pierwszą demonstracją powinien być WIT1; WIT5 i WIT3 uzupełniają go o kolejne wydania i wpływ zmian. Demonstracja na przykładzie w E2 nie zastępuje odtworzenia rzeczywistego projektu w E4/E5.
 - To ocena i rekomendacja, bez zmiany modelu, kolejności etapów, DoD ani rozszerzenia zakresu o interfejs graficzny. Nie zapisano nowej decyzji użytkownika.
+
+## Roadmapa i gotowość do WIT1
+
+- Na pytanie użytkownika przygotowano `informative/ROADMAPA-2026-10-24.md`: propozycję kolejności dostaw w ramach istniejących E2–E5, bez zmiany PLAN.md, modelu i DoD.
+- Gotowość: można rozpocząć implementację WIT1 na obecnym modelu i środowisku; nie ma jeszcze wykonywalnej ścieżki ani silnika procesu. Nie zidentyfikowano nowej decyzji biznesowej blokującej rozpoczęcie tego przyrostu.
+- Najbliższy wynik: 7 elementów, 29 kroków T00/T01/T02/T04/W01/W02/W04, jedno wydanie accepted z migawką; jawne dane checks_ok/tests_ok i dowody demonstracyjne; raport kroków oraz odrzucania prób obejścia bramek. Liczba kroków jest wyprowadzona ręcznie, nie pochodzi z wykonania symulatora.
+- Proponowana kolejność implementacji w E2: WIT1 → WIT2/WIT4 (pytania potrzebne do T05) → WIT5 → WIT3 → pełne sprawdzenia i mutanty. Następnie E3 (TLC), E4 (historia), E5 (pakiet wdrożeniowy).
+- E2 wykonuje podaną ścieżkę jako test integracyjny; formalne generowanie i przegląd świadków pozostają w E3. Każde rozszerzenie lub zmiana przyjętej semantyki wraca do decyzji użytkownika.
+- Nie podano terminów ani twierdzenia o najdroższym przyroście: brak pomiarów. Oszacowania należy uzupełnić po pierwszym wykonawcy WIT1 i rozpoznaniu semantyki.
+- W tej sesji zmieniono wyłącznie dokumentację planowania i punkt wznowienia; nie uruchamiano ponownie testów niezmienionego kodu. Nie zapisano nowej DEC.
 
 ## Repozytorium
 

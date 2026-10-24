@@ -19,3 +19,4 @@ Ten folder jest **informacyjny** w sensie norm ISO: wyjaśnia, uzasadnia i przec
 | `PRZEGLAD-VCS-LITE.md` | Przegląd projektu vcs-lite względem normy: niespójności, luki, co działa | 2026-10-23 |
 | `szablon-projektu/` | Szablon dokumentów dla nowych projektów (wejście do etapu E5) | 2026-10-23 |
 | `WIZUALIZACJA-2026-10-24.md`, `visuals-v0.4/` | Przewodnik po modelu v0.4, trzy diagramy i mapowanie tematów dziewięciu pakietów Aneksu E | 2026-10-24 |
+| `ROADMAPA-2026-10-24.md` | Propozycja dostaw w ramach E2–E5 i konkretny zakres pierwszego wykonywalnego WIT1 | 2026-10-24 |
