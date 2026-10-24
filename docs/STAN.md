@@ -1,6 +1,6 @@
 # Stan prac
 
-Nadpisywany na końcu każdej sesji. Zaktualizowano: 2026-10-24, model v0.4 i wizualizacja procesu.
+Nadpisywany na końcu każdej sesji. Zaktualizowano: 2026-10-24, model v0.4 i ocena używalności z perspektyw PO/PM/developera.
 
 ## Gdzie jesteśmy
 
@@ -45,6 +45,16 @@ Przyjęta przez DEC-PRO-005. Korekta G3/G6 zatwierdzona przez DEC-PRO-006 nie zm
 - Obecne Hypothesis bada odrzucanie powtórzonych kluczy YAML; testy bezpieczeństwa S1–S10 przez maszynę stanów są jeszcze przed nami.
 - G2, interpretacja warunków/skutków, pełna mutacja, wygenerowane świadki i dowody TLA+ nie są wykonane. Ręcznie opisano WIT1–WIT5, w tym zmianę po odbiorze i przypadek T10.
 - Zależności: PyYAML 6.0.3, networkx 3.6.1, pytest 9.1.1, Hypothesis 6.151.10 w pyproject.toml/uv.lock; lokalne .venv. Wizualizacja korzysta z już zainstalowanego Graphviz, bez nowych zależności Pythona.
+
+## Ocena używalności — na pytanie użytkownika
+
+- Klasyfikacja: dokumentacja zarządzania tym projektem; specyfikacja projektowanego procesu; prototyp narzędzi analizy modelu; materiały wdrożeniowe i edukacyjne. To różne poziomy gotowości, nie jeden gotowy produkt.
+- Używalne obecnie: kontrakt współpracy i rejestr decyzji w pracy ręcznej, model i diagramy do przeglądu reguł, skrypty do analizy samego modelu, szablon jako punkt startowy do adaptacji.
+- Brak gotowości do automatycznego sprawdzania rzeczywistego projektu: nie ma wykonania guard/effects, trwałej instancji projektu i zdarzeń, adaptera do dokumentów/historii repozytorium ani raportu naruszeń dla użytkownika projektu. Pełne testy zachowania i dowody pozostają przed nami.
+- Szablon odwołuje się do tests/test_traceability.py i generowanego TRACE.md, lecz nie dostarcza tego programu; wymaga dopracowania i pilotażu przed uznaniem za gotowy pakiet wdrożeniowy.
+- Perspektywa PO: brakuje demonstracji pełnego przypadku użycia z wynikiem dla użytkownika. Perspektywa PM: plan i bramki istnieją, ale E2 trwa, a E3–E5 nie są dostarczone. Perspektywa developera: działa część biblioteki walidacji i analizy grafów, nie pełny silnik procesu.
+- Rekomendowany sprawdzian użyteczności w istniejącym zakresie E4/E5: na przykładowym repozytorium wycofanie REQ powoduje raport wskazujący zależne AT/DES/CODE, blokadę wydania i wymagany krok użytkownika; raport wskazuje źródłowe ID i dowód. Najpierw wykonanie semantyki i weryfikacja E2/E3, potem odtworzenie historii i wdrożenie według planu.
+- To ocena i rekomendacja, bez zmiany modelu, kolejności etapów, DoD ani rozszerzenia zakresu o interfejs graficzny. Nie zapisano nowej decyzji użytkownika.
 
 ## Repozytorium
 
