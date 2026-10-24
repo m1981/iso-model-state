@@ -2,6 +2,10 @@
 
 ## Cel
 
+Cel użytkowy przyjęty przez DEC-PRO-007 (2026-10-24, „d1 tak”): **opracować i sprawdzić na jednym rzeczywistym projekcie lekki sposób współpracy operatora z agentem, który zachowuje kontekst, pilnuje zatwierdzeń i pokazuje skutki zmian**. Zakres pierwszego zastosowania, rezultaty i kryteria korzyści określa [karta celu i zakresu](docs/KARTA-CELU-I-ZAKRESU.md). Przyjęcie karty zachowuje poniższy DoD oraz plan E2–E5.
+
+Cel techniczny wspierający ten zamiar:
+
 Jeden, sprawdzalny model stanów produktów pracy dla zespołu „użytkownik i agent LLM”. Model ma być wolny od zakleszczeń, uwięzienia w pętlach, zagłodzenia i obejść bramek. Jest jednym źródłem dla dowodów (TLA+), testów (pytest) i programu sprawdzającego repozytoria projektów.
 
 Zgoda: DEC-PRO-001, 2026-10-23, użytkownik: „d1 tak” na DoD 1–10 i stos narzędzi.

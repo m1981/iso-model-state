@@ -1,11 +1,13 @@
 # Stan prac
 
-Nadpisywany na końcu każdej sesji. Zaktualizowano: 2026-10-24, zapisano propozycję karty celu użytkowego i zakresu; model v0.4, wykonane WIT1/WIT2/WIT4, 151 testów w ostatniej weryfikacji kodu.
+Nadpisywany na końcu każdej sesji. Zaktualizowano: 2026-10-24, karta celu przyjęta przez DEC-PRO-007; przygotowana propozycja zgody na konkretną zmianę przed WIT5. Obowiązuje model v0.4, wykonane WIT1/WIT2/WIT4, 151 testów w ostatniej weryfikacji wykonawcy.
 
 ## Gdzie jesteśmy
 
 - **Etap:** E2 w toku. Model v0.3 przyjęty przez DEC-PRO-005; korekta v0.4 przyjęta przez DEC-PRO-006. Nie ma oczekującej decyzji o G3/G6.
 - **Ostatnio zrobione:**
+  - zapisano DEC-PRO-007 z cytatem „d1 tak”: karta celu i zakresu jest dokumentem zamiaru w `docs/KARTA-CELU-I-ZAKRESU.md`; plan E2–E5 i DoD zachowano;
+  - przygotowano niewiążącą propozycję `model/proposals/change-authorization.md`: pozytywna zgoda na jeden element, wersję i operację, z atomowym oznaczeniem wykorzystania; model v0.4 nie został zmieniony;
   - na prośbę „napisz do pliku karte celu i zekresu” zapisano `informative/KARTA-CELU-I-ZAKRESU-2026-10-24.md`: propozycję celu użytkowego, zakresu pierwszego zastosowania, rezultatów, kryteriów sukcesu i związku z E2–E5;
   - wykonano następny przyrost WIT2/WIT4 na polecenie użytkownika „commit i wykonaj nastepny przyrost”; WIT1 był już zapisany i wypchnięty jako 2b830e0;
   - WIT2: 33 kroki, dwa odrzucenia r1 w wersji 1, blokada trzeciego odrzucenia w osobnej próbie, następnie zatwierdzenie i odbiór wydania testowego;
@@ -20,19 +22,26 @@ Nadpisywany na końcu każdej sesji. Zaktualizowano: 2026-10-24, zapisano propoz
   - wcześniejszy przyrost strukturalny miał 31 testów, w tym dwa uprzednio czerwone kryteria G3/G6; są częścią obecnego zestawu;
   - na prośbę użytkownika przygotowano informacyjny przewodnik, trzy diagramy SVG/PNG i mapowanie wsparcia dziewięciu pakietów Aneksu E: `informative/WIZUALIZACJA-2026-10-24.md`;
   - diagramy generuje `scripts/render_process.py` z YAML przez dostępny Graphviz; nie jest to symulator.
-- **Następny krok organizacyjny:** przegląd propozycji karty celu i zakresu, aby powiązać dalsze przyrosty z korzyścią dla operatora. Nie przyjęto nowego celu ani zmiany planu przez samo zapisanie pliku.
-- **Następny krok techniczny w obecnym planie:** przygotować konkretną propozycję powiązania pytania z elementem (`kind/about`, resolved_question(e), T12) przed WIT5. Brakujące pola nie zostały dopowiedziane w kodzie WIT4. Ewentualną zmianę przyjętego modelu przedstawić do decyzji, następnie wykonać WIT5, WIT3, dalsze G/S i mutanty. Nie uznawać E2 za zakończone.
+- **Następny krok:** decyzja użytkownika o gotowej propozycji `model/proposals/change-authorization.md`. Po akceptacji zaktualizować model i dokumenty zależne, potem testy i wykonawca WIT5. Zgoda na kartę celu nie jest zgodą na tę zmianę semantyki. WIT3 oraz dalsze G/S i mutanty pozostają w planie; E2 nadal trwa.
 
 ## Bramka E1
 
 Przyjęta przez DEC-PRO-005. Korekta G3/G6 zatwierdzona przez DEC-PRO-006 nie zmienia zachowania przejść ani polityki wydań. G6 sprawdza śledzenie powiązań, nie pełną zgodność procesu z normą.
 
-## Karta celu użytkowego — propozycja do przeglądu
+## Przyjęta karta celu użytkowego
 
-- Użytkownik wskazał, że rozmywa się cel rozmowy i ćwiczenia. Zaproponowano cel użytkowy: sprawdzić na jednym rzeczywistym projekcie lekki sposób współpracy operatora z agentem, zachowujący kontekst, zatwierdzenia i kontrolę skutków zmian.
-- Karta rozdziela poprawność reguł od użyteczności narzędzia. Określa zakres jednego repozytorium i zespołu operator–agent–przegląd, trzy przypadki użycia, pięć grup rezultatów oraz proponowane kryteria sukcesu, w tym koszt utrzymania procesu.
-- Dokument ma status informacyjnej propozycji. Nie uchyla E3, nie zmienia DoD ani kolejności E2–E5, nie przyjmuje nowej DEC i nie udziela dostępu do historii vcs-lite. Pilotaż i jego szczegóły pozostają do uzgodnienia.
-- W tej sesji zmieniono tylko dokumentację. Przeczytano kartę, sprawdzono odwołania i zgodność z aktualnym planem; testów niezmienionego kodu nie ponawiano.
+- DEC-PRO-007 przyjmuje cel użytkowy: sprawdzić na jednym rzeczywistym projekcie lekki sposób współpracy operatora z agentem, zachowujący kontekst, zatwierdzenia i kontrolę skutków zmian. Dokument wiążący: docs/KARTA-CELU-I-ZAKRESU.md.
+- Karta rozdziela poprawność reguł od użyteczności narzędzia. Określa zakres jednego repozytorium i zespołu operator–agent–przegląd, trzy przypadki użycia, pięć grup rezultatów i kryteria sukcesu, w tym pomiar kosztu utrzymania procesu. Konkretny pilotaż i dopuszczalny narzut wymagają uzgodnienia przed rozpoczęciem.
+- Plan E2–E5, E3/TLC i dotychczasowy DoD zachowano. Akceptacja celu nie udziela dostępu do historii vcs-lite ani nie odbiera żadnego etapu. Historyczna propozycja w informative/ pozostaje bez zmian; indeks wskazuje nowy dokument wiążący.
+- Włączono kartę do PLAN.md, listy dokumentów zamiaru, kolejności czytania w PROMPT-STARTOWY.md, README i reguły pierwszeństwa informative/. Ze skopiowanej karty usunięto wyłącznie nieaktualny status propozycji i punkt wznowienia; jej zakres i kryteria zachowano.
+
+## Propozycja zgody na zmianę — do decyzji przed WIT5
+
+- Gotowy opis: model/proposals/change-authorization.md, status proposed, podstawa v0.4, docelowo v0.5 po osobnej decyzji.
+- Problem użytkowy: samo resolved nie oznacza odpowiedzi „tak”. Brakuje też jawnego powiązania zgody z elementem, wersją i rodzajem operacji oraz śladu jej użycia. T12 używa niezadeklarowanych kind/about; T05/T07 używają resolved_question(e).
+- Rekomendacja: pytanie change wskazuje about, about_version i requested_transition; P02 zapisuje approved/rejected, pytanie general wynik answered. T05/T07 wymagają wskazanej, pozytywnej i niewykorzystanej zgody pasującej do elementu, wersji i operacji; sukces oznacza consumed=true atomowo ze zmianą produktu. Błąd nie zużywa zgody. Operator nie odpowiada ponownie na to samo pytanie przy wykonaniu już zatwierdzonej operacji.
+- Propozycja zawiera schemat pól, zachowanie P00/P02/P03/T12/T05/T07, formalny warunek, kandydaturę S11, przypadki kontrolne i mutanty oraz listę wpływu. Nie jest jeszcze zastosowana w modelu ani kodzie. T06/T08–T10 zachowują dotychczasowe bramki U.
+- Przygotowanie i przegląd propozycji należą do agenta; przyjęcie polityki do użytkownika. Powód decyzji: doprecyzowanie luki i zmiana przyjętej semantyki, zgodnie z kontraktem współpracy §2.1 i §2.3.
 
 ## Decyzje
 
@@ -44,11 +53,13 @@ Przyjęta przez DEC-PRO-005. Korekta G3/G6 zatwierdzona przez DEC-PRO-006 nie zm
 | DEC-PRO-004 | Wznowienie odłożonego elementu przez T10 także zmienia kompletność zakresu. T10 wywołuje invalidate_release: przy ready/reviewed wraca do in_preparation, przy accepted wymusza W06 bez zmiany odebranego rekordu. Rozszerza listę wyzwalaczy z DEC-PRO-003 o T10. | Użytkownik 2026-10-24: „Tak, uwzględnij T10” | `model/process.yaml`: `T10`, `W06`; `docs/WLASCIWOSCI.md`: `scope_change`, `S7a`, `WIT5`; `docs/INTERPRETACJE.md`: `INT-017`; `docs/STAN.md`; `scripts/check_model.py`. | `model/process.yaml`: `T10`, `W06`; `docs/WLASCIWOSCI.md`: `scope_change`, `S7a`, `WIT5`; `docs/INTERPRETACJE.md`: `INT-017`; `docs/STAN.md`; `scripts/check_model.py`; dodatkowo `invalidate_release`, `S7b`, `S10`, `L1`, `L5`, T09 i bramki U. |
 | DEC-PRO-005 | Przyjęcie modelu v0.3 i właściwości jako podstawy E2; zatwierdzenie INT-001–INT-016 i opisów WIT1–WIT5. Nie stanowi dowodu G/S/L ani odbioru całego projektu. | Użytkownik 2026-10-24: „przyjmuje” | `model/process.yaml`: status; `docs/WLASCIWOSCI.md`: status; `docs/INTERPRETACJE.md`: status INT-001–INT-016; `PLAN.md`: stan etapów; `docs/STAN.md`: zamknięcie bramki E1; `PROMPT-STARTOWY.md`: gałąź pobierana ze stanu prac. | `model/process.yaml`, `docs/WLASCIWOSCI.md`, `docs/INTERPRETACJE.md`, `PLAN.md`, `docs/STAN.md`, `PROMPT-STARTOWY.md`, `docs/WSPOLPRACA.md`; treść modelu i właściwości bez zmiany. |
 | DEC-PRO-006 | Przyjąć korektę G3/G6 jako model v0.4: uzupełnić jawne adnotacje ISO bez zmiany zachowania procesu; mutant G3 usuwa T07/T08/T10. G6 jest indeksem powiązań, nie dowodem realizacji wszystkich składowych efektów normy. | Użytkownik 2026-10-24: „d1 tak.” | `model/process.yaml`: wersja i iso; `model/proposals/e2-structure.yaml`: status zastosowania; `docs/WLASCIWOSCI.md`: G3/G6; `docs/INTERPRETACJE.md`: odniesienie do decyzji; `mutants/g3_missing_resume.yaml`, `mutants/g3_missing_deferred_exits.yaml`: zastąpienie mutanta; `tests/test_model_contract.py`, `tests/test_structure_proposal.py`: kryteria przyjętej korekty; `scripts/check_model.py`; `README.md`; `docs/STAN.md`. | `model/process.yaml`, `model/proposals/e2-structure.yaml`, `docs/WLASCIWOSCI.md`, `docs/INTERPRETACJE.md`, `mutants/g3_missing_resume.yaml`, `mutants/g3_missing_deferred_exits.yaml`, `tests/test_model_contract.py`, `tests/test_structure_proposal.py`, `scripts/check_model.py`, `README.md`, `docs/STAN.md`; ponadto G0–G6, S1–S10, L1–L5, WIT1–WIT5 i PLAN.md; nie zmieniono from/to/actor/guard/effects. |
+| DEC-PRO-007 | Przyjąć zapisaną kartę celu i zakresu jako cel użytkowy projektu i włączyć ją do dokumentów zamiaru, z zachowaniem obecnego planu E2–E5 oraz DoD. Nie stanowi akceptacji propozycji zmiany pytań ani odbioru etapu. | Użytkownik 2026-10-24: „d1 tak” — odpowiedź na D1 o przyjęciu karty celu i zakresu. | `docs/KARTA-CELU-I-ZAKRESU.md`, `PLAN.md`, `PROMPT-STARTOWY.md`, `docs/WSPOLPRACA.md`, `README.md`, `informative/README.md`, `docs/STAN.md`, `scripts/check_model.py`; cel użytkowy i status karty. | `docs/KARTA-CELU-I-ZAKRESU.md`, `PLAN.md`, `PROMPT-STARTOWY.md`, `docs/WSPOLPRACA.md`, `README.md`, `informative/README.md`, `docs/STAN.md`, `scripts/check_model.py`, `informative/KARTA-CELU-I-ZAKRESU-2026-10-24.md`, `model/process.yaml`, `docs/WLASCIWOSCI.md`, `docs/INTERPRETACJE.md`; DoD i kolejność E2–E5 zachowane. |
 
 ## Weryfikacja i lista kontrolna zmiany
 
 - `uv run --locked --offline pytest -q`: **151 passed w 4,30 s**; bez xfail i pomijania testów. W tym 108 wcześniejszych testów i 43 nowe. Po ostatnim doprecyzowaniu tekstu raportu powtórzono 3 testy poleceń: wszystkie przeszły; kod semantyki bez dalszych zmian.
-- `uv run --locked --offline python scripts/check_model.py`: **336 sprawdzeń spójności OK**; obejmuje także cytat i „Zmienia” ⊆ „Przejrzane” dla DEC-PRO-005/006. `git diff --check` bez błędów.
+- `uv run --locked --offline python scripts/check_model.py`: **339 sprawdzeń spójności OK**, w tym cytat i „Zmienia” ⊆ „Przejrzane” dla DEC-PRO-007. `git diff --check` bez błędów. Poprzedni przebieg obejmował 336 sprawdzeń i DEC-PRO-003–006.
+- W sesji przyjęcia karty zmieniono dokumentację i kontrolę nowej DEC; wykonawca i przyjęty model v0.4 pozostają bez zmian. Nie ponawiano testów wykonawcy. Przejrzano kartę, PLAN, kontrakt, punkt wznowienia, wejście do sesji, indeksy, skrypt spójności oraz powiązania wskazane w propozycji WIT5.
 - W przyroście WIT2/WIT4 `git diff --exit-code -- model/process.yaml docs/WLASCIWOSCI.md docs/INTERPRETACJE.md PLAN.md uv.lock pyproject.toml` potwierdza brak zmian modelu, właściwości, interpretacji, planu i zależności. Wcześniejsza korekta G3/G6 zmieniała tylko wersję i adnotacje ISO, bez zachowania przejść.
 - Diagramy wygenerowano i obejrzano jako PNG; wersje SVG służą do powiększania i publikacji. Przewodnik jest migawką informacyjną, nie nowym źródłem reguł.
 - Przejrzano model, właściwości, interpretacje, testy, mutanty, uzasadnienie adnotacji, README, plan i stan. Zaktualizowane definicje oraz odwołania są w tej samej zmianie. Stary mutant jest jawnie zastąpiony.
@@ -130,7 +141,7 @@ Przyjęta przez DEC-PRO-005. Korekta G3/G6 zatwierdzona przez DEC-PRO-006 nie zm
 | Sprawa | Właściciel | Następny krok |
 |---|---|---|
 | Pozostała implementacja E2: G2, warunki/skutki, bezpieczeństwo i mutanty | agent | kontynuować od przyjętego modelu v0.4; odbiór E2 dopiero po spełnieniu kryteriów |
-| Powiązanie pytania ze zmianą produktu: kind/about, resolved_question, T12 | agent | przygotować konkretną propozycję uzupełnienia modelu przed WIT5; nie dopowiadać pól w implementacji |
+| Przyjęcie polityki zgody na konkretną zmianę | użytkownik | decyzja o gotowej propozycji model/proposals/change-authorization.md; po przyjęciu agent wdraża model i WIT5 |
 | Zakres kwantyfikatora W01 przy pustym zakresie wydania | agent | przed rozszerzeniem wykonawcy przeanalizować jednoznaczny zapis globalnych testów/pytania; ewentualną zmianę modelu przedstawić do decyzji; nie blokuje wykonanego WIT1 |
 | Historyczne materiały informative/ | agent | przy E5 uwzględnić INT-017 w nowym materiale; nie przepisywać migawek sesji 2026-10-23 |
 | REQ-210 i REQ-211 dla szablonu | użytkownik | decyzja; opis w informative/SESJA-2026-10-23.md §5 |

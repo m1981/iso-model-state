@@ -1,7 +1,7 @@
 """Sprawdzenie spójności danych E1; nie jest symulatorem ani dowodem G/S/L.
 
 Uruchomienie: uv run --with pyyaml python scripts/check_model.py
-Trace: DEC-PRO-003–006, G0 (część strukturalna).
+Trace: DEC-PRO-003–007, G0 (część strukturalna).
 """
 
 import re
@@ -131,7 +131,7 @@ def main():
         refs = set(re.findall(r"\bINT-\d+\b", (root / path).read_text()))
         check(refs <= interpretation_ids, f"{path}: nieznana interpretacja {refs - interpretation_ids}")
     check("WIT1–WIT5" in plan and "S7a" in plan and "S7b" in plan, "Plan nie uwzględnia zmienionych właściwości")
-    for ident, quote in (("DEC-PRO-003", "„d1 a”"), ("DEC-PRO-004", "„Tak, uwzględnij T10”"), ("DEC-PRO-005", "„przyjmuje”"), ("DEC-PRO-006", "„d1 tak.”")):
+    for ident, quote in (("DEC-PRO-003", "„d1 a”"), ("DEC-PRO-004", "„Tak, uwzględnij T10”"), ("DEC-PRO-005", "„przyjmuje”"), ("DEC-PRO-006", "„d1 tak.”"), ("DEC-PRO-007", "„d1 tak”")):
         decision = next((line for line in state.splitlines() if line.startswith(f"| {ident} |")), "")
         cells = [cell.strip() for cell in decision.split("|")[1:-1]]
         check(len(cells) == 5, f"{ident}: brak kolumn Zmienia i Przejrzane")
@@ -144,7 +144,7 @@ def main():
     if errors:
         raise SystemExit("NIESPÓJNOŚĆ:\n- " + "\n- ".join(errors))
     print(f"OK: {checks} sprawdzeń spójności, {len(transitions)} przejść, {len(items)} elementów, 2 wydania.")
-    print("Zakres: struktura YAML, odwołania i zapis DEC-PRO-003–006. Bez symulacji i dowodu właściwości G/S/L (E2/E3).")
+    print("Zakres: struktura YAML, odwołania i zapis DEC-PRO-003–007. Bez symulacji i dowodu właściwości G/S/L (E2/E3).")
 
 
 if __name__ == "__main__":

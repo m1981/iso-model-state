@@ -4,7 +4,7 @@ Ten folder jest **informacyjny** w sensie norm ISO: wyjaśnia, uzasadnia i przec
 
 ## Reguła pierwszeństwa
 
-1. Wiążące (normatywne) są wyłącznie: `PLAN.md`, `model/process.yaml`, `docs/WLASCIWOSCI.md`, `docs/INTERPRETACJE.md`, `docs/WSPOLPRACA.md`, `docs/STAN.md` i decyzje DEC-PRO-nnn zapisane w `docs/STAN.md`.
+1. Wiążące (normatywne) są wyłącznie: `docs/KARTA-CELU-I-ZAKRESU.md` (DEC-PRO-007), `PLAN.md`, `model/process.yaml`, `docs/WLASCIWOSCI.md`, `docs/INTERPRETACJE.md`, `docs/WSPOLPRACA.md`, `docs/STAN.md` i decyzje DEC-PRO-nnn zapisane w `docs/STAN.md`.
 2. Gdy cokolwiek w `informative/` przeczy dokumentom wiążącym, **rozstrzygają dokumenty wiążące**. Sprzeczność agent zgłasza jako sprawę do poprawienia (w `informative/`), a nie jako powód do zmiany modelu.
 3. Treść z `informative/` staje się wiążąca tylko przez decyzję DEC-PRO-nnn, która przenosi ją do dokumentu wiążącego.
 4. Programy sprawdzające (E2–E5) nie czytają `informative/`: identyfikatory w tym folderze nie są definicjami ani odwołaniami.
@@ -20,4 +20,4 @@ Ten folder jest **informacyjny** w sensie norm ISO: wyjaśnia, uzasadnia i przec
 | `szablon-projektu/` | Szablon dokumentów dla nowych projektów (wejście do etapu E5) | 2026-10-23 |
 | `WIZUALIZACJA-2026-10-24.md`, `visuals-v0.4/` | Przewodnik po modelu v0.4, trzy diagramy i mapowanie tematów dziewięciu pakietów Aneksu E | 2026-10-24 |
 | `ROADMAPA-2026-10-24.md` | Propozycja dostaw w ramach E2–E5 i konkretny zakres pierwszego wykonywalnego WIT1 | 2026-10-24 |
-| `KARTA-CELU-I-ZAKRESU-2026-10-24.md` | Propozycja celu użytkowego, zakresu pierwszego zastosowania, rezultatów i kryteriów sukcesu | 2026-10-24 |
+| `KARTA-CELU-I-ZAKRESU-2026-10-24.md` | Historyczna propozycja; przyjęta treść jest w [docs/KARTA-CELU-I-ZAKRESU.md](../docs/KARTA-CELU-I-ZAKRESU.md), DEC-PRO-007 | 2026-10-24 |

@@ -5,11 +5,12 @@ Ten plik mówi tylko, co przeczytać i jakie zasady obowiązują. Nie zawiera st
 Zanim cokolwiek zrobisz, przeczytaj w tej kolejności:
 1. docs/WSPOLPRACA.md: kontrakt współpracy (BLUF, jedna decyzja na wiadomość, decyzja zawsze na samym dole, lista eskalacji). Ma pierwszeństwo nad pozostałymi zasadami.
 2. docs/STAN.md: punkt wznowienia, decyzje DEC-PRO-nnn, sprawy otwarte.
-3. PLAN.md: cel, DoD 1–10, etapy E0–E5, ryzyka.
-4. model/process.yaml: model (wiążący).
-5. docs/WLASCIWOSCI.md: właściwości G, S, L, założenia F, ścieżki świadkowie WIT.
-6. docs/INTERPRETACJE.md: rozstrzygnięcia luk normy INT-nnn.
-7. informative/README.md, potem według potrzeby: informative/SESJA-2026-10-23.md (motywacje decyzji), informative/NORMA.md, informative/PRZEGLAD-VCS-LITE.md, informative/szablon-projektu/.
+3. docs/KARTA-CELU-I-ZAKRESU.md: przyjęty cel użytkowy, zakres pierwszego zastosowania i kryteria sukcesu (DEC-PRO-007).
+4. PLAN.md: cel techniczny, DoD 1–10, etapy E0–E5, ryzyka.
+5. model/process.yaml: model (wiążący).
+6. docs/WLASCIWOSCI.md: właściwości G, S, L, założenia F, ścieżki świadkowie WIT.
+7. docs/INTERPRETACJE.md: rozstrzygnięcia luk normy INT-nnn.
+8. informative/README.md, potem według potrzeby: informative/SESJA-2026-10-23.md (motywacje decyzji), informative/NORMA.md, informative/PRZEGLAD-VCS-LITE.md, informative/szablon-projektu/.
 
 Zasady stałe:
 - informative/ jest niewiążący. Przy sprzeczności rozstrzygają dokumenty wiążące; sprzeczność zgłoś jako sprawę do poprawienia w informative/.

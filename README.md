@@ -1,6 +1,6 @@
 # iso-model-state
 
-Model stanów produktów pracy według ISO/IEC 29110-5-1-2 (profil Basic) dla projektów prowadzonych przez użytkownika z agentem LLM, wraz z dowodami poprawności.
+Projekt rozwija i sprawdza sposób współpracy operatora z agentem: zachowanie kontekstu, kontrolę zatwierdzeń i skutków zmian. [Przyjęta karta celu i zakresu](docs/KARTA-CELU-I-ZAKRESU.md) określa korzyści i pierwsze zastosowanie na jednym rzeczywistym projekcie. Podstawą techniczną jest model stanów produktów pracy według ISO/IEC 29110-5-1-2 (profil Basic), wraz z dowodami poprawności.
 
 Nową sesję z agentem zaczynaj treścią `PROMPT-STARTOWY.md`.
 
@@ -9,6 +9,7 @@ Nową sesję z agentem zaczynaj treścią `PROMPT-STARTOWY.md`.
 | Plik | Zawartość |
 |---|---|
 | `PROMPT-STARTOWY.md` | Wejście do sesji: co czytać, zasady stałe (bez stanu prac) |
+| `docs/KARTA-CELU-I-ZAKRESU.md` | Przyjęty cel użytkowy, zakres pierwszego zastosowania i kryteria sukcesu (DEC-PRO-007) |
 | `PLAN.md` | Cel, Definition of Done, etapy E0–E5, narzędzia, ryzyka |
 | `model/process.yaml` | **Model**: aktorzy, typy produktów, stany, przejścia, warunki, skutki, instancja testowa |
 | `docs/WLASCIWOSCI.md` | Właściwości do udowodnienia: struktura, bezpieczeństwo, żywotność, sprawiedliwość, ścieżki świadkowie |
