@@ -1,11 +1,12 @@
 # Stan prac
 
-Nadpisywany na końcu każdej sesji. Zaktualizowano: 2026-10-24, model v0.4, wykonane WIT1/WIT2/WIT4; 151 testów, 16 wybranych mutantów wykonania wykrytych.
+Nadpisywany na końcu każdej sesji. Zaktualizowano: 2026-10-24, zapisano propozycję karty celu użytkowego i zakresu; model v0.4, wykonane WIT1/WIT2/WIT4, 151 testów w ostatniej weryfikacji kodu.
 
 ## Gdzie jesteśmy
 
 - **Etap:** E2 w toku. Model v0.3 przyjęty przez DEC-PRO-005; korekta v0.4 przyjęta przez DEC-PRO-006. Nie ma oczekującej decyzji o G3/G6.
 - **Ostatnio zrobione:**
+  - na prośbę „napisz do pliku karte celu i zekresu” zapisano `informative/KARTA-CELU-I-ZAKRESU-2026-10-24.md`: propozycję celu użytkowego, zakresu pierwszego zastosowania, rezultatów, kryteriów sukcesu i związku z E2–E5;
   - wykonano następny przyrost WIT2/WIT4 na polecenie użytkownika „commit i wykonaj nastepny przyrost”; WIT1 był już zapisany i wypchnięty jako 2b830e0;
   - WIT2: 33 kroki, dwa odrzucenia r1 w wersji 1, blokada trzeciego odrzucenia w osobnej próbie, następnie zatwierdzenie i odbiór wydania testowego;
   - WIT4: 13 kroków P00–P05, zachowanie FIFO i pierwszeństwa blokujących, odpowiedź niejednoznaczna bez DEC, trzy rozstrzygnięcia z demonstracyjnymi DEC, odłożenie i wznowienie;
@@ -19,11 +20,19 @@ Nadpisywany na końcu każdej sesji. Zaktualizowano: 2026-10-24, model v0.4, wyk
   - wcześniejszy przyrost strukturalny miał 31 testów, w tym dwa uprzednio czerwone kryteria G3/G6; są częścią obecnego zestawu;
   - na prośbę użytkownika przygotowano informacyjny przewodnik, trzy diagramy SVG/PNG i mapowanie wsparcia dziewięciu pakietów Aneksu E: `informative/WIZUALIZACJA-2026-10-24.md`;
   - diagramy generuje `scripts/render_process.py` z YAML przez dostępny Graphviz; nie jest to symulator.
-- **Następny krok:** przygotować konkretną propozycję powiązania pytania z elementem (`kind/about`, resolved_question(e), T12) przed WIT5. Brakujące pola nie zostały dopowiedziane w kodzie WIT4. Ewentualną zmianę przyjętego modelu przedstawić do decyzji, następnie wykonać WIT5, WIT3, dalsze G/S i mutanty. Nie uznawać E2 za zakończone.
+- **Następny krok organizacyjny:** przegląd propozycji karty celu i zakresu, aby powiązać dalsze przyrosty z korzyścią dla operatora. Nie przyjęto nowego celu ani zmiany planu przez samo zapisanie pliku.
+- **Następny krok techniczny w obecnym planie:** przygotować konkretną propozycję powiązania pytania z elementem (`kind/about`, resolved_question(e), T12) przed WIT5. Brakujące pola nie zostały dopowiedziane w kodzie WIT4. Ewentualną zmianę przyjętego modelu przedstawić do decyzji, następnie wykonać WIT5, WIT3, dalsze G/S i mutanty. Nie uznawać E2 za zakończone.
 
 ## Bramka E1
 
 Przyjęta przez DEC-PRO-005. Korekta G3/G6 zatwierdzona przez DEC-PRO-006 nie zmienia zachowania przejść ani polityki wydań. G6 sprawdza śledzenie powiązań, nie pełną zgodność procesu z normą.
+
+## Karta celu użytkowego — propozycja do przeglądu
+
+- Użytkownik wskazał, że rozmywa się cel rozmowy i ćwiczenia. Zaproponowano cel użytkowy: sprawdzić na jednym rzeczywistym projekcie lekki sposób współpracy operatora z agentem, zachowujący kontekst, zatwierdzenia i kontrolę skutków zmian.
+- Karta rozdziela poprawność reguł od użyteczności narzędzia. Określa zakres jednego repozytorium i zespołu operator–agent–przegląd, trzy przypadki użycia, pięć grup rezultatów oraz proponowane kryteria sukcesu, w tym koszt utrzymania procesu.
+- Dokument ma status informacyjnej propozycji. Nie uchyla E3, nie zmienia DoD ani kolejności E2–E5, nie przyjmuje nowej DEC i nie udziela dostępu do historii vcs-lite. Pilotaż i jego szczegóły pozostają do uzgodnienia.
+- W tej sesji zmieniono tylko dokumentację. Przeczytano kartę, sprawdzono odwołania i zgodność z aktualnym planem; testów niezmienionego kodu nie ponawiano.
 
 ## Decyzje
 
