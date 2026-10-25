@@ -14,7 +14,7 @@ Zgoda: DEC-PRO-001, 2026-10-23, użytkownik: „d1 tak” na DoD 1–10 i stos n
 
 1. Zamknięty słownik w `model/process.yaml`; każdy stan z Tabeli 12 normy albo z INT.
 2. Struktura: osiągalność, wykonalność przejść, brak ślepych stanów, determinizm, kompletność.
-3. Bezpieczeństwo: S1–S11 (S7 zastąpione przez S7a i S7b), w tym brak obejść bramek użytkownika i niezmienność odebranych wydań (DEC-PRO-003) i zgoda na konkretną zmianę (DEC-PRO-008).
+3. Bezpieczeństwo: S1–S13 (S7 zastąpione przez S7a i S7b), w tym brak obejść bramek użytkownika i niezmienność odebranych wydań (DEC-PRO-003), zgoda na konkretną zmianę (DEC-PRO-008) i kontrola powiązań/zakresu (DEC-PRO-009).
 4. Żywotność: L1–L5 przy jawnych założeniach sprawiedliwości F1–F3.
 5. Dowód TLC w podanych granicach; wynik jako OBS.
 6. Test mutacyjny: każda właściwość pada na co najmniej jednym celowo zepsutym modelu.

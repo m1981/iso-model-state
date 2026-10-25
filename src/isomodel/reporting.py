@@ -1,6 +1,6 @@
 """Czytelny raport wykonania; źródłem są faktyczne kroki wykonawcy.
 
-Trace: WIT1, WIT2, WIT4, WIT5, S11.
+Trace: WIT1, WIT2, WIT3, WIT4, WIT5, S11.
 """
 
 
@@ -27,7 +27,15 @@ def render_markdown(result):
         event = step["event"]
         before, after = step["before"], step["after"]
         item = event.get("item")
-        if "question" in event and item is None:
+        if step.get("kind") == "release" or (item is None and "question" not in event):
+            prior = before["releases"][before["current_release"]]
+            following = after["releases"][after["current_release"]]
+            target = f"wydanie {before['current_release']}"
+            if before['current_release'] != after['current_release']:
+                target += f" → nowe {after['current_release']}"
+            if item is not None:
+                target += f" (element {item})"
+        elif "question" in event and item is None:
             ident = event["question"]
             prior = before["questions"].get(ident, {"state": "none"})
             following = after["questions"].get(ident, {"state": "none"})
@@ -35,12 +43,6 @@ def render_markdown(result):
         elif item is not None:
             prior, following = before["items"][item], after["items"][item]
             target = item + (f" (pytanie {event['question']})" if "question" in event else "")
-        else:
-            prior = before["releases"][before["current_release"]]
-            following = after["releases"][after["current_release"]]
-            target = f"wydanie {before['current_release']}"
-            if before['current_release'] != after['current_release']:
-                target += f" → nowe {after['current_release']}"
         verdict = {True: "spełniony", False: "niespełniony", None: "nie oceniono"}[step["guard_result"]]
         values = [step["step"], event.get("actor"), event.get("transition"), target,
                   f"{prior['state']} → {following['state']}", verdict, step["outcome"], len(step.get("records", []))]
@@ -52,13 +54,30 @@ def render_markdown(result):
     lines += ["", "## Warunki odczytane z YAML", "", "| Przejście | Warunek |", "|---|---|"]
     for ident, guard in guards.items():
         lines.append(f"| {ident} | `{_cell(guard)}` |")
-    lines += ["", "## Dowody demonstracyjne", "", "| Krok | Odwołanie | Cytat |", "|---|---|---|"]
+    changes = []
+    for step in result["steps"]:
+        before, after = step["before"], step["after"]
+        for ident, item in after["items"].items():
+            for field in ("depends_on", "predecessor"):
+                old, new = before["items"][ident].get(field), item.get(field)
+                if old != new:
+                    changes.append((step["step"], ident, field, old, new))
+        for number, release in after["releases"].items():
+            old = before["releases"].get(number, {}).get("scope")
+            if old != release["scope"]:
+                changes.append((step["step"], f"wydanie {number}", "scope", old, release["scope"]))
+    if changes:
+        lines += ["", "## Zmiany powiązań i zakresu", "",
+                  "Porównanie rzeczywistych stanów przed i po kroku. `predecessor` zapisuje historię następstwa; nie jest zależnością produktu.", "",
+                  "| Krok | Cel | Pole | Przed | Po |", "|---|---|---|---|---|"]
+        lines += ["| " + " | ".join(_cell(v) for v in row) + " |" for row in changes]
+    lines += ["", "## Dowody demonstracyjne", "", "| Krok | ID decyzji | Odwołanie | Cytat |", "|---|---|---|---|"]
     for step in result["steps"]:
         evidence = step["event"].get("evidence")
         if evidence:
             fallback = "odpowiedź testowa" if "question" in step["event"] else "protokół testowy"
-            reference = evidence.get("decision", evidence.get("reference", fallback))
-            lines.append(f"| {step['step']} | {_cell(reference)} | {_cell(evidence.get('quote', ''))} |")
+            reference = evidence.get("reference", fallback if "decision" not in evidence else "—")
+            lines.append(f"| {step['step']} | {_cell(evidence.get('decision', '—'))} | {_cell(reference)} | {_cell(evidence.get('quote', ''))} |")
     probes = result.get("gate_probes", [])
     if probes:
         lines += ["", "## Próby obejścia bramek i wybrane mutanty", "",
@@ -70,9 +89,10 @@ def render_markdown(result):
     release = state["releases"][state["current_release"]]
     lines += ["", "## Stan końcowy", "",
               f"Bieżące wydanie: {release['number']}, `{release['state']}`. `next_release_required = {str(state['next_release_required']).lower()}`.", "",
-              "| Element | Stan | Wersja | Suspect | Odrzucenia |", "|---|---|---|---|---|"]
+              f"Zakres bieżącego wydania: {', '.join(release['scope'])}.", "",
+              "| Element | Stan | Wersja | Suspect | Odrzucenia | Zależy od | Poprzednik | W zakresie |", "|---|---|---|---|---|---|---|---|"]
     for ident, item in state["items"].items():
-        lines.append(f"| {ident} | {item['state']} | {item['version']} | {str(item['suspect']).lower()} | {item['rejections']} |")
+        lines.append(f"| {ident} | {item['state']} | {item['version']} | {str(item['suspect']).lower()} | {item['rejections']} | {', '.join(item['depends_on']) or '—'} | {item['predecessor']} | {ident in release['scope']} |")
     if len(state['releases']) > 1:
         preserved = all(after['releases'].get(n) == release
                         for step in result['steps']
@@ -101,5 +121,5 @@ def render_markdown(result):
         for record in result.get("records", []):
             lines.append(f"| {record['step']} | {_cell(record['id'])} | {_cell(record['question'])} | {_cell(record['quote'])} |")
     lines += ["", "## Granice wyniku", "",
-              f"Wykonano podaną ścieżkę {_cell(result['scenario'])} w E2. Nie wygenerowano świadka przez TLC, nie udowodniono wszystkich G/S/L i nie zakończono E2. Pozostają WIT3, pełne pokrycie reguł i zastosowanie na rzeczywistym projekcie. Weryfikacja roli R w symulacji nie jest niezależnym przeglądem implementacji.", ""]
+              f"Wykonano podaną ścieżkę {_cell(result['scenario'])} w E2. Nie wygenerowano świadka przez TLC, nie udowodniono wszystkich G/S/L i nie zakończono E2. Pozostają pełne pokrycie reguł i zastosowanie na rzeczywistym projekcie. Weryfikacja roli R w symulacji nie jest niezależnym przeglądem implementacji.", ""]
     return "\n".join(lines)

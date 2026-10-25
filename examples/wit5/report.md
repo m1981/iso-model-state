@@ -8,10 +8,10 @@ Wyniki kontroli i jednoznaczność odpowiedzi są danymi wejściowymi tych krok�
 
 ## Tożsamość wejść i wykonawcy
 
-- Model: v0.5; SHA-256 danych: `68699ebc1c234fcfac9e45ee0914e227fc2631001c12244fd454772c56cafaf4`.
+- Model: v0.6; SHA-256 danych: `ec342e2d04d8200de32d2bbba963ecd4fc45014405b99653134f15e110ff4680`.
 - Scenariusz SHA-256: `759626cbf24169a4033f3d3282a23693062b01bc73bcdf644fc8691eb43b2085`.
 - python: `3.14.7`.
-- source_sha256: `933917e91ccf3d98df57ff5954941872a1772222000664622ac56b3a03bb7d04`.
+- source_sha256: `e87b1bec0b3669f5801e91bc96f371125e14b84bedbf223a1400df419ff4c66a`.
 - uv_lock_sha256: `027a3da0a1f3fbd763d5b9b7c8a8a71229b35202efe60d3d97e4e60f4ce9897a`.
 - mutants_sha256: `1dc1bf7f5c34ac420d9514a3c14d90f33f17c367687c0d3ce31a963c09e7368f`.
 
@@ -66,7 +66,7 @@ Warunki są rozwinięte w kolejnej tabeli. Pełne stany przed i po, dowody oraz 
 
 | Przejście | Warunek |
 |---|---|
-| T00 | `true` |
+| T00 | `dependency_types_ok(e, e.depends_on) and acyclic_dependencies(e, e.depends_on) and (proposed_predecessor = none or (item(proposed_predecessor).state = superseded and item(proposed_predecessor).type = e.type and not item(proposed_predecessor).id = e.id))` |
 | T01 | `not suspect and checks_ok(e) and forall d in deps(e): d.state in {approved, baselined}` |
 | T02 | `type(e).requires_approval and not suspect` |
 | T04 | `not suspect and (state = approved or not type(e).requires_approval) and forall d in deps(e): d.state = baselined` |
@@ -79,27 +79,35 @@ Warunki są rozwinięte w kolejnej tabeli. Pełne stany przed i po, dowody oraz 
 | T05 | `authorized_change(q,e)` |
 | W06 | `next_release_required` |
 
+## Zmiany powiązań i zakresu
+
+Porównanie rzeczywistych stanów przed i po kroku. `predecessor` zapisuje historię następstwa; nie jest zależnością produktu.
+
+| Krok | Cel | Pole | Przed | Po |
+|---|---|---|---|---|
+| 34 | wydanie 2 | scope | None | ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', 'c1'] |
+
 ## Dowody demonstracyjne
 
-| Krok | Odwołanie | Cytat |
-|---|---|---|
-| 3 | SIM-DEC-p1 | Zatwierdzam p1 — cytat demonstracyjny. |
-| 4 | SIM-TAG-p1-v1 | Utwórz linię bazową p1 — polecenie demonstracyjne. |
-| 7 | SIM-DEC-r1 | Zatwierdzam r1 — cytat demonstracyjny. |
-| 8 | SIM-TAG-r1-v1 | Utwórz linię bazową r1 — polecenie demonstracyjne. |
-| 11 | SIM-DEC-r2 | Zatwierdzam r2 — cytat demonstracyjny. |
-| 12 | SIM-TAG-r2-v1 | Utwórz linię bazową r2 — polecenie demonstracyjne. |
-| 15 | SIM-DEC-a1 | Zatwierdzam a1 — cytat demonstracyjny. |
-| 16 | SIM-TAG-a1-v1 | Utwórz linię bazową a1 — polecenie demonstracyjne. |
-| 19 | SIM-DEC-a2 | Zatwierdzam a2 — cytat demonstracyjny. |
-| 20 | SIM-TAG-a2-v1 | Utwórz linię bazową a2 — polecenie demonstracyjne. |
-| 23 | SIM-TAG-d1-v1 | Utwórz linię bazową d1 — polecenie demonstracyjne. |
-| 26 | SIM-TAG-c1-v1 | Utwórz linię bazową c1 — polecenie demonstracyjne. |
-| 29 | protokół testowy | Odbieram wydanie testowe 1 — cytat demonstracyjny. |
-| 32 | SIM-DEC-CHANGE-A2 | Zgoda testowa na otwarcie zmiany a2 w wersji 1 przez T05. |
-| 36 | SIM-DEC-A2-V2 | Zatwierdzam testowe a2 w wersji 2. |
-| 37 | SIM-TAG-A2-V2 | Zapisz linię bazową testowego a2 w wersji 2. |
-| 40 | protokół testowy | Odbieram testowe wydanie 2. |
+| Krok | ID decyzji | Odwołanie | Cytat |
+|---|---|---|---|
+| 3 | SIM-DEC-p1 | — | Zatwierdzam p1 — cytat demonstracyjny. |
+| 4 | — | SIM-TAG-p1-v1 | Utwórz linię bazową p1 — polecenie demonstracyjne. |
+| 7 | SIM-DEC-r1 | — | Zatwierdzam r1 — cytat demonstracyjny. |
+| 8 | — | SIM-TAG-r1-v1 | Utwórz linię bazową r1 — polecenie demonstracyjne. |
+| 11 | SIM-DEC-r2 | — | Zatwierdzam r2 — cytat demonstracyjny. |
+| 12 | — | SIM-TAG-r2-v1 | Utwórz linię bazową r2 — polecenie demonstracyjne. |
+| 15 | SIM-DEC-a1 | — | Zatwierdzam a1 — cytat demonstracyjny. |
+| 16 | — | SIM-TAG-a1-v1 | Utwórz linię bazową a1 — polecenie demonstracyjne. |
+| 19 | SIM-DEC-a2 | — | Zatwierdzam a2 — cytat demonstracyjny. |
+| 20 | — | SIM-TAG-a2-v1 | Utwórz linię bazową a2 — polecenie demonstracyjne. |
+| 23 | — | SIM-TAG-d1-v1 | Utwórz linię bazową d1 — polecenie demonstracyjne. |
+| 26 | — | SIM-TAG-c1-v1 | Utwórz linię bazową c1 — polecenie demonstracyjne. |
+| 29 | — | protokół testowy | Odbieram wydanie testowe 1 — cytat demonstracyjny. |
+| 32 | SIM-DEC-CHANGE-A2 | — | Zgoda testowa na otwarcie zmiany a2 w wersji 1 przez T05. |
+| 36 | SIM-DEC-A2-V2 | — | Zatwierdzam testowe a2 w wersji 2. |
+| 37 | — | SIM-TAG-A2-V2 | Zapisz linię bazową testowego a2 w wersji 2. |
+| 40 | — | protokół testowy | Odbieram testowe wydanie 2. |
 
 ## Próby obejścia bramek i wybrane mutanty
 
@@ -122,15 +130,18 @@ Każdą próbę rozpoczyna odtworzenie poprawnego prefiksu. Model bazowy spełni
 
 Bieżące wydanie: 2, `accepted`. `next_release_required = false`.
 
-| Element | Stan | Wersja | Suspect | Odrzucenia |
-|---|---|---|---|---|
-| p1 | baselined | 1 | false | 0 |
-| r1 | baselined | 1 | false | 0 |
-| r2 | baselined | 1 | false | 0 |
-| d1 | baselined | 1 | false | 0 |
-| a1 | baselined | 1 | false | 0 |
-| a2 | baselined | 2 | false | 0 |
-| c1 | baselined | 1 | false | 0 |
+Zakres bieżącego wydania: p1, r1, r2, d1, a1, a2, c1.
+
+| Element | Stan | Wersja | Suspect | Odrzucenia | Zależy od | Poprzednik | W zakresie |
+|---|---|---|---|---|---|---|---|
+| p1 | baselined | 1 | false | 0 | — | none | True |
+| r1 | baselined | 1 | false | 0 | p1 | none | True |
+| r2 | baselined | 1 | false | 0 | p1 | none | True |
+| d1 | baselined | 1 | false | 0 | r1 | none | True |
+| a1 | baselined | 1 | false | 0 | r1 | none | True |
+| a2 | baselined | 2 | false | 0 | r2 | none | True |
+| c1 | baselined | 1 | false | 0 | d1, a1 | none | True |
+| r3 | none | 0 | false | 0 | p1 | none | False |
 
 ## Historia wydań
 
@@ -161,4 +172,4 @@ Zapisy pochodzą ze skutku `record DEC with user quote`; kolumna «Nowe DEC pyta
 
 ## Granice wyniku
 
-Wykonano podaną ścieżkę WIT5 w E2. Nie wygenerowano świadka przez TLC, nie udowodniono wszystkich G/S/L i nie zakończono E2. Pozostają WIT3, pełne pokrycie reguł i zastosowanie na rzeczywistym projekcie. Weryfikacja roli R w symulacji nie jest niezależnym przeglądem implementacji.
+Wykonano podaną ścieżkę WIT5 w E2. Nie wygenerowano świadka przez TLC, nie udowodniono wszystkich G/S/L i nie zakończono E2. Pozostają pełne pokrycie reguł i zastosowanie na rzeczywistym projekcie. Weryfikacja roli R w symulacji nie jest niezależnym przeglądem implementacji.

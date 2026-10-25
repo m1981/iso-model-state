@@ -29,7 +29,7 @@ Identyfikatory tego repozytorium mają prefiks `PRO`.
 
 Po korekcie DEC-PRO-006 usunięto wykazane wcześniej luki G3/G6: mutant G3 usuwa wszystkie wyjścia z `deferred`, a każde przejście ma adnotacje ISO, łącznie obejmujące 14 efektów PM/SI. Przyjęte uzasadnienie korekty zachowano w `model/proposals/e2-structure.yaml`; testy czytają model wiążący. Przyrost WIT1 dodaje wykonanie ścieżki, testy bramek i wybrane mutanty. Zielony wynik obecnego zestawu nie oznacza zakończenia E2; aktualny wynik jest w `docs/STAN.md`.
 
-`src/isomodel/` wczytuje model, sprawdza część strukturalną G0/G4, buduje projekcję grafu dla G1/G3, raport G5 i audyt adnotacji G6. Projekcja pomija warunki przejść, więc nie dowodzi osiągalności ani braku zakleszczeń całego systemu. Wykonawca interpretuje warunki i skutki potrzebne WIT1/WIT2/WIT4/WIT5; model v0.5 wiąże zgodę z elementem, wersją i operacją (DEC-PRO-008). Pełne G2, pozostała semantyka, maszyna stanów Hypothesis oraz pełny raport mutacji pozostają do wykonania w E2. Hypothesis sprawdza obecnie powtórzone klucze YAML, kombinacje wejść weryfikacji CODE kolejność pytań przy różnych priorytetach oraz kombinacje warunków zgody na zmianę.
+`src/isomodel/` wczytuje model, sprawdza część strukturalną G0/G4, buduje projekcję grafu dla G1/G3, raport G5 i audyt adnotacji G6. Projekcja pomija warunki przejść, więc nie dowodzi osiągalności ani braku zakleszczeń całego systemu. Wykonawca interpretuje warunki i skutki potrzebne WIT1–WIT5; model v0.6 zachowuje zgodę na konkretną operację (DEC-PRO-008) i dodaje jawnego następcę, aktualizację zależności oraz zakresu (DEC-PRO-009). Pełne G2, pozostała semantyka, maszyna stanów Hypothesis oraz pełny raport mutacji pozostają do wykonania w E2. Hypothesis sprawdza obecnie powtórzone klucze YAML, kombinacje wejść weryfikacji CODE, kolejność pytań przy różnych priorytetach oraz kombinacje warunków zgody na zmianę i dojrzałości zależności w T11.
 
 Starszy skrypt spójności E1: `uv run --locked python scripts/check_model.py`. Wynik tego skryptu nie zastępuje testów E2 ani dowodów E3. Bieżące decyzje i punkt wznowienia: `docs/STAN.md`.
 
@@ -51,11 +51,15 @@ Starszy skrypt spójności E1: `uv run --locked python scripts/check_model.py`. 
 
 `uv run --locked --offline python scripts/run_scenario.py --scenario WIT5 --output artifacts/wit5` wykonuje 40 kroków: odbiór wydania 1, zgodę na zmianę a2 v1, otwarcie wydania 2 i jego odbiór. Cały rekord wcześniejszego odbioru pozostaje identyczny. Dziesięć wybranych mutantów sprawdza m.in. odmowę potraktowaną jak zgoda, niepasujący element/wersję/operację, brak zapisu wykorzystania zgody i zmianę historycznego odbioru.
 
-[Instrukcja i granice](examples/wit5/README.md) · [Raport WIT5](examples/wit5/report.md). WIT3 i pełne zakończenie E2 pozostają w planie.
+[Instrukcja i granice](examples/wit5/README.md) · [Raport WIT5](examples/wit5/report.md). Pełne zakończenie E2 pozostaje w planie.
 
-## Przygotowanie WIT3 — do decyzji
+## Zastąpienie wymagania i naprawa powiązań — WIT3
 
-[Propozycja następcy, powiązań i zakresu](model/proposals/wit3-replacement.md) zawiera plan 54 kroków oraz diagnostykę v0.5. Odtworzono również naruszenie S4 przez przedwczesny T11; korekta czeka na decyzję wraz z propozycją. Pełnego WIT3 jeszcze nie wykonano, a obowiązujący model pozostaje v0.5.
+`uv run --locked --offline python scripts/run_scenario.py --scenario WIT3 --output artifacts/wit3` wykonuje **54 kroki**: zastąpienie r1, utworzenie r3, jawne włączenie do zakresu przez U, naprawę a1/d1 i przegląd c1, ponowny przegląd R oraz odbiór. Siedemnaście mutantów potwierdza czułość wybranych kontroli. Test uzupełniający sprawdza również zastąpienie po odbiorze: 56 kroków, dwa wydania, pierwszy rekord bez zmian.
+
+[Instrukcja i diagram przed/po](examples/wit3/README.md) · [Raport wykonania](examples/wit3/report.md) · [Przyjęte uzasadnienie DEC-PRO-009](model/proposals/wit3-replacement.md).
+
+Katalog ma osiem ID, ale początkowy zakres nadal siedem. Rezerwowe r3 pozostaje nieutworzone i poza zakresem w WIT1/WIT2/WIT4/WIT5. Zidentyfikowany kontrprzykład S4 jest zablokowany przez wzmocniony T11; nie jest to dowód całego S4 ani zakończenie E2.
 
 ## Wizualizacja procesu i pakiety wdrożeniowe
 

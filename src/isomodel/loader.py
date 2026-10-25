@@ -77,8 +77,23 @@ def validate_model(data):
             _require(isinstance(transition, dict), "G0: przejście musi być mapą")
             required = {"id", "name", "from", "to", "actor", "guard", "effects"}
             _require(required <= transition.keys(), "G0: niepełna definicja przejścia")
-            allowed = required | {"iso", "description", "evidence", "interpretation", "target"}
+            allowed = required | {"iso", "description", "evidence", "interpretation", "target", "arguments"}
             _require(transition.keys() <= allowed, f"G0: nieznane pola przejścia {transition.keys() - allowed}")
+            arguments = transition.get("arguments", {})
+            _require(isinstance(arguments, dict), "G0: arguments musi być mapą")
+            bindings = set()
+            for name, argument in arguments.items():
+                _require(isinstance(name, str) and name.isidentifier(), "G0: błędna nazwa argumentu")
+                _require(name not in {"transition", "actor", "question", "attributes", "evidence", "inputs"}, "G0: zastrzeżona nazwa argumentu")
+                _require(isinstance(argument, dict) and {"bind", "type"} <= argument.keys()
+                         and argument.keys() <= {"bind", "type", "default"}, "G0: niepełny lub nieznany argument")
+                binding = argument["bind"]
+                _require(isinstance(binding, str) and binding.isidentifier() and binding not in bindings,
+                         "G0: niepoprawne lub powtórzone wiązanie argumentu")
+                bindings.add(binding)
+                _require(argument["type"] in {"item", "optional_item_id"}, "G0: nieznany typ argumentu")
+                _require("default" not in argument or argument["type"] == "optional_item_id" and argument["default"] == "none",
+                         "G0: błędna wartość domyślna argumentu")
             ident = transition["id"]
             _require(isinstance(ident, str), "G0: ID musi być tekstem")
             _require(ident not in identifiers, f"G4: powtórzone ID {ident}")

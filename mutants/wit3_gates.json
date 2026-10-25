@@ -1,0 +1,564 @@
+[
+  {
+    "id": "s12_active_predecessor",
+    "property": "S12",
+    "prefix_steps": 28,
+    "attempt": {
+      "transition": "T00",
+      "actor": "A",
+      "item": "r3",
+      "predecessor": "r1"
+    },
+    "field": "guard",
+    "replacement": "dependency_types_ok(e, e.depends_on) and acyclic_dependencies(e, e.depends_on) and (proposed_predecessor = none or (item(proposed_predecessor).type = e.type and not item(proposed_predecessor).id = e.id))",
+    "setup_events": [],
+    "expected_code": "guard"
+  },
+  {
+    "id": "s12_wrong_predecessor_type",
+    "property": "S12",
+    "prefix_steps": 32,
+    "attempt": {
+      "transition": "T00",
+      "actor": "A",
+      "item": "r3",
+      "predecessor": "d1"
+    },
+    "field": "guard",
+    "replacement": "dependency_types_ok(e, e.depends_on) and acyclic_dependencies(e, e.depends_on) and (proposed_predecessor = none or (item(proposed_predecessor).state = superseded and not item(proposed_predecessor).id = e.id))",
+    "setup_events": [
+      {
+        "transition": "P00",
+        "actor": "A",
+        "question": "q2",
+        "attributes": {
+          "kind": "change",
+          "about": "d1",
+          "requested_transition": "T07",
+          "blocking": true
+        }
+      },
+      {
+        "transition": "P01",
+        "actor": "A",
+        "question": "q2"
+      },
+      {
+        "transition": "P02",
+        "actor": "U",
+        "question": "q2",
+        "inputs": {
+          "unambiguous_answer": true,
+          "resolution": "approved"
+        },
+        "evidence": {
+          "simulation": true,
+          "decision": "SIM-q2",
+          "quote": "Zgoda testowa: d1 v1, T07."
+        }
+      },
+      {
+        "transition": "T07",
+        "actor": "U",
+        "item": "d1",
+        "question": "q2"
+      }
+    ],
+    "expected_code": "guard"
+  },
+  {
+    "id": "s12_relink_without_opening",
+    "property": "S12",
+    "prefix_steps": 37,
+    "attempt": {
+      "transition": "T14",
+      "actor": "A",
+      "item": "a1",
+      "old_dependency": "r1",
+      "new_dependency": "r3",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-AGENT-RELINK-a1",
+        "reference": "SIM-Przejrzane: a1, r1 -> r3"
+      }
+    },
+    "field": "from",
+    "replacement": [
+      "baselined"
+    ],
+    "setup_events": [],
+    "expected_code": "state"
+  },
+  {
+    "id": "s12_relink_outside_scope",
+    "property": "S12",
+    "prefix_steps": 36,
+    "attempt": {
+      "transition": "T14",
+      "actor": "A",
+      "item": "a1",
+      "old_dependency": "r1",
+      "new_dependency": "r3",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-AGENT-RELINK-a1",
+        "reference": "SIM-Przejrzane: a1, r1 -> r3"
+      }
+    },
+    "field": "guard",
+    "replacement": "release.state = in_preparation and old_dependency.id in e.depends_on and old_dependency.state = superseded and new_dependency.predecessor = old_dependency.id and new_dependency.state = baselined and not new_dependency.suspect and not old_dependency.id = new_dependency.id and new_dependency.id not in e.depends_on and not new_dependency.id = e.id and dependency_types_ok(e, (e.depends_on minus {old_dependency.id}) union {new_dependency.id}) and acyclic_dependencies(e, (e.depends_on minus {old_dependency.id}) union {new_dependency.id})",
+    "setup_events": [
+      {
+        "transition": "T12",
+        "actor": "A",
+        "item": "a1",
+        "question": "q2"
+      },
+      {
+        "transition": "P01",
+        "actor": "A",
+        "question": "q2"
+      },
+      {
+        "transition": "P02",
+        "actor": "U",
+        "question": "q2",
+        "inputs": {
+          "unambiguous_answer": true,
+          "resolution": "approved"
+        },
+        "evidence": {
+          "simulation": true,
+          "decision": "SIM-DEC-q2",
+          "quote": "Zgoda testowa na otwarcie zmiany a1 v1 przez T05."
+        }
+      },
+      {
+        "transition": "T05",
+        "actor": "U",
+        "item": "a1",
+        "question": "q2"
+      }
+    ],
+    "expected_code": "guard"
+  },
+  {
+    "id": "s12_wrong_successor",
+    "property": "S12",
+    "prefix_steps": 41,
+    "attempt": {
+      "transition": "T14",
+      "actor": "A",
+      "item": "a1",
+      "old_dependency": "r1",
+      "new_dependency": "r2",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-AGENT-RELINK-a1",
+        "reference": "SIM-Przejrzane: a1, r1 -> r3"
+      }
+    },
+    "field": "guard",
+    "replacement": "release.state = in_preparation and old_dependency.id in e.depends_on and old_dependency.state = superseded and new_dependency.state = baselined and not new_dependency.suspect and not old_dependency.id = new_dependency.id and new_dependency.id not in e.depends_on and not new_dependency.id = e.id and dependency_types_ok(e, (e.depends_on minus {old_dependency.id}) union {new_dependency.id}) and acyclic_dependencies(e, (e.depends_on minus {old_dependency.id}) union {new_dependency.id}) and (in_scope(e) => in_scope(new_dependency))",
+    "setup_events": [],
+    "expected_code": "guard"
+  },
+  {
+    "id": "s12_immature_successor",
+    "property": "S12",
+    "prefix_steps": 41,
+    "attempt": {
+      "transition": "T14",
+      "actor": "A",
+      "item": "a1",
+      "old_dependency": "r1",
+      "new_dependency": "r3",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-AGENT-RELINK-a1",
+        "reference": "SIM-Przejrzane: a1, r1 -> r3"
+      }
+    },
+    "field": "guard",
+    "replacement": "release.state = in_preparation and old_dependency.id in e.depends_on and old_dependency.state = superseded and new_dependency.predecessor = old_dependency.id and not new_dependency.suspect and not old_dependency.id = new_dependency.id and new_dependency.id not in e.depends_on and not new_dependency.id = e.id and dependency_types_ok(e, (e.depends_on minus {old_dependency.id}) union {new_dependency.id}) and acyclic_dependencies(e, (e.depends_on minus {old_dependency.id}) union {new_dependency.id}) and (in_scope(e) => in_scope(new_dependency))",
+    "setup_events": [
+      {
+        "transition": "P00",
+        "actor": "A",
+        "question": "q3",
+        "attributes": {
+          "kind": "change",
+          "about": "r3",
+          "requested_transition": "T05",
+          "blocking": true
+        }
+      },
+      {
+        "transition": "P01",
+        "actor": "A",
+        "question": "q3"
+      },
+      {
+        "transition": "P02",
+        "actor": "U",
+        "question": "q3",
+        "inputs": {
+          "unambiguous_answer": true,
+          "resolution": "approved"
+        },
+        "evidence": {
+          "simulation": true,
+          "decision": "SIM-q3",
+          "quote": "Zgoda testowa: r3 v1, T05."
+        }
+      },
+      {
+        "transition": "T05",
+        "actor": "U",
+        "item": "r3",
+        "question": "q3"
+      }
+    ],
+    "expected_code": "guard"
+  },
+  {
+    "id": "s12_missing_relink",
+    "property": "S12",
+    "prefix_steps": 41,
+    "attempt": {
+      "transition": "T14",
+      "actor": "A",
+      "item": "a1",
+      "old_dependency": "r1",
+      "new_dependency": "r3",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-AGENT-RELINK-a1",
+        "reference": "SIM-Przejrzane: a1, r1 -> r3"
+      }
+    },
+    "field": "effects",
+    "replacement": [
+      "depends_on := depends_on",
+      "forall d in pre_dependents(e): d.suspect := true",
+      "invalidate_release(e)"
+    ],
+    "setup_events": [],
+    "expected_path": [
+      "items",
+      "a1",
+      "depends_on"
+    ],
+    "expected_value": [
+      "r3"
+    ]
+  },
+  {
+    "id": "s5_missing_relink_propagation",
+    "property": "S5",
+    "prefix_steps": 41,
+    "attempt": {
+      "transition": "T14",
+      "actor": "A",
+      "item": "a1",
+      "old_dependency": "r1",
+      "new_dependency": "r3",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-AGENT-RELINK-a1",
+        "reference": "SIM-Przejrzane: a1, r1 -> r3"
+      }
+    },
+    "field": "effects",
+    "replacement": [
+      "depends_on := (depends_on minus {old_dependency.id}) union {new_dependency.id}",
+      "invalidate_release(e)"
+    ],
+    "setup_events": [
+      {
+        "transition": "P00",
+        "actor": "A",
+        "question": "q3",
+        "attributes": {
+          "kind": "change",
+          "about": "c1",
+          "requested_transition": "T05",
+          "blocking": true
+        }
+      },
+      {
+        "transition": "P01",
+        "actor": "A",
+        "question": "q3"
+      },
+      {
+        "transition": "P02",
+        "actor": "U",
+        "question": "q3",
+        "inputs": {
+          "unambiguous_answer": true,
+          "resolution": "approved"
+        },
+        "evidence": {
+          "simulation": true,
+          "decision": "SIM-q3",
+          "quote": "Zgoda testowa: c1 v1, T05."
+        }
+      },
+      {
+        "transition": "T05",
+        "actor": "U",
+        "item": "c1",
+        "question": "q3"
+      }
+    ],
+    "expected_path": [
+      "items",
+      "c1",
+      "suspect"
+    ],
+    "expected_value": true
+  },
+  {
+    "id": "s12_rewrites_lineage",
+    "property": "S12",
+    "prefix_steps": 41,
+    "attempt": {
+      "transition": "T14",
+      "actor": "A",
+      "item": "a1",
+      "old_dependency": "r1",
+      "new_dependency": "r3",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-AGENT-RELINK-a1",
+        "reference": "SIM-Przejrzane: a1, r1 -> r3"
+      }
+    },
+    "field": "effects",
+    "replacement": [
+      "depends_on := (depends_on minus {old_dependency.id}) union {new_dependency.id}",
+      "forall d in pre_dependents(e): d.suspect := true",
+      "invalidate_release(e)",
+      "predecessor := old_dependency.id"
+    ],
+    "setup_events": [],
+    "expected_path": [
+      "items",
+      "a1",
+      "predecessor"
+    ],
+    "expected_value": "none"
+  },
+  {
+    "id": "s4_premature_no_impact_review",
+    "property": "S4",
+    "prefix_steps": 28,
+    "attempt": {
+      "transition": "T11",
+      "actor": "A",
+      "item": "c1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-AGENT-NO-IMPACT-C1",
+        "reference": "SIM-Przejrzane: c1, a1 v2, d1 v2; zachowanie kodu bez zmiany"
+      }
+    },
+    "field": "guard",
+    "replacement": "suspect and forall d in deps(e): d.state not in {superseded, withdrawn}",
+    "setup_events": [
+      {
+        "transition": "T06",
+        "actor": "U",
+        "item": "d1"
+      }
+    ],
+    "expected_code": "guard"
+  },
+  {
+    "id": "t11_ignores_suspect_dependency",
+    "property": "WIT3/T11",
+    "prefix_steps": 32,
+    "attempt": {
+      "transition": "T11",
+      "actor": "A",
+      "item": "c1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-AGENT-NO-IMPACT-C1",
+        "reference": "SIM-Przejrzane: c1, a1 v2, d1 v2; zachowanie kodu bez zmiany"
+      }
+    },
+    "field": "guard",
+    "replacement": "suspect and forall d in deps(e): d.state in {approved, baselined}",
+    "setup_events": [],
+    "expected_code": "guard"
+  },
+  {
+    "id": "s1_agent_includes_scope",
+    "property": "S1/S13",
+    "prefix_steps": 36,
+    "attempt": {
+      "transition": "W07",
+      "actor": "A",
+      "item": "r3",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-INCLUDE-R3",
+        "quote": "Włączam r3 jako następcę r1 do zakresu testowego wydania 1; r1 pozostaje w historii."
+      }
+    },
+    "field": "actor",
+    "replacement": "A",
+    "setup_events": [],
+    "expected_code": "actor"
+  },
+  {
+    "id": "s13_drops_predecessor_from_scope",
+    "property": "S13",
+    "prefix_steps": 36,
+    "attempt": {
+      "transition": "W07",
+      "actor": "U",
+      "item": "r3",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-INCLUDE-R3",
+        "quote": "Włączam r3 jako następcę r1 do zakresu testowego wydania 1; r1 pozostaje w historii."
+      }
+    },
+    "field": "effects",
+    "replacement": [
+      "release.scope := (release.scope minus {e.predecessor}) union {e.id}"
+    ],
+    "setup_events": [],
+    "expected_path": [
+      "releases",
+      1,
+      "scope"
+    ],
+    "expected_value": [
+      "a1",
+      "a2",
+      "c1",
+      "d1",
+      "p1",
+      "r1",
+      "r2",
+      "r3"
+    ]
+  },
+  {
+    "id": "s13_includes_immature_successor",
+    "property": "S13",
+    "prefix_steps": 33,
+    "attempt": {
+      "transition": "W07",
+      "actor": "U",
+      "item": "r3",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-INCLUDE-R3",
+        "quote": "Włączam r3 jako następcę r1 do zakresu testowego wydania 1; r1 pozostaje w historii."
+      }
+    },
+    "field": "guard",
+    "replacement": "not in_scope(e) and not e.suspect and not e.predecessor = none and predecessor(e).state = superseded and in_scope(predecessor(e)) and forall d in deps(e): in_scope(d)",
+    "setup_events": [],
+    "expected_code": "guard"
+  },
+  {
+    "id": "s10_modifies_accepted_scope",
+    "property": "S10/S13",
+    "prefix_steps": 36,
+    "attempt": {
+      "transition": "W07",
+      "actor": "U",
+      "item": "r3",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-INCLUDE-R3",
+        "quote": "Włączam r3 jako następcę r1 do zakresu testowego wydania 1; r1 pozostaje w historii."
+      }
+    },
+    "field": "from",
+    "replacement": [
+      "accepted"
+    ],
+    "setup_events": [
+      {
+        "transition": "T08",
+        "actor": "U",
+        "item": "a1"
+      },
+      {
+        "transition": "T08",
+        "actor": "U",
+        "item": "d1"
+      },
+      {
+        "transition": "T08",
+        "actor": "U",
+        "item": "c1"
+      },
+      {
+        "transition": "W01",
+        "actor": "A"
+      },
+      {
+        "transition": "W02",
+        "actor": "R"
+      },
+      {
+        "transition": "W04",
+        "actor": "U",
+        "evidence": {
+          "simulation": true,
+          "quote": "Odbieram testowe wydanie 1 po zastąpieniu wymagania i ponownym przeglądzie."
+        }
+      }
+    ],
+    "expected_code": "state"
+  },
+  {
+    "id": "s7a_retirement_keeps_reviewed",
+    "property": "S7a",
+    "prefix_steps": 31,
+    "attempt": {
+      "transition": "T07",
+      "actor": "U",
+      "item": "r1",
+      "question": "q1"
+    },
+    "field": "effects",
+    "replacement": [
+      "q.consumed := true",
+      "forall d in dependents(e): d.suspect := true"
+    ],
+    "setup_events": [],
+    "expected_path": [
+      "releases",
+      1,
+      "state"
+    ],
+    "expected_value": "in_preparation"
+  },
+  {
+    "id": "s6_review_ignores_retired_dependency",
+    "property": "S6",
+    "prefix_steps": 32,
+    "attempt": {
+      "transition": "T11",
+      "actor": "A",
+      "item": "a1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-AGENT-NO-IMPACT-C1",
+        "reference": "SIM-Przejrzane: c1, a1 v2, d1 v2; zachowanie kodu bez zmiany"
+      }
+    },
+    "field": "guard",
+    "replacement": "suspect",
+    "expected_code": "guard"
+  }
+]

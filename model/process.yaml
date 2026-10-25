@@ -3,8 +3,8 @@
 # Identyfikatory po angielsku, w terminologii normy (DEC-PRO-002). Opisy (`description`) po polsku.
 
 model: iso29110-basic-process
-version: 0.5
-status: approved              # DEC-PRO-008: zgoda na konkretną zmianę; nie oznacza dowodu G/S/L
+version: 0.6
+status: approved              # DEC-PRO-009: następcy, powiązania i zakres; nie oznacza dowodu G/S/L
 
 notation:
   e: "element, którego dotyczy przejście"
@@ -22,6 +22,14 @@ notation:
   tests_ok: "pełny przebieg testów przechodzi (założone, nie modelowane)"
   authorized_change(q,e): "predykat question_semantics.authorized_change; q wskazane w zdarzeniu, transition to wykonywane przejście"
   answer_resolution(q): "dla change jawny wynik approved/rejected z wejścia kroku; dla general answered; nie klasyfikuje tekstu"
+  arguments: "deklaracje argumentów przejścia: pole zdarzenia -> bind (nazwa w wyrażeniu), type (item albo optional_item_id); default=none tylko dla optional_item_id; brak obowiązkowego argumentu jest błędem wejścia"
+  item(id): "rekord z katalogu po ID; none daje pusty rekord z id/state/type=none, bez zależności; nieznane ID jest błędem wejścia"
+  predecessor(e): "item(e.predecessor); odwołanie historyczne, nie krawędź zależności"
+  dependency_types_ok(e, ids): "ids jest zbiorem bez duplikatów, każde ID istnieje w katalogu, zbiór typów odpowiada item_types[e.type].depends_on"
+  acyclic_dependencies(e, ids): "graf roboczy, w którym zależności e zastąpiono przez ids, nie zawiera cyklu; brak ID lub niepoprawny zbiór daje false"
+  pre_dependents(e): "przechodni zależni e w grafie sprzed kroku; skutki dotyczą ich rekordów po kroku"
+  "X union Y": "suma zbiorów ID, serializowana deterministycznie bez duplikatów"
+  "X minus Y": "różnica zbiorów ID, serializowana deterministycznie bez duplikatów"
   "x in S": "stan x należy do zbioru S"
 
 parameters:
@@ -54,6 +62,8 @@ item_states:
 
 item_variables:
   state:      {type: item_states, initial: none, description: "none = element jeszcze nie istnieje"}
+  depends_on: {type: item_id_set, initial: "test_instance.items[e.id].depends_on", description: "bieżące powiązania; po inicjalizacji zmienia je wyłącznie T14"}
+  predecessor: {type: optional_item_id, initial: none, description: "historyczny poprzednik zapisany w T00, potem niezmienny; nie jest zależnością budowania"}
   version:    {type: int, initial: 0}
   rejections: {type: "0..MAX_REJECTIONS", initial: 0, description: "liczba odrzuceń bieżącej wersji"}
   suspect:    {type: bool, initial: false, description: "zależność zmieniła się po ostatnim przeglądzie elementu (INT-012)"}
@@ -71,8 +81,10 @@ item_transitions:
     from: [none]
     to: draft
     actor: A
-    guard: "true"
-    effects: ["version := 1"]
+    arguments:
+      predecessor: {bind: proposed_predecessor, type: optional_item_id, default: none}
+    guard: "dependency_types_ok(e, e.depends_on) and acyclic_dependencies(e, e.depends_on) and (proposed_predecessor = none or (item(proposed_predecessor).state = superseded and item(proposed_predecessor).type = e.type and not item(proposed_predecessor).id = e.id))"
+    effects: ["version := 1", "predecessor := proposed_predecessor"]
     iso: [SI.02.02, SI.03.03, SI.03.06, SI.04.03, PM.01.11, PM.01.09, PM.O5]
 
   - id: T01
@@ -142,7 +154,7 @@ item_transitions:
     guard: "authorized_change(q,e)"
     effects: ["q.consumed := true", "forall d in dependents(e): d.suspect := true", "invalidate_release(e)"]
     iso: [PM.02.03, PM.03.04]
-    description: "nowy element powstaje przez T00 z odwołaniem do e"
+    description: "kandydat na następcę powstaje osobno przez T00(predecessor=e.id); wymaga własnej weryfikacji, zatwierdzenia i włączenia do zakresu przez U (INT-018)"
 
   - id: T08
     name: withdraw
@@ -177,11 +189,11 @@ item_transitions:
     from: [draft, verified, approved, baselined]
     to: "="                   # stan bez zmian
     actor: A
-    guard: "suspect and forall d in deps(e): d.state not in {superseded, withdrawn}"
+    guard: "suspect and forall d in deps(e): d.state in {approved, baselined} and not d.suspect"
     effects: ["suspect := false"]
     evidence: "wpis w kolumnie Przejrzane decyzji, która wywołała zmianę; decyzja agenta do podważenia"
     iso: [SI.03.04, SI.04.06]
-    description: "gdy zależność zastąpiono lub wycofano, element musi się zmienić (T12) albo zniknąć; inaczej aktywny element wskazywałby wycofany (S6)"
+    description: "DEC-PRO-009: przegląd bez wpływu dopiero przy dojrzałych zależnościach bez suspect; blokuje przedwczesny przegląd i naruszenie S4/S6"
 
   - id: T12
     name: raise_change
@@ -202,6 +214,21 @@ item_transitions:
     effects: ["suspect := false"]
     iso: [SI.02.04, SI.03.05]
     description: "szkic agent poprawia sam, bez pytania"
+
+  - id: T14
+    name: relink_dependency
+    from: [draft]
+    to: draft
+    actor: A
+    arguments:
+      old_dependency: {bind: old_dependency, type: item}
+      new_dependency: {bind: new_dependency, type: item}
+    guard: "release.state = in_preparation and old_dependency.id in e.depends_on and old_dependency.state = superseded and new_dependency.predecessor = old_dependency.id and new_dependency.state = baselined and not new_dependency.suspect and not old_dependency.id = new_dependency.id and new_dependency.id not in e.depends_on and not new_dependency.id = e.id and dependency_types_ok(e, (e.depends_on minus {old_dependency.id}) union {new_dependency.id}) and acyclic_dependencies(e, (e.depends_on minus {old_dependency.id}) union {new_dependency.id}) and (in_scope(e) => in_scope(new_dependency))"
+    effects: ["depends_on := (depends_on minus {old_dependency.id}) union {new_dependency.id}", "forall d in pre_dependents(e): d.suspect := true", "invalidate_release(e)"]
+    evidence: "wpis agenta: element, stara i nowa zależność oraz odwołanie do przeglądu"
+    iso: [SI.03.04, SI.04.06]
+    interpretation: INT-018
+    description: "jawna naprawa jednej krawędzi szkicu; bez zwiększenia wersji i bez kasowania suspect; zależni z grafu sprzed kroku"
 
 # ---------------------------------------------------------------------------
 # Pytania i wnioski o zmianę (rejestr pytań)
@@ -315,9 +342,9 @@ release_control_variables:
   next_release_required: {type: bool, initial: false, description: "trwały znacznik zmiany po odbiorze; poza odebranym rekordem; kasuje go wyłącznie W06"}
 
 release_semantics:
-  default_target: "W01–W05 zmieniają releases[current_release]; accepted jest końcowe dla konkretnego rekordu"
+  default_target: "W01–W05 i W07 zmieniają releases[current_release]; accepted jest końcowe dla konkretnego rekordu"
   new_release_target: "W06 czyta stary rekord, lecz from/to opisują zmianę bieżącego wydania: to i skutki dotyczą nowego rekordu numer n + 1; stary rekord pozostaje identyczny"
-  frame: "pola niewymienione w skutkach pozostają bez zmian; T i P zmieniają produkty robocze i pytania, nigdy zapisane migawki"
+  frame: "pola niewymienione w skutkach pozostają bez zmian; T i P zmieniają produkty robocze i pytania, nigdy zapisane migawki. depends_on po inicjalizacji zmienia wyłącznie T14; predecessor zapisuje tylko T00; scope istniejącego rekordu zmienia tylko W07 w in_preparation"
   scope_copy: "W06 kopiuje scope poprzedniego wydania, włącznie z elementami wyłączonymi z dostawy; nie zatwierdza nowego zakresu ani zmian produktów"
   pending_priority: "gdy next_release_required = true, następnym przejściem jest W06; nie wolno pominąć W06 po cofnięciu flagi suspect"
   bounds: "max_releases jest granicą eksploracji, nie warunkiem W06 w procesie; próba utworzenia wydania poza granicą to granica badania, nie zakleszczenie ani dowód zakończenia"
@@ -385,7 +412,21 @@ release_transitions:
     interpretation: INT-017
     description: "techniczne otwarcie następnego wydania po T05–T10 w zakresie lub pojawieniu się suspect w zakresie po odbiorze; bez zmiany odebranego rekordu i bez zastępowania bramek U (DEC-PRO-003, DEC-PRO-004)"
 
-# Skutek pomocniczy używany przez T05–T10.
+  - id: W07
+    name: include_replacement
+    from: [in_preparation]
+    to: "="
+    actor: U
+    arguments:
+      item: {bind: e, type: item}
+    guard: "not in_scope(e) and e.state = baselined and not e.suspect and not e.predecessor = none and predecessor(e).state = superseded and in_scope(predecessor(e)) and forall d in deps(e): in_scope(d)"
+    effects: ["release.scope := release.scope union {e.id}"]
+    evidence: "DEC z cytatem użytkownika"
+    iso: [PM.02.03, PM.03.04, SI.06.05]
+    interpretation: INT-018
+    description: "U włącza wskazanego następcę do przygotowywanego wydania; poprzednik zostaje w zakresie jako superseded, wcześniejsze odbiory bez zmian"
+
+# Skutek pomocniczy używany przez T05–T10 i T14.
 helper_effects:
   invalidate_release(e): "jeśli in_scope(e) i release.state in {ready, reviewed}: release.state := in_preparation; jeśli in_scope(e) i release.state = accepted: next_release_required := true, bez zmiany odebranego rekordu"
 
@@ -409,6 +450,7 @@ test_instance:
     a1: {type: AT,   depends_on: [r1]}
     a2: {type: AT,   depends_on: [r2]}
     c1: {type: CODE, depends_on: [d1, a1]}
+    r3: {type: REQ,  depends_on: [p1]}  # rezerwowe ID: none, poza początkowym zakresem; WIT3/INT-018
   release_scope: [p1, r1, r2, d1, a1, a2, c1]
   bounds:
     max_questions: 3

@@ -1,6 +1,6 @@
 # WIT2/WIT4 — odrzucenia i pytania
 
-Przyrost E2 z 2026-10-24 na przyjętym modelu v0.4. Nie zmienia modelu ani nie stanowi odbioru E2. Korzysta z tego samego wykonawcy co WIT1.
+Przyrost E2 z 2026-10-24, pierwotnie na modelu v0.4; raporty odtworzono na v0.6. Nie zmienia modelu ani nie stanowi odbioru E2. Korzysta z tego samego wykonawcy co WIT1.
 
 ## Uruchomienie i raporty
 
@@ -61,4 +61,4 @@ Pierwszy przebieg nowych kryteriów: 27 failed, 7 passed. WIT2 korzystał już z
 
 Dziewięć nowych mutantów: dwa WIT2 i siedem WIT4. Obejmują limit i rolę przy odrzucaniu, dwa jednoczesne asked, LIFO, rozstrzygnięcie niejednoznacznej odpowiedzi, odłożenie blokującego pytania, utratę age, nieuprawnione utworzenie DEC przez P03 oraz brak DEC po P02. Łącznie z WIT1 jest 16 wybranych mutantów wykonania; nie jest to pełne pokrycie mutacyjne E2.
 
-Hypothesis sprawdza kolejność obsługi przy kombinacjach blocking dla maksymalnie trzech pytań. To sprawdzenia skończonych przebiegów i warunków S9/L4; nie dowód żywotności L2 pod F1/F2. WIT5 jest wykonany w kolejnym przyroście. Pełna maszyna stanów, WIT3, pozostałe mutanty i TLC pozostają w planie. Ograniczenie pustego zakresu wydania z WIT1 pozostaje jawne.
+Hypothesis sprawdza kolejność obsługi przy kombinacjach blocking dla maksymalnie trzech pytań. To sprawdzenia skończonych przebiegów i warunków S9/L4; nie dowód żywotności L2 pod F1/F2. WIT5 jest wykonany w kolejnym przyroście. WIT3 ma [osobne wykonanie](../wit3/README.md). Pełna maszyna stanów, pozostałe mutanty i TLC pozostają w planie. Ograniczenie pustego zakresu wydania z WIT1 pozostaje jawne.

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Uruchom WIT1/WIT2/WIT4/WIT5 i zapisz odtwarzalny raport symulacji.
+"""Uruchom WIT1–WIT5 i zapisz odtwarzalny raport symulacji.
 
-Trace: WIT1, WIT2, WIT4, WIT5, S11, S1, S9, L2, L4.
+Trace: WIT1, WIT2, WIT3, WIT4, WIT5, S11, S1, S9, L2, L4.
 """
 
 import argparse
@@ -22,7 +22,7 @@ from isomodel.reporting import render_markdown
 
 def main():
     parser = argparse.ArgumentParser(description="WIT — wyłącznie symulacja, bez decyzji w rzeczywistym projekcie")
-    parser.add_argument("--scenario", type=str.upper, choices=["WIT1", "WIT2", "WIT4", "WIT5"], default="WIT1")
+    parser.add_argument("--scenario", type=str.upper, choices=["WIT1", "WIT2", "WIT3", "WIT4", "WIT5"], default="WIT1")
     parser.add_argument("--output", type=Path, help="Katalog dla report.md i trace.json; bez opcji raport trafia na stdout")
     args = parser.parse_args()
     name = args.scenario.lower()

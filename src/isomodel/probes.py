@@ -1,7 +1,7 @@
 """Próby czułości wybranych wyroczni na mutanty modelu w pamięci.
 
 To narzędzie sprawdzające; nie definiuje reguł procesu ani pełnego pokrycia.
-Trace: WIT1, WIT2, WIT4, WIT5, S11, S1, S2, S3, S4, S7a, S7b, S8, S9, L2, L4.
+Trace: WIT1, WIT2, WIT3, WIT4, WIT5, S11, S1, S2, S3, S4, S7a, S7b, S8, S9, L2, L4.
 """
 
 from copy import deepcopy

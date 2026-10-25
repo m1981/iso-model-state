@@ -1,6 +1,6 @@
 # WIT3: następca wymagania, powiązania i zakres wydania
 
-Status: **proposed**, 2026-10-25. Podstawa: zatwierdzony model **v0.5**, commit `e5fc842b9447e53550aac73f229879bff9d2a850`. Docelowo v0.6 po osobnej decyzji użytkownika. Ten dokument, plan zdarzeń i diagnostyka są materiałem do przeglądu, nie źródłem obowiązujących reguł wykonawcy. Nie zapisano DEC-PRO-009 ani odbioru WIT3/E2.
+Status: **applied**, DEC-PRO-009, 2026-10-25; cytat „d1 tak”. Podstawa: zatwierdzony model **v0.5**, commit `e5fc842b9447e53550aac73f229879bff9d2a850`. Wdrożono jako v0.6; [wykonany WIT3 i granice wyniku](../../examples/wit3/README.md). Poniżej zachowano treść propozycji jako uzasadnienie; źródłem obowiązujących reguł jest model/process.yaml. Nie jest to odbiór WIT3/E2. Diagnostyka i plan JSON pozostają historycznymi zapisami przygotowania zmiany.
 
 ## Rekomendacja do podpisu
 

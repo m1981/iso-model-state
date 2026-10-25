@@ -54,8 +54,11 @@ def test_wit1_reaches_acceptance_with_exact_history(model, scenario):
     assert state["current_release"] == 1
     assert state["next_release_required"] is False
     assert state["questions"] == {}
-    assert len(state["items"]) == 7
-    for item in state["items"].values():
+    assert len(state["items"]) == 8
+    assert set(state["releases"][1]["scope"]) == {"p1", "r1", "r2", "a1", "a2", "d1", "c1"}
+    assert state["items"]["r3"] == initial_state(model)["items"]["r3"]
+    for ident in state["releases"][1]["scope"]:
+        item = state["items"][ident]
         assert (item["state"], item["version"], item["suspect"], item["rejections"]) == (
             "baselined", 1, False, 0)
     release = state["releases"][1]
@@ -215,7 +218,10 @@ def test_rules_and_initial_values_come_from_yaml_not_transition_ids(model, scena
             attempt["transition"] = "CREATE_RENAMED"
     result = replay(model, scenario)
     assert result["outcome"] == "completed"
-    assert all(i["version"] == 2 and i["rejections"] == 1 for i in result["final_state"]["items"].values())
+    state = result["final_state"]
+    assert all(state["items"][i]["version"] == 2 and state["items"][i]["rejections"] == 1
+               for i in state["releases"][1]["scope"])
+    assert state["items"]["r3"] == initial_state(model)["items"]["r3"]
 
 
 def test_replay_reports_denial_and_stops(model, scenario):

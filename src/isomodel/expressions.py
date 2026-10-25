@@ -21,7 +21,8 @@ class InputError(ModelError):
 TOKEN = re.compile(r"\s*(=>|[(){}\[\].,:=+<]|[A-Za-z_][A-Za-z_0-9]*|[0-9]+)")
 FUNCTIONS = {"deps": 1, "type": 1, "checks_ok": 1, "in_scope": 1, "snapshot": 1,
              "count": 1, "oldest": 2, "newest": 2, "copy": 1,
-             "authorized_change": 2, "answer_resolution": 1, "dependents": 1}
+             "authorized_change": 2, "answer_resolution": 1, "dependents": 1,
+             "item": 1, "predecessor": 1, "dependency_types_ok": 2, "acyclic_dependencies": 2}
 
 
 class Parser:
@@ -91,9 +92,9 @@ class Parser:
 
     def addition(self):
         node = self.atom()
-        while self.peek() == "+":
-            self.take()
-            node = ("+", node, self.atom())
+        while self.peek() in {"+", "union", "minus"}:
+            operator = self.take()
+            node = (operator, node, self.atom())
         return node
 
     def atom(self):
@@ -172,6 +173,8 @@ def compile_expression(text, model):
     names |= set(model["question_variables"])
     names |= {value for var in model["question_variables"].values() for value in var.get("values", [])}
     names |= {t["id"] for kind in ("item", "question", "release") for t in model[f"{kind}_transitions"]}
+    names |= {definition["bind"] for kind in ("item", "question", "release")
+              for t in model[f"{kind}_transitions"] for definition in t.get("arguments", {}).values()}
     names |= set().union(*(model[f"{kind}_states"] for kind in ("item", "question", "release")))
     attributes = {"id", "type", "depends_on", "requires_approval"}
     attributes |= set().union(*(model[f"{kind}_variables"] for kind in ("item", "question", "release")))
@@ -259,6 +262,11 @@ def evaluate(node, environment, functions):
         return left in right
     if op == "not in":
         return left not in right
+    if op in {"union", "minus"}:
+        for value in (left, right):
+            if not isinstance(value, (list, set)) or not all(isinstance(v, str) for v in value):
+                raise InputError(f"{op}: oczekiwano zbiorów ID")
+        return sorted(set(left) | set(right) if op == "union" else set(left) - set(right))
     if op in {"<", "+"}:
         if type(left) is not int or type(right) is not int:
             raise InputError(f"{op}: oczekiwano liczb całkowitych")
