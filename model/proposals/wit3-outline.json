@@ -1,0 +1,277 @@
+{
+  "status": "proposed_not_executable",
+  "simulation": true,
+  "base_model_version": 0.5,
+  "target_model_version": 0.6,
+  "base_commit": "e5fc842b9447e53550aac73f229879bff9d2a850",
+  "prefix": {
+    "fixture": "tests/fixtures/wit1/scenario.json",
+    "first_events": 28
+  },
+  "instance_addition": {
+    "r3": {
+      "type": "REQ",
+      "depends_on": [
+        "p1"
+      ],
+      "state": "none",
+      "in_initial_scope": false
+    }
+  },
+  "additional_inputs": {
+    "checks_ok": {
+      "r3": true
+    }
+  },
+  "suffix_events": [
+    {
+      "transition": "P00",
+      "actor": "A",
+      "question": "q1",
+      "attributes": {
+        "kind": "change",
+        "about": "r1",
+        "requested_transition": "T07",
+        "blocking": true
+      }
+    },
+    {
+      "transition": "P01",
+      "actor": "A",
+      "question": "q1"
+    },
+    {
+      "transition": "P02",
+      "actor": "U",
+      "question": "q1",
+      "inputs": {
+        "unambiguous_answer": true,
+        "resolution": "approved"
+      },
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-q1",
+        "quote": "Zgoda testowa na zastąpienie r1 v1 przez T07."
+      }
+    },
+    {
+      "transition": "T07",
+      "actor": "U",
+      "item": "r1",
+      "question": "q1"
+    },
+    {
+      "transition": "T00",
+      "actor": "A",
+      "item": "r3",
+      "predecessor": "r1"
+    },
+    {
+      "transition": "T01",
+      "actor": "A",
+      "item": "r3"
+    },
+    {
+      "transition": "T02",
+      "actor": "U",
+      "item": "r3",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-APPROVE-r3",
+        "quote": "Zatwierdzam testowe r3."
+      }
+    },
+    {
+      "transition": "T04",
+      "actor": "U",
+      "item": "r3",
+      "evidence": {
+        "simulation": true,
+        "reference": "SIM-BASELINE-r3",
+        "quote": "Zapisz linię bazową testowego r3."
+      }
+    },
+    {
+      "transition": "W07",
+      "actor": "U",
+      "item": "r3",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-INCLUDE-R3",
+        "quote": "Włączam r3 jako następcę r1 do zakresu testowego wydania 1; r1 pozostaje w historii."
+      }
+    },
+    {
+      "transition": "T12",
+      "actor": "A",
+      "item": "a1",
+      "question": "q2"
+    },
+    {
+      "transition": "P01",
+      "actor": "A",
+      "question": "q2"
+    },
+    {
+      "transition": "P02",
+      "actor": "U",
+      "question": "q2",
+      "inputs": {
+        "unambiguous_answer": true,
+        "resolution": "approved"
+      },
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-q2",
+        "quote": "Zgoda testowa na otwarcie zmiany a1 v1 przez T05."
+      }
+    },
+    {
+      "transition": "T05",
+      "actor": "U",
+      "item": "a1",
+      "question": "q2"
+    },
+    {
+      "transition": "T14",
+      "actor": "A",
+      "item": "a1",
+      "old_dependency": "r1",
+      "new_dependency": "r3",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-AGENT-RELINK-a1",
+        "reference": "SIM-Przejrzane: a1, r1 -> r3"
+      }
+    },
+    {
+      "transition": "T01",
+      "actor": "A",
+      "item": "a1"
+    },
+    {
+      "transition": "T02",
+      "actor": "U",
+      "item": "a1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-APPROVE-a1",
+        "quote": "Zatwierdzam testowe a1."
+      }
+    },
+    {
+      "transition": "T04",
+      "actor": "U",
+      "item": "a1",
+      "evidence": {
+        "simulation": true,
+        "reference": "SIM-BASELINE-a1",
+        "quote": "Zapisz linię bazową testowego a1."
+      }
+    },
+    {
+      "transition": "T06",
+      "actor": "U",
+      "item": "d1"
+    },
+    {
+      "transition": "T14",
+      "actor": "A",
+      "item": "d1",
+      "old_dependency": "r1",
+      "new_dependency": "r3",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-AGENT-RELINK-d1",
+        "reference": "SIM-Przejrzane: d1, r1 -> r3"
+      }
+    },
+    {
+      "transition": "T13",
+      "actor": "A",
+      "item": "d1"
+    },
+    {
+      "transition": "T01",
+      "actor": "A",
+      "item": "d1"
+    },
+    {
+      "transition": "T04",
+      "actor": "U",
+      "item": "d1",
+      "evidence": {
+        "simulation": true,
+        "reference": "SIM-BASELINE-d1",
+        "quote": "Zapisz linię bazową testowego d1."
+      }
+    },
+    {
+      "transition": "T11",
+      "actor": "A",
+      "item": "c1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-AGENT-NO-IMPACT-C1",
+        "reference": "SIM-Przejrzane: c1, a1 v2, d1 v2; zachowanie kodu bez zmiany"
+      }
+    },
+    {
+      "transition": "W01",
+      "actor": "A"
+    },
+    {
+      "transition": "W02",
+      "actor": "R"
+    },
+    {
+      "transition": "W04",
+      "actor": "U",
+      "evidence": {
+        "simulation": true,
+        "quote": "Odbieram testowe wydanie 1 po zastąpieniu wymagania i ponownym przeglądzie."
+      }
+    }
+  ],
+  "expected_steps": 54,
+  "checkpoints": [
+    {
+      "after_step": 28,
+      "meaning": "reviewed; 7 produktów baselined; r3 none poza zakresem"
+    },
+    {
+      "after_step": 32,
+      "meaning": "r1 superseded, a1/d1/c1 suspect, wydanie in_preparation"
+    },
+    {
+      "after_step": 36,
+      "meaning": "r3 baselined v1, predecessor r1, poza zakresem"
+    },
+    {
+      "after_step": 37,
+      "meaning": "zakres 8 ID, w tym r1 i r3"
+    },
+    {
+      "after_step": 45,
+      "meaning": "a1 baselined v2, depends_on r3"
+    },
+    {
+      "after_step": 50,
+      "meaning": "d1 baselined v2, depends_on r3; c1 nadal suspect"
+    },
+    {
+      "after_step": 51,
+      "meaning": "c1 baselined v1, bez suspect, zależności a1/d1 niezmienione"
+    },
+    {
+      "after_step": 54,
+      "meaning": "wydanie 1 accepted po nowym W02; p1/r2/a2 bez zmian"
+    }
+  ],
+  "limits": {
+    "items": 8,
+    "questions": 2,
+    "max_used_version": 2,
+    "releases": 1
+  }
+}

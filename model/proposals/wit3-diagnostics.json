@@ -1,0 +1,109 @@
+{
+  "purpose": "diagnosis_only_not_WIT3_completion",
+  "model_version": 0.5,
+  "base_commit": "e5fc842b9447e53550aac73f229879bff9d2a850",
+  "python": "3.14.7",
+  "model_sha256": "68699ebc1c234fcfac9e45ee0914e227fc2631001c12244fd454772c56cafaf4",
+  "fixture_sha256": "29d2bce8024c668cca35abaeeb687541c008de3c49d7421ba204f3485f12ba6a",
+  "supersede_prefix_steps": 32,
+  "suffix_events": [
+    {
+      "transition": "P00",
+      "actor": "A",
+      "question": "q1",
+      "attributes": {
+        "kind": "change",
+        "about": "r1",
+        "requested_transition": "T07",
+        "blocking": true
+      }
+    },
+    {
+      "transition": "P01",
+      "actor": "A",
+      "question": "q1"
+    },
+    {
+      "transition": "P02",
+      "actor": "U",
+      "question": "q1",
+      "inputs": {
+        "unambiguous_answer": true,
+        "resolution": "approved"
+      },
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-WIT3-REPLACE",
+        "quote": "Zgoda testowa na zastąpienie r1 v1."
+      }
+    },
+    {
+      "transition": "T07",
+      "actor": "U",
+      "item": "r1",
+      "question": "q1"
+    }
+  ],
+  "affected": [
+    "a1",
+    "c1",
+    "d1"
+  ],
+  "release_after_supersede": "in_preparation",
+  "unchanged": [
+    "p1",
+    "r2",
+    "a2"
+  ],
+  "denied": {
+    "review_a1_with_superseded_dependency": "guard",
+    "ready_with_unresolved_impact": "guard",
+    "create_undeclared_successor": "input"
+  },
+  "S4_counterexample": {
+    "steps": 30,
+    "suffix": [
+      {
+        "transition": "T06",
+        "actor": "U",
+        "item": "d1"
+      },
+      {
+        "transition": "T11",
+        "actor": "A",
+        "item": "c1",
+        "evidence": {
+          "simulation": true,
+          "decision": "SIM-WIT3-REVIEW",
+          "reference": "SIM-Przejrzane-c1"
+        }
+      }
+    ],
+    "c1": {
+      "type": "CODE",
+      "depends_on": [
+        "d1",
+        "a1"
+      ],
+      "state": "baselined",
+      "version": 1,
+      "rejections": 0,
+      "suspect": false,
+      "id": "c1"
+    },
+    "d1": {
+      "type": "DES",
+      "depends_on": [
+        "r1"
+      ],
+      "state": "draft",
+      "version": 2,
+      "rejections": 0,
+      "suspect": false,
+      "id": "d1"
+    }
+  },
+  "candidate_T11_guard": "suspect and forall d in deps(e): d.state in {approved, baselined} and not d.suspect",
+  "candidate_blocks_counterexample": true,
+  "production_model_unchanged": true
+}

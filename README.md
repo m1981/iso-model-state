@@ -53,6 +53,10 @@ Starszy skrypt spójności E1: `uv run --locked python scripts/check_model.py`. 
 
 [Instrukcja i granice](examples/wit5/README.md) · [Raport WIT5](examples/wit5/report.md). WIT3 i pełne zakończenie E2 pozostają w planie.
 
+## Przygotowanie WIT3 — do decyzji
+
+[Propozycja następcy, powiązań i zakresu](model/proposals/wit3-replacement.md) zawiera plan 54 kroków oraz diagnostykę v0.5. Odtworzono również naruszenie S4 przez przedwczesny T11; korekta czeka na decyzję wraz z propozycją. Pełnego WIT3 jeszcze nie wykonano, a obowiązujący model pozostaje v0.5.
+
 ## Wizualizacja procesu i pakiety wdrożeniowe
 
 [Przewodnik po modelu v0.4 i wsparciu pakietów Aneksu E](informative/WIZUALIZACJA-2026-10-24.md) zawiera diagramy zależności produktów, życia elementu i kolejnych wydań oraz tabelę zakresu wsparcia dziewięciu pakietów. Materiał jest informacyjny.
