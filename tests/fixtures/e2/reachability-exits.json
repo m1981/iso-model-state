@@ -1,0 +1,39 @@
+{
+  "id": "E2-EXITS",
+  "simulation": true,
+  "description": "Osiągalne odłożenie, wznowienie i wycofanie od stanu początkowego.",
+  "inputs": {
+    "checks_ok": {
+      "p1": true,
+      "r1": true,
+      "r2": true,
+      "a1": true,
+      "a2": true,
+      "d1": true,
+      "c1": true
+    },
+    "tests_ok": true
+  },
+  "events": [
+    {
+      "transition": "T00",
+      "actor": "A",
+      "item": "a2"
+    },
+    {
+      "transition": "T09",
+      "actor": "U",
+      "item": "a2"
+    },
+    {
+      "transition": "T10",
+      "actor": "U",
+      "item": "a2"
+    },
+    {
+      "transition": "T08",
+      "actor": "U",
+      "item": "a2"
+    }
+  ]
+}

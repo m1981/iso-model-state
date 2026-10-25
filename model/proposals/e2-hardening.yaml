@@ -1,0 +1,17 @@
+status: proposed
+base_version: 0.6
+proposed_version: 0.7
+requires_user_decision: true
+# Dane eksperymentu; nie są czytane przez zwykłe wykonanie modelu.
+item_transitions:
+  T10:
+    effects: ["invalidate_release(e)"]
+release_transitions:
+  W01:
+    guard: "(forall e: in_scope(e) => (e.state in {baselined, deferred, superseded, withdrawn} and (e.state = baselined => not e.suspect))) and tests_ok and not exists q: q.blocking and q.state in {open, asked}"
+  W04:
+    guard: "not exists q: q.blocking and q.state in {open, asked}"
+append_post_step_effects:
+  - id: detect_new_suspect_before_acceptance
+    guard: "release.state in {ready, reviewed} and exists e in newly_suspect: in_scope(e)"
+    effects: ["release.state := in_preparation"]

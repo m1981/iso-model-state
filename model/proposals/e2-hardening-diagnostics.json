@@ -1,0 +1,679 @@
+{
+  "model_version": 0.6,
+  "model_sha256": "ec342e2d04d8200de32d2bbba963ecd4fc45014405b99653134f15e110ff4680",
+  "status": "requires_decision",
+  "cases": [
+    {
+      "id": "late_blocker",
+      "alternative_scope": false,
+      "scenario": {
+        "id": "late_blocker",
+        "simulation": true,
+        "description": "Sztuczna instancja; decyzje nie są decyzjami operatora tego repozytorium.",
+        "inputs": {
+          "checks_ok": {
+            "p1": true,
+            "r1": true,
+            "r2": true,
+            "a1": true,
+            "a2": true,
+            "d1": true,
+            "c1": true
+          },
+          "tests_ok": true
+        },
+        "events": [
+          {
+            "transition": "T00",
+            "actor": "A",
+            "item": "p1"
+          },
+          {
+            "transition": "T01",
+            "actor": "A",
+            "item": "p1"
+          },
+          {
+            "transition": "T02",
+            "actor": "U",
+            "item": "p1",
+            "evidence": {
+              "simulation": true,
+              "decision": "SIM-DEC-p1",
+              "quote": "Zatwierdzam p1 — cytat demonstracyjny."
+            }
+          },
+          {
+            "transition": "T04",
+            "actor": "U",
+            "item": "p1",
+            "evidence": {
+              "simulation": true,
+              "reference": "SIM-TAG-p1-v1",
+              "quote": "Utwórz linię bazową p1 — polecenie demonstracyjne."
+            }
+          },
+          {
+            "transition": "T00",
+            "actor": "A",
+            "item": "r1"
+          },
+          {
+            "transition": "T01",
+            "actor": "A",
+            "item": "r1"
+          },
+          {
+            "transition": "T02",
+            "actor": "U",
+            "item": "r1",
+            "evidence": {
+              "simulation": true,
+              "decision": "SIM-DEC-r1",
+              "quote": "Zatwierdzam r1 — cytat demonstracyjny."
+            }
+          },
+          {
+            "transition": "T04",
+            "actor": "U",
+            "item": "r1",
+            "evidence": {
+              "simulation": true,
+              "reference": "SIM-TAG-r1-v1",
+              "quote": "Utwórz linię bazową r1 — polecenie demonstracyjne."
+            }
+          },
+          {
+            "transition": "T00",
+            "actor": "A",
+            "item": "r2"
+          },
+          {
+            "transition": "T01",
+            "actor": "A",
+            "item": "r2"
+          },
+          {
+            "transition": "T02",
+            "actor": "U",
+            "item": "r2",
+            "evidence": {
+              "simulation": true,
+              "decision": "SIM-DEC-r2",
+              "quote": "Zatwierdzam r2 — cytat demonstracyjny."
+            }
+          },
+          {
+            "transition": "T04",
+            "actor": "U",
+            "item": "r2",
+            "evidence": {
+              "simulation": true,
+              "reference": "SIM-TAG-r2-v1",
+              "quote": "Utwórz linię bazową r2 — polecenie demonstracyjne."
+            }
+          },
+          {
+            "transition": "T00",
+            "actor": "A",
+            "item": "a1"
+          },
+          {
+            "transition": "T01",
+            "actor": "A",
+            "item": "a1"
+          },
+          {
+            "transition": "T02",
+            "actor": "U",
+            "item": "a1",
+            "evidence": {
+              "simulation": true,
+              "decision": "SIM-DEC-a1",
+              "quote": "Zatwierdzam a1 — cytat demonstracyjny."
+            }
+          },
+          {
+            "transition": "T04",
+            "actor": "U",
+            "item": "a1",
+            "evidence": {
+              "simulation": true,
+              "reference": "SIM-TAG-a1-v1",
+              "quote": "Utwórz linię bazową a1 — polecenie demonstracyjne."
+            }
+          },
+          {
+            "transition": "T00",
+            "actor": "A",
+            "item": "a2"
+          },
+          {
+            "transition": "T01",
+            "actor": "A",
+            "item": "a2"
+          },
+          {
+            "transition": "T02",
+            "actor": "U",
+            "item": "a2",
+            "evidence": {
+              "simulation": true,
+              "decision": "SIM-DEC-a2",
+              "quote": "Zatwierdzam a2 — cytat demonstracyjny."
+            }
+          },
+          {
+            "transition": "T04",
+            "actor": "U",
+            "item": "a2",
+            "evidence": {
+              "simulation": true,
+              "reference": "SIM-TAG-a2-v1",
+              "quote": "Utwórz linię bazową a2 — polecenie demonstracyjne."
+            }
+          },
+          {
+            "transition": "T00",
+            "actor": "A",
+            "item": "d1"
+          },
+          {
+            "transition": "T01",
+            "actor": "A",
+            "item": "d1"
+          },
+          {
+            "transition": "T04",
+            "actor": "U",
+            "item": "d1",
+            "evidence": {
+              "simulation": true,
+              "reference": "SIM-TAG-d1-v1",
+              "quote": "Utwórz linię bazową d1 — polecenie demonstracyjne."
+            }
+          },
+          {
+            "transition": "T00",
+            "actor": "A",
+            "item": "c1"
+          },
+          {
+            "transition": "T01",
+            "actor": "A",
+            "item": "c1"
+          },
+          {
+            "transition": "T04",
+            "actor": "U",
+            "item": "c1",
+            "evidence": {
+              "simulation": true,
+              "reference": "SIM-TAG-c1-v1",
+              "quote": "Utwórz linię bazową c1 — polecenie demonstracyjne."
+            }
+          },
+          {
+            "transition": "W01",
+            "actor": "A"
+          },
+          {
+            "transition": "W02",
+            "actor": "R"
+          },
+          {
+            "transition": "P00",
+            "actor": "R",
+            "question": "late",
+            "attributes": {
+              "blocking": true
+            }
+          },
+          {
+            "transition": "W04",
+            "actor": "U",
+            "evidence": {
+              "simulation": true,
+              "quote": "Odbieram wydanie testowe 1 — cytat demonstracyjny."
+            }
+          }
+        ]
+      },
+      "baseline": {
+        "outcome": "completed",
+        "steps": 30,
+        "last_code": null,
+        "release": "accepted",
+        "open_blocking": [
+          "late"
+        ],
+        "rejection_events": {},
+        "violations": []
+      },
+      "proposed": {
+        "outcome": "rejected",
+        "steps": 30,
+        "last_code": "guard",
+        "release": "reviewed",
+        "open_blocking": [
+          "late"
+        ],
+        "rejection_events": {},
+        "violations": []
+      }
+    },
+    {
+      "id": "rejection_budget",
+      "alternative_scope": false,
+      "scenario": {
+        "id": "rejection_budget",
+        "simulation": true,
+        "description": "Sztuczna instancja; decyzje nie są decyzjami operatora tego repozytorium.",
+        "inputs": {
+          "checks_ok": {
+            "p1": true,
+            "r1": true,
+            "r2": true,
+            "a1": true,
+            "a2": true,
+            "d1": true,
+            "c1": true
+          },
+          "tests_ok": true
+        },
+        "events": [
+          {
+            "transition": "T00",
+            "actor": "A",
+            "item": "p1"
+          },
+          {
+            "transition": "T01",
+            "actor": "A",
+            "item": "p1"
+          },
+          {
+            "transition": "T03",
+            "actor": "U",
+            "item": "p1"
+          },
+          {
+            "transition": "T01",
+            "actor": "A",
+            "item": "p1"
+          },
+          {
+            "transition": "T03",
+            "actor": "U",
+            "item": "p1"
+          },
+          {
+            "transition": "T09",
+            "actor": "U",
+            "item": "p1"
+          },
+          {
+            "transition": "T10",
+            "actor": "U",
+            "item": "p1"
+          },
+          {
+            "transition": "T01",
+            "actor": "A",
+            "item": "p1"
+          },
+          {
+            "transition": "T03",
+            "actor": "U",
+            "item": "p1"
+          }
+        ]
+      },
+      "baseline": {
+        "outcome": "completed",
+        "steps": 9,
+        "last_code": null,
+        "release": "in_preparation",
+        "open_blocking": [],
+        "rejection_events": {
+          "p1@1": 3
+        },
+        "violations": []
+      },
+      "proposed": {
+        "outcome": "rejected",
+        "steps": 9,
+        "last_code": "guard",
+        "release": "in_preparation",
+        "open_blocking": [],
+        "rejection_events": {
+          "p1@1": 2
+        },
+        "violations": []
+      }
+    },
+    {
+      "id": "external_scope_change",
+      "alternative_scope": true,
+      "scenario": {
+        "id": "external_scope_change",
+        "simulation": true,
+        "description": "Sztuczna instancja; decyzje nie są decyzjami operatora tego repozytorium.",
+        "inputs": {
+          "checks_ok": {
+            "p1": true,
+            "r1": true,
+            "r2": true,
+            "a1": true,
+            "a2": true,
+            "d1": true,
+            "c1": true
+          },
+          "tests_ok": true
+        },
+        "events": [
+          {
+            "transition": "T00",
+            "actor": "A",
+            "item": "p1"
+          },
+          {
+            "transition": "T01",
+            "actor": "A",
+            "item": "p1"
+          },
+          {
+            "transition": "T02",
+            "actor": "U",
+            "item": "p1",
+            "evidence": {
+              "simulation": true,
+              "decision": "SIM-DEC-p1",
+              "quote": "Zatwierdzam p1 — cytat demonstracyjny."
+            }
+          },
+          {
+            "transition": "T04",
+            "actor": "U",
+            "item": "p1",
+            "evidence": {
+              "simulation": true,
+              "reference": "SIM-TAG-p1-v1",
+              "quote": "Utwórz linię bazową p1 — polecenie demonstracyjne."
+            }
+          },
+          {
+            "transition": "T00",
+            "actor": "A",
+            "item": "r1"
+          },
+          {
+            "transition": "T01",
+            "actor": "A",
+            "item": "r1"
+          },
+          {
+            "transition": "T02",
+            "actor": "U",
+            "item": "r1",
+            "evidence": {
+              "simulation": true,
+              "decision": "SIM-DEC-r1",
+              "quote": "Zatwierdzam r1 — cytat demonstracyjny."
+            }
+          },
+          {
+            "transition": "T04",
+            "actor": "U",
+            "item": "r1",
+            "evidence": {
+              "simulation": true,
+              "reference": "SIM-TAG-r1-v1",
+              "quote": "Utwórz linię bazową r1 — polecenie demonstracyjne."
+            }
+          },
+          {
+            "transition": "T00",
+            "actor": "A",
+            "item": "r2"
+          },
+          {
+            "transition": "T01",
+            "actor": "A",
+            "item": "r2"
+          },
+          {
+            "transition": "T02",
+            "actor": "U",
+            "item": "r2",
+            "evidence": {
+              "simulation": true,
+              "decision": "SIM-DEC-r2",
+              "quote": "Zatwierdzam r2 — cytat demonstracyjny."
+            }
+          },
+          {
+            "transition": "T04",
+            "actor": "U",
+            "item": "r2",
+            "evidence": {
+              "simulation": true,
+              "reference": "SIM-TAG-r2-v1",
+              "quote": "Utwórz linię bazową r2 — polecenie demonstracyjne."
+            }
+          },
+          {
+            "transition": "T00",
+            "actor": "A",
+            "item": "a1"
+          },
+          {
+            "transition": "T01",
+            "actor": "A",
+            "item": "a1"
+          },
+          {
+            "transition": "T02",
+            "actor": "U",
+            "item": "a1",
+            "evidence": {
+              "simulation": true,
+              "decision": "SIM-DEC-a1",
+              "quote": "Zatwierdzam a1 — cytat demonstracyjny."
+            }
+          },
+          {
+            "transition": "T04",
+            "actor": "U",
+            "item": "a1",
+            "evidence": {
+              "simulation": true,
+              "reference": "SIM-TAG-a1-v1",
+              "quote": "Utwórz linię bazową a1 — polecenie demonstracyjne."
+            }
+          },
+          {
+            "transition": "T00",
+            "actor": "A",
+            "item": "a2"
+          },
+          {
+            "transition": "T01",
+            "actor": "A",
+            "item": "a2"
+          },
+          {
+            "transition": "T02",
+            "actor": "U",
+            "item": "a2",
+            "evidence": {
+              "simulation": true,
+              "decision": "SIM-DEC-a2",
+              "quote": "Zatwierdzam a2 — cytat demonstracyjny."
+            }
+          },
+          {
+            "transition": "T04",
+            "actor": "U",
+            "item": "a2",
+            "evidence": {
+              "simulation": true,
+              "reference": "SIM-TAG-a2-v1",
+              "quote": "Utwórz linię bazową a2 — polecenie demonstracyjne."
+            }
+          },
+          {
+            "transition": "T00",
+            "actor": "A",
+            "item": "d1"
+          },
+          {
+            "transition": "T01",
+            "actor": "A",
+            "item": "d1"
+          },
+          {
+            "transition": "T04",
+            "actor": "U",
+            "item": "d1",
+            "evidence": {
+              "simulation": true,
+              "reference": "SIM-TAG-d1-v1",
+              "quote": "Utwórz linię bazową d1 — polecenie demonstracyjne."
+            }
+          },
+          {
+            "transition": "T00",
+            "actor": "A",
+            "item": "c1"
+          },
+          {
+            "transition": "T01",
+            "actor": "A",
+            "item": "c1"
+          },
+          {
+            "transition": "T04",
+            "actor": "U",
+            "item": "c1",
+            "evidence": {
+              "simulation": true,
+              "reference": "SIM-TAG-c1-v1",
+              "quote": "Utwórz linię bazową c1 — polecenie demonstracyjne."
+            }
+          },
+          {
+            "transition": "W01",
+            "actor": "A"
+          },
+          {
+            "transition": "W02",
+            "actor": "R"
+          },
+          {
+            "transition": "P00",
+            "actor": "A",
+            "question": "q1",
+            "attributes": {
+              "kind": "change",
+              "about": "p1",
+              "requested_transition": "T05",
+              "blocking": true
+            }
+          },
+          {
+            "transition": "P01",
+            "actor": "A",
+            "question": "q1"
+          },
+          {
+            "transition": "P02",
+            "actor": "U",
+            "question": "q1",
+            "inputs": {
+              "unambiguous_answer": true,
+              "resolution": "approved"
+            },
+            "evidence": {
+              "simulation": true,
+              "decision": "SIM-E2",
+              "quote": "Zgoda testowa na T05 p1 v1."
+            }
+          },
+          {
+            "transition": "T05",
+            "actor": "U",
+            "item": "p1",
+            "question": "q1"
+          },
+          {
+            "transition": "W04",
+            "actor": "U",
+            "evidence": {
+              "simulation": true,
+              "quote": "Odbieram wydanie testowe 1 — cytat demonstracyjny."
+            }
+          }
+        ]
+      },
+      "baseline": {
+        "outcome": "completed",
+        "steps": 33,
+        "last_code": null,
+        "release": "accepted",
+        "open_blocking": [],
+        "rejection_events": {},
+        "violations": [
+          {
+            "property": "S7a",
+            "step": 32,
+            "detail": "Niekompletny zakres ready/reviewed"
+          },
+          {
+            "property": "S7b",
+            "step": 33,
+            "detail": "Niekompletny zakres przed odbiorem"
+          }
+        ]
+      },
+      "proposed": {
+        "outcome": "rejected",
+        "steps": 33,
+        "last_code": "state",
+        "release": "in_preparation",
+        "open_blocking": [],
+        "rejection_events": {},
+        "violations": []
+      }
+    }
+  ],
+  "empty_scope": {
+    "runtime_outcome": "error",
+    "runtime_code": "unsupported",
+    "predicate_only": [
+      {
+        "tests_ok": true,
+        "blocking": false,
+        "baseline": true,
+        "proposed": true
+      },
+      {
+        "tests_ok": false,
+        "blocking": false,
+        "baseline": true,
+        "proposed": false
+      },
+      {
+        "tests_ok": true,
+        "blocking": true,
+        "baseline": true,
+        "proposed": false
+      }
+    ]
+  },
+  "limitations": [
+    "Propozycja nie zmienia obowiązującego modelu.",
+    "Pusty zakres sprawdzono na predykacie; wykonawca nadal zwraca unsupported.",
+    "Alternatywny zakres nie jest świadkiem stałej test_instance v0.6."
+  ]
+}

@@ -29,7 +29,11 @@ Identyfikatory tego repozytorium mają prefiks `PRO`.
 
 Po korekcie DEC-PRO-006 usunięto wykazane wcześniej luki G3/G6: mutant G3 usuwa wszystkie wyjścia z `deferred`, a każde przejście ma adnotacje ISO, łącznie obejmujące 14 efektów PM/SI. Przyjęte uzasadnienie korekty zachowano w `model/proposals/e2-structure.yaml`; testy czytają model wiążący. Przyrost WIT1 dodaje wykonanie ścieżki, testy bramek i wybrane mutanty. Zielony wynik obecnego zestawu nie oznacza zakończenia E2; aktualny wynik jest w `docs/STAN.md`.
 
-`src/isomodel/` wczytuje model, sprawdza część strukturalną G0/G4, buduje projekcję grafu dla G1/G3, raport G5 i audyt adnotacji G6. Projekcja pomija warunki przejść, więc nie dowodzi osiągalności ani braku zakleszczeń całego systemu. Wykonawca interpretuje warunki i skutki potrzebne WIT1–WIT5; model v0.6 zachowuje zgodę na konkretną operację (DEC-PRO-008) i dodaje jawnego następcę, aktualizację zależności oraz zakresu (DEC-PRO-009). Pełne G2, pozostała semantyka, maszyna stanów Hypothesis oraz pełny raport mutacji pozostają do wykonania w E2. Hypothesis sprawdza obecnie powtórzone klucze YAML, kombinacje wejść weryfikacji CODE, kolejność pytań przy różnych priorytetach oraz kombinacje warunków zgody na zmianę i dojrzałości zależności w T11.
+`src/isomodel/` wczytuje model i wykonuje przyjęte przejścia, w tym uwagi W03/W05. Korpus ma świadków 28/28 przejść; niezależne wyrocznie S1–S13 badają WIT i generowane sekwencje Hypothesis. Projekcja grafu G1/G3 nie dowodzi całej osiągalności ani braku zakleszczeń. Pełne dowody czasowe pozostają w E3.
+
+**E2 nie jest jeszcze gotowe do odbioru.** Niezależny audyt wykazał obejście pytania blokującego i limitu odrzuceń, problem pustego zakresu oraz wpływu zmian spoza zakresu. [Raport E2](docs/E2-RAPORT.md) rozdziela wykonane sprawdzenia od tych luk. [Gotowa korekta v0.7](model/proposals/e2-hardening.md) czeka na decyzję; model nadal ma v0.6.
+
+`.venv/bin/python scripts/run_e2.py --output artifacts/e2` odtwarza raport i pełne dane. Oczekiwany kod wyjścia **1** oznacza brak gotowości do odbioru, **2** błąd przygotowania raportu. Testy diagnostyczne są zielone, gdy prawidłowo odtwarzają znaną lukę — nie są dowodem jej naprawy.
 
 Starszy skrypt spójności E1: `uv run --locked python scripts/check_model.py`. Wynik tego skryptu nie zastępuje testów E2 ani dowodów E3. Bieżące decyzje i punkt wznowienia: `docs/STAN.md`.
 

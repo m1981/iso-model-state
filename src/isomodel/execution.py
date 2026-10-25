@@ -1,6 +1,6 @@
 """Wykonanie instancji symulacyjnej; bez zapisu do repozytorium.
 
-Trace: WIT1, WIT2, WIT4, WIT5, S11, S1, S2, S3, S4, S7a, S7b, S8, S9, S10, L2, L4.
+Trace: G2, W03, W05, WIT1, WIT2, WIT3, WIT4, WIT5, S11, S1, S2, S3, S4, S7a, S7b, S8, S9, S10, L2, L4.
 """
 
 from copy import deepcopy
@@ -167,6 +167,12 @@ def _dependents(state, element):
 
 
 def _compile_effect(text, kind, model):
+    raised = re.fullmatch(r"(for each finding: )?([A-Za-z_][A-Za-z_0-9]*) raise \(blocking = (true|false)\)", text)
+    if raised and kind == "release":
+        definitions = [t for t in model["question_transitions"] if t["id"] == raised[2]]
+        if len(definitions) != 1 or definitions[0]["from"] != [model["question_variables"]["state"]["initial"]]:
+            raise UnsupportedSemantics("Skutek wydania wymaga reguły tworzenia pytania")
+        return ("raise_findings" if raised[1] else "raise_question", raised[2]), raised[3] == "true"
     if text == "invalidate_release(e)" and kind == "item":
         expected = "jeśli in_scope(e) i release.state in {ready, reviewed}: release.state := in_preparation; jeśli in_scope(e) i release.state = accepted: next_release_required := true, bez zmiany odebranego rekordu"
         if model["helper_effects"].get(text) != expected:
@@ -205,7 +211,8 @@ def _compile_effect(text, kind, model):
         path = ("item", target)
     elif kind == "question" and target in model["question_variables"] and target != "state":
         path = ("question", target)
-    elif kind == "release" and target in {"release.snapshot", "release.acceptance", "release.state", "release.scope"}:
+    elif (kind == "release" and target in {"release.snapshot", "release.acceptance", "release.state", "release.scope"}
+          or kind == "observer" and target == "release.state"):
         path = ("release", target.split(".")[1])
     elif kind == "observer" and target == "next_release_required":
         path = ("control", target)
@@ -256,6 +263,20 @@ def _apply_effects(effects, model, state, item, inputs, event, newly_suspect=(),
     for (kind, field), expression in effects:
         context = _context(model, state, item, inputs, newly_suspect, question, event["transition"], local, bindings)
         release = state["releases"][state["current_release"]]
+        if kind in {"raise_findings", "raise_question"}:
+            identifiers = event.get("findings") if kind == "raise_findings" else [event.get("question")]
+            if (not isinstance(identifiers, list)
+                    or any(not isinstance(i, str) or not i.strip() for i in identifiers)
+                    or len(set(identifiers)) != len(identifiers)
+                    or any(i in state["questions"] for i in identifiers)):
+                raise InputError("Uwagi wymagają listy nowych, niepustych ID pytań")
+            for ident in identifiers:
+                nested = execute_step(model, state, {"transition": field, "actor": event["actor"],
+                                      "question": ident, "attributes": {"blocking": expression}}, inputs)
+                # Wywołanie reguły P00 jest częścią atomowego kroku wydania.
+                state.update(nested["after"])
+                records.extend(nested["records"])
+            continue
         if kind == "record":
             evidence = event["evidence"]
             entry = {"kind": field, "id": evidence["decision"], "question": question["id"],
@@ -400,12 +421,14 @@ def execute_step(model, state, event, inputs):
         raise InputError("Nieznane lub niejednoznaczne przejście")
     kind, transition = matches[0]
     allowed_fields = {"transition", "actor", "item", "question", "attributes", "evidence", "inputs"} | set(transition.get("arguments", {}))
-    if set(event) - allowed_fields:
-        raise InputError("Nieznane pola zdarzenia dla tego przejścia")
     new_release = transition.get("target") == "new_release"
     # Wstępna kompilacja CAŁEGO kroku przed oceną warunku i zapisem.
     guard = compile_expression(transition["guard"], model)
     effects = [_compile_effect(text, kind, model) for text in transition["effects"]]
+    if any(path[0] == "raise_findings" for path, _ in effects):
+        allowed_fields.add("findings")
+    if set(event) - allowed_fields:
+        raise InputError("Nieznane pola zdarzenia dla tego przejścia")
     fields = _evidence_requirements(transition)
     observers = [(compile_expression(o["guard"], model),
                   [_compile_effect(text, "observer", model) for text in o["effects"]])
@@ -418,10 +441,11 @@ def execute_step(model, state, event, inputs):
     if not state["releases"][state["current_release"]]["scope"]:
         raise UnsupportedSemantics("Pusty zakres wydania jest poza przyrostem WIT1")
     creates_question = any(path[0] == "create_question" for path, _ in effects)
+    raises_question = any(path[0] == "raise_question" for path, _ in effects)
     uses_question = "authorized_change(" in transition["guard"] or any(path[0] == "question" for path, _ in effects)
     if kind != "question" and "attributes" in event:
         raise InputError("Atrybuty pytania poza zgłoszeniem P00")
-    if kind != "question" and "question" in event and not (kind == "item" and (uses_question or creates_question)):
+    if kind != "question" and "question" in event and not ((kind == "item" and (uses_question or creates_question)) or raises_question):
         raise InputError("Pytanie poza operacją korzystającą z pytania")
     bindings = _bind_arguments(transition, event, state)
     subject_question = None
