@@ -235,11 +235,11 @@ def test_evidence_denial_reports_already_evaluated_guard(model, scenario):
     assert result["steps"][-1]["guard_result"] is True
 
 
-def test_unsupported_change_is_reported_without_mutation(model, scenario):
+def test_change_without_question_is_reported_without_mutation(model, scenario):
     scenario["events"].append(event("T05", "U", "a2"))
     result = replay(model, scenario)
     assert result["outcome"] == "error"
-    assert result["steps"][-1]["code"] == "unsupported"
+    assert result["steps"][-1]["code"] == "input"
     assert result["steps"][-1]["before"] == result["final_state"]
 
 

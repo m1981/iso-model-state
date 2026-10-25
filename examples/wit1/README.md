@@ -1,6 +1,6 @@
 # WIT1 — wykonywalny przykład w E2
 
-To demonstracja i test integracyjny przyjętego modelu v0.4 na sztucznej instancji. Nie jest formalnym świadkiem wygenerowanym przez TLC ani odbiorem projektu. Opis procesu pozostaje w `model/process.yaml` i `docs/WLASCIWOSCI.md`.
+To demonstracja i test integracyjny na sztucznej instancji, pierwotnie dla modelu v0.4; zapisany raport odtworzono na v0.5. Nie jest formalnym świadkiem wygenerowanym przez TLC ani odbiorem projektu. Opis procesu pozostaje w `model/process.yaml` i `docs/WLASCIWOSCI.md`.
 
 ## Uruchomienie
 
@@ -56,6 +56,6 @@ Wynik: siedem elementów `baselined`, wersja 1, bez `suspect`; wydanie 1 `accept
 - Hypothesis generuje kombinacje stanów DES i AT, aktora, suspect oraz wyniku checks_ok dla T01(CODE), porównując wykonawcę z niezależnie zapisanym kryterium. To jeszcze nie pełna maszyna stanów S1–S10.
 - Siedem mutantów w `mutants/wit1_gates.json` dotyczy wybranych przypadków S1, S2, S3, S4, S7a, S7b i S8. Poprawny model odrzuca próbę, mutant przyjmuje ten sam krok. Zmiany istnieją wyłącznie w kopii modelu w pamięci.
 - Test polecenia uruchamia przykład dwukrotnie z innego katalogu, porównuje raporty i sprawdza niezmienność dokumentów oraz plików modelu.
-- Rozdzielenie kopii migawki jest testowane, lecz pełny S10 podczas zmian po odbiorze wymaga WIT5. WIT2/WIT4 mają już osobne wykonanie w E2. WIT5/WIT3, pełne G/S/L, mutacje wszystkich właściwości i dowód TLC pozostają w planie.
+- Rozdzielenie kopii migawki jest testowane; zmianę po odbiorze sprawdza także [WIT5](../wit5/README.md). WIT2/WIT4 mają osobne wykonanie w E2. WIT3, pełne G/S/L (w tym pełny dowód S10), mutacje wszystkich właściwości i dowód TLC pozostają w planie.
 
 Początkowy przebieg TDD: 50 nieprzechodzących przypadków, z błędem `NotImplementedError` wykonawcy. Zapis wyniku końcowego i punkt wznowienia: `docs/STAN.md`.

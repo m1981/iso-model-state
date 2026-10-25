@@ -1,0 +1,306 @@
+{
+  "id": "WIT5",
+  "simulation": true,
+  "description": "Zmiana a2 po odbiorze: konkretna zgoda, W06, drugi odbiór i niezmienność pierwszego.",
+  "inputs": {
+    "checks_ok": {
+      "p1": true,
+      "r1": true,
+      "r2": true,
+      "a1": true,
+      "a2": true,
+      "d1": true,
+      "c1": true
+    },
+    "tests_ok": true
+  },
+  "events": [
+    {
+      "transition": "T00",
+      "actor": "A",
+      "item": "p1"
+    },
+    {
+      "transition": "T01",
+      "actor": "A",
+      "item": "p1"
+    },
+    {
+      "transition": "T02",
+      "actor": "U",
+      "item": "p1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-p1",
+        "quote": "Zatwierdzam p1 — cytat demonstracyjny."
+      }
+    },
+    {
+      "transition": "T04",
+      "actor": "U",
+      "item": "p1",
+      "evidence": {
+        "simulation": true,
+        "reference": "SIM-TAG-p1-v1",
+        "quote": "Utwórz linię bazową p1 — polecenie demonstracyjne."
+      }
+    },
+    {
+      "transition": "T00",
+      "actor": "A",
+      "item": "r1"
+    },
+    {
+      "transition": "T01",
+      "actor": "A",
+      "item": "r1"
+    },
+    {
+      "transition": "T02",
+      "actor": "U",
+      "item": "r1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-r1",
+        "quote": "Zatwierdzam r1 — cytat demonstracyjny."
+      }
+    },
+    {
+      "transition": "T04",
+      "actor": "U",
+      "item": "r1",
+      "evidence": {
+        "simulation": true,
+        "reference": "SIM-TAG-r1-v1",
+        "quote": "Utwórz linię bazową r1 — polecenie demonstracyjne."
+      }
+    },
+    {
+      "transition": "T00",
+      "actor": "A",
+      "item": "r2"
+    },
+    {
+      "transition": "T01",
+      "actor": "A",
+      "item": "r2"
+    },
+    {
+      "transition": "T02",
+      "actor": "U",
+      "item": "r2",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-r2",
+        "quote": "Zatwierdzam r2 — cytat demonstracyjny."
+      }
+    },
+    {
+      "transition": "T04",
+      "actor": "U",
+      "item": "r2",
+      "evidence": {
+        "simulation": true,
+        "reference": "SIM-TAG-r2-v1",
+        "quote": "Utwórz linię bazową r2 — polecenie demonstracyjne."
+      }
+    },
+    {
+      "transition": "T00",
+      "actor": "A",
+      "item": "a1"
+    },
+    {
+      "transition": "T01",
+      "actor": "A",
+      "item": "a1"
+    },
+    {
+      "transition": "T02",
+      "actor": "U",
+      "item": "a1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-a1",
+        "quote": "Zatwierdzam a1 — cytat demonstracyjny."
+      }
+    },
+    {
+      "transition": "T04",
+      "actor": "U",
+      "item": "a1",
+      "evidence": {
+        "simulation": true,
+        "reference": "SIM-TAG-a1-v1",
+        "quote": "Utwórz linię bazową a1 — polecenie demonstracyjne."
+      }
+    },
+    {
+      "transition": "T00",
+      "actor": "A",
+      "item": "a2"
+    },
+    {
+      "transition": "T01",
+      "actor": "A",
+      "item": "a2"
+    },
+    {
+      "transition": "T02",
+      "actor": "U",
+      "item": "a2",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-a2",
+        "quote": "Zatwierdzam a2 — cytat demonstracyjny."
+      }
+    },
+    {
+      "transition": "T04",
+      "actor": "U",
+      "item": "a2",
+      "evidence": {
+        "simulation": true,
+        "reference": "SIM-TAG-a2-v1",
+        "quote": "Utwórz linię bazową a2 — polecenie demonstracyjne."
+      }
+    },
+    {
+      "transition": "T00",
+      "actor": "A",
+      "item": "d1"
+    },
+    {
+      "transition": "T01",
+      "actor": "A",
+      "item": "d1"
+    },
+    {
+      "transition": "T04",
+      "actor": "U",
+      "item": "d1",
+      "evidence": {
+        "simulation": true,
+        "reference": "SIM-TAG-d1-v1",
+        "quote": "Utwórz linię bazową d1 — polecenie demonstracyjne."
+      }
+    },
+    {
+      "transition": "T00",
+      "actor": "A",
+      "item": "c1"
+    },
+    {
+      "transition": "T01",
+      "actor": "A",
+      "item": "c1"
+    },
+    {
+      "transition": "T04",
+      "actor": "U",
+      "item": "c1",
+      "evidence": {
+        "simulation": true,
+        "reference": "SIM-TAG-c1-v1",
+        "quote": "Utwórz linię bazową c1 — polecenie demonstracyjne."
+      }
+    },
+    {
+      "transition": "W01",
+      "actor": "A"
+    },
+    {
+      "transition": "W02",
+      "actor": "R"
+    },
+    {
+      "transition": "W04",
+      "actor": "U",
+      "evidence": {
+        "simulation": true,
+        "quote": "Odbieram wydanie testowe 1 — cytat demonstracyjny."
+      }
+    },
+    {
+      "transition": "P00",
+      "actor": "A",
+      "question": "q1",
+      "attributes": {
+        "kind": "change",
+        "about": "a2",
+        "requested_transition": "T05",
+        "blocking": true
+      }
+    },
+    {
+      "transition": "P01",
+      "actor": "A",
+      "question": "q1"
+    },
+    {
+      "transition": "P02",
+      "actor": "U",
+      "question": "q1",
+      "inputs": {
+        "unambiguous_answer": true,
+        "resolution": "approved"
+      },
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-CHANGE-A2",
+        "quote": "Zgoda testowa na otwarcie zmiany a2 w wersji 1 przez T05."
+      }
+    },
+    {
+      "transition": "T05",
+      "actor": "U",
+      "item": "a2",
+      "question": "q1"
+    },
+    {
+      "transition": "W06",
+      "actor": "A"
+    },
+    {
+      "transition": "T01",
+      "actor": "A",
+      "item": "a2"
+    },
+    {
+      "transition": "T02",
+      "actor": "U",
+      "item": "a2",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-A2-V2",
+        "quote": "Zatwierdzam testowe a2 w wersji 2."
+      }
+    },
+    {
+      "transition": "T04",
+      "actor": "U",
+      "item": "a2",
+      "evidence": {
+        "simulation": true,
+        "reference": "SIM-TAG-A2-V2",
+        "quote": "Zapisz linię bazową testowego a2 w wersji 2."
+      }
+    },
+    {
+      "transition": "W01",
+      "actor": "A"
+    },
+    {
+      "transition": "W02",
+      "actor": "R"
+    },
+    {
+      "transition": "W04",
+      "actor": "U",
+      "evidence": {
+        "simulation": true,
+        "quote": "Odbieram testowe wydanie 2."
+      }
+    }
+  ]
+}

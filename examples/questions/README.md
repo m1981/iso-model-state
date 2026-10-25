@@ -53,7 +53,7 @@ Rozstrzygnięcie:
 - `unambiguous_answer` jest jawnym wejściem kroku P02. Dane zdarzenia nakładają się na bazowe inputs tylko dla tego zdarzenia. Nie są kopiowane do następnego kroku. Brak wartości lub tekst zamiast bool to błąd wejścia; false uniemożliwia P02. Wykonawca nie rozpoznaje sensu naturalnej wypowiedzi. P03 jest jawnym zdarzeniem wybranym przez autora scenariusza.
 - Skutek `record DEC with user quote` tworzy zapis w `step.records`; odtworzenie zbiera je w `result.records` z numerami kroków. To dziennik dowodów wykonania, nie nowa zmienna procesu ani dodatkowy automat (INT-004). Rekord zawiera ID demonstracyjne, ID pytania, cytat i simulation=true. Nie trafia do docs/STAN.md ani do rzeczywistych decyzji projektu.
 - Stan i dowody powstają atomowo na kopiach. Test wymusza błąd po przygotowaniu DEC i potwierdza, że ani DEC, ani resolved nie zostają zatwierdzone. Wyniki nie współdzielą zmiennych struktur z wejściami ani innymi raportami.
-- Nie dopisano kind/about do modelu ani kodu pytań. Są potrzebne do powiązania rozstrzygnięcia z elementem w T05/T12, czyli przed WIT5. Próba podania ich w tym przyroście kończy się błędem zamiast milczącego zignorowania.
+- Model v0.5 (DEC-PRO-008) dodaje kind/about i powiązanie zgody. Dotychczasowe pytania WIT4 mają kind=general; P02 zapisuje resolution=answered. Pytania change i wynik approved/rejected sprawdza [WIT5](../wit5/README.md).
 
 ## Weryfikacja i zakres dowodu
 
@@ -61,4 +61,4 @@ Pierwszy przebieg nowych kryteriów: 27 failed, 7 passed. WIT2 korzystał już z
 
 Dziewięć nowych mutantów: dwa WIT2 i siedem WIT4. Obejmują limit i rolę przy odrzucaniu, dwa jednoczesne asked, LIFO, rozstrzygnięcie niejednoznacznej odpowiedzi, odłożenie blokującego pytania, utratę age, nieuprawnione utworzenie DEC przez P03 oraz brak DEC po P02. Łącznie z WIT1 jest 16 wybranych mutantów wykonania; nie jest to pełne pokrycie mutacyjne E2.
 
-Hypothesis sprawdza kolejność obsługi przy kombinacjach blocking dla maksymalnie trzech pytań. To sprawdzenia skończonych przebiegów i warunków S9/L4; nie dowód żywotności L2 pod F1/F2. Pełna maszyna stanów, WIT5/WIT3, pozostałe mutanty i TLC pozostają w planie. Ograniczenie pustego zakresu wydania z WIT1 pozostaje jawne.
+Hypothesis sprawdza kolejność obsługi przy kombinacjach blocking dla maksymalnie trzech pytań. To sprawdzenia skończonych przebiegów i warunków S9/L4; nie dowód żywotności L2 pod F1/F2. WIT5 jest wykonany w kolejnym przyroście. Pełna maszyna stanów, WIT3, pozostałe mutanty i TLC pozostają w planie. Ograniczenie pustego zakresu wydania z WIT1 pozostaje jawne.

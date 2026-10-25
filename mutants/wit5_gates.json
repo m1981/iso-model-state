@@ -1,0 +1,315 @@
+[
+  {
+    "id": "s11_rejection_as_consent",
+    "property": "S11",
+    "prefix_steps": 31,
+    "setup_events": [
+      {
+        "transition": "P02",
+        "actor": "U",
+        "question": "q1",
+        "inputs": {
+          "unambiguous_answer": true,
+          "resolution": "rejected"
+        },
+        "evidence": {
+          "simulation": true,
+          "decision": "SIM-DEC-CHANGE-A2",
+          "quote": "Zgoda testowa na otwarcie zmiany a2 w wersji 1 przez T05."
+        }
+      }
+    ],
+    "attempt": {
+      "transition": "T05",
+      "actor": "U",
+      "item": "a2",
+      "question": "q1"
+    },
+    "expected_code": "guard",
+    "model_path": [
+      "question_semantics",
+      "authorized_change"
+    ],
+    "replacement": "q.state = resolved and q.kind = change and q.about = e.id and q.about_version = e.version and q.requested_transition = transition.id and not q.consumed"
+  },
+  {
+    "id": "s11_wrong_item",
+    "property": "S11",
+    "prefix_steps": 32,
+    "setup_events": [],
+    "attempt": {
+      "transition": "T05",
+      "actor": "U",
+      "item": "r1",
+      "question": "q1"
+    },
+    "expected_code": "guard",
+    "model_path": [
+      "question_semantics",
+      "authorized_change"
+    ],
+    "replacement": "q.state = resolved and q.kind = change and q.resolution = approved and q.about_version = e.version and q.requested_transition = transition.id and not q.consumed"
+  },
+  {
+    "id": "s11_wrong_operation",
+    "property": "S11",
+    "prefix_steps": 32,
+    "setup_events": [],
+    "attempt": {
+      "transition": "T07",
+      "actor": "U",
+      "item": "a2",
+      "question": "q1"
+    },
+    "expected_code": "guard",
+    "model_path": [
+      "question_semantics",
+      "authorized_change"
+    ],
+    "replacement": "q.state = resolved and q.kind = change and q.resolution = approved and q.about = e.id and q.about_version = e.version and not q.consumed"
+  },
+  {
+    "id": "s11_stale_unused_consent",
+    "property": "S11",
+    "prefix_steps": 32,
+    "setup_events": [
+      {
+        "transition": "P00",
+        "actor": "A",
+        "question": "q2",
+        "attributes": {
+          "kind": "change",
+          "about": "a2",
+          "requested_transition": "T05",
+          "blocking": true
+        }
+      },
+      {
+        "transition": "P01",
+        "actor": "A",
+        "question": "q2"
+      },
+      {
+        "transition": "P02",
+        "actor": "U",
+        "question": "q2",
+        "inputs": {
+          "unambiguous_answer": true,
+          "resolution": "approved"
+        },
+        "evidence": {
+          "simulation": true,
+          "decision": "SIM-DEC-CHANGE-A2",
+          "quote": "Zgoda testowa na otwarcie zmiany a2 w wersji 1 przez T05."
+        }
+      },
+      {
+        "transition": "T05",
+        "actor": "U",
+        "item": "a2",
+        "question": "q1"
+      },
+      {
+        "transition": "W06",
+        "actor": "A"
+      },
+      {
+        "transition": "T01",
+        "actor": "A",
+        "item": "a2"
+      },
+      {
+        "transition": "T02",
+        "actor": "U",
+        "item": "a2",
+        "evidence": {
+          "simulation": true,
+          "decision": "SIM-DEC-A2-V2",
+          "quote": "Zatwierdzam testowe a2 w wersji 2."
+        }
+      },
+      {
+        "transition": "T04",
+        "actor": "U",
+        "item": "a2",
+        "evidence": {
+          "simulation": true,
+          "reference": "SIM-TAG-A2-V2",
+          "quote": "Zapisz linię bazową testowego a2 w wersji 2."
+        }
+      }
+    ],
+    "attempt": {
+      "transition": "T05",
+      "actor": "U",
+      "item": "a2",
+      "question": "q2"
+    },
+    "expected_code": "guard",
+    "model_path": [
+      "question_semantics",
+      "authorized_change"
+    ],
+    "replacement": "q.state = resolved and q.kind = change and q.resolution = approved and q.about = e.id and q.requested_transition = transition.id and not q.consumed"
+  },
+  {
+    "id": "s11_missing_consumption",
+    "property": "S11",
+    "prefix_steps": 32,
+    "attempt": {
+      "transition": "T05",
+      "actor": "U",
+      "item": "a2",
+      "question": "q1"
+    },
+    "field": "effects",
+    "replacement": [
+      "version := version + 1",
+      "rejections := 0",
+      "suspect := false",
+      "forall d in dependents(e): d.suspect := true",
+      "invalidate_release(e)"
+    ],
+    "expected_path": [
+      "questions",
+      "q1",
+      "consumed"
+    ],
+    "expected_value": true
+  },
+  {
+    "id": "s10_w06_rewrites_accepted",
+    "property": "S10",
+    "prefix_steps": 33,
+    "attempt": {
+      "transition": "W06",
+      "actor": "A"
+    },
+    "field": "effects",
+    "replacement": [
+      "release.state := in_preparation",
+      "n := current_release",
+      "releases[n + 1] := {number: n + 1, state: in_preparation, scope: copy(releases[n].scope), snapshot: none, acceptance: none}",
+      "current_release := n + 1",
+      "next_release_required := false"
+    ],
+    "preserve_path": [
+      "releases",
+      1
+    ]
+  },
+  {
+    "id": "w06_wrong_actor",
+    "property": "WIT5",
+    "prefix_steps": 33,
+    "attempt": {
+      "transition": "W06",
+      "actor": "U"
+    },
+    "field": "actor",
+    "replacement": "U",
+    "expected_code": "actor"
+  },
+  {
+    "id": "s7a_t10_keeps_readiness",
+    "property": "S7a",
+    "prefix_steps": 17,
+    "setup_events": [
+      {
+        "transition": "T09",
+        "actor": "U",
+        "item": "a2"
+      },
+      {
+        "transition": "T00",
+        "actor": "A",
+        "item": "d1"
+      },
+      {
+        "transition": "T01",
+        "actor": "A",
+        "item": "d1"
+      },
+      {
+        "transition": "T04",
+        "actor": "U",
+        "item": "d1",
+        "evidence": {
+          "simulation": true,
+          "reference": "SIM-TAG-d1-v1",
+          "quote": "Utwórz linię bazową d1 — polecenie demonstracyjne."
+        }
+      },
+      {
+        "transition": "T00",
+        "actor": "A",
+        "item": "c1"
+      },
+      {
+        "transition": "T01",
+        "actor": "A",
+        "item": "c1"
+      },
+      {
+        "transition": "T04",
+        "actor": "U",
+        "item": "c1",
+        "evidence": {
+          "simulation": true,
+          "reference": "SIM-TAG-c1-v1",
+          "quote": "Utwórz linię bazową c1 — polecenie demonstracyjne."
+        }
+      },
+      {
+        "transition": "W01",
+        "actor": "A"
+      }
+    ],
+    "attempt": {
+      "transition": "T10",
+      "actor": "U",
+      "item": "a2"
+    },
+    "field": "effects",
+    "replacement": [
+      "rejections := 0"
+    ],
+    "expected_path": [
+      "releases",
+      1,
+      "state"
+    ],
+    "expected_value": "in_preparation"
+  },
+  {
+    "id": "s11_p03_changes_binding",
+    "property": "S11",
+    "prefix_steps": 31,
+    "attempt": {
+      "transition": "P03",
+      "actor": "U",
+      "question": "q1"
+    },
+    "field": "effects",
+    "replacement": [
+      "about := none"
+    ],
+    "preserve_path": [
+      "questions",
+      "q1",
+      "about"
+    ]
+  },
+  {
+    "id": "w06_without_change",
+    "property": "WIT5",
+    "prefix_steps": 29,
+    "attempt": {
+      "transition": "W06",
+      "actor": "A"
+    },
+    "field": "guard",
+    "replacement": "true",
+    "expected_code": "guard"
+  }
+]

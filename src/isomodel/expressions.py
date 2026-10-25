@@ -2,7 +2,7 @@
 
 Kwantyfikator wiąże wyrażenie do końca bieżącego nawiasu/tekstu.
 Całe drzewo jest sprawdzane przed oceną, także puste kwantyfikatory.
-Trace: WIT1, WIT2, WIT4, G0, S2, S4, S7a, S9, L2, L4.
+Trace: WIT1, WIT2, WIT4, WIT5, S11, G0, S2, S4, S7a, S9, L2, L4.
 """
 
 import re
@@ -18,9 +18,10 @@ class InputError(ModelError):
     """Brak lub błędny typ danych do wykonania reguły."""
 
 
-TOKEN = re.compile(r"\s*(=>|[(){}.,:=+<]|[A-Za-z_][A-Za-z_0-9]*|[0-9]+)")
+TOKEN = re.compile(r"\s*(=>|[(){}\[\].,:=+<]|[A-Za-z_][A-Za-z_0-9]*|[0-9]+)")
 FUNCTIONS = {"deps": 1, "type": 1, "checks_ok": 1, "in_scope": 1, "snapshot": 1,
-             "count": 1, "oldest": 2, "newest": 2}
+             "count": 1, "oldest": 2, "newest": 2, "copy": 1,
+             "authorized_change": 2, "answer_resolution": 1, "dependents": 1}
 
 
 class Parser:
@@ -114,6 +115,19 @@ class Parser:
             node = self.implies()
             self.take(")")
         elif token == "{":
+            if self.position + 1 < len(self.tokens) and self.tokens[self.position + 1] == ":":
+                fields = []
+                while True:
+                    key = self.take()
+                    self.take(":")
+                    fields.append((key, self.implies()))
+                    if self.peek() != ",":
+                        break
+                    self.take()
+                self.take("}")
+                if len({k for k, _ in fields}) != len(fields):
+                    raise UnsupportedSemantics("Powtórzone pole rekordu")
+                return ("record", tuple(fields))
             values = []
             if self.peek() != "}":
                 values.append(self.implies())
@@ -141,18 +155,23 @@ class Parser:
                 node = ("name", token)
         else:
             raise UnsupportedSemantics(f"Nieoczekiwany token: {token}")
-        while self.peek() == ".":
-            self.take()
-            node = ("attr", node, self.take())
+        while self.peek() in {".", "["}:
+            if self.take() == ".":
+                node = ("attr", node, self.take())
+            else:
+                node = ("index", node, self.implies())
+                self.take("]")
         return node
 
 
 def compile_expression(text, model):
     node = Parser(text).parse()
     names = {"e", "q", "release", "tests_ok", "unambiguous_answer", "blocking_first",
-             "newly_suspect", "all_items", "all_questions", "none"}
+             "newly_suspect", "all_items", "all_questions", "none", "n", "transition"}
     names |= set(model["parameters"]) | set(model["item_variables"]) | set(model["release_control_variables"])
     names |= set(model["question_variables"])
+    names |= {value for var in model["question_variables"].values() for value in var.get("values", [])}
+    names |= {t["id"] for kind in ("item", "question", "release") for t in model[f"{kind}_transitions"]}
     names |= set().union(*(model[f"{kind}_states"] for kind in ("item", "question", "release")))
     attributes = {"id", "type", "depends_on", "requires_approval"}
     attributes |= set().union(*(model[f"{kind}_variables"] for kind in ("item", "question", "release")))
@@ -178,6 +197,11 @@ def compile_expression(text, model):
             check(tree[1], available)
         elif op == "set":
             for child in tree[1]:
+                check(child, available)
+        elif op == "record":
+            for key, child in tree[1]:
+                if key not in model["release_variables"]:
+                    raise UnsupportedSemantics(f"Nieznane pole rekordu: {key}")
                 check(child, available)
         else:
             for child in tree[1:]:
@@ -208,6 +232,14 @@ def evaluate(node, environment, functions):
         return parent[node[2]]
     if op == "set":
         return {evaluate(child, environment, functions) for child in node[1]}
+    if op == "record":
+        return {key: evaluate(child, environment, functions) for key, child in node[1]}
+    if op == "index":
+        parent = evaluate(node[1], environment, functions)
+        index = evaluate(node[2], environment, functions)
+        if not isinstance(parent, dict) or type(index) is not int or index not in parent:
+            raise InputError("Nieznany indeks rekordu")
+        return parent[index]
     if op == "call":
         return functions[node[1]](*(evaluate(arg, environment, functions) for arg in node[2]))
     if op in {"forall", "exists"}:

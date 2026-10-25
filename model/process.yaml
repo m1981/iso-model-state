@@ -3,8 +3,8 @@
 # Identyfikatory po angielsku, w terminologii normy (DEC-PRO-002). Opisy (`description`) po polsku.
 
 model: iso29110-basic-process
-version: 0.4
-status: approved              # DEC-PRO-005/006: podstawa E2 z korektą G3/G6; nie oznacza dowodu G/S/L
+version: 0.5
+status: approved              # DEC-PRO-008: zgoda na konkretną zmianę; nie oznacza dowodu G/S/L
 
 notation:
   e: "element, którego dotyczy przejście"
@@ -20,7 +20,8 @@ notation:
   newly_suspect: "zbiór elementów, dla których suspect zmieniło się z false na true w danym kroku"
   checks_ok(e): "reguły śledzenia powiązań i testy elementu przechodzą (założone, nie modelowane)"
   tests_ok: "pełny przebieg testów przechodzi (założone, nie modelowane)"
-  resolved_question(e): "istnieje pytanie w stanie resolved, które dotyczy e"
+  authorized_change(q,e): "predykat question_semantics.authorized_change; q wskazane w zdarzeniu, transition to wykonywane przejście"
+  answer_resolution(q): "dla change jawny wynik approved/rejected z wejścia kroku; dla general answered; nie klasyfikuje tekstu"
   "x in S": "stan x należy do zbioru S"
 
 parameters:
@@ -119,8 +120,8 @@ item_transitions:
     from: [verified, approved, baselined]
     to: draft
     actor: U
-    guard: "resolved_question(e)"
-    effects: ["version := version + 1", "rejections := 0", "suspect := false", "forall d in dependents(e): d.suspect := true", "invalidate_release(e)"]
+    guard: "authorized_change(q,e)"
+    effects: ["q.consumed := true", "version := version + 1", "rejections := 0", "suspect := false", "forall d in dependents(e): d.suspect := true", "invalidate_release(e)"]
     iso: [PM.02.02, PM.02.03, PM.03.03, PM.03.04]
 
   - id: T06
@@ -138,8 +139,8 @@ item_transitions:
     from: [draft, verified, approved, baselined, deferred]
     to: superseded
     actor: U
-    guard: "resolved_question(e)"
-    effects: ["forall d in dependents(e): d.suspect := true", "invalidate_release(e)"]
+    guard: "authorized_change(q,e)"
+    effects: ["q.consumed := true", "forall d in dependents(e): d.suspect := true", "invalidate_release(e)"]
     iso: [PM.02.03, PM.03.04]
     description: "nowy element powstaje przez T00 z odwołaniem do e"
 
@@ -188,7 +189,7 @@ item_transitions:
     to: "="
     actor: A
     guard: "suspect"
-    effects: ["create question(kind = change, about = e, blocking = true)"]
+    effects: ["create question(kind = change, about = e.id, about_version = e.version, requested_transition = T05, blocking = true, resolution = none, consumed = false)"]
     iso: [PM.02.02, PM.03.03, PM.O3]
     description: "zmiana treści elementu zaakceptowanego idzie przez użytkownika (T05)"
 
@@ -217,6 +218,21 @@ question_variables:
   blocking: {type: bool, description: "pytanie blokuje wydanie"}
   age:      {type: int, description: "kolejność zgłoszenia; do reguły FIFO"}
 
+  kind: {type: enum, values: [general, change], initial: general}
+  about: {type: optional_item_id, initial: none}
+  about_version: {type: optional_int, initial: none}
+  requested_transition: {type: optional_transition_id, initial: none}
+  resolution: {type: enum, values: [none, approved, rejected, answered], initial: none}
+  consumed: {type: bool, initial: false}
+
+# DEC-PRO-008: formalny warunek czytany również przez wykonawcę.
+question_semantics:
+  change_operations: [T05, T07]
+  authorized_change: "q.state = resolved and q.kind = change and q.resolution = approved and q.about = e.id and q.about_version = e.version and q.requested_transition = transition.id and not q.consumed"
+  creation: "P00: general bez powiązania; change wymaga istniejącego about, operacji z change_operations i blocking=true; about_version pobierane z elementu przy zgłoszeniu; age=max(age)+1. T12 tworzy taki sam rekord open. ID nowego pytania dostarcza zdarzenie."
+  answer: "P02: change wymaga jawnego approved/rejected; general ma answered. Dowód DEC zachowuje wynik i powiązanie. Jednoznaczność i wynik odpowiedzi są danymi wejściowymi, nie analizą cytatu."
+  frame: "P01–P05 nie zmieniają kind/about/about_version/requested_transition/blocking/age; P03 nie tworzy DEC. T05/T07 atomowo ustawiają consumed=true ze zmianą produktu; błąd nie zużywa zgody."
+
 question_transitions:
   - id: P00
     name: raise
@@ -243,7 +259,7 @@ question_transitions:
     to: resolved
     actor: U
     guard: "unambiguous_answer"
-    effects: ["record DEC with user quote"]
+    effects: ["resolution := answer_resolution(q)", "record DEC with user quote"]
     iso: [PM.02.03, PM.03.04, PM.O4]
 
   - id: P03

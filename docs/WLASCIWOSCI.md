@@ -1,6 +1,6 @@
 # Właściwości modelu i Definition of Done
 
-Właściwości, które model `model/process.yaml` musi spełniać. Każda ma: zapis formalny, narzędzie, które ją sprawdza, i **mutanta**: celowo zepsuty model, na którym musi paść (DoD 6). Status `approved`: przyjęte jako podstawa E2 przez DEC-PRO-005 (2026-10-24). Korekta G3/G6 przyjęta przez DEC-PRO-006. Spełnienie właściwości wymaga jeszcze testów i dowodów.
+Właściwości, które model `model/process.yaml` musi spełniać. Każda ma: zapis formalny, narzędzie, które ją sprawdza, i **mutanta**: celowo zepsuty model, na którym musi paść (DoD 6). Status `approved`: przyjęte jako podstawa E2 przez DEC-PRO-005 (2026-10-24). Korekta G3/G6 przyjęta przez DEC-PRO-006. DEC-PRO-008 (2026-10-25) przyjmuje regułę zgody i S11. Spełnienie właściwości wymaga jeszcze testów i dowodów.
 
 Notacja: `G` zawsze, `F` kiedyś, `X` w następnym kroku, `O` kiedyś w przeszłości (LTL z przeszłością); `AG`, `EF`, `EX` z CTL. `e` to dowolny element, `q` dowolne pytanie, `rel` rekord wydania o ustalonym numerze `n`. `current ≡ releases[current_release]`; `pre` i `post` oznaczają stan przed i po kroku. Identyfikatory jak w modelu (DEC-PRO-002).
 
@@ -19,7 +19,7 @@ Semantyka wielu wydań (DEC-PRO-003, INT-017): W04 utrwala własną kopię zakre
 |---|---|---|
 | 1 | Zamknięty słownik: każdy typ, stan, zmienna, przejście, aktor i warunek jest w `process.yaml`; każdy stan wskazuje stan Tabeli 12 normy albo INT | test G0 przechodzi |
 | 2 | Struktura: G1–G6 | testy pytest przechodzą |
-| 3 | Bezpieczeństwo: S1–S10, z S7a i S7b zamiast S7 | Hypothesis (E2) i TLC (E3) bez naruszeń |
+| 3 | Bezpieczeństwo: S1–S11, z S7a i S7b zamiast S7 | Hypothesis (E2) i TLC (E3) bez naruszeń |
 | 4 | Żywotność: L1–L5 przy założeniach F1–F3 | TLC z warunkami sprawiedliwości bez naruszeń |
 | 5 | Dowód w granicach `test_instance` z uzasadnieniem granic | OBS: wersja TLC, liczba stanów, czas |
 | 6 | Każda właściwość ma mutanta, na którym pada | raport mutacji: 100% zabitych |
@@ -57,6 +57,7 @@ G6 sprawdza jawne powiązania zapisane w polach `iso`, w tym PM.O1–PM.O7 i SI.
 | S8 | **Niezależność weryfikacji wydania.** Odbiór tylko po przeglądzie R tego samego wydania | dla każdego istniejącego numeru `n`: `G(releases[n].state = accepted => O(releases[n].state = reviewed))` | W04 z `from: [ready]` |
 | S9 | **Jedna decyzja naraz** | `G(count(q.state = asked) <= 1)` | P01 bez warunku `count(asked) = 0` |
 | S10 | **Niezmienność odebranego wydania.** Nie zmieniają się stan, numer, zakres, migawka ani protokół | dla każdego kroku i numeru `n` istniejącego w `pre`: `pre.releases[n].state = accepted => (n in post.releases and post.releases[n] = pre.releases[n])` | W06 nadpisuje odebrany rekord stanem `in_preparation` zamiast utworzyć rekord `n + 1`; wariant mutanta: migawka współdzieli zmienne elementy i zmienia się po T05 |
+| S11 | **Zgoda na konkretną operację** | każdy krok T05/T07: `pre.authorized_change(q,e)` oraz `post.q.consumed = true`; P01–P05 zachowują powiązanie kind/about/about_version/requested_transition i consumed | usunięcie kolejno wymogu approved, zgodności elementu, wersji, operacji, niewykorzystania lub skutku consumed=true; P03 zmienia powiązanie |
 
 S7 v0.2 jest zastąpione przez S7a i S7b (DEC-PRO-003). S7b ocenia produkty w chwili podpisu; S10 chroni wynik tego podpisu także wtedy, gdy produkty robocze zostały już zmienione. Nie wymagamy, aby dzisiejszy stan produktów nadal odpowiadał każdej historycznej dostawie.
 
@@ -90,12 +91,12 @@ Narzędzie wygeneruje je w E3 jako konkretne ciągi kroków na `test_instance`. 
 | WIT2 | Odrzucenie i eskalacja | r1 odrzucone 2 razy; przy trzeciej propozycji U musi zatwierdzić, wycofać albo odłożyć |
 | WIT3 | Zmiana w trakcie pracy | wydanie `reviewed`; U zastępuje r1; a1, d1, c1 podejrzane; wydanie wraca do `in_preparation`; agent przegląda, zgłasza zmianę a1; dalej do odbioru |
 | WIT4 | Odpowiedź niejednoznaczna | pytanie `asked`, odpowiedź niejednoznaczna, pytanie wraca do kolejki jako najstarsze i jest zadane ponownie przed nowszymi |
-| WIT5 | Zmiana po odbiorze | wydanie 1 `accepted`; U zmienia a2 przez T05; znacznik wymusza W06 wykonywane przez A; wydanie 2 przechodzi weryfikację, przegląd R i odbiór U; wydanie 1 pozostaje identyczne |
+| WIT5 | Zmiana po odbiorze | wydanie 1 `accepted`; U udziela zgody na a2 v1 / T05 i wykonuje T05; znacznik wymusza W06 wykonywane przez A; wydanie 2 przechodzi weryfikację, przegląd R i odbiór U; wydanie 1 pozostaje identyczne |
 
 ### WIT5 — przebieg do przeglądu E1
 
 1. WIT1 kończy się W04 dla wydania 1: zakres to siedem ID z `test_instance.release_scope`, a wszystkie elementy są `baselined`; migawka zawiera a2 w wersji 1.
-2. P00 → P01 → P02: użytkownik jednoznacznie rozstrzyga pytanie o zmianę a2. T05 na a2 ustawia `draft`, wersję 2 oraz `next_release_required = true`. Rekord wydania 1 nadal ma stan `accepted` i niezmienioną migawkę a2 w wersji 1; `done = false`.
+2. P00 → P01 → P02: użytkownik udziela zgody approved na T05 dla a2 w wersji 1; pytanie ma kind=change i blocking=true. T05 wskazuje to pytanie, sprawdza authorized_change i atomowo oznacza consumed=true (S11). T05 na a2 ustawia `draft`, wersję 2 oraz `next_release_required = true`. Rekord wydania 1 nadal ma stan `accepted` i niezmienioną migawkę a2 w wersji 1; `done = false`.
 3. Następnym krokiem jest W06 (A): powstaje rekord wydania 2 z kopią zakresu, stanem `in_preparation`, bez migawki i protokołu; znacznik zostaje skasowany. T05 nie zmieniło r2, od którego zależy a2; r2 nadal jest `baselined`.
 4. T01(a2), T02(a2), T04(a2): a2 w wersji 2 zostaje zweryfikowane, zatwierdzone i włączone do linii bazowej. Przy przechodzących testach W01 → W02(R) → W04(U) kończą wydanie 2.
 5. Oba rekordy mają `accepted`, lecz osobne migawki: a2 w wersji 1 i a2 w wersji 2. `current_release = 2`, `done = true`. Przebieg mieści się w limitach: 2 wydania, 2 wersje a2 i 1 pytanie o zmianę.

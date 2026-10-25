@@ -1,7 +1,7 @@
 """Sprawdzenie spójności danych E1; nie jest symulatorem ani dowodem G/S/L.
 
 Uruchomienie: uv run --with pyyaml python scripts/check_model.py
-Trace: DEC-PRO-003–007, G0 (część strukturalna).
+Trace: DEC-PRO-003–008, G0 (część strukturalna).
 """
 
 import re
@@ -120,10 +120,10 @@ def main():
     plan = (root / "PLAN.md").read_text()
     property_ids = re.findall(r"^\| ((?:G|S|L|F)\d+[ab]?|WIT\d+) \|", properties, re.M)
     check(len(property_ids) == len(set(property_ids)), "Powtórzone ID właściwości lub świadków")
-    for ident in ("S7a", "S7b", "S10", "WIT5"):
+    for ident in ("S7a", "S7b", "S10", "S11", "WIT5"):
         check(ident in property_ids, f"Brak definicji {ident}")
     check("S7" not in property_ids, "Stare S7 nadal jest aktywną definicją")
-    for ident in ("S7a", "S7b", "S10"):
+    for ident in ("S7a", "S7b", "S10", "S11"):
         row = next((line for line in properties.splitlines() if line.startswith(f"| {ident} |")), "")
         check(len(row.split("|")) == 6 and bool(row.split("|")[-2].strip()), f"{ident}: brak mutanta")
     interpretation_ids = set(re.findall(r"^\| (INT-\d+) \|", interpretations, re.M))
@@ -131,20 +131,30 @@ def main():
         refs = set(re.findall(r"\bINT-\d+\b", (root / path).read_text()))
         check(refs <= interpretation_ids, f"{path}: nieznana interpretacja {refs - interpretation_ids}")
     check("WIT1–WIT5" in plan and "S7a" in plan and "S7b" in plan, "Plan nie uwzględnia zmienionych właściwości")
-    for ident, quote in (("DEC-PRO-003", "„d1 a”"), ("DEC-PRO-004", "„Tak, uwzględnij T10”"), ("DEC-PRO-005", "„przyjmuje”"), ("DEC-PRO-006", "„d1 tak.”"), ("DEC-PRO-007", "„d1 tak”")):
+    for ident, quote in (("DEC-PRO-003", "„d1 a”"), ("DEC-PRO-004", "„Tak, uwzględnij T10”"), ("DEC-PRO-005", "„przyjmuje”"), ("DEC-PRO-006", "„d1 tak.”"), ("DEC-PRO-007", "„d1 tak”"), ("DEC-PRO-008", "„D1 tak.”")):
         decision = next((line for line in state.splitlines() if line.startswith(f"| {ident} |")), "")
         cells = [cell.strip() for cell in decision.split("|")[1:-1]]
         check(len(cells) == 5, f"{ident}: brak kolumn Zmienia i Przejrzane")
         if len(cells) == 5:
-            check("2026-10-24" in cells[2] and quote in cells[2], f"{ident}: błędna data lub cytat")
+            date = "2026-10-25" if ident == "DEC-PRO-008" else "2026-10-24"
+            check(date in cells[2] and quote in cells[2], f"{ident}: błędna data lub cytat")
             changed = set(re.findall(r"`([^`]+)`", cells[3]))
             reviewed = set(re.findall(r"`([^`]+)`", cells[4]))
             check(bool(changed) and changed <= reviewed, f"{ident}: nieprzejrzane elementy zmiany: {changed - reviewed}")
 
+    check(model["version"] == 0.5, "DEC-PRO-008: oczekiwany model v0.5")
+    for name in ("kind", "about", "about_version", "requested_transition", "resolution", "consumed"):
+        check(name in model["question_variables"], f"Brak pola zgody: {name}")
+    for ident in ("T05", "T07"):
+        check(transitions[ident]["guard"] == "authorized_change(q,e)", f"{ident}: brak konkretnej zgody")
+        check("q.consumed := true" in transitions[ident]["effects"], f"{ident}: brak wykorzystania zgody")
+    check("resolution := answer_resolution(q)" in transitions["P02"]["effects"], "P02: brak wyniku odpowiedzi")
+    check(set(model["question_semantics"]["change_operations"]) == {"T05", "T07"}, "Niepoprawny zakres zgody")
+
     if errors:
         raise SystemExit("NIESPÓJNOŚĆ:\n- " + "\n- ".join(errors))
     print(f"OK: {checks} sprawdzeń spójności, {len(transitions)} przejść, {len(items)} elementów, 2 wydania.")
-    print("Zakres: struktura YAML, odwołania i zapis DEC-PRO-003–007. Bez symulacji i dowodu właściwości G/S/L (E2/E3).")
+    print("Zakres: struktura YAML, odwołania i zapis DEC-PRO-003–008. Bez symulacji i dowodu właściwości G/S/L (E2/E3).")
 
 
 if __name__ == "__main__":

@@ -102,7 +102,10 @@ def test_question_creation_initializes_declared_variables(model, actor):
     state = initial_state(model)
     step = execute_step(model, state, raise_question("q1", False, actor), {})
     assert state["questions"] == {}
-    assert step["after"]["questions"]["q1"] == {"id": "q1", "state": "open", "blocking": False, "age": 1}
+    assert step["after"]["questions"]["q1"] == {
+        "id": "q1", "state": "open", "blocking": False, "age": 1,
+        "kind": "general", "about": "none", "about_version": "none",
+        "requested_transition": "none", "resolution": "none", "consumed": False}
     assert step["records"] == []
 
 

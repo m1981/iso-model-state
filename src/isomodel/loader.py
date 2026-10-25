@@ -35,7 +35,7 @@ UniqueKeyLoader.add_constructor(yaml.resolver.BaseResolver.DEFAULT_MAPPING_TAG, 
 KINDS = ("item", "question", "release")
 SECTIONS = {
     "model", "version", "status", "notation", "parameters", "actors", "item_types",
-    "release_control_variables", "release_semantics", "helper_effects", "post_step_effects", "test_instance",
+    "release_control_variables", "release_semantics", "question_semantics", "helper_effects", "post_step_effects", "test_instance",
 } | {f"{kind}_{suffix}" for kind in KINDS for suffix in ("states", "variables", "transitions")}
 
 

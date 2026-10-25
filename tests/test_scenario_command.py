@@ -13,7 +13,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 
 
-@pytest.mark.parametrize("name,steps,mutants,records", [("WIT2", 33, 2, 0), ("WIT4", 13, 7, 3)])
+@pytest.mark.parametrize("name,steps,mutants,records", [("WIT2", 33, 2, 0), ("WIT4", 13, 7, 3), ("WIT5", 40, 10, 1)])
 def test_new_scenario_command(tmp_path, name, steps, mutants, records):
     protected = [*ROOT.glob("*.md"), *ROOT.glob("docs/*.md"), *ROOT.glob("model/**/*.yaml")]
     before = {str(path): path.read_bytes() for path in protected}

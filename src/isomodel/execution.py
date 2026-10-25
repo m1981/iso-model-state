@@ -1,6 +1,6 @@
 """Wykonanie instancji symulacyjnej; bez zapisu do repozytorium.
 
-Trace: WIT1, WIT2, WIT4, S1, S2, S3, S4, S7a, S7b, S8, S9, S10, L2, L4.
+Trace: WIT1, WIT2, WIT4, WIT5, S11, S1, S2, S3, S4, S7a, S7b, S8, S9, S10, L2, L4.
 """
 
 from copy import deepcopy
@@ -61,10 +61,13 @@ def initial_state(model):
     return state
 
 
-def _context(model, state, item, inputs, newly_suspect=(), question=None):
+def _context(model, state, item, inputs, newly_suspect=(), question=None, transition=None, local=None):
     release = state["releases"][state["current_release"]]
     environment = {s: s for kind in ("item", "question", "release") for s in model[f"{kind}_states"]}
     environment.update(model["parameters"])
+    environment.update({v: v for var in model["question_variables"].values() for v in var.get("values", [])})
+    environment.update({t["id"]: t["id"] for kind in ("item", "question", "release") for t in model[f"{kind}_transitions"]})
+    environment["transition"] = {"id": transition}
     environment.update({k: state[k] for k in model["release_control_variables"]})
     environment.update({"none": "none", "release": release, "blocking_first": "blocking_first",
                         "all_items": list(state["items"].values()),
@@ -77,8 +80,10 @@ def _context(model, state, item, inputs, newly_suspect=(), question=None):
         environment.update(item)
         environment["e"] = item
     if question is not None:
-        environment.update(question)
+        if item is None:
+            environment.update(question)
         environment["q"] = question
+    environment.update(local or {})
 
     def checks_ok(element):
         checks = inputs.get("checks_ok", {})
@@ -97,7 +102,27 @@ def _context(model, state, item, inputs, newly_suspect=(), question=None):
         # Age jest kolejnością zgłoszenia, nie czasem spędzonym w stanie open.
         return min(candidates, key=lambda q: (not q["blocking"], -q["age"] if newest else q["age"]), default=None)
 
+    def authorized_change(q, element):
+        expression = model["question_semantics"]["authorized_change"]
+        if "authorized_change" in expression:
+            raise UnsupportedSemantics("Rekurencyjna definicja zgody")
+        return evaluate(compile_expression(expression, model), environment | {"q": q, "e": element}, functions)
+
+    def answer_resolution(q):
+        answer = inputs.get("resolution")
+        if q["kind"] == "general":
+            if answer is not None and answer != "answered":
+                raise InputError("Pytanie general dopuszcza tylko answered")
+            return "answered"
+        if q["kind"] != "change" or answer not in ("approved", "rejected"):
+            raise InputError("Pytanie change wymaga wyniku approved albo rejected")
+        return answer
+
     functions = {
+        "authorized_change": authorized_change,
+        "answer_resolution": answer_resolution,
+        "copy": deepcopy,
+        "dependents": lambda element: _dependents(state, element),
         "deps": lambda element: [state["items"][ident] for ident in element["depends_on"]],
         "type": lambda element: model["item_types"][element["type"]],
         "in_scope": lambda element: element["id"] in release["scope"],
@@ -110,18 +135,58 @@ def _context(model, state, item, inputs, newly_suspect=(), question=None):
     return environment, functions
 
 
+def _dependents(state, element):
+    reached = {element["id"]}
+    pending = [element["id"]]
+    while pending:
+        dependency = pending.pop()
+        for ident, candidate in state["items"].items():
+            if ident not in reached and dependency in candidate["depends_on"]:
+                reached.add(ident)
+                pending.append(ident)
+    return [candidate for ident, candidate in state["items"].items() if ident in reached and ident != element["id"]]
+
+
 def _compile_effect(text, kind, model):
+    if text == "invalidate_release(e)" and kind == "item":
+        expected = "jeśli in_scope(e) i release.state in {ready, reviewed}: release.state := in_preparation; jeśli in_scope(e) i release.state = accepted: next_release_required := true, bez zmiany odebranego rekordu"
+        if model["helper_effects"].get(text) != expected:
+            raise UnsupportedSemantics("Nieobsługiwana definicja invalidate_release")
+        return ("invalidate", None), None
+    if text.startswith("forall d in dependents(e): ") and kind == "item":
+        match = re.fullmatch(r"forall d in dependents\(e\): d\.([a-z_]+) := (.+)", text)
+        if not match or match[1] not in model["item_variables"] or match[1] == "state":
+            raise UnsupportedSemantics("Nieobsługiwany skutek dla zależnych")
+        return ("dependents", match[1]), compile_expression(match[2], model)
+    if text.startswith("create question(") and text.endswith(")") and kind == "item":
+        fields = {}
+        for entry in text[len("create question("):-1].split(","):
+            match = re.fullmatch(r"\s*([a-z_]+) = (.+)", entry)
+            if not match or match[1] not in model["question_variables"] or match[1] in fields:
+                raise UnsupportedSemantics("Nieznane/powtórzone pole tworzonego pytania")
+            fields[match[1]] = compile_expression(match[2], model)
+        return ("create_question", None), fields
+    history = re.fullmatch(r"releases\[(.+)\] := (.+)", text)
+    if history and kind == "release":
+        return ("history", compile_expression(history[1], model)), compile_expression(history[2], model)
+
     if text == "record DEC with user quote" and kind == "question":
         return ("record", "decision"), None
     match = re.fullmatch(r"([a-z_]+(?:\.[a-z_]+)?)\s*:=\s*(.+)", text)
     if match is None:
         raise UnsupportedSemantics(f"Nieobsługiwany skutek: {text}")
     target, expression = match.groups()
-    if kind == "item" and target in model["item_variables"] and target != "state":
+    if target.startswith("q.") and kind in {"item", "question"} and target[2:] in model["question_variables"] and target != "q.state":
+        path = ("question", target[2:])
+    elif kind == "release" and target == "n":
+        path = ("local", "n")
+    elif kind == "release" and target in {"current_release", "next_release_required"}:
+        path = ("control", target)
+    elif kind == "item" and target in model["item_variables"] and target != "state":
         path = ("item", target)
     elif kind == "question" and target in model["question_variables"] and target != "state":
         path = ("question", target)
-    elif kind == "release" and target in {"release.snapshot", "release.acceptance"}:
+    elif kind == "release" and target in {"release.snapshot", "release.acceptance", "release.state"}:
         path = ("release", target.split(".")[1])
     elif kind == "observer" and target == "next_release_required":
         path = ("control", target)
@@ -141,6 +206,8 @@ def _evidence_requirements(transition):
         fields |= {"decision", "quote"}
     elif description == "commit lub tag na polecenie użytkownika":
         fields |= {"reference", "quote"}
+    elif description == "wpis w kolumnie Przejrzane decyzji, która wywołała zmianę; decyzja agenta do podważenia":
+        fields |= {"decision", "reference"}
     elif description is not None:
         raise UnsupportedSemantics(f"Nieobsługiwany rodzaj dowodu: {description}")
     if any("record acceptance with release.number and user quote" in effect for effect in transition["effects"]):
@@ -164,18 +231,58 @@ def _check_evidence(event, fields):
 
 
 def _apply_effects(effects, model, state, item, inputs, event, newly_suspect=(), question=None, records=None):
+    local = {}
     for (kind, field), expression in effects:
+        context = _context(model, state, item, inputs, newly_suspect, question, event["transition"], local)
+        release = state["releases"][state["current_release"]]
         if kind == "record":
             evidence = event["evidence"]
-            records.append({"kind": field, "id": evidence["decision"], "question": question["id"],
-                            "quote": evidence["quote"], "simulation": True})
+            entry = {"kind": field, "id": evidence["decision"], "question": question["id"],
+                     "quote": evidence["quote"], "simulation": True}
+            entry.update({key: deepcopy(question[key]) for key in ("resolution", "about", "about_version", "requested_transition")})
+            records.append(entry)
             continue
-        release = state["releases"][state["current_release"]]
+        if kind == "invalidate":
+            if item["id"] in release["scope"]:
+                if release["state"] in {"ready", "reviewed"}:
+                    release["state"] = "in_preparation"
+                elif release["state"] == "accepted":
+                    state["next_release_required"] = True
+            continue
+        if kind == "dependents":
+            for dependent in _dependents(state, item):
+                dependent[field] = deepcopy(evaluate(expression, *context))
+            continue
+        if kind == "create_question":
+            values = {key: evaluate(value, *context) for key, value in expression.items()}
+            ident = event.get("question")
+            if not isinstance(ident, str) or not ident.strip() or ident in state["questions"]:
+                raise InputError("Tworzenie pytania wymaga nowego, niepustego ID")
+            attributes = {key: value for key, value in values.items() if key in {"kind", "about", "requested_transition", "blocking"}}
+            created = _question_subject(model, state, {"question": ident, "attributes": attributes},
+                                        {"from": [model["question_variables"]["state"]["initial"]]})
+            # Pozostałe pola tworzone przez skutek muszą zgadzać się z inicjalizacją.
+            if any(created[key] != value for key, value in values.items()):
+                raise InputError("Niespójna inicjalizacja pytania przez skutek")
+            created["state"] = "open"
+            state["questions"][ident] = created
+            continue
         if expression is None:
             value = {"number": release["number"], "quote": event["evidence"]["quote"]}
         else:
-            value = evaluate(expression, *_context(model, state, item, inputs, newly_suspect, question))
-        target = {"item": item, "question": question, "release": release, "control": state}[kind]
+            value = evaluate(expression, *context)
+        if kind == "history":
+            index = evaluate(field, *context)
+            if type(index) is not int or index < 1 or index in state["releases"]:
+                raise InputError("Nowy rekord wymaga wolnego dodatniego numeru")
+            if not isinstance(value, dict) or set(value) != set(model["release_variables"]) or value["number"] != index:
+                raise InputError("Niekompletny lub niespójny rekord wydania")
+            value = {k: None if v == "none" else v for k, v in value.items()}
+            state["releases"][index] = deepcopy(value)
+            continue
+        target = {"item": item, "question": question, "release": release, "control": state, "local": local}[kind]
+        if target is None:
+            raise InputError("Skutek wymaga wskazania pytania lub elementu")
         target[field] = deepcopy(value)
 
 
@@ -198,8 +305,8 @@ def _question_subject(model, state, event, transition):
     if initial not in transition["from"]:
         raise InputError("Nieznane pytanie; wymagane wcześniejsze zgłoszenie")
     attributes = event.get("attributes", {})
-    if not isinstance(attributes, dict) or set(attributes) - {"blocking"}:
-        raise InputError("Nowe pytanie przyjmuje wyłącznie atrybut blocking")
+    if not isinstance(attributes, dict) or set(attributes) - {"blocking", "kind", "about", "requested_transition"}:
+        raise InputError("Nieznane atrybuty nowego pytania")
     result = {"id": ident}
     for name, variable in model["question_variables"].items():
         if "initial" in variable:
@@ -212,6 +319,19 @@ def _question_subject(model, state, event, transition):
             result[name] = boolean(attributes[name])
         else:
             raise UnsupportedSemantics(f"Brak inicjalizacji pytania: {name}")
+    result["kind"] = attributes.get("kind", result["kind"])
+    if result["kind"] not in model["question_variables"]["kind"]["values"]:
+        raise InputError("Nieznany rodzaj pytania")
+    if result["kind"] == "change":
+        about = attributes.get("about")
+        operation = attributes.get("requested_transition")
+        if not isinstance(about, str) or about not in state["items"] or state["items"][about]["state"] == "none":
+            raise InputError("Wniosek o zmianę wymaga istniejącego elementu")
+        if operation not in model["question_semantics"]["change_operations"] or result["blocking"] is not True:
+            raise InputError("Wniosek o zmianę wymaga obsługiwanej operacji i blocking=true")
+        result.update(about=about, about_version=state["items"][about]["version"], requested_transition=operation)
+    elif "about" in attributes or "requested_transition" in attributes:
+        raise InputError("Pytanie general nie przyjmuje powiązania")
     return result
 
 
@@ -234,7 +354,7 @@ def execute_step(model, state, event, inputs):
         raise InputError("Niepoprawne lub nieznane pola zdarzenia")
     step_inputs = event.get("inputs", {})
     for values in (inputs, step_inputs):
-        if not isinstance(values, dict) or set(values) - {"checks_ok", "tests_ok", "unambiguous_answer"}:
+        if not isinstance(values, dict) or set(values) - {"checks_ok", "tests_ok", "unambiguous_answer", "resolution"}:
             raise InputError("Niepoprawne lub nieznane dane wejściowe")
     inputs = inputs | step_inputs  # Dane odpowiedzi nie przechodzą do następnego zdarzenia.
     matches = [(kind, t) for kind in ("item", "question", "release")
@@ -242,8 +362,7 @@ def execute_step(model, state, event, inputs):
     if len(matches) != 1:
         raise InputError("Nieznane lub niejednoznaczne przejście")
     kind, transition = matches[0]
-    if transition.get("target") == "new_release":
-        raise UnsupportedSemantics("Otwieranie kolejnych wydań pozostaje poza obecnym przyrostem")
+    new_release = transition.get("target") == "new_release"
     # Wstępna kompilacja CAŁEGO kroku przed oceną warunku i zapisem.
     guard = compile_expression(transition["guard"], model)
     effects = [_compile_effect(text, kind, model) for text in transition["effects"]]
@@ -254,12 +373,16 @@ def execute_step(model, state, event, inputs):
     actors = transition["actor"]
     if event.get("actor") not in ([actors] if isinstance(actors, str) else actors):
         raise StepRejected("actor", "Aktor nie jest uprawniony do tego przejścia")
-    if state["next_release_required"]:
+    if state["next_release_required"] and not new_release:
         raise StepRejected("pending_release", "Najpierw wymagane otwarcie następnego wydania")
     if not state["releases"][state["current_release"]]["scope"]:
         raise UnsupportedSemantics("Pusty zakres wydania jest poza przyrostem WIT1")
-    if kind != "question" and ("question" in event or "attributes" in event):
-        raise InputError("Atrybuty pytania poza przejściem pytań")
+    creates_question = any(path[0] == "create_question" for path, _ in effects)
+    uses_question = "authorized_change(" in transition["guard"] or any(path[0] == "question" for path, _ in effects)
+    if kind != "question" and "attributes" in event:
+        raise InputError("Atrybuty pytania poza zgłoszeniem P00")
+    if kind != "question" and "question" in event and not (kind == "item" and (uses_question or creates_question)):
+        raise InputError("Pytanie poza operacją korzystającą z pytania")
     subject_question = None
     if kind == "question":
         if "item" in event:
@@ -272,6 +395,11 @@ def execute_step(model, state, event, inputs):
             raise InputError("Brak lub nieznany element")
         item = state["items"][event["item"]]
         subject = item
+        if uses_question:
+            ident = event.get("question")
+            if not isinstance(ident, str) or ident not in state["questions"]:
+                raise InputError("Operacja wymaga wskazania istniejącej zgody")
+            subject_question = state["questions"][ident]
     else:
         if "item" in event:
             raise InputError("Przejście wydania nie przyjmuje elementu")
@@ -279,7 +407,7 @@ def execute_step(model, state, event, inputs):
         subject = state["releases"][state["current_release"]]
     if subject["state"] not in transition["from"]:
         raise StepRejected("state", f"Przejście niedozwolone ze stanu {subject['state']}")
-    if not boolean(evaluate(guard, *_context(model, state, item, inputs, question=subject_question))):
+    if not boolean(evaluate(guard, *_context(model, state, item, inputs, question=subject_question, transition=transition["id"]))):
         raise StepRejected("guard", "Warunek przejścia niespełniony", False)
     _check_evidence(event, fields)
     candidate = deepcopy(state)
@@ -288,9 +416,11 @@ def execute_step(model, state, event, inputs):
     if kind == "question":
         candidate["questions"][event["question"]] = deepcopy(subject_question)
         target_question = candidate["questions"][event["question"]]
+    elif subject_question is not None:
+        target_question = candidate["questions"][subject_question["id"]]
     target = {"item": target_item, "question": target_question,
               "release": candidate["releases"][candidate["current_release"]]}[kind]
-    if transition["to"] != "=":
+    if transition["to"] != "=" and not new_release:
         target["state"] = transition["to"]
     records = []
     _apply_effects(effects, model, candidate, target_item, inputs, event, question=target_question, records=records)

@@ -8,10 +8,10 @@ Wyniki kontroli i jednoznaczność odpowiedzi są danymi wejściowymi tych krok�
 
 ## Tożsamość wejść i wykonawcy
 
-- Model: v0.4; SHA-256 danych: `2c207324149fcb51d5586526823466202f7a8c0fa3d20d5ce205c7125bb86242`.
+- Model: v0.5; SHA-256 danych: `68699ebc1c234fcfac9e45ee0914e227fc2631001c12244fd454772c56cafaf4`.
 - Scenariusz SHA-256: `be7b118fa3c78f0685c6a4cc47998eaf420ba0261b67c5c86ad83b30dad89bb1`.
 - python: `3.14.7`.
-- source_sha256: `7e32c7a1277d32b4468be21949884058fe10152478b33dd5c6dab7b2aa498874`.
+- source_sha256: `933917e91ccf3d98df57ff5954941872a1772222000664622ac56b3a03bb7d04`.
 - uv_lock_sha256: `027a3da0a1f3fbd763d5b9b7c8a8a71229b35202efe60d3d97e4e60f4ce9897a`.
 - mutants_sha256: `47ffaef89a6e7970279663bfa75dc729a6a4b12df62653315892b095c4470955`.
 
@@ -65,7 +65,7 @@ Każdą próbę rozpoczyna odtworzenie poprawnego prefiksu. Model bazowy spełni
 | wit4_lifo | L2 | guard | applied | True |
 | wit4_ambiguous_resolution | WIT4 | guard | applied | True |
 | wit4_defer_blocking | WIT4 | guard | applied | True |
-| wit4_lost_age | WIT4 | questions.q1.age=1 | questions.q1.age=11 | True |
+| wit4_lost_age | WIT4 | preserved=True | preserved=False | True |
 | wit4_ambiguous_decision | WIT4 | records=0 | records=1 | True |
 | wit4_missing_decision | WIT4 | records=1 | records=0 | True |
 
@@ -91,6 +91,12 @@ Bieżące wydanie: 1, `in_preparation`. `next_release_required = false`.
 | q2 | resolved | true | 2 |
 | q3 | resolved | false | 3 |
 
+| Pytanie | Rodzaj | Element / wersja | Operacja | Rozstrzygnięcie | Wykorzystana |
+|---|---|---|---|---|---|
+| q1 | general | none / none | none | answered | False |
+| q2 | general | none / none | none | answered | False |
+| q3 | general | none / none | none | answered | False |
+
 ## Utworzone decyzje demonstracyjne
 
 Zapisy pochodzą ze skutku `record DEC with user quote`; kolumna «Nowe DEC pytań» pokazuje, w którym kroku powstały. Cytat przy P03 jest dowodem odpowiedzi niejednoznacznej, bez utworzenia DEC. Cytowane zatwierdzenia produktów i protokół odbioru mają osobne dowody.
@@ -103,4 +109,4 @@ Zapisy pochodzą ze skutku `record DEC with user quote`; kolumna «Nowe DEC pyta
 
 ## Granice wyniku
 
-Wykonano podaną ścieżkę WIT4 w E2. Nie wygenerowano świadka przez TLC, nie udowodniono wszystkich G/S/L i nie zakończono E2. Obsługa zmian produktów i kolejnych wydań pozostaje przed nami. Weryfikacja roli R w symulacji nie jest niezależnym przeglądem implementacji.
+Wykonano podaną ścieżkę WIT4 w E2. Nie wygenerowano świadka przez TLC, nie udowodniono wszystkich G/S/L i nie zakończono E2. Pozostają WIT3, pełne pokrycie reguł i zastosowanie na rzeczywistym projekcie. Weryfikacja roli R w symulacji nie jest niezależnym przeglądem implementacji.

@@ -1,18 +1,22 @@
 # Stan prac
 
-Nadpisywany na końcu każdej sesji. Zaktualizowano: 2026-10-24, karta celu przyjęta przez DEC-PRO-007; przygotowana propozycja zgody na konkretną zmianę przed WIT5. Obowiązuje model v0.4, wykonane WIT1/WIT2/WIT4, 151 testów w ostatniej weryfikacji wykonawcy.
+Nadpisywany na końcu każdej sesji. Zaktualizowano: 2026-10-25. DEC-PRO-008 przyjmuje regułę zgody; model v0.5 i WIT5 wykonane. 197 testów przechodzi, 357 sprawdzeń spójności OK. E2 nadal trwa.
 
 ## Gdzie jesteśmy
 
-- **Etap:** E2 w toku. Model v0.3 przyjęty przez DEC-PRO-005; korekta v0.4 przyjęta przez DEC-PRO-006. Nie ma oczekującej decyzji o G3/G6.
+- **Etap:** E2 w toku. Model v0.3 przyjęty przez DEC-PRO-005; korekta v0.4 przyjęta przez DEC-PRO-006, a v0.5 przez DEC-PRO-008. Karta celu i reguła zgody są przyjęte; nie ma oczekującej decyzji w tych sprawach.
 - **Ostatnio zrobione:**
+  - DEC-PRO-008: wynik approved/rejected, powiązanie zgody z elementem, wersją i T05/T07, atomowe consumed; pytania general pozostają zgodne z WIT4;
+  - WIT5: 40 kroków, a2 zmienia się z v1 na v2, dwa odebrane wydania; cały rekord wydania 1 jest identyczny po każdym późniejszym kroku;
+  - dodano 46 przypadków testowych (197 łącznie); 10 mutantów WIT5 wykrytych (26 wybranych mutantów w raportach wykonania) i osobny test mutanta usuwającego warunek consumed;
+  - odtworzono WIT1/WIT2/WIT4/WIT5 na v0.5; zapisane raporty w examples/, pełne odtwarzalne ślady JSON w ignorowanym artifacts/;
   - zapisano DEC-PRO-007 z cytatem „d1 tak”: karta celu i zakresu jest dokumentem zamiaru w `docs/KARTA-CELU-I-ZAKRESU.md`; plan E2–E5 i DoD zachowano;
-  - przygotowano niewiążącą propozycję `model/proposals/change-authorization.md`: pozytywna zgoda na jeden element, wersję i operację, z atomowym oznaczeniem wykorzystania; model v0.4 nie został zmieniony;
+  - wcześniejszą propozycję `model/proposals/change-authorization.md` zastosowano przez DEC-PRO-008; zachowano ją jako uzasadnienie modelu v0.5;
   - na prośbę „napisz do pliku karte celu i zekresu” zapisano `informative/KARTA-CELU-I-ZAKRESU-2026-10-24.md`: propozycję celu użytkowego, zakresu pierwszego zastosowania, rezultatów, kryteriów sukcesu i związku z E2–E5;
   - wykonano następny przyrost WIT2/WIT4 na polecenie użytkownika „commit i wykonaj nastepny przyrost”; WIT1 był już zapisany i wypchnięty jako 2b830e0;
   - WIT2: 33 kroki, dwa odrzucenia r1 w wersji 1, blokada trzeciego odrzucenia w osobnej próbie, następnie zatwierdzenie i odbiór wydania testowego;
   - WIT4: 13 kroków P00–P05, zachowanie FIFO i pierwszeństwa blokujących, odpowiedź niejednoznaczna bez DEC, trzy rozstrzygnięcia z demonstracyjnymi DEC, odłożenie i wznowienie;
-  - 151 testów przechodzi, 9 nowych mutantów wykrytych (łącznie 16 wybranych mutantów wykonania); instrukcja i raporty: `examples/questions/README.md`, `wit2-report.md`, `wit4-report.md`;
+  - przy zakończeniu przyrostu WIT2/WIT4 przechodziło 151 testów, 9 nowych mutantów wykrytych (łącznie 16 wybranych mutantów wykonania); instrukcja i raporty: `examples/questions/README.md`, `wit2-report.md`, `wit4-report.md`;
   - wykonano WIT1 na przyjętym modelu v0.4: 7 elementów, 29 kroków, wydanie 1 accepted z odrębną migawką i protokołem demonstracyjnym;
   - dodano interpreter wyrażeń, atomowy wykonawca, odtworzenie scenariusza i raport; odrzucony krok nie zmienia stanu;
   - przyrost WIT1 miał 108 testów i siedem wykrytych mutantów bramek; pozostaje zielony w obecnym zestawie;
@@ -22,7 +26,7 @@ Nadpisywany na końcu każdej sesji. Zaktualizowano: 2026-10-24, karta celu przy
   - wcześniejszy przyrost strukturalny miał 31 testów, w tym dwa uprzednio czerwone kryteria G3/G6; są częścią obecnego zestawu;
   - na prośbę użytkownika przygotowano informacyjny przewodnik, trzy diagramy SVG/PNG i mapowanie wsparcia dziewięciu pakietów Aneksu E: `informative/WIZUALIZACJA-2026-10-24.md`;
   - diagramy generuje `scripts/render_process.py` z YAML przez dostępny Graphviz; nie jest to symulator.
-- **Następny krok:** decyzja użytkownika o gotowej propozycji `model/proposals/change-authorization.md`. Po akceptacji zaktualizować model i dokumenty zależne, potem testy i wykonawca WIT5. Zgoda na kartę celu nie jest zgodą na tę zmianę semantyki. WIT3 oraz dalsze G/S i mutanty pozostają w planie; E2 nadal trwa.
+- **Następny krok (agent):** przygotować WIT3 — zastąpienie/wycofanie elementu i skutki dla zależności. Najpierw rozstrzygnąć w analizie, jak obecny model reprezentuje nowy element oraz zmianę depends_on; brak tych operacji zgłosić jako konkretną propozycję do decyzji, bez dopisywania semantyki w kodzie. Dalej pozostałe G/S, maszyna stanów i mutanty E2, potem E3–E5. Bieżący przyrost nie jest odbiorem E2 ani formalnym dowodem WIT5 z E3.
 
 ## Bramka E1
 
@@ -35,13 +39,13 @@ Przyjęta przez DEC-PRO-005. Korekta G3/G6 zatwierdzona przez DEC-PRO-006 nie zm
 - Plan E2–E5, E3/TLC i dotychczasowy DoD zachowano. Akceptacja celu nie udziela dostępu do historii vcs-lite ani nie odbiera żadnego etapu. Historyczna propozycja w informative/ pozostaje bez zmian; indeks wskazuje nowy dokument wiążący.
 - Włączono kartę do PLAN.md, listy dokumentów zamiaru, kolejności czytania w PROMPT-STARTOWY.md, README i reguły pierwszeństwa informative/. Ze skopiowanej karty usunięto wyłącznie nieaktualny status propozycji i punkt wznowienia; jej zakres i kryteria zachowano.
 
-## Propozycja zgody na zmianę — do decyzji przed WIT5
+## Zgoda na konkretną zmianę — wdrożona przez DEC-PRO-008
 
-- Gotowy opis: model/proposals/change-authorization.md, status proposed, podstawa v0.4, docelowo v0.5 po osobnej decyzji.
-- Problem użytkowy: samo resolved nie oznacza odpowiedzi „tak”. Brakuje też jawnego powiązania zgody z elementem, wersją i rodzajem operacji oraz śladu jej użycia. T12 używa niezadeklarowanych kind/about; T05/T07 używają resolved_question(e).
-- Rekomendacja: pytanie change wskazuje about, about_version i requested_transition; P02 zapisuje approved/rejected, pytanie general wynik answered. T05/T07 wymagają wskazanej, pozytywnej i niewykorzystanej zgody pasującej do elementu, wersji i operacji; sukces oznacza consumed=true atomowo ze zmianą produktu. Błąd nie zużywa zgody. Operator nie odpowiada ponownie na to samo pytanie przy wykonaniu już zatwierdzonej operacji.
-- Propozycja zawiera schemat pól, zachowanie P00/P02/P03/T12/T05/T07, formalny warunek, kandydaturę S11, przypadki kontrolne i mutanty oraz listę wpływu. Nie jest jeszcze zastosowana w modelu ani kodzie. T06/T08–T10 zachowują dotychczasowe bramki U.
-- Przygotowanie i przegląd propozycji należą do agenta; przyjęcie polityki do użytkownika. Powód decyzji: doprecyzowanie luki i zmiana przyjętej semantyki, zgodnie z kontraktem współpracy §2.1 i §2.3.
+- Źródłem reguł jest model/process.yaml v0.5; uzasadnienie zachowano w model/proposals/change-authorization.md. Instrukcja i wynik: examples/wit5/README.md oraz report.md.
+- P00/T12 tworzą pytanie change związane z elementem, wersją i operacją. P02 zapisuje approved/rejected; pytania general mają answered. T05/T07 wymagają wskazanej, pasującej, pozytywnej i niewykorzystanej zgody. Stan consumed zmienia się atomowo z produktem; błąd lub granica badania nie zużywają zgody.
+- Nie ma kolejnego pytania o wykonanie już zatwierdzonej operacji. T06/T08–T10 zachowują dotychczasowe bramki U. Zgoda dotyczy operacji otwarcia zmiany lub zastąpienia, nie treści przyszłej poprawki.
+- WIT5 wykonuje zmianę po odbiorze, obowiązkowe W06 i odbiór wydania 2, zachowując identyczny rekord wydania 1. Sprawdzono także T10 przed/po odbiorze oraz wpływ zmiany spoza zakresu przez suspect.
+- Pochodzenie luki: przegląd reguł i przygotowanie WIT5 ujawniły, że resolved nie rozróżnia zgody i odmowy oraz brakuje powiązania. Nie wykrył jej zakończony przebieg WIT1/WIT2/WIT4. Nowe testy i mutanty potwierdzają skutki usunięcia zabezpieczeń oraz działanie korekty.
 
 ## Decyzje
 
@@ -54,32 +58,32 @@ Przyjęta przez DEC-PRO-005. Korekta G3/G6 zatwierdzona przez DEC-PRO-006 nie zm
 | DEC-PRO-005 | Przyjęcie modelu v0.3 i właściwości jako podstawy E2; zatwierdzenie INT-001–INT-016 i opisów WIT1–WIT5. Nie stanowi dowodu G/S/L ani odbioru całego projektu. | Użytkownik 2026-10-24: „przyjmuje” | `model/process.yaml`: status; `docs/WLASCIWOSCI.md`: status; `docs/INTERPRETACJE.md`: status INT-001–INT-016; `PLAN.md`: stan etapów; `docs/STAN.md`: zamknięcie bramki E1; `PROMPT-STARTOWY.md`: gałąź pobierana ze stanu prac. | `model/process.yaml`, `docs/WLASCIWOSCI.md`, `docs/INTERPRETACJE.md`, `PLAN.md`, `docs/STAN.md`, `PROMPT-STARTOWY.md`, `docs/WSPOLPRACA.md`; treść modelu i właściwości bez zmiany. |
 | DEC-PRO-006 | Przyjąć korektę G3/G6 jako model v0.4: uzupełnić jawne adnotacje ISO bez zmiany zachowania procesu; mutant G3 usuwa T07/T08/T10. G6 jest indeksem powiązań, nie dowodem realizacji wszystkich składowych efektów normy. | Użytkownik 2026-10-24: „d1 tak.” | `model/process.yaml`: wersja i iso; `model/proposals/e2-structure.yaml`: status zastosowania; `docs/WLASCIWOSCI.md`: G3/G6; `docs/INTERPRETACJE.md`: odniesienie do decyzji; `mutants/g3_missing_resume.yaml`, `mutants/g3_missing_deferred_exits.yaml`: zastąpienie mutanta; `tests/test_model_contract.py`, `tests/test_structure_proposal.py`: kryteria przyjętej korekty; `scripts/check_model.py`; `README.md`; `docs/STAN.md`. | `model/process.yaml`, `model/proposals/e2-structure.yaml`, `docs/WLASCIWOSCI.md`, `docs/INTERPRETACJE.md`, `mutants/g3_missing_resume.yaml`, `mutants/g3_missing_deferred_exits.yaml`, `tests/test_model_contract.py`, `tests/test_structure_proposal.py`, `scripts/check_model.py`, `README.md`, `docs/STAN.md`; ponadto G0–G6, S1–S10, L1–L5, WIT1–WIT5 i PLAN.md; nie zmieniono from/to/actor/guard/effects. |
 | DEC-PRO-007 | Przyjąć zapisaną kartę celu i zakresu jako cel użytkowy projektu i włączyć ją do dokumentów zamiaru, z zachowaniem obecnego planu E2–E5 oraz DoD. Nie stanowi akceptacji propozycji zmiany pytań ani odbioru etapu. | Użytkownik 2026-10-24: „d1 tak” — odpowiedź na D1 o przyjęciu karty celu i zakresu. | `docs/KARTA-CELU-I-ZAKRESU.md`, `PLAN.md`, `PROMPT-STARTOWY.md`, `docs/WSPOLPRACA.md`, `README.md`, `informative/README.md`, `docs/STAN.md`, `scripts/check_model.py`; cel użytkowy i status karty. | `docs/KARTA-CELU-I-ZAKRESU.md`, `PLAN.md`, `PROMPT-STARTOWY.md`, `docs/WSPOLPRACA.md`, `README.md`, `informative/README.md`, `docs/STAN.md`, `scripts/check_model.py`, `informative/KARTA-CELU-I-ZAKRESU-2026-10-24.md`, `model/process.yaml`, `docs/WLASCIWOSCI.md`, `docs/INTERPRETACJE.md`; DoD i kolejność E2–E5 zachowane. |
+| DEC-PRO-008 | Przyjąć regułę zgody na konkretny element, wersję i operację T05/T07; rozróżnić zgodę od odmowy i atomowo oznaczać wykorzystanie zgody. Wdrożyć model v0.5, testy i WIT5; bez odbioru E2. | Użytkownik 2026-10-25: „D1 tak.” — odpowiedź na propozycję powiązania zgody z konkretną zmianą. | `model/process.yaml`, `docs/WLASCIWOSCI.md`, `docs/INTERPRETACJE.md`, `PLAN.md`, `model/proposals/change-authorization.md`, `docs/STAN.md`, `src/isomodel/loader.py`, `src/isomodel/execution.py`, `src/isomodel/expressions.py`, `src/isomodel/reporting.py`, `src/isomodel/probes.py`, `scripts/check_model.py`, `scripts/run_scenario.py`, `tests/`, `mutants/`, `examples/`, `README.md` | `model/process.yaml`, `docs/WLASCIWOSCI.md`, `docs/INTERPRETACJE.md`, `PLAN.md`, `model/proposals/change-authorization.md`, `docs/STAN.md`, `src/isomodel/loader.py`, `src/isomodel/execution.py`, `src/isomodel/expressions.py`, `src/isomodel/reporting.py`, `src/isomodel/probes.py`, `scripts/check_model.py`, `scripts/run_scenario.py`, `tests/`, `mutants/`, `examples/`, `README.md`; ponadto WIT1/WIT2/WIT4, S1–S11, L1–L5, INT-008/017 i karta celu. |
 
 ## Weryfikacja i lista kontrolna zmiany
 
-- `uv run --locked --offline pytest -q`: **151 passed w 4,30 s**; bez xfail i pomijania testów. W tym 108 wcześniejszych testów i 43 nowe. Po ostatnim doprecyzowaniu tekstu raportu powtórzono 3 testy poleceń: wszystkie przeszły; kod semantyki bez dalszych zmian.
-- `uv run --locked --offline python scripts/check_model.py`: **339 sprawdzeń spójności OK**, w tym cytat i „Zmienia” ⊆ „Przejrzane” dla DEC-PRO-007. `git diff --check` bez błędów. Poprzedni przebieg obejmował 336 sprawdzeń i DEC-PRO-003–006.
-- W sesji przyjęcia karty zmieniono dokumentację i kontrolę nowej DEC; wykonawca i przyjęty model v0.4 pozostają bez zmian. Nie ponawiano testów wykonawcy. Przejrzano kartę, PLAN, kontrakt, punkt wznowienia, wejście do sesji, indeksy, skrypt spójności oraz powiązania wskazane w propozycji WIT5.
-- W przyroście WIT2/WIT4 `git diff --exit-code -- model/process.yaml docs/WLASCIWOSCI.md docs/INTERPRETACJE.md PLAN.md uv.lock pyproject.toml` potwierdza brak zmian modelu, właściwości, interpretacji, planu i zależności. Wcześniejsza korekta G3/G6 zmieniała tylko wersję i adnotacje ISO, bez zachowania przejść.
-- Diagramy wygenerowano i obejrzano jako PNG; wersje SVG służą do powiększania i publikacji. Przewodnik jest migawką informacyjną, nie nowym źródłem reguł.
-- Przejrzano model, właściwości, interpretacje, testy, mutanty, uzasadnienie adnotacji, README, plan i stan. Zaktualizowane definicje oraz odwołania są w tej samej zmianie. Stary mutant jest jawnie zastąpiony.
-- Przeczytano lokalny Aneks E. Ocena wsparcia jest mapowaniem tematów a–i na model, nie audytem pełnej zawartości osobno publikowanych pakietów. Żaden pakiet nie jest uznany za w pełni wdrożony.
-- Wcześniejszy czerwony przebieg E2: 29 passed, 2 failed (G3/G6). TDD walidatora: powtórzony klucz YAML, nieznana zależność i wielokrotny cel dawały DID NOT RAISE ModelError, po implementacji przechodzą.
+- Końcowa regresja v0.5: `uv run --locked --offline pytest -q` — **197 passed w 7,77 s**, bez xfail i pominięć. Poprzednio 151; przyrost dodaje 46 przypadków, w tym Hypothesis, mutanty, testy polecenia i atomowości.
+- `uv run --locked --offline python scripts/check_model.py` — **357 sprawdzeń spójności OK**, obejmuje DEC-PRO-008, datę, cytat, „Zmienia” ⊆ „Przejrzane”, pola zgody i S11. To kontrola strukturalna, nie dowód G/S/L.
+- Pierwszy czerwony przebieg nowych testów zatrzymano po 3 błędach: brak obsługi atrybutów change w dotychczasowym wykonawcy. W pełnej regresji zaktualizowano cztery oczekiwania dotyczące starego interfejsu: trzy inicjalizacje pytań general i jeden brak obsługi T05, który obecnie zgłasza brak wskazanej zgody.
+- Cztery polecenia run_scenario zakończone completed: WIT1 29, WIT2 33, WIT4 13 i WIT5 40 kroków. Wszystkie 26 wybranych mutantów raportów wykryte; raporty zawierają hashe modelu, scenariuszy, wykonawcy i uv.lock.
+- Przegląd własny: model, właściwości S11/S10/S7a, INT-008, DoD, propozycja, inicjalizacja i atomowość pytań, interpretacja skutków, historia wydań, dowody i raporty. To nie niezależny przegląd końca E2. Kolejność E2–E5 i zależności środowiska zachowane.
+- Przykłady są symulacjami; ich DEC i odbiory pozostają w danych wynikowych, bez aktualizacji rzeczywistych decyzji projektu. Pusty zakres i W03/W05 nadal jawnie nieobsługiwane.
+- Historycznie: korekta G3/G6 miała czerwone wyniki 29 passed / 2 failed; przyrost WIT1 osiągnął 108 testów, WIT2/WIT4 151. Obecna regresja obejmuje wcześniejsze przypadki.
 
 ## Zakres obecnej implementacji
 
 - Wczytywanie YAML, część walidacji G0/G4, projekcja grafów G1/G3, macierz G5 i audyt adnotacji G6 są zaimplementowane.
 - Projekcje grafów ignorują guard/effects; dodatni wynik jest tylko warunkiem koniecznym osiągalności i braku ślepych stanów.
-- Wykonawca interpretuje warunki i skutki potrzebne T00/T01/T02/T03/T04, P00–P05, W01/W02/W04 oraz obserwator zmiany po odbiorze. Reguły są danymi z YAML; nie ma drugiej tabeli zachowania według ID. Nieobsługiwane reguły są jawnie raportowane, a odrzucone kroki oraz zapisy decyzji atomowe.
-- Hypothesis bada odrzucanie powtórzonych kluczy YAML, kombinacje stanów zależności, aktorów, suspect i checks_ok dla T01(CODE) oraz kolejność pytań przy kombinacjach blocking. Pełne S1–S10 przez maszynę stanów są jeszcze przed nami.
-- Pełne G2, pozostała semantyka, pełna mutacja, świadki wygenerowane przez TLC i dowody TLA+ nie są wykonane. Opisano WIT1–WIT5; WIT1/WIT2/WIT4 mają wykonanie deterministyczne w E2, bez zastępowania E3.
+- Wykonawca interpretuje warunki i skutki WIT1/WIT2/WIT4/WIT5, w tym T05/T07, T12, unieważnienie gotowości, przechodnie suspect, W06 i obserwator zmiany po odbiorze. Osobne testy obejmują również T06 i T09/T10. Reguły są danymi z YAML; nie ma drugiej tabeli zachowania według ID. Nieobsługiwane reguły są jawnie raportowane, a odrzucone kroki oraz zapisy decyzji atomowe.
+- Hypothesis bada odrzucanie powtórzonych kluczy YAML, kombinacje stanów zależności, aktorów, suspect i checks_ok dla T01(CODE) oraz kolejność pytań przy kombinacjach blocking. Hypothesis bada także kombinacje warunków zgody. Pełne S1–S11 przez maszynę stanów są jeszcze przed nami.
+- Pełne G2, pozostała semantyka, pełna mutacja, świadki wygenerowane przez TLC i dowody TLA+ nie są wykonane. Opisano WIT1–WIT5; WIT1/WIT2/WIT4/WIT5 mają wykonanie deterministyczne w E2, bez zastępowania E3.
 - Zależności: PyYAML 6.0.3, networkx 3.6.1, pytest 9.1.1, Hypothesis 6.151.10 w pyproject.toml/uv.lock; lokalne .venv. Wizualizacja korzysta z już zainstalowanego Graphviz, bez nowych zależności Pythona.
 
 ## Ocena używalności — na pytanie użytkownika
 
 - Klasyfikacja: dokumentacja zarządzania tym projektem; specyfikacja projektowanego procesu; prototyp narzędzi analizy modelu; materiały wdrożeniowe i edukacyjne. To różne poziomy gotowości, nie jeden gotowy produkt.
 - Używalne obecnie: kontrakt współpracy i rejestr decyzji w pracy ręcznej, model i diagramy do przeglądu reguł, skrypty do analizy samego modelu, szablon jako punkt startowy do adaptacji.
-- Brak gotowości do automatycznego sprawdzania rzeczywistego projektu: jest wykonanie podzbioru guard/effects i zdarzeń WIT1, lecz brakuje pełnej semantyki, obsługi trwałego stanu rzeczywistego projektu oraz adaptera do dokumentów/historii repozytorium. Raport WIT1 dotyczy sztucznej instancji; pełne testy zachowania i dowody pozostają przed nami.
+- Brak gotowości do automatycznego sprawdzania rzeczywistego projektu: jest wykonanie podzbioru guard/effects i czterech scenariuszy, lecz brakuje pełnej semantyki, obsługi trwałego stanu rzeczywistego projektu oraz adaptera do dokumentów/historii repozytorium. Raport WIT1 dotyczy sztucznej instancji; pełne testy zachowania i dowody pozostają przed nami.
 - Szablon odwołuje się do tests/test_traceability.py i generowanego TRACE.md, lecz nie dostarcza tego programu; wymaga dopracowania i pilotażu przed uznaniem za gotowy pakiet wdrożeniowy.
 - Perspektywa PO: WIT1 dostarcza pierwszą demonstrację od początku do odbioru na sztucznej instancji; użyteczność w rzeczywistym projekcie pozostaje do zbadania. Perspektywa PM: E2 trwa, E3–E5 nie są dostarczone. Perspektywa developera: działa biblioteka walidacji, analizy grafów i wykonawca podzbioru procesu, nie pełny silnik.
 - Skorygowane uzasadnienie sprawdzianów: wycofanie/zastąpienie REQ wybrano heurystycznie na podstawie znanego ryzyka, bez wykazania największego kosztu lub przekrojowości. Pierwszą demonstracją powinien być WIT1; WIT5 i WIT3 uzupełniają go o kolejne wydania i wpływ zmian. Demonstracja na przykładzie w E2 nie zastępuje odtworzenia rzeczywistego projektu w E4/E5.
@@ -95,7 +99,7 @@ Przyjęta przez DEC-PRO-005. Korekta G3/G6 zatwierdzona przez DEC-PRO-006 nie zm
 - Nie podano terminów ani twierdzenia o najdroższym przyroście. WIT1 daje pierwszy pomiar wykonania sprawdzeń, nie wiarygodną estymację prac nad resztą semantyki i dowodami.
 - Podczas przygotowania roadmapy zmieniono wyłącznie dokumentację planowania i punkt wznowienia; nie uruchamiano ponownie testów niezmienionego kodu. Nie zapisano nowej DEC.
 
-## WIT1 — wynik implementacji i ograniczenia
+## Historia przyrostu WIT1 — wynik i ówczesne ograniczenia
 
 - TDD: pierwsze 50 testów było czerwonych (`NotImplementedError` wykonawcy). Następnie dodano interpreter, atomowe kroki, odtworzenie oraz kolejne testy wejść, obserwatora, granic, Hypothesis, mutantów i polecenia. Końcowy wynik całego repozytorium: 108 passed.
 - `uv run --locked --offline python scripts/run_wit1.py --output artifacts/wit1`: completed, 29 kroków. Wszystkie elementy baselined w wersji 1, bez suspect; wydanie 1 accepted. Raport zawiera rzeczywiste stany, aktorów, warunki i cytaty demonstracyjne oraz SHA-256 danych i kodu. Kopia Markdown w examples/wit1/report.md została przeczytana i sprawdzona względem wyniku JSON.
@@ -106,7 +110,7 @@ Przyjęta przez DEC-PRO-005. Korekta G3/G6 zatwierdzona przez DEC-PRO-006 nie zm
 - Wstrzykiwane stany w części testów są testami warunków, nie świadkami osiągalności. checks_ok/tests_ok są założeniami. R jest rolą symulowanego zdarzenia, nie rzeczywistym niezależnym recenzentem tej implementacji. Przegląd niezależny i bramka użytkownika pozostają na koniec etapu E2.
 - Lista kontrolna: przejrzano model, właściwości, roadmapę WIT1, kod, testy, scenariusz, mutanty, raport, README i stan prac. Nie zmieniono zaakceptowanej semantyki, planu ani zależności. Nie ogłoszono zakończenia E2 ani spełnienia DoD 7.
 
-## WIT2/WIT4 — wynik następnego przyrostu
+## Historia przyrostu WIT2/WIT4
 
 - Początkowe kryteria: 27 failed, 7 passed. Istniejący interpreter wykonywał już T03, natomiast pytania kończyły się błędem wejścia/brakiem obsługi. Po implementacji i rozszerzeniu kryteriów cały zestaw ma 151 przechodzących testów.
 - WIT2 rozszerza WIT1 o dwa odrzucenia r1 i ponowną weryfikację. Wersja pozostaje 1, licznik rośnie do 2; trzecie T03 jest blokowane, T02 pozostaje dostępne. Przebieg kończy się wydaniem accepted po 33 krokach. Alternatywne wycofanie/odłożenie produktu wymaga helperów, które pozostają poza tym przyrostem.
@@ -115,7 +119,7 @@ Przyjęta przez DEC-PRO-005. Korekta G3/G6 zatwierdzona przez DEC-PRO-006 nie zm
 - Dowody: testy atomowości wymuszają błąd po przygotowaniu rekordu DEC i wykazują brak częściowego resolved/zapisu; testy poleceń potwierdzają identyczne raporty w dwóch wykonaniach oraz brak zmian dokumentów i modelu. Test zmiany wszystkich ID P wykazuje odczyt reguł z danych. Testy kolejki uwzględniają blocking_first, kolejność zgłoszenia niezależną od ID, P03 oraz odłożenie asked i wznowienie.
 - Mutanty: 2 w mutants/wit2_gates.json i 7 w mutants/wit4_gates.json; wszystkie wykryte. Razem z WIT1: 16 wybranych mutantów wykonania. Obejmuje to skończone sprawdzenia S9/L4 i czułość na LIFO, nie dowód żywotności L2 ani pełne pokrycie E2.
 - Polecenie wspólne: `uv run --locked --offline python scripts/run_scenario.py --scenario WIT2 --output artifacts/wit2` (analogicznie WIT4/WIT1). Dotychczasowe run_wit1.py zachowano jako wejście do wspólnego runnera. Instrukcja: examples/questions/README.md. Przeczytano wygenerowane raporty, sprawdzono liczbę kroków, nowe DEC i wyniki mutantów; kopie Markdown zapisano w examples/questions/. Pełny JSON jest odtwarzalny w artifacts/.
-- kind/about i powiązania pytań z produktami pozostają otwartym doprecyzowaniem przed T05/T12/WIT5. Obecne P00–P05 i WIT4 nie wymagają tych pól; nie dopisano ich do zaakceptowanego modelu ani nie ignoruje się ich w wejściu.
+- W przyroście WIT2/WIT4 kind/about pozostawiono otwarte. Sprawę zamknął kolejny przyrost v0.5 / WIT5 przez DEC-PRO-008; pytania WIT4 są teraz general, a pytania o zmianę mają jawne powiązania.
 - Przejrzano P00–P05, T03, S1/S9/L2/L4, INT-004/010/011, regułę frame, scenariusze, kod, testy, mutanty, raporty, instrukcje i punkt wznowienia. Nie zmieniono zaakceptowanej semantyki, planu ani zależności; nie zapisano nowej DEC i nie przedstawiono odbioru E2.
 
 ## Eksperymenty i pilotaż — wyjaśnienie na pytanie użytkownika
@@ -134,14 +138,14 @@ Przyjęta przez DEC-PRO-005. Korekta G3/G6 zatwierdzona przez DEC-PRO-006 nie zm
 ## Repozytorium
 
 - Użytkownik scalił poprzednią gałąź e1-model do main (PR #1, eceaf0e). Model v0.3 opublikowano na e1-model w 7e4856d; akceptację E1 i pierwszy przyrost E2 na e2-checks w c38a4b7.
-- Bieżąca gałąź: `e2-checks`; WIT1 zapisano i wypchnięto w 2b830e0, kolejny przyrost WIT2/WIT4 jest przekazywany na tej samej gałęzi. Scalenie do main wymaga osobnej zgody użytkownika.
+- Bieżąca gałąź: `e2-checks`; WIT1 zapisano w 2b830e0, WIT2/WIT4 w 9bfebae, kartę celu w 360a90d. WIT5 i v0.5 są przekazywane na tej samej gałęzi. Scalenie do main wymaga osobnej zgody użytkownika.
 
 ## Sprawy otwarte
 
 | Sprawa | Właściciel | Następny krok |
 |---|---|---|
-| Pozostała implementacja E2: G2, warunki/skutki, bezpieczeństwo i mutanty | agent | kontynuować od przyjętego modelu v0.4; odbiór E2 dopiero po spełnieniu kryteriów |
-| Przyjęcie polityki zgody na konkretną zmianę | użytkownik | decyzja o gotowej propozycji model/proposals/change-authorization.md; po przyjęciu agent wdraża model i WIT5 |
+| Pozostała implementacja E2: G2, warunki/skutki, bezpieczeństwo i mutanty | agent | kontynuować od przyjętego modelu v0.5; odbiór E2 dopiero po spełnieniu kryteriów |
+| WIT3: nowy element i aktualizacja zależności po zastąpieniu | agent | przeanalizować reprezentację i przygotować ewentualną propozycję brakujących reguł przed implementacją; DEC-PRO-008 zamyka wcześniejszą sprawę zgody |
 | Zakres kwantyfikatora W01 przy pustym zakresie wydania | agent | przed rozszerzeniem wykonawcy przeanalizować jednoznaczny zapis globalnych testów/pytania; ewentualną zmianę modelu przedstawić do decyzji; nie blokuje wykonanego WIT1 |
 | Historyczne materiały informative/ | agent | przy E5 uwzględnić INT-017 w nowym materiale; nie przepisywać migawek sesji 2026-10-23 |
 | REQ-210 i REQ-211 dla szablonu | użytkownik | decyzja; opis w informative/SESJA-2026-10-23.md §5 |
@@ -150,6 +154,10 @@ Przyjęta przez DEC-PRO-005. Korekta G3/G6 zatwierdzona przez DEC-PRO-006 nie zm
 | Porządki w vcs-lite | użytkownik | decyzja, czy i kiedy |
 
 ## Decyzje agenta do podważenia
+
+- 2026-10-25: ID pytania tworzonego przez T12 jest wejściem zdarzenia, jak dla P00; wersja i powiązanie pochodzą ze stanu/modelu, aby scenariusze były deterministyczne bez własnej polityki numerowania w procesie.
+- 2026-10-25: formalny predykat zgody i wyrażenia rekordów W06 są czytane z YAML; helper invalidate_release obsługuje wyłącznie obecną definicję tekstową i odrzuca zmienioną, aby nie wykonywać milcząco nieznanej semantyki. Pełny interpreter zdań nie należy do tego przyrostu.
+- 2026-10-25: zachowano wszystkie wcześniejsze scenariusze i odświeżono ich raporty na v0.5; izolowane testy pól i consumed jawnie oznaczono jako wstrzyknięte stany, żeby nie mylić kontroli predykatu ze świadkiem osiągalności.
 
 - Wizualizacja jest dokumentacją w repozytorium, a nie nową aplikacją ani rozszerzeniem zakresu E2. Grafy korzystają z modelu; ocena wsparcia pakietów jest jawnie interpretacją autora.
 - Uzasadnienie korekty pozostaje w model/proposals/e2-structure.yaml ze statusem applied i DEC-PRO-006; źródłem zachowania jest nadal wyłącznie model/process.yaml.

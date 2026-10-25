@@ -8,10 +8,10 @@ Wyniki kontroli i jednoznaczność odpowiedzi są danymi wejściowymi tych krok�
 
 ## Tożsamość wejść i wykonawcy
 
-- Model: v0.4; SHA-256 danych: `2c207324149fcb51d5586526823466202f7a8c0fa3d20d5ce205c7125bb86242`.
+- Model: v0.5; SHA-256 danych: `68699ebc1c234fcfac9e45ee0914e227fc2631001c12244fd454772c56cafaf4`.
 - Scenariusz SHA-256: `0bb62c523052950649dcb6b10f565d561cc1759f2a4a606f53bee0bb76c560c1`.
 - python: `3.14.7`.
-- source_sha256: `7e32c7a1277d32b4468be21949884058fe10152478b33dd5c6dab7b2aa498874`.
+- source_sha256: `933917e91ccf3d98df57ff5954941872a1772222000664622ac56b3a03bb7d04`.
 - uv_lock_sha256: `027a3da0a1f3fbd763d5b9b7c8a8a71229b35202efe60d3d97e4e60f4ce9897a`.
 - mutants_sha256: `25e094a4d18f8d782fb0365b972fa4ab5f0f4a654375de142f4740e3211dfddf`.
 
@@ -111,4 +111,4 @@ Bieżące wydanie: 1, `accepted`. `next_release_required = false`.
 
 ## Granice wyniku
 
-Wykonano podaną ścieżkę WIT2 w E2. Nie wygenerowano świadka przez TLC, nie udowodniono wszystkich G/S/L i nie zakończono E2. Obsługa zmian produktów i kolejnych wydań pozostaje przed nami. Weryfikacja roli R w symulacji nie jest niezależnym przeglądem implementacji.
+Wykonano podaną ścieżkę WIT2 w E2. Nie wygenerowano świadka przez TLC, nie udowodniono wszystkich G/S/L i nie zakończono E2. Pozostają WIT3, pełne pokrycie reguł i zastosowanie na rzeczywistym projekcie. Weryfikacja roli R w symulacji nie jest niezależnym przeglądem implementacji.

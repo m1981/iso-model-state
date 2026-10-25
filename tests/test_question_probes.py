@@ -15,7 +15,7 @@ from isomodel.probes import gate_probes
 ROOT = Path(__file__).resolve().parents[1]
 
 
-@pytest.mark.parametrize("name,count", [("wit2", 2), ("wit4", 7)])
+@pytest.mark.parametrize("name,count", [("wit2", 2), ("wit4", 7), ("wit5", 10)])
 def test_new_probe_sets_detect_every_selected_mutant(model, name, count):
     data = json.loads((ROOT / f"tests/fixtures/{name}/scenario.json").read_text())
     cases = json.loads((ROOT / f"mutants/{name}_gates.json").read_text())

@@ -1,6 +1,6 @@
 # Propozycja powiązania zgody ze zmianą produktu
 
-Status: **proposed**, 2026-10-24. Podstawa: model v0.4; proponowana wersja po przyjęciu: v0.5. Dokument jest propozycją do osobnej decyzji, nie źródłem reguł wykonawcy. DEC-PRO-007 przyjmuje cel użytkowy, nie niniejszą zmianę semantyki.
+Status: **applied**, DEC-PRO-008, 2026-10-25, cytat „D1 tak.”; zastosowanie w modelu v0.5. Poniżej zachowano treść propozycji z 2026-10-24 jako uzasadnienie. Źródłem obowiązujących reguł jest model/process.yaml. DEC-PRO-007 dotyczy wyłącznie celu użytkowego.
 
 ## Korzyść i rekomendacja
 
