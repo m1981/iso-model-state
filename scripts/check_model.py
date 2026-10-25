@@ -1,7 +1,7 @@
 """Sprawdzenie spójności danych E1; nie jest symulatorem ani dowodem G/S/L.
 
 Uruchomienie: uv run --locked python scripts/check_model.py
-Trace: DEC-PRO-003–009, G0 (część strukturalna).
+Trace: DEC-PRO-003–010, G0 (część strukturalna).
 """
 
 import re
@@ -109,7 +109,32 @@ def main():
     check("next_release_required := false" in next_release["effects"], "W06: brak skasowania znacznika")
     check(any(effect.startswith("releases[n + 1] :=") for effect in next_release["effects"]), "W06: brak nowego rekordu")
     check("snapshot(release.scope)" in " ".join(transitions["W04"]["effects"]), "W04: brak zapisu migawki")
-    check(model["post_step_effects"][0]["id"] == "detect_post_acceptance_change", "Brak obserwatora suspect po odbiorze")
+    observers = {effect["id"]: effect for effect in model["post_step_effects"]}
+    check(len(observers) == len(model["post_step_effects"]), "Powtórzone ID obserwatora")
+    accepted_observer = observers.get("detect_post_acceptance_change", {})
+    check(accepted_observer.get("guard") == "release.state = accepted and exists e in newly_suspect: in_scope(e)"
+          and accepted_observer.get("effects") == ["next_release_required := true"],
+          "Obserwator suspect po odbiorze musi wymuszać W06 bez zmiany accepted")
+    readiness_observer = observers.get("detect_new_suspect_before_acceptance", {})
+    check(readiness_observer.get("guard") == "release.state in {ready, reviewed} and exists e in newly_suspect: in_scope(e)"
+          and readiness_observer.get("effects") == ["release.state := in_preparation"],
+          "DEC-PRO-010: brak cofnięcia gotowości po nowym suspect w zakresie")
+    check(transitions["W04"]["guard"] == "not exists q: q.blocking and q.state in {open, asked}",
+          "W04/S14: brak kontroli pytań blokujących przed odbiorem")
+    check(transitions["W01"]["guard"] == (
+        "(forall e: in_scope(e) => (e.state in {baselined, deferred, superseded, withdrawn} "
+        "and (e.state = baselined => not e.suspect))) and tests_ok "
+        "and not exists q: q.blocking and q.state in {open, asked}"),
+        "W01: kompletność musi być w nawiasie, a testy i pytania globalne także dla pustego zakresu")
+    check(transitions["T10"]["effects"] == ["invalidate_release(e)"],
+          "T10/S15: wznowienie musi zachować licznik odrzuceń i wersję")
+    for ident in ("T05", "T06"):
+        check("version := version + 1" in transitions[ident]["effects"]
+              and "rejections := 0" in transitions[ident]["effects"],
+              f"{ident}/S15: nowa wersja musi rozpoczynać własny budżet odrzuceń")
+    check({ident for ident, transition in transitions.items()
+           if "rejections := 0" in transition["effects"]} == {"T05", "T06"},
+          "S15: reset odrzuceń poza T05/T06")
     check(model["test_instance"]["bounds"]["max_releases"] == 2, "WIT5 wymaga granicy dwóch wydań")
     for name, value in model["test_instance"]["bounds"].items():
         check(isinstance(value, int) and value > 0, f"Niepoprawna granica {name}")
@@ -120,29 +145,34 @@ def main():
     plan = (root / "PLAN.md").read_text()
     property_ids = re.findall(r"^\| ((?:G|S|L|F)\d+[ab]?|WIT\d+) \|", properties, re.M)
     check(len(property_ids) == len(set(property_ids)), "Powtórzone ID właściwości lub świadków")
-    for ident in ("S7a", "S7b", "S10", "S11", "S12", "S13", "WIT3", "WIT5"):
+    for ident in ("S7a", "S7b", "S10", "S11", "S12", "S13", "S14", "S15", "WIT3", "WIT5"):
         check(ident in property_ids, f"Brak definicji {ident}")
     check("S7" not in property_ids, "Stare S7 nadal jest aktywną definicją")
-    for ident in ("S7a", "S7b", "S10", "S11", "S12", "S13"):
+    for ident in ("S7a", "S7b", "S10", "S11", "S12", "S13", "S14", "S15"):
         row = next((line for line in properties.splitlines() if line.startswith(f"| {ident} |")), "")
         check(len(row.split("|")) == 6 and bool(row.split("|")[-2].strip()), f"{ident}: brak mutanta")
     interpretation_ids = set(re.findall(r"^\| (INT-\d+) \|", interpretations, re.M))
     for path in ("model/process.yaml", "docs/WLASCIWOSCI.md", "docs/INTERPRETACJE.md", "docs/STAN.md"):
         refs = set(re.findall(r"\bINT-\d+\b", (root / path).read_text()))
         check(refs <= interpretation_ids, f"{path}: nieznana interpretacja {refs - interpretation_ids}")
-    check("WIT1–WIT5" in plan and "S7a" in plan and "S7b" in plan, "Plan nie uwzględnia zmienionych właściwości")
-    for ident, quote in (("DEC-PRO-003", "„d1 a”"), ("DEC-PRO-004", "„Tak, uwzględnij T10”"), ("DEC-PRO-005", "„przyjmuje”"), ("DEC-PRO-006", "„d1 tak.”"), ("DEC-PRO-007", "„d1 tak”"), ("DEC-PRO-008", "„D1 tak.”"), ("DEC-PRO-009", "„d1 tak”")):
+    check("WIT1–WIT5" in plan and "S7a" in plan and "S7b" in plan and "S1–S15" in plan,
+          "Plan nie uwzględnia zmienionych właściwości")
+    l4 = next((line for line in properties.splitlines() if line.startswith("| L4 |")), "")
+    check("S15" in l4, "L4: brak powiązania z historycznym budżetem odrzuceń S15")
+    for ident, quote in (("DEC-PRO-003", "„d1 a”"), ("DEC-PRO-004", "„Tak, uwzględnij T10”"), ("DEC-PRO-005", "„przyjmuje”"), ("DEC-PRO-006", "„d1 tak.”"), ("DEC-PRO-007", "„d1 tak”"), ("DEC-PRO-008", "„D1 tak.”"), ("DEC-PRO-009", "„d1 tak”"), ("DEC-PRO-010", "„d1 tak”")):
         decision = next((line for line in state.splitlines() if line.startswith(f"| {ident} |")), "")
         cells = [cell.strip() for cell in decision.split("|")[1:-1]]
         check(len(cells) == 5, f"{ident}: brak kolumn Zmienia i Przejrzane")
         if len(cells) == 5:
             date = "2026-10-25" if ident in {"DEC-PRO-008", "DEC-PRO-009"} else "2026-10-24"
+            if ident == "DEC-PRO-010":
+                date = "2026-10-26"
             check(date in cells[2] and quote in cells[2], f"{ident}: błędna data lub cytat")
             changed = set(re.findall(r"`([^`]+)`", cells[3]))
             reviewed = set(re.findall(r"`([^`]+)`", cells[4]))
             check(bool(changed) and changed <= reviewed, f"{ident}: nieprzejrzane elementy zmiany: {changed - reviewed}")
 
-    check(model["version"] == 0.6, "DEC-PRO-009: oczekiwany model v0.6")
+    check(model["version"] == 0.7, "DEC-PRO-010: oczekiwany model v0.7")
     for name in ("kind", "about", "about_version", "requested_transition", "resolution", "consumed"):
         check(name in model["question_variables"], f"Brak pola zgody: {name}")
     for ident in ("T05", "T07"):
@@ -163,7 +193,7 @@ def main():
     if errors:
         raise SystemExit("NIESPÓJNOŚĆ:\n- " + "\n- ".join(errors))
     print(f"OK: {checks} sprawdzeń spójności, {len(transitions)} przejść, {len(items)} elementów, 2 wydania.")
-    print("Zakres: struktura YAML, odwołania i zapis DEC-PRO-003–009. Bez symulacji i dowodu właściwości G/S/L (E2/E3).")
+    print("Zakres: struktura YAML, odwołania i zapis DEC-PRO-003–010. Bez symulacji i dowodu właściwości G/S/L (E2/E3).")
 
 
 if __name__ == "__main__":

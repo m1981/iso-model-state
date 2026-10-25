@@ -1,6 +1,6 @@
-"""Niezależne wyrocznie S1–S13 dla pełnej historii symulacji v0.6.
+"""Niezależne wyrocznie S1–S15 dla pełnej historii symulacji v0.7.
 
-Źródło reguł: docs/WLASCIWOSCI.md i model/process.yaml (DEC-PRO-009).
+Źródło reguł: docs/WLASCIWOSCI.md i model/process.yaml (DEC-PRO-010).
 Nie interpretujemy guard/effects ani nie importujemy wykonawcy i jego pomocników.
 To sprawdzenie skończonego śladu, nie dowód osiągalności wszystkich stanów.
 """
@@ -77,13 +77,14 @@ def safety_violations(model, steps):
     """Zwraca [{property, step, detail}] dla ciągłego śladu applied od początku.
 
     Niepełny prefiks, przerwana ciągłość lub kroki rejected/error powodują
-    ValueError: nie są dowodem historycznych S2/S3/S8. Numery step w wyniku
+    ValueError: nie są dowodem historycznych S2/S3/S8/S15. Numery step w wyniku
     są pozycjami 1-based w przekazanym śladzie; pusta historia jest poprawna.
     Model dostarcza słownik typów i inicjalizację, lecz nie badane strażniki.
     """
     violations = []
     previous = _initial(model)
     approved, verified, reviewed = set(), set(), set()
+    rejection_counts = {}
     for index, step in enumerate(steps, 1):
         if step.get("outcome") != "applied":
             raise ValueError(f"Krok {index}: wymagany krok applied")
@@ -101,8 +102,27 @@ def safety_violations(model, steps):
                 violations.append({"property": property_id, "step": index, "detail": detail})
 
         check(transition not in USER_GATES or actor == "U", "S1", f"{transition}: bramka wymaga U")
+        if transition == "T03":
+            key = (selected, items[selected]["version"])
+            rejection_counts[key] = rejection_counts.get(key, 0) + 1
+            check(rejection_counts[key] <= model["parameters"]["MAX_REJECTIONS"],
+                  "S15", f"{selected}@{key[1]}: liczba T03 w historii przekracza MAX_REJECTIONS")
         for ident, item in after_items.items():
-            if item["version"] != items[ident]["version"]:
+            before_item = items[ident]
+            opens_version = transition in {"T05", "T06"} and selected == ident
+            new_version = opens_version and item["version"] == before_item["version"] + 1
+            if opens_version:
+                check(new_version and item["rejections"] == 0, "S15",
+                      f"{ident}: T05/T06 musi otworzyć nową wersję z zerowym licznikiem")
+            if transition == "T10" and selected == ident:
+                check(item["rejections"] == before_item["rejections"], "S15",
+                      f"{ident}: T10 zmieniło licznik odrzuceń")
+            elif item["rejections"] < before_item["rejections"]:
+                check(new_version, "S15", f"{ident}: reset odrzuceń poza nową wersją T05/T06")
+            if item["version"] != before_item["version"]:
+                creation = (transition == "T00" and selected == ident and before_item["state"] == "none"
+                            and before_item["version"] == 0 and item["version"] == 1)
+                check(creation or new_version, "S15", f"{ident}: nowa wersja poza T00/T05/T06")
                 approved.discard(ident)
                 verified.discard(ident)
             if item["state"] == "baselined" and model["item_types"][item["type"]]["requires_approval"]:
@@ -130,6 +150,9 @@ def safety_violations(model, steps):
         if release["state"] in {"ready", "reviewed"}:
             check(_complete(post, release["scope"]), "S7a", "Niekompletny zakres ready/reviewed")
         if transition == "W04":
+            check(not any(q["blocking"] and q["state"] in {"open", "asked"}
+                          for q in pre["questions"].values()),
+                  "S14", "Pytanie blokujące open/asked przed odbiorem")
             check(_complete(pre, current["scope"]), "S7b", "Niekompletny zakres przed odbiorem")
             expected = {ident: {key: value for key, value in items[ident].items() if key != "id"}
                         for ident in current["scope"]}

@@ -3,8 +3,8 @@
 # Identyfikatory po angielsku, w terminologii normy (DEC-PRO-002). Opisy (`description`) po polsku.
 
 model: iso29110-basic-process
-version: 0.6
-status: approved              # DEC-PRO-009: następcy, powiązania i zakres; nie oznacza dowodu G/S/L
+version: 0.7
+status: approved              # DEC-PRO-010: bramki odbioru, limit wersji i kompletność zakresu; nie oznacza odbioru E2
 
 notation:
   e: "element, którego dotyczy przejście"
@@ -65,7 +65,7 @@ item_variables:
   depends_on: {type: item_id_set, initial: "test_instance.items[e.id].depends_on", description: "bieżące powiązania; po inicjalizacji zmienia je wyłącznie T14"}
   predecessor: {type: optional_item_id, initial: none, description: "historyczny poprzednik zapisany w T00, potem niezmienny; nie jest zależnością budowania"}
   version:    {type: int, initial: 0}
-  rejections: {type: "0..MAX_REJECTIONS", initial: 0, description: "liczba odrzuceń bieżącej wersji"}
+  rejections: {type: "0..MAX_REJECTIONS", initial: 0, description: "liczba odrzuceń bieżącej wersji; T10 zachowuje licznik, reset przy nowej wersji T05/T06"}
   suspect:    {type: bool, initial: false, description: "zależność zmieniła się po ostatnim przeglądzie elementu (INT-012)"}
 
 item_types:
@@ -180,7 +180,7 @@ item_transitions:
     to: draft
     actor: U
     guard: "true"
-    effects: ["rejections := 0", "invalidate_release(e)"]
+    effects: ["invalidate_release(e)"]
     iso: [PM.03.04]
     description: "DEC-PRO-004: wznowienie zmienia kompletność bieżącego zakresu; przed odbiorem cofa gotowość, po odbiorze wymusza W06"
 
@@ -355,7 +355,7 @@ release_transitions:
     from: [in_preparation]
     to: ready
     actor: A
-    guard: "forall e: in_scope(e) => (e.state in {baselined, deferred, superseded, withdrawn} and (e.state = baselined => not e.suspect)) and tests_ok and not exists q: q.blocking and q.state in {open, asked}"
+    guard: "(forall e: in_scope(e) => (e.state in {baselined, deferred, superseded, withdrawn} and (e.state = baselined => not e.suspect))) and tests_ok and not exists q: q.blocking and q.state in {open, asked}"
     effects: []
     iso: [SI.05.11, SI.06.05, SI.06.06, SI.O5, SI.O6]
     description: "elementy odłożone, zastąpione i wycofane wypadają z wydania; muszą mieć zapis w rejestrze pytań lub DEC"
@@ -383,7 +383,7 @@ release_transitions:
     from: [reviewed]
     to: accepted
     actor: U
-    guard: "true"
+    guard: "not exists q: q.blocking and q.state in {open, asked}"
     effects: ["release.snapshot := snapshot(release.scope)", "release.acceptance := record acceptance with release.number and user quote"]
     iso: [PM.04.01, PM.04.02, PM.O2]
 
@@ -436,6 +436,11 @@ post_step_effects:
     guard: "release.state = accepted and exists e in newly_suspect: in_scope(e)"
     effects: ["next_release_required := true"]
     description: "wychwytuje także wpływ zmiany elementu spoza zakresu na element z zakresu; znacznik nie znika po przeglądzie bez wpływu"
+
+  - id: detect_new_suspect_before_acceptance
+    guard: "release.state in {ready, reviewed} and exists e in newly_suspect: in_scope(e)"
+    effects: ["release.state := in_preparation"]
+    description: "DEC-PRO-010: nowy suspect w zakresie cofa gotowość także po zmianie spoza zakresu; accepted obsługuje osobny obserwator"
 
 # ---------------------------------------------------------------------------
 # Instancja do kontroli modelu (hipoteza małego zakresu)

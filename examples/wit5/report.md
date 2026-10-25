@@ -8,10 +8,10 @@ Wyniki kontroli i jednoznaczność odpowiedzi są danymi wejściowymi tych krok�
 
 ## Tożsamość wejść i wykonawcy
 
-- Model: v0.6; SHA-256 danych: `ec342e2d04d8200de32d2bbba963ecd4fc45014405b99653134f15e110ff4680`.
+- Model: v0.7; SHA-256 danych: `ecca43e1402ee476502943caa16556d5609021b8894f3a702e26ca2da3cf21a6`.
 - Scenariusz SHA-256: `759626cbf24169a4033f3d3282a23693062b01bc73bcdf644fc8691eb43b2085`.
 - python: `3.14.7`.
-- source_sha256: `78a67819591e32053962691f764a53c40ae3eee09920c83c64b5cb0d7897f27d`.
+- source_sha256: `fdde51dac2165f58282c33a5af84ebe5621865ae0abcce5e3973af95bbf5171d`.
 - uv_lock_sha256: `027a3da0a1f3fbd763d5b9b7c8a8a71229b35202efe60d3d97e4e60f4ce9897a`.
 - mutants_sha256: `1dc1bf7f5c34ac420d9514a3c14d90f33f17c367687c0d3ce31a963c09e7368f`.
 
@@ -70,9 +70,9 @@ Warunki są rozwinięte w kolejnej tabeli. Pełne stany przed i po, dowody oraz 
 | T01 | `not suspect and checks_ok(e) and forall d in deps(e): d.state in {approved, baselined}` |
 | T02 | `type(e).requires_approval and not suspect` |
 | T04 | `not suspect and (state = approved or not type(e).requires_approval) and forall d in deps(e): d.state = baselined` |
-| W01 | `forall e: in_scope(e) => (e.state in {baselined, deferred, superseded, withdrawn} and (e.state = baselined => not e.suspect)) and tests_ok and not exists q: q.blocking and q.state in {open, asked}` |
+| W01 | `(forall e: in_scope(e) => (e.state in {baselined, deferred, superseded, withdrawn} and (e.state = baselined => not e.suspect))) and tests_ok and not exists q: q.blocking and q.state in {open, asked}` |
 | W02 | `true` |
-| W04 | `true` |
+| W04 | `not exists q: q.blocking and q.state in {open, asked}` |
 | P00 | `true` |
 | P01 | `count(asked) = 0 and q = oldest(open, blocking_first)` |
 | P02 | `unambiguous_answer` |

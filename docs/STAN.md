@@ -1,28 +1,27 @@
 # Stan prac
 
-Nadpisywany na końcu każdej sesji. Zaktualizowano: **2026-10-26**. Model nadal **v0.6 / DEC-PRO-009**. Rozbudowano sprawdzenia E2, lecz **etap wymaga korekty reguł i nie jest gotowy do odbioru**.
+Nadpisywany na końcu każdej sesji. Zaktualizowano: **2026-10-26**. Model **v0.7 / DEC-PRO-010**. Pakiet korekt przyjęty i zweryfikowany; niezależny przegląd bez otwartych ustaleń blokujących. Dostawa E2 gotowa do decyzji użytkownika. Odbiór E2 pozostaje osobną decyzją użytkownika.
 
 ## Gdzie jesteśmy
 
-- **Cel:** kontrola kontekstu, zatwierdzeń i skutków zmian we współpracy operatora z agentem; dokument zamiaru `docs/KARTA-CELU-I-ZAKRESU.md`. Etapy E2–E5 i DoD bez skrótów.
-- **Polecenie tej sesji:** użytkownik: „wejdz w role i wykonaj. powoja subagent w miejscach potrzebnej niezaleznsci”. Agent przyjął rolę inżyniera weryfikacji; niezależni subagenci przeprowadzili audyt modelu, napisali wyrocznie S i przygotowali generowanie sekwencji. Końcowy przegląd dostawy jest osobnym przebiegiem.
-- **Wykonano:** W03/W05 zgłaszają pytania blokujące atomowo przez wskazaną w modelu regułę P00; 28/28 przejść ma wykonany świadek, T04 sprawdzono dla pięciu typów; niezależne wyrocznie 14 właściwości S1–S13, macierz mutantów i maszyna stanów Hypothesis.
-- **Wynik badania:** pięć WIT i korpus G2 nie naruszają S1–S13 w badanych śladach; wszystkie 43 wcześniejsze mutanty bramek wykryte; każda właściwość S ma rzeczywisty mutant wykrywany przez niezależną wyrocznię. To nie wyczerpuje przestrzeni stanów ani nie dowodzi żywotności.
-- **Dlaczego E2 pozostaje otwarte:** późne pytanie blocking nie zatrzymuje W04; T09/T10 omija limit odrzuceń tej samej wersji; pusty scope jest unsupported i ujawnia niejednoznaczny guard W01; zmiana spoza scope może naruszyć S7a/S7b w alternatywnej instancji. Raport rozdziela te zakresy i nie ukrywa błędów za zielonymi testami diagnostycznymi.
-- **Gotowa decyzja:** `model/proposals/e2-hardening.md` i `.yaml` — cztery korekty jako v0.7, nowe S14/S15, doprecyzowanie L4. Status proposed; nie zastosowano do model/process.yaml ani dokumentów wiążącej semantyki. Diagnostyka kopii blokuje trzy kontrprzykłady; pusty zakres zbadano na predykacie, bez twierdzenia o pełnym wykonaniu.
-- **Następny krok:** użytkownik rozstrzyga pakiet v0.7. Po zgodzie agent zapisuje nową DEC z cytatem i listą wpływu, wdraża korektę, sprawdza S14/S15 i pusty zakres, aktualizuje dowody oraz ponawia niezależny przegląd. Dopiero potem osobna bramka odbioru E2.
-- **Materiały:** `docs/E2-RAPORT.md`, `docs/reviews/E2-AUDYT-2026-10-26.md`, `model/proposals/e2-hardening-diagnostics.json`. Pełny wynik odtwarzalny przez `.venv/bin/python scripts/run_e2.py --output artifacts/e2`; oczekiwany kod 1 oznacza brak gotowości do odbioru, kod 2 błąd raportu.
+- **Cel:** kontrola kontekstu, zatwierdzeń i skutków zmian we współpracy operatora z agentem; dokument zamiaru `docs/KARTA-CELU-I-ZAKRESU.md`. Plan E2–E5 i DoD zachowane.
+- **Polecenie:** „d1 tak” na kompletny pakiet v0.7. Zapisano DEC-PRO-010; nie jest to odbiór E2.
+- **Wdrożono:** W04 blokuje późne pytania; T10 zachowuje licznik; W01 ma globalne bramki również przy pustym zakresie; nowe suspect w zakresie cofa ready/reviewed nawet po zmianie spoza zakresu. Accepted pozostaje niezmienne.
+- **Sprawdzenia:** 28/28 przejść i T04 dla pięciu typów; niezależne wyrocznie 16 właściwości S1–S15 (S7a/S7b); 43 próby WIT i 5 regresji korekty, trzy instancje maszyny Hypothesis (zakres podstawowy, bez p1, pusty).
+- **Niezależność:** S14/S15 napisał osobny subagent; drugi rozszerzył sekwencje i atomowość obserwatorów. Końcowy recenzent zbadał repozytorium bez historii tworzenia i zamknął jedyną uwagę dotyczącą brakującej macierzy W01.
+- **Następny krok:** użytkownik rozstrzyga odbiór E2 na podstawie dostawy v0.7 i niezależnego przeglądu. Po zgodzie agent zapisze decyzję i przygotuje E3 zgodnie z PLAN; ewentualna instalacja środowiska wymaga odrębnej zgody. E3/TLC jeszcze nie rozpoczęto.
+- **Materiały:** `docs/E2-RAPORT.md`, `docs/reviews/E2-V07-PRZEGLAD-2026-10-26.md`, przyjęty pakiet `model/proposals/e2-hardening.md`. Polecenie `.venv/bin/python scripts/run_e2.py --output artifacts/e2`: 0 = sprawdzenia OK bez odbioru etapu, 1 = niepowodzenie, 2 = błąd raportu.
 
-## Sprawdzenia przyrostu E2 — 2026-10-26
+## Sprawdzenia v0.7 — 2026-10-26
 
-- Czerwone kryteria W03/W05: 2 porażki (nieznane findings oraz nieobsługiwany skutek P00); po implementacji 15 testów przechodzi. Format findings to lista nowych ID, a W05 wskazuje pojedyncze question. Pusta lista W03 pozostaje zgodna z literalnym „for each”; nie wprowadzono dodatkowego ograniczenia polityki.
-- Nowe safety.py powstało niezależnie od wykonawcy/parsera; test AST potwierdza brak importów tych modułów. Historyczne zatwierdzenia/weryfikacje/odbiór wymagają pełnego ciągłego śladu od stanu początkowego. Testy badają także starą wersję i stary numer wydania, a nie tylko poprawne końcowe flagi.
-- Hypothesis: RuleBasedStateMachine, 24 przykłady, maksymalnie 25 kroków maszyny, stałe ustawienie derandomize. Osiągalne prefiksy oraz generowane dalsze kroki; naruszenia nie są filtrowane. Statystyki są obserwacją prób, nie dowodem kompletności generatora. Osobny deterministyczny przegląd kandydatów pokrywa 28 przejść w źródłach świadków.
-- Pierwsza pełna regresja tego przyrostu: **321 passed w 18,72 s** z `--hypothesis-show-statistics`. Dodany potem test polecenia potwierdza kod 1 i jawny status requires_model_decision; pełna regresja po dodaniu tego testu: **322 passed w 33,94 s**. Wynik przeglądu i ewentualne dodatkowe kontrole podano poniżej.
-- Badanie proponowanej kopii początkowo wykazało unsupported dla przypisania release.state z obserwatora. Uzupełniono tę konstrukcję wykonawcy; obowiązujący v0.6 nie ma takiego przypisania, więc zmiana nie aktywuje nowej polityki. Nie usunięto ograniczenia pustego zakresu przed decyzją.
-- Diagnostyka jawnie odtwarza złe zachowanie v0.6. Zielony test diagnostyczny nie oznacza jego naprawy. G1/G3 są projekcjami grafu; G2 daje konkretne świadki, nie dowód dla wszystkich parametrów. G5 jest raportem zgodnie z przyjętą specyfikacją; pełne czasowe L/F i TLC pozostają E3.
-- Końcowy niezależny recenzent potwierdził 322 testy i raport wymagający decyzji; po jego uwadze G2 wymaga zarówno 28 ID, jak i T04 każdego z pięciu typów. Po korekcie 11 testów reachability/evidence przechodzi. Opinia: `docs/reviews/E2-PRZEGLAD-2026-10-26.md` — gotowość propozycji do decyzji, nie odbiór E2. Odświeżono wszystkie pięć raportów WIT i raport E2; skrypt spójności: 396 kontroli OK.
-- Nie instalowano zależności, nie rozpoczęto E3, nie uznano etapu za odebrany. Model/process.yaml, WLASCIWOSCI i INTERPRETACJE zachowują przyjętą semantykę v0.6.
+- S14/S15: przed implementacją wyroczni 9 failed / 11 passed; po implementacji i rozszerzeniu 68 passed (23 nowe i 45 wcześniejszych testów safety). Wyrocznie nie importują wykonawcy ani parsera; S15 liczy T03 z historii par ID/wersja, nie z bieżącego licznika.
+- Pusty zakres: 5 czerwonych testów przed usunięciem ograniczenia wykonawcy. Po zmianie zestaw regresji i execution: 74 passed. Badane pełne wykonanie W01/W02/W04 i wszystkie cztery kombinacje tests_ok / blocking; nie tylko interpretacja predykatu.
+- Po uwadze recenzenta dodano tests/test_readiness_matrix.py: 32 osiągalne próby zakres × tests_ok × blocking × żądany stan pytania; blocking/deferred odmawia P04 i pozostaje asked, bez wstrzykniętego stanu. Wszystkie 32 przechodzą.
+- Zakres alternatywny: wpływ p1 dla ready/reviewed/accepted, W06 i niezmienność odbioru; wymuszony błąd obserwatora po skutkach T05 potwierdza atomowy rollback i niezużycie zgody. Razem z trzema maszynami Hypothesis: 9 passed w 17,13 s.
+- Pięć dawnych kontrprzykładów ma czysty, odrzucający ślad bazowy i wykonany mutant. Nowy obserwator maskuje dawny mutant T07(r1) bez invalidate_release; zastąpiono go T07(a2) bez zależnych. To sprawdzenie reguły T07, nie sztucznie przypisane S7a.
+- Pełna regresja przed macierzą: **357 passed w 34,45 s**, z --hypothesis-show-statistics. Po dodaniu macierzy końcowa pełna regresja autora: **389 passed w 34,55 s**. Raport E2: kod 0, 48/48 mutantów, 16/16 właściwości S z naruszającym mutantem, 28/28 przejść. Skrypt spójności: **413 kontroli OK**. Pięć raportów WIT odświeżono na v0.7. Końcowy przegląd niezależny: **brak otwartych ustaleń blokujących**, rekomendacja przedstawienia E2 do odbioru; `docs/reviews/E2-V07-PRZEGLAD-2026-10-26.md`. Recenzent wykonał osobno 357 testów oraz później 32 testy macierzy, raport E2 i kontrolę 413.
+- Historia v0.6: commit de94da9, 322 testy, 396 kontroli spójności; audyt `docs/reviews/E2-AUDYT-2026-10-26.md` i przegląd `docs/reviews/E2-PRZEGLAD-2026-10-26.md` ujawniły luki. Historyczne `e2-hardening-diagnostics.json` zachowano. Jego skrypt uruchamiać na de94da9; bieżące testy wymagają naprawionego zachowania v0.7.
+- G1/G3 są projekcjami grafu, G2 świadkami wykonalności. Nie wyczerpano przestrzeni stanów ani nie udowodniono L/F; TLC należy do E3. Nie instalowano zależności ani nie rozpoczęto pilotażu.
 
 ## Bramka E1
 
@@ -68,6 +67,7 @@ Przyjęta przez DEC-PRO-005. Korekta G3/G6 zatwierdzona przez DEC-PRO-006 nie zm
 | DEC-PRO-007 | Przyjąć zapisaną kartę celu i zakresu jako cel użytkowy projektu i włączyć ją do dokumentów zamiaru, z zachowaniem obecnego planu E2–E5 oraz DoD. Nie stanowi akceptacji propozycji zmiany pytań ani odbioru etapu. | Użytkownik 2026-10-24: „d1 tak” — odpowiedź na D1 o przyjęciu karty celu i zakresu. | `docs/KARTA-CELU-I-ZAKRESU.md`, `PLAN.md`, `PROMPT-STARTOWY.md`, `docs/WSPOLPRACA.md`, `README.md`, `informative/README.md`, `docs/STAN.md`, `scripts/check_model.py`; cel użytkowy i status karty. | `docs/KARTA-CELU-I-ZAKRESU.md`, `PLAN.md`, `PROMPT-STARTOWY.md`, `docs/WSPOLPRACA.md`, `README.md`, `informative/README.md`, `docs/STAN.md`, `scripts/check_model.py`, `informative/KARTA-CELU-I-ZAKRESU-2026-10-24.md`, `model/process.yaml`, `docs/WLASCIWOSCI.md`, `docs/INTERPRETACJE.md`; DoD i kolejność E2–E5 zachowane. |
 | DEC-PRO-008 | Przyjąć regułę zgody na konkretny element, wersję i operację T05/T07; rozróżnić zgodę od odmowy i atomowo oznaczać wykorzystanie zgody. Wdrożyć model v0.5, testy i WIT5; bez odbioru E2. | Użytkownik 2026-10-25: „D1 tak.” — odpowiedź na propozycję powiązania zgody z konkretną zmianą. | `model/process.yaml`, `docs/WLASCIWOSCI.md`, `docs/INTERPRETACJE.md`, `PLAN.md`, `model/proposals/change-authorization.md`, `docs/STAN.md`, `src/isomodel/loader.py`, `src/isomodel/execution.py`, `src/isomodel/expressions.py`, `src/isomodel/reporting.py`, `src/isomodel/probes.py`, `scripts/check_model.py`, `scripts/run_scenario.py`, `tests/`, `mutants/`, `examples/`, `README.md` | `model/process.yaml`, `docs/WLASCIWOSCI.md`, `docs/INTERPRETACJE.md`, `PLAN.md`, `model/proposals/change-authorization.md`, `docs/STAN.md`, `src/isomodel/loader.py`, `src/isomodel/execution.py`, `src/isomodel/expressions.py`, `src/isomodel/reporting.py`, `src/isomodel/probes.py`, `scripts/check_model.py`, `scripts/run_scenario.py`, `tests/`, `mutants/`, `examples/`, `README.md`; ponadto WIT1/WIT2/WIT4, S1–S11, L1–L5, INT-008/017 i karta celu. |
 | DEC-PRO-009 | Przyjąć propozycję WIT3: następca z predecessor, edycja depends_on tylko w draft przez T14, W07 aktora U rozszerza zakres, T11 wymaga dojrzałych zależności bez suspect. Model v0.6, S12/S13 i instancja 8 ID; wdrożyć WIT3 i regresję. Nie jest odbiorem E2. | Użytkownik 2026-10-25: „d1 tak” — odpowiedź na D1 o przyjęciu propozycji WIT3 wraz z korektą T11. | `model/process.yaml`, `docs/WLASCIWOSCI.md`, `docs/INTERPRETACJE.md`, `PLAN.md`, `docs/STAN.md`, `model/proposals/wit3-replacement.md`, `src/isomodel/`, `tests/`, `mutants/`, `scripts/`, `examples/`, `README.md` | `model/process.yaml`, `docs/WLASCIWOSCI.md`, `docs/INTERPRETACJE.md`, `PLAN.md`, `docs/STAN.md`, `model/proposals/wit3-replacement.md`, `src/isomodel/`, `tests/`, `mutants/`, `scripts/`, `examples/`, `README.md`; ponadto karta celu, WSPOLPRACA, WIT1–WIT5, G0–G6, S1–S13, L1–L5, INT-008/012/017/018, propozycja i diagnostyka WIT3; bez zmiany kolejności E2–E5 i zależności środowiska. |
+| DEC-PRO-010 | Przyjąć pakiet v0.7: W04 blokuje późne pytania, T10 zachowuje budżet odrzuceń wersji, W01 ma globalne bramki także dla pustego scope, nowy suspect w zakresie cofa ready/reviewed również po zmianie spoza scope. S14/S15 i doprecyzowanie L4; wdrożyć, zweryfikować i ponowić przegląd. Odbiór E2 pozostaje osobną decyzją. | Użytkownik 2026-10-26: „d1 tak” — odpowiedź na D1 o całym pakiecie e2-hardening. | `model/process.yaml`, `docs/WLASCIWOSCI.md`, `docs/INTERPRETACJE.md`, `PLAN.md`, `docs/STAN.md`, `model/proposals/e2-hardening.md`, `model/proposals/e2-hardening.yaml`, `src/isomodel/`, `tests/`, `mutants/`, `scripts/`, `docs/E2-RAPORT.md`, `README.md`, `examples/` | `model/process.yaml`, `docs/WLASCIWOSCI.md`, `docs/INTERPRETACJE.md`, `PLAN.md`, `docs/STAN.md`, `model/proposals/e2-hardening.md`, `model/proposals/e2-hardening.yaml`, `src/isomodel/`, `tests/`, `mutants/`, `scripts/`, `docs/E2-RAPORT.md`, `README.md`, `examples/`; ponadto G0–G6, S1–S15, L1–L5, WIT1–WIT5, INT-011/012/017/019, karta celu, kontrakt i niezależny audyt/przegląd E2. |
 
 ## Historia weryfikacji v0.5 i przygotowania propozycji WIT3
 
@@ -152,15 +152,14 @@ Poniższy opis zachowano historycznie; aktualne uzupełnienia i ograniczenia są
 ## Repozytorium
 
 - Użytkownik scalił poprzednią gałąź e1-model do main (PR #1, eceaf0e). Model v0.3 opublikowano na e1-model w 7e4856d; akceptację E1 i pierwszy przyrost E2 na e2-checks w c38a4b7.
-- Bieżąca gałąź: `e2-checks`; WIT1 zapisano w 2b830e0, WIT2/WIT4 w 9bfebae, kartę celu w 360a90d. WIT5 i v0.5 zapisano i wypchnięto w e5fc842; propozycję WIT3 zapisano w 7424b73, a przyjęty przyrost v0.6 w ffa68d6. Obecne sprawdzenia i propozycja korekty E2 są dostarczane na tej samej gałęzi. Scalenie do main wymaga osobnej zgody użytkownika.
+- Bieżąca gałąź: `e2-checks`; WIT1 zapisano w 2b830e0, WIT2/WIT4 w 9bfebae, kartę celu w 360a90d. WIT5 i v0.5 zapisano i wypchnięto w e5fc842; propozycję WIT3 zapisano w 7424b73, a przyjęty przyrost v0.6 w ffa68d6. Sprawdzenia i propozycję korekty E2 zapisano w de94da9; przyjęta korekta v0.7 jest dostarczana na tej samej gałęzi. Scalenie do main wymaga osobnej zgody użytkownika.
 
 ## Sprawy otwarte
 
 | Sprawa | Właściciel | Następny krok |
 |---|---|---|
-| Korekta v0.7 potrzebna przed odbiorem E2 | użytkownik | rozstrzygnąć kompletny pakiet model/proposals/e2-hardening.md; brak nowej DEC do chwili odpowiedzi |
-| Wdrożenie korekty, dowody i ponowny przegląd E2 | agent | po zgodzie zastosować pakiet, pełna regresja i osobna bramka odbioru |
-| Pusty zakres oraz wpływ zmiany spoza scope | agent | objęte pakietem v0.7; po decyzji zweryfikować pełne wykonanie, obecnie nie ukrywać ograniczenia |
+| Odbiór E2 | użytkownik | przyjąć lub odrzucić gotową dostawę v0.7; dowody w E2-RAPORT i niezależnym przeglądzie; decyzja odrębna od DEC-PRO-010 |
+| Przejście do E3 | agent | po odbiorze E2 zapisać DEC i przygotować formalizację oraz wymagania środowiska zgodnie z PLAN |
 | Historyczne materiały informative/ | agent | przy E5 uwzględnić INT-017 w nowym materiale; nie przepisywać migawek sesji 2026-10-23 |
 | REQ-210 i REQ-211 dla szablonu | użytkownik | decyzja; opis w informative/SESJA-2026-10-23.md §5 |
 | Instalacja Javy i TLA+ (E3) | użytkownik | zgoda przed E3 |
@@ -168,6 +167,12 @@ Poniższy opis zachowano historycznie; aktualne uzupełnienia i ograniczenia są
 | Porządki w vcs-lite | użytkownik | decyzja, czy i kiedy |
 
 ## Decyzje agenta do podważenia
+
+- 2026-10-26 (v0.7): zachowano historyczny wynik v0.6 i dodano osobny korpus wykonywanych regresji, aby nie przepisywać dowodów dawnej luki.
+- 2026-10-26 (v0.7): zastąpiono maskowany mutant T07(r1) przypadkiem liścia a2 i oznaczono go WIT3/T07, ponieważ po poprawnej propagacji obserwator sam unieważnia gotowość; S7a ma odrębne mutanty.
+- 2026-10-26 (v0.7): kod 0 raportu oznacza powodzenie kontroli technicznych, nigdy odbiór użytkownika; kod 1 pozostaje dla niepowodzenia kontroli. Zastępuje historyczną decyzję o kodzie 1 przy oczekującej korekcie modelu.
+
+Historyczne decyzje przy przygotowaniu v0.6/propozycji v0.7:
 
 - 2026-10-26: rozdzielono audyt modelu, autorstwo niezależnych wyroczni i generowanie sekwencji między osobne subagenty, aby nie opierać oceny wyłącznie na implementacji autora wykonawcy. Końcowy recenzent nie otrzymuje historii tworzenia.
 - 2026-10-26: W03/W05 wykonują regułę P00 z YAML w atomowej kopii; ID pytań są wejściem zdarzenia jak w dotychczasowym P00/T12. Nie dodano nowego pola trwałego ani nie wymagano niepustej listy uwag bez podstawy w modelu.

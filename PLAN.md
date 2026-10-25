@@ -14,7 +14,7 @@ Zgoda: DEC-PRO-001, 2026-10-23, użytkownik: „d1 tak” na DoD 1–10 i stos n
 
 1. Zamknięty słownik w `model/process.yaml`; każdy stan z Tabeli 12 normy albo z INT.
 2. Struktura: osiągalność, wykonalność przejść, brak ślepych stanów, determinizm, kompletność.
-3. Bezpieczeństwo: S1–S13 (S7 zastąpione przez S7a i S7b), w tym brak obejść bramek użytkownika i niezmienność odebranych wydań (DEC-PRO-003), zgoda na konkretną zmianę (DEC-PRO-008) i kontrola powiązań/zakresu (DEC-PRO-009).
+3. Bezpieczeństwo: S1–S15 (S7 zastąpione przez S7a i S7b), w tym brak obejść bramek użytkownika i niezmienność odebranych wydań (DEC-PRO-003), zgoda na konkretną zmianę (DEC-PRO-008) i kontrola powiązań/zakresu (DEC-PRO-009), brak blokad przy odbiorze i budżet odrzuceń wersji (DEC-PRO-010).
 4. Żywotność: L1–L5 przy jawnych założeniach sprawiedliwości F1–F3.
 5. Dowód TLC w podanych granicach; wynik jako OBS.
 6. Test mutacyjny: każda właściwość pada na co najmniej jednym celowo zepsutym modelu.
@@ -36,7 +36,7 @@ Zgoda: DEC-PRO-001, 2026-10-23, użytkownik: „d1 tak” na DoD 1–10 i stos n
 
 Kolejność jest ścisła: bez zgody na E1 nie piszemy kodu, bo kod i dowody wywodzą się z modelu.
 
-Stan etapów: E1 przyjęty jako podstawa E2 przez DEC-PRO-005 (2026-10-24); E2 rozpoczęty. Akceptacja modelu nie jest potwierdzeniem spełnienia właściwości G/S/L.
+Stan etapów: E1 przyjęty jako podstawa E2 przez DEC-PRO-005 (2026-10-24); E2: dostawa v0.7 zweryfikowana, niezależny przegląd bez otwartych blokad; oczekuje osobnego odbioru użytkownika (docs/E2-RAPORT.md i docs/reviews/E2-V07-PRZEGLAD-2026-10-26.md). Akceptacja modelu nie jest potwierdzeniem spełnienia właściwości G/S/L.
 
 ## Narzędzia
 

@@ -29,9 +29,9 @@ Identyfikatory tego repozytorium mają prefiks `PRO`.
 
 Po korekcie DEC-PRO-006 usunięto wykazane wcześniej luki G3/G6: mutant G3 usuwa wszystkie wyjścia z `deferred`, a każde przejście ma adnotacje ISO, łącznie obejmujące 14 efektów PM/SI. Przyjęte uzasadnienie korekty zachowano w `model/proposals/e2-structure.yaml`; testy czytają model wiążący. Przyrost WIT1 dodaje wykonanie ścieżki, testy bramek i wybrane mutanty. Zielony wynik obecnego zestawu nie oznacza zakończenia E2; aktualny wynik jest w `docs/STAN.md`.
 
-`src/isomodel/` wczytuje model i wykonuje przyjęte przejścia, w tym uwagi W03/W05. Korpus ma świadków 28/28 przejść; niezależne wyrocznie S1–S13 badają WIT i generowane sekwencje Hypothesis. Projekcja grafu G1/G3 nie dowodzi całej osiągalności ani braku zakleszczeń. Pełne dowody czasowe pozostają w E3.
+`src/isomodel/` wczytuje model i wykonuje przyjęte przejścia, w tym uwagi W03/W05. Korpus ma świadków 28/28 przejść; niezależne wyrocznie S1–S15 badają WIT i generowane sekwencje Hypothesis. Projekcja grafu G1/G3 nie dowodzi całej osiągalności ani braku zakleszczeń. Pełne dowody czasowe pozostają w E3.
 
-**E2 nie jest jeszcze gotowe do odbioru.** Niezależny audyt wykazał obejście pytania blokującego i limitu odrzuceń, problem pustego zakresu oraz wpływu zmian spoza zakresu. [Raport E2](docs/E2-RAPORT.md) rozdziela wykonane sprawdzenia od tych luk. [Gotowa korekta v0.7](model/proposals/e2-hardening.md) czeka na decyzję; model nadal ma v0.6.
+**Model v0.7 wdraża DEC-PRO-010.** Późna blokada zatrzymuje odbiór, T10 zachowuje budżet odrzuceń, pusty zakres respektuje globalne bramki, a wpływ zmiany spoza zakresu unieważnia gotowość. [Raport E2](docs/E2-RAPORT.md) zawiera odtwarzalne wyniki i granice badania; odbiór E2 pozostaje osobną decyzją użytkownika. [Przyjęty pakiet zmian](model/proposals/e2-hardening.md).
 
 `.venv/bin/python scripts/run_e2.py --output artifacts/e2` odtwarza raport i pełne dane. Oczekiwany kod wyjścia **1** oznacza brak gotowości do odbioru, **2** błąd przygotowania raportu. Testy diagnostyczne są zielone, gdy prawidłowo odtwarzają znaną lukę — nie są dowodem jej naprawy.
 

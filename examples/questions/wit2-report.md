@@ -8,10 +8,10 @@ Wyniki kontroli i jednoznaczność odpowiedzi są danymi wejściowymi tych krok�
 
 ## Tożsamość wejść i wykonawcy
 
-- Model: v0.6; SHA-256 danych: `ec342e2d04d8200de32d2bbba963ecd4fc45014405b99653134f15e110ff4680`.
+- Model: v0.7; SHA-256 danych: `ecca43e1402ee476502943caa16556d5609021b8894f3a702e26ca2da3cf21a6`.
 - Scenariusz SHA-256: `0bb62c523052950649dcb6b10f565d561cc1759f2a4a606f53bee0bb76c560c1`.
 - python: `3.14.7`.
-- source_sha256: `78a67819591e32053962691f764a53c40ae3eee09920c83c64b5cb0d7897f27d`.
+- source_sha256: `fdde51dac2165f58282c33a5af84ebe5621865ae0abcce5e3973af95bbf5171d`.
 - uv_lock_sha256: `027a3da0a1f3fbd763d5b9b7c8a8a71229b35202efe60d3d97e4e60f4ce9897a`.
 - mutants_sha256: `25e094a4d18f8d782fb0365b972fa4ab5f0f4a654375de142f4740e3211dfddf`.
 
@@ -64,9 +64,9 @@ Warunki są rozwinięte w kolejnej tabeli. Pełne stany przed i po, dowody oraz 
 | T02 | `type(e).requires_approval and not suspect` |
 | T04 | `not suspect and (state = approved or not type(e).requires_approval) and forall d in deps(e): d.state = baselined` |
 | T03 | `rejections < MAX_REJECTIONS` |
-| W01 | `forall e: in_scope(e) => (e.state in {baselined, deferred, superseded, withdrawn} and (e.state = baselined => not e.suspect)) and tests_ok and not exists q: q.blocking and q.state in {open, asked}` |
+| W01 | `(forall e: in_scope(e) => (e.state in {baselined, deferred, superseded, withdrawn} and (e.state = baselined => not e.suspect))) and tests_ok and not exists q: q.blocking and q.state in {open, asked}` |
 | W02 | `true` |
-| W04 | `true` |
+| W04 | `not exists q: q.blocking and q.state in {open, asked}` |
 
 ## Dowody demonstracyjne
 

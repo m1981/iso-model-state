@@ -1,6 +1,6 @@
 # WIT2/WIT4 — odrzucenia i pytania
 
-Przyrost E2 z 2026-10-24, pierwotnie na modelu v0.4; raporty odtworzono na v0.6. Nie zmienia modelu ani nie stanowi odbioru E2. Korzysta z tego samego wykonawcy co WIT1.
+Przyrost E2 z 2026-10-24, pierwotnie na modelu v0.4; raporty odtworzono na v0.7. Nie zmienia modelu ani nie stanowi odbioru E2. Korzysta z tego samego wykonawcy co WIT1.
 
 ## Uruchomienie i raporty
 

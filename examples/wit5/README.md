@@ -1,6 +1,6 @@
 # WIT5 — zgoda na zmianę i kolejne wydanie
 
-Reguły przyjęte w v0.5 przez DEC-PRO-008; raport odtworzony na v0.6. Rezerwowe r3 pozostaje none poza zakresem. Scenariusz symulacyjny na siedmiu elementach; wszystkie cytaty, decyzje, tagi i odbiory są demonstracyjne. Nie zmieniają decyzji ani odbiorów tego repozytorium.
+Reguły przyjęte w v0.5 przez DEC-PRO-008; raport odtworzony na v0.7. Rezerwowe r3 pozostaje none poza zakresem. Scenariusz symulacyjny na siedmiu elementach; wszystkie cytaty, decyzje, tagi i odbiory są demonstracyjne. Nie zmieniają decyzji ani odbiorów tego repozytorium.
 
 ## Uruchomienie i wynik
 

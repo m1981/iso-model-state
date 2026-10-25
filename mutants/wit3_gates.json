@@ -521,13 +521,13 @@
     "expected_code": "state"
   },
   {
-    "id": "s7a_retirement_keeps_reviewed",
-    "property": "S7a",
-    "prefix_steps": 31,
+    "id": "t07_leaf_retirement_keeps_reviewed",
+    "property": "WIT3/T07",
+    "prefix_steps": 28,
     "attempt": {
       "transition": "T07",
       "actor": "U",
-      "item": "r1",
+      "item": "a2",
       "question": "q1"
     },
     "field": "effects",
@@ -535,7 +535,38 @@
       "q.consumed := true",
       "forall d in dependents(e): d.suspect := true"
     ],
-    "setup_events": [],
+    "setup_events": [
+      {
+        "transition": "P00",
+        "actor": "A",
+        "question": "q1",
+        "attributes": {
+          "kind": "change",
+          "about": "a2",
+          "requested_transition": "T07",
+          "blocking": true
+        }
+      },
+      {
+        "transition": "P01",
+        "actor": "A",
+        "question": "q1"
+      },
+      {
+        "transition": "P02",
+        "actor": "U",
+        "question": "q1",
+        "inputs": {
+          "unambiguous_answer": true,
+          "resolution": "approved"
+        },
+        "evidence": {
+          "simulation": true,
+          "decision": "SIM-DEC-q1",
+          "quote": "Zgoda testowa: a2 v1, T07."
+        }
+      }
+    ],
     "expected_path": [
       "releases",
       1,

@@ -1,6 +1,6 @@
 # Korekta potrzebna do odbioru E2 — propozycja v0.7
 
-Data: 2026-10-26. Status: **proposed — wymaga decyzji użytkownika**. Baza: model v0.6, commit `ffa68d6752cdfdb057f687d051757ad9c2cc6aaa`. Nie zmieniono `model/process.yaml`, właściwości ani interpretacji. Zgoda na wykonanie E2 upoważnia do implementacji i badania reguł; nie zastępuje zgody na zmianę zaakceptowanej polityki.
+Data przyjęcia: 2026-10-26. Status: **applied — DEC-PRO-010**, cytat użytkownika „d1 tak”. Pakiet wdrożono jako v0.7. Poniżej zachowano historyczną treść propozycji i diagnostyki v0.6; źródłem reguł jest model/process.yaml. Aktualne wyniki są w docs/E2-RAPORT.md. Przyjęcie korekty nie odbiera E2.
 
 ## Jedna rekomendacja
 
@@ -56,3 +56,5 @@ Niezależne źródło oceny: [audyt modelu](../../docs/reviews/E2-AUDYT-2026-10-
 Podstawa bramki: [WSPOLPRACA §2.1 i §2.3](../../docs/WSPOLPRACA.md): „zmiana czegoś, co użytkownik już zaakceptował” oraz „luka albo sprzeczność w dokumentach zamiaru”. Dlatego agent przygotowuje kompletną korektę i dowody, ale nie wdraża nowej polityki bez decyzji.
 
 Jeśli propozycja zostanie odrzucona, v0.6 pozostaje obowiązujące, a E2 pozostaje otwarte z tymi ograniczeniami. Alternatywa: osobno rozstrzygnąć politykę każdej z czterech sytuacji; nie rekomendujemy przemilczania naruszeń.
+
+Historyczną diagnostykę v0.6 odtwarzać na commicie `de94da9`. Bieżące wykonane regresje v0.7: `mutants/e2_hardening.json`, `src/isomodel/hardening.py`; aktualny [raport E2](../../docs/E2-RAPORT.md).

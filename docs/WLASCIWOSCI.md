@@ -1,6 +1,6 @@
 # Właściwości modelu i Definition of Done
 
-Właściwości, które model `model/process.yaml` musi spełniać. Każda ma: zapis formalny, narzędzie, które ją sprawdza, i **mutanta**: celowo zepsuty model, na którym musi paść (DoD 6). Status `approved`: przyjęte jako podstawa E2 przez DEC-PRO-005 (2026-10-24). Korekta G3/G6 przyjęta przez DEC-PRO-006. DEC-PRO-008 (2026-10-25) przyjmuje regułę zgody i S11. DEC-PRO-009 (2026-10-25) przyjmuje v0.6, korektę T11 i S12/S13. Spełnienie właściwości wymaga jeszcze testów i dowodów.
+Właściwości, które model `model/process.yaml` musi spełniać. Każda ma: zapis formalny, narzędzie, które ją sprawdza, i **mutanta**: celowo zepsuty model, na którym musi paść (DoD 6). Status `approved`: przyjęte jako podstawa E2 przez DEC-PRO-005 (2026-10-24). Korekta G3/G6 przyjęta przez DEC-PRO-006. DEC-PRO-008 (2026-10-25) przyjmuje regułę zgody i S11. DEC-PRO-009 (2026-10-25) przyjmuje v0.6, korektę T11 i S12/S13. DEC-PRO-010 (2026-10-26) przyjmuje v0.7, S14/S15 i doprecyzowanie L4. Spełnienie właściwości wymaga testów i dowodów.
 
 Notacja: `G` zawsze, `F` kiedyś, `X` w następnym kroku, `O` kiedyś w przeszłości (LTL z przeszłością); `AG`, `EF`, `EX` z CTL. `e` to dowolny element, `q` dowolne pytanie, `rel` rekord wydania o ustalonym numerze `n`. `current ≡ releases[current_release]`; `pre` i `post` oznaczają stan przed i po kroku. Identyfikatory jak w modelu (DEC-PRO-002).
 
@@ -19,7 +19,7 @@ Semantyka wielu wydań (DEC-PRO-003, INT-017): W04 utrwala własną kopię zakre
 |---|---|---|
 | 1 | Zamknięty słownik: każdy typ, stan, zmienna, przejście, aktor i warunek jest w `process.yaml`; każdy stan wskazuje stan Tabeli 12 normy albo INT | test G0 przechodzi |
 | 2 | Struktura: G1–G6 | testy pytest przechodzą |
-| 3 | Bezpieczeństwo: S1–S13, z S7a i S7b zamiast S7 | Hypothesis (E2) i TLC (E3) bez naruszeń |
+| 3 | Bezpieczeństwo: S1–S15, z S7a i S7b zamiast S7 | Hypothesis (E2) i TLC (E3) bez naruszeń |
 | 4 | Żywotność: L1–L5 przy założeniach F1–F3 | TLC z warunkami sprawiedliwości bez naruszeń |
 | 5 | Dowód w granicach `test_instance` z uzasadnieniem granic | OBS: wersja TLC, liczba stanów, czas |
 | 6 | Każda właściwość ma mutanta, na którym pada | raport mutacji: 100% zabitych |
@@ -60,6 +60,10 @@ G6 sprawdza jawne powiązania zapisane w polach `iso`, w tym PM.O1–PM.O7 i SI.
 | S11 | **Zgoda na konkretną operację** | każdy krok T05/T07: `pre.authorized_change(q,e)` oraz `post.q.consumed = true`; P01–P05 zachowują powiązanie kind/about/about_version/requested_transition i consumed | usunięcie kolejno wymogu approved, zgodności elementu, wersji, operacji, niewykorzystania lub skutku consumed=true; P03 zmienia powiązanie |
 | S12 | **Kontrolowana zmiana powiązań** | poza inicjalizacją zmiana depends_on tylko w T14 na draft i zgodnie z guard: dokładnie jedna krawędź do wskazanego następcy, poprawne typy, bez cyklu/duplikatu; zależni z pre oznaczeni. predecessor zapisywany tylko w T00 zgodnie z guard i potem niezmienny | T14 dopuszcza baselined, usuwa niewskazane krawędzie lub propagację; T00 pomija kontrolę poprzednika; T14 nadpisuje predecessor |
 | S13 | **Kontrolowane rozszerzenie zakresu** | zmiana scope istniejącego rekordu tylko w W07 przez U z in_preparation: post.scope = pre.scope union {e.id}, pozostałe pola rekordu bez zmian, spełniony guard W07. W06 tworzy nowy rekord; accepted chroni S10 | W07 aktora A, z reviewed/accepted, usuwa poprzednika z zakresu albo pomija dojrzałość następcy |
+| S14 | **Brak blokad przy odbiorze** | dla każdego W04: `not exists q in pre.questions: q.blocking and q.state in {open, asked}`; późniejsze pytania nie zmieniają odebranego rekordu | W04 z guard=true dopuszcza blocker zgłoszony po W02 |
+| S15 | **Budżet odrzuceń wersji** | dla każdej pary (ID, version) liczba wykonanych T03 w historii <= MAX_REJECTIONS; T10 zachowuje rejections, a T05/T06 zerują licznik przy nowej wersji | T10 zeruje rejections bez zmiany version, pozwalając na trzecie T03 tej samej wersji |
+
+S14/S15 przyjęto przez DEC-PRO-010. W01 obejmuje globalne tests_ok i brak pytań również dla pustego scope. Nowy suspect w zakresie cofa ready/reviewed do in_preparation także po zmianie spoza scope; accepted nadal chroni S10 i obowiązkowe W06. Alternatywne zakresy są osobnymi instancjami badania, nie modyfikacją świadków podstawowej instancji.
 
 S7 v0.2 jest zastąpione przez S7a i S7b (DEC-PRO-003). S7b ocenia produkty w chwili podpisu; S10 chroni wynik tego podpisu także wtedy, gdy produkty robocze zostały już zmienione. Nie wymagamy, aby dzisiejszy stan produktów nadal odpowiadał każdej historycznej dostawie.
 
@@ -78,7 +82,7 @@ S7 v0.2 jest zastąpione przez S7a i S7b (DEC-PRO-003). S7b ocenia produkty w ch
 | L1 | **Możliwość zakończenia bieżącej pracy** (brak zakleszczeń i uwięzienia, również po wcześniejszym odbiorze) | `AG EF done`, z definicją `done` uwzględniającą najnowsze wydanie i oczekujące W06 | usunięte W06: po zmianie odebranego elementu `next_release_required` pozostaje ustawione i nie ma ścieżki do `done` |
 | L2 | **Brak zagłodzenia pytań** | `G(q.state = open => F(q.state in {resolved, deferred}))` przy F1, F2 | P01 wybiera najnowsze pytanie zamiast najstarszego (LIFO) |
 | L3 | **Podejrzenia znikają** | `G(e.suspect => F(not e.suspect or inactive(e)))` przy F1, F3 | T12 bez utworzenia pytania (zgłoszenie znika w próżni) |
-| L4 | **Ograniczona liczba poprawek** | `G(e.rejections <= MAX_REJECTIONS)` i brak nieskończonej pętli T01↔T03 w jednej wersji | warunek `rejections < MAX_REJECTIONS` usunięty z T03 |
+| L4 | **Ograniczona liczba poprawek** | `G(e.rejections <= MAX_REJECTIONS)` oraz historyczny budżet S15 dla każdej wersji; brak nieskończonej pętli T01↔T03 w jednej wersji, także przez T09/T10 | warunek `rejections < MAX_REJECTIONS` usunięty z T03; T10 zeruje licznik tej samej wersji |
 | L5 | **Postęp kolejnych wydań**, a po ustaniu zmian trwały odbiór najnowszego | dla każdego numeru `n`: `G(releases[n].state = ready => F(releases[n].state in {accepted, in_preparation}))` i `G(next_release_required and current_release = n => F(current_release = n + 1))`; ponadto `(FG not scope_change) => FG(current.state = accepted and not next_release_required)` przy F1–F3 | usunięte W06 (brak postępu po odbiorze); usunięte W02 i W03 (brak zakończenia przeglądu) |
 
 W L5 numer `n` jest ustalony w chwili sprawdzania zobowiązania; przegląd lub odbiór innego numeru go nie spełnia. Ostatnia formuła wyklucza pozorne spełnienie przez historyczny odbiór wydania 1, gdy wydanie 2 nadal czeka. Są to wymagania do sprawdzenia w E3, nie deklaracja dowodu pod F1–F3.

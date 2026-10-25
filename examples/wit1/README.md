@@ -1,6 +1,6 @@
 # WIT1 — wykonywalny przykład w E2
 
-To demonstracja i test integracyjny na sztucznej instancji, pierwotnie dla modelu v0.4; zapisany raport odtworzono na v0.6. Nie jest formalnym świadkiem wygenerowanym przez TLC ani odbiorem projektu. Opis procesu pozostaje w `model/process.yaml` i `docs/WLASCIWOSCI.md`.
+To demonstracja i test integracyjny na sztucznej instancji, pierwotnie dla modelu v0.4; zapisany raport odtworzono na v0.7. Nie jest formalnym świadkiem wygenerowanym przez TLC ani odbiorem projektu. Opis procesu pozostaje w `model/process.yaml` i `docs/WLASCIWOSCI.md`.
 
 ## Uruchomienie
 
@@ -48,7 +48,7 @@ Rezerwowe r3 (v0.6) pozostaje none, poza zakresem wydania i migawką.
 - Początkowe wartości produktów i wydania pochodzą z deklaracji modelu. Migawka kopiuje wartości `type`, `depends_on` i wszystkich `item_variables`. Historia raportu, stan końcowy, model i wejściowy scenariusz nie współdzielą zmiennych struktur.
 - Dowód T02 ma pola `decision`, `quote`; T04 — `reference`, `quote`; W04 — `quote`. Każdy dowód ma `simulation: true`. To format wejścia symulatora realizujący opisane w YAML dowody; nie nowy rodzaj zatwierdzenia. Odwołania `SIM-*` są demonstracyjne i nie tworzą rzeczywistych DEC ani tagów.
 - Weryfikacja aktora R sprawdza rolę zdarzenia; nie uruchamia ani nie poświadcza rzeczywistego niezależnego przeglądu implementacji.
-- Nieobsługiwane konstrukcje kończą się jawnym `unsupported`. Helpery zmian i W06 dodano w [WIT5](../wit5/README.md), a następców, T14 i W07 w [WIT3](../wit3/README.md). Pytania dodano w kolejnym [przyroście WIT2/WIT4](../questions/README.md). Wykonawca nie obsługuje pustego zakresu wydania. Przy niepustym zakresie W01 sprawdza zarówno kompletność, jak i globalne testy/pytania; przed poszerzeniem o pusty zakres trzeba ujednoznacznić wiązanie kwantyfikatora i globalnych członów W01. Nie zmieniono przyjętego YAML ani nie ustanowiono zakazu pustego zakresu w procesie.
+- Nieobsługiwane konstrukcje kończą się jawnym `unsupported`. Helpery zmian i W06 dodano w [WIT5](../wit5/README.md), a następców, T14 i W07 w [WIT3](../wit3/README.md). Pytania dodano w kolejnym [przyroście WIT2/WIT4](../questions/README.md). DEC-PRO-010 / v0.7 dodaje pełne wykonanie pustego zakresu: W01 nadal wymaga tests_ok i braku blokujących pytań. Regresje dla pustego zakresu i wpływu zmian spoza zakresu są opisane w [raporcie E2](../../docs/E2-RAPORT.md).
 - Przekroczenie granicy eksploracji jest raportowane osobno jako `boundary`, nie jako niedozwolone przejście lub zakleszczenie. Obsługę W06 i granicy wielu wydań sprawdza przyrost WIT5.
 
 ## Dowody i ich ograniczenia

@@ -312,11 +312,11 @@ def test_non_simulation_cannot_be_replayed(model, scenario):
         replay(model, scenario)
 
 
-def test_empty_release_scope_is_explicitly_outside_this_increment(model, scenario):
+def test_empty_release_scope_can_be_ready_with_global_gates_satisfied(model, scenario):
     state = prefix(model, scenario, 26)
     state["releases"][1]["scope"] = []
-    with pytest.raises(UnsupportedSemantics, match="Pusty zakres"):
-        execute_step(model, state, event("W01", "A"), scenario["inputs"])
+    result = execute_step(model, state, event("W01", "A"), scenario["inputs"])
+    assert result["after"]["releases"][1]["state"] == "ready"
 
 
 def test_readiness_only_checks_items_in_scope(model, scenario):

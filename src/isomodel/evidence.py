@@ -1,6 +1,6 @@
 """Zestawienie rzeczywiście wykonanych świadków i niezależnych wyroczni E2.
 
-Trace: G0–G6, S1–S13. Raport skończonego badania, nie dowód TLC.
+Trace: G0–G6, S1–S15. Raport skończonego badania, nie dowód TLC.
 """
 from copy import deepcopy
 import json
@@ -11,8 +11,9 @@ from .loader import ModelError, validate_model
 from .graph import unreachable_states, dead_ends, completeness_matrix, iso_coverage
 from .safety import safety_violations
 from .probes import gate_probes
+from .hardening import hardening_evidence
 
-SAFETY_IDS = ['S1','S2','S3','S4','S5','S6','S7a','S7b','S8','S9','S10','S11','S12','S13']
+SAFETY_IDS = ['S1','S2','S3','S4','S5','S6','S7a','S7b','S8','S9','S10','S11','S12','S13','S14','S15']
 
 
 def _mutate(model, case):
@@ -66,6 +67,7 @@ def safety_evidence(model, root):
             mutations.append(dict(scenario=name.upper(),id=case['id'],gate_detected=gate['detected'],
                 expected_safety=expected,mutant_applied=applied,oracle_detected=killed,
                 baseline_violations=base_violations+baseline_violations,violations=violations,error=failure))
+    mutations.extend(hardening_evidence(model, root))
     covered={p:[m['id'] for m in mutations if p in m['oracle_detected']] for p in SAFETY_IDS}
     return dict(witnesses=witnesses,mutations=mutations,properties=covered,
                 missing=[p for p,ids in covered.items() if not ids],exhaustive=False)

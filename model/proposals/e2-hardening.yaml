@@ -1,7 +1,8 @@
-status: proposed
+status: applied
+decision: DEC-PRO-010
 base_version: 0.6
 proposed_version: 0.7
-requires_user_decision: true
+requires_user_decision: false
 # Dane eksperymentu; nie są czytane przez zwykłe wykonanie modelu.
 item_transitions:
   T10:

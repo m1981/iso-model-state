@@ -1,6 +1,6 @@
 # WIT3 — zastąpienie wymagania i naprawa powiązań
 
-Wykonano **54 kroki** na modelu **v0.6**, przyjętym przez DEC-PRO-009. Wydanie wraca z reviewed do in_preparation po zastąpieniu wymagania, a po naprawie zależności przechodzi ponowny przegląd i odbiór. [Raport rzeczywistego wykonania](report.md) pokazuje wszystkie kroki, warunki, dowody demonstracyjne i 17 wykrytych mutantów.
+Wykonano **54 kroki** na modelu **v0.7** (reguły WIT3: DEC-PRO-009; korekta E2: DEC-PRO-010). Wydanie wraca z reviewed do in_preparation po zastąpieniu wymagania, a po naprawie zależności przechodzi ponowny przegląd i odbiór. [Raport rzeczywistego wykonania](report.md) pokazuje wszystkie kroki, warunki, dowody demonstracyjne i 17 wykrytych mutantów.
 
 To symulacja reguł procesu. Nie zmienia produktów rzeczywistego projektu, nie zapisuje rzeczywistych zgód ani nie stanowi odbioru E2. Testy produktu i wynik przeglądu treści są danymi wejściowymi.
 

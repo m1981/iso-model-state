@@ -1,6 +1,6 @@
 """Skończone próby wykonania; świadkowie osiągalności nie są dowodem zupełności.
 
-Trace: G2, S1–S13. Generator dobiera zdarzenia, nie ocenia bezpieczeństwa.
+Trace: G2, S1–S15. Generator dobiera zdarzenia, nie ocenia bezpieczeństwa.
 """
 
 from copy import deepcopy
@@ -147,7 +147,7 @@ def classify_candidates(model, state):
     """Granica badania jest osobnym wynikiem, nigdy etykietą deadlock.
 
     Wynik dotyczy wyłącznie kandydatów generatora. Błędy semantyki nie są
-    maskowane jako odmowy. Funkcja nie odrzuca kroków łamiących S1–S13.
+    maskowane jako odmowy. Funkcja nie odrzuca kroków łamiących S1–S15.
     """
     result = {"applied": [], "rejected": [], "boundary": [], "input_error": []}
     inputs = exploration_inputs(model)

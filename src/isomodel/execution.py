@@ -438,8 +438,6 @@ def execute_step(model, state, event, inputs):
         raise StepRejected("actor", "Aktor nie jest uprawniony do tego przejścia")
     if state["next_release_required"] and not new_release:
         raise StepRejected("pending_release", "Najpierw wymagane otwarcie następnego wydania")
-    if not state["releases"][state["current_release"]]["scope"]:
-        raise UnsupportedSemantics("Pusty zakres wydania jest poza przyrostem WIT1")
     creates_question = any(path[0] == "create_question" for path, _ in effects)
     raises_question = any(path[0] == "raise_question" for path, _ in effects)
     uses_question = "authorized_change(" in transition["guard"] or any(path[0] == "question" for path, _ in effects)
