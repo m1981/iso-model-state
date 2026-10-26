@@ -38,6 +38,23 @@ Kolejność jest ścisła: bez zgody na E1 nie piszemy kodu, bo kod i dowody wyw
 
 Stan etapów: E1 przyjęty jako podstawa E2 przez DEC-PRO-005 (2026-10-24); E2: dostawa v0.7 zweryfikowana, niezależny przegląd bez otwartych blokad; oczekuje osobnego odbioru użytkownika (docs/E2-RAPORT.md i docs/reviews/E2-V07-PRZEGLAD-2026-10-26.md). Akceptacja modelu nie jest potwierdzeniem spełnienia właściwości G/S/L.
 
+## Kierunek narzędzia i sposób kolejnych przyrostów
+
+DEC-PRO-011 (2026-10-26): dalszy rozwój API jest odłożony do wniosków z E4. Wracamy do bramki E2, następnie E3–E5 w dotychczasowej kolejności. Kontrakt API i recenzje zachowujemy jako materiał do późniejszego wykorzystania; nie są przyjętym zakresem wdrożenia.
+
+Użytkownik akceptuje przyszłe narzędzie **CLI z jawnym kontraktem i pomocnymi dla agenta komunikatami pomocy i błędów**. Nie jest to jeszcze wybór komend ani zgoda na rozpoczęcie implementacji CLI. Kontrakt przed implementacją określi wejścia, wyniki, kody zakończenia i skutki poleceń; pomoc poda przykłady, a błąd wskaże przyczynę, przedmiot i dozwolony następny krok. CLI samo nie zapewnia izolacji uprawnień ani ochrony przed obejściem procesu.
+
+Sposób wykonania dobrany przez agenta na prośbę użytkownika: dla każdego przyrostu najpierw wskazujemy korzyść dla operatora, obowiązującą regułę i obserwowalny wynik. Potem **RED → GREEN → REFACTOR**: test zachowania nie przechodzi z oczekiwanego powodu, minimalna implementacja go spełnia, a porządkowanie zachowuje wynik i właściwą regresję. Zapisujemy faktycznie wykonane sprawdzenia. Dla samego zapisu decyzji nie tworzymy sztucznych czerwonych testów.
+
+| Krok | Wykonanie i dowód | Udział recenzenta |
+|---|---|---|
+| Bramka E2 | Przedstawić istniejący raport i ograniczenia, sprawdzić aktualność dowodów; odbiór należy do U. Nie dopisywać kodu tylko po to, by ponownie zamknąć gotowy etap. | Wykorzystać zakończony niezależny przegląd v0.7; ponowić go dopiero przy zmianie przedmiotu lub nowym istotnym ustaleniu. |
+| E3 po odbiorze E2 | Najpierw mały test zgodności generowanego przejścia z YAML i oczekiwanym skutkiem, potem generator i kolejne przejścia. Niezależne oczekiwania oraz porównanie z Pythonem; zgodność dwóch implementacji sama nie dowodzi poprawności. Następnie sprawdzenia TLC w jawnych granicach, S i L przy F oraz wykonane mutanty czasowe. Brak naruszeń w modelu bazowym i rzeczywisty kontrprzykład mutanta to odrębne dowody; błąd składni, brak narzędzia lub timeout nie są takim kontrprzykładem. | Przed rozszerzeniem generatora osobny R ocenia mapowanie, granice i założenia, a przed bramką E3 niezależnie odtwarza wyniki i sprawdza, czy właściwości nie zachodzą w pusty sposób. |
+| E4 | Najpierw zweryfikowane epizody rzeczywistej historii i niezależnie określone oczekiwane oceny; następnie czerwone testy adaptera, implementacja i porównanie wyników. Osobno przypadki poprawne, naruszenia i brak wystarczających danych. | R sprawdza źródła i etykiety przypadków, żeby wyrocznia nie wynikała z kodu ani niepotwierdzonego zarzutu. |
+| E5 / przyszłe CLI | Najpierw kontrakt wybranych poleceń i testy wywołania procesu: poprawny przypadek, odmowa, błędne wejście, pomoc, kod zakończenia i skutki. Potem minimalny CLI na sprawdzonym rdzeniu. Osobny agent próbuje wykonać zadanie, dysponując wyłącznie kontraktem i pomocą; poprawiamy komunikaty na podstawie obserwowanych pomyłek. | R sprawdza zgodność zachowania z kontraktem, czytelność następnego kroku i granice uprawnień; wyniku próby użycia nie utożsamiamy z pełnym dowodem bezpieczeństwa. |
+
+Przyrost jest gotowy do przedstawienia, gdy ma wynik użytkowy, sprawdzony przypadek poprawny i istotne odmowy, właściwą regresję, jawne ograniczenia i zamknięte ustalenia wymaganej recenzji. Nowa luka w zaakceptowanej regule wraca do U przed jej zmianą; recenzent nie akceptuje etapu za operatora. Dla E3 pierwszym działaniem po odbiorze E2 jest odczyt dostępności narzędzi i przygotowanie zakresu pierwszego przyrostu; instalacja pozostaje osobną sprawą zgodnie z poniższą tabelą.
+
 ## Narzędzia
 
 | Narzędzie | Etap | Uwagi |
