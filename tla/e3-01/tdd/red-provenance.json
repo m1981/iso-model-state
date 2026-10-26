@@ -1,0 +1,6 @@
+{
+  "tests/test_tla_projection.py": "c0547c8c568917b31f05649d9ea99631f2918e3d63dc31997dd2e05624a86cb6",
+  "tests/test_tlc.py": "9ea4b87cf5933d69fec8a8b61406c6c552362dddda0d84c744a9a853470c560e",
+  "tests/fixtures/e3/t03_cases.json": "5f8b48a5949d856caafe570224ee6f5d0f0fe26be93767a2159848d69553eb94",
+  "artifacts/e3-01/red-collection.log": "760528229f056cc4efde11de35740eecfddeb9fa068f8f36ac291643b7220d95"
+}

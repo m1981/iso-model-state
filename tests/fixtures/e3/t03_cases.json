@@ -1,0 +1,182 @@
+{
+  "scope": "synthetic_local_relation_not_reachability",
+  "cases": [
+    {
+      "id": "first_rejection",
+      "actor": "U",
+      "before": {
+        "id": "r1",
+        "type": "REQ",
+        "state": "verified",
+        "depends_on": [
+          "p1"
+        ],
+        "predecessor": "none",
+        "version": 1,
+        "rejections": 0,
+        "suspect": false
+      },
+      "enabled": true,
+      "after": {
+        "id": "r1",
+        "type": "REQ",
+        "state": "draft",
+        "depends_on": [
+          "p1"
+        ],
+        "predecessor": "none",
+        "version": 1,
+        "rejections": 1,
+        "suspect": false
+      }
+    },
+    {
+      "id": "second_rejection",
+      "actor": "U",
+      "before": {
+        "id": "r1",
+        "type": "REQ",
+        "state": "verified",
+        "depends_on": [
+          "p1"
+        ],
+        "predecessor": "none",
+        "version": 1,
+        "rejections": 1,
+        "suspect": false
+      },
+      "enabled": true,
+      "after": {
+        "id": "r1",
+        "type": "REQ",
+        "state": "draft",
+        "depends_on": [
+          "p1"
+        ],
+        "predecessor": "none",
+        "version": 1,
+        "rejections": 2,
+        "suspect": false
+      }
+    },
+    {
+      "id": "budget_exhausted",
+      "actor": "U",
+      "before": {
+        "id": "r1",
+        "type": "REQ",
+        "state": "verified",
+        "depends_on": [
+          "p1"
+        ],
+        "predecessor": "none",
+        "version": 1,
+        "rejections": 2,
+        "suspect": false
+      },
+      "enabled": false,
+      "after": null
+    },
+    {
+      "id": "author_refused",
+      "actor": "A",
+      "before": {
+        "id": "r1",
+        "type": "REQ",
+        "state": "verified",
+        "depends_on": [
+          "p1"
+        ],
+        "predecessor": "none",
+        "version": 1,
+        "rejections": 0,
+        "suspect": false
+      },
+      "enabled": false,
+      "after": null
+    },
+    {
+      "id": "reviewer_refused",
+      "actor": "R",
+      "before": {
+        "id": "r1",
+        "type": "REQ",
+        "state": "verified",
+        "depends_on": [
+          "p1"
+        ],
+        "predecessor": "none",
+        "version": 1,
+        "rejections": 0,
+        "suspect": false
+      },
+      "enabled": false,
+      "after": null
+    },
+    {
+      "id": "draft_refused",
+      "actor": "U",
+      "before": {
+        "id": "r1",
+        "type": "REQ",
+        "state": "draft",
+        "depends_on": [
+          "p1"
+        ],
+        "predecessor": "none",
+        "version": 1,
+        "rejections": 0,
+        "suspect": false
+      },
+      "enabled": false,
+      "after": null
+    },
+    {
+      "id": "approved_refused",
+      "actor": "U",
+      "before": {
+        "id": "r1",
+        "type": "REQ",
+        "state": "approved",
+        "depends_on": [
+          "p1"
+        ],
+        "predecessor": "none",
+        "version": 1,
+        "rejections": 0,
+        "suspect": false
+      },
+      "enabled": false,
+      "after": null
+    },
+    {
+      "id": "frame_preserved",
+      "actor": "U",
+      "before": {
+        "id": "r1",
+        "type": "REQ",
+        "state": "verified",
+        "depends_on": [
+          "p1"
+        ],
+        "predecessor": "r2",
+        "version": 2,
+        "rejections": 1,
+        "suspect": true
+      },
+      "enabled": true,
+      "after": {
+        "id": "r1",
+        "type": "REQ",
+        "state": "draft",
+        "depends_on": [
+          "p1"
+        ],
+        "predecessor": "r2",
+        "version": 2,
+        "rejections": 2,
+        "suspect": true
+      }
+    }
+  ]
+}

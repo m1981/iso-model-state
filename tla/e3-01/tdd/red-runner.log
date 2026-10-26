@@ -1,0 +1,31 @@
+FF                                                                       [100%]
+=================================== FAILURES ===================================
+__________________ test_research_command_reproduces_evidence ___________________
+
+tmp_path = PosixPath('/private/var/folders/r4/9rd28l515q59c0x7h1xwgbvc0000gn/T/pytest-of-michal/pytest-412/test_research_command_reproduc0')
+
+    def test_research_command_reproduces_evidence(tmp_path):
+        before = (ROOT / 'model/process.yaml').read_bytes()
+        p = subprocess.run([sys.executable, str(SCRIPT), '--output', str(tmp_path)], cwd=ROOT, capture_output=True, text=True, timeout=60)
+>       assert p.returncode == 0, p.stdout + p.stderr
+E       AssertionError: /Users/michal/PycharmProjects/iso-model-state/.venv/bin/python: can't open file '/Users/michal/PycharmProjects/iso-model-state/scripts/run_e3.py': [Errno 2] No such file or directory
+E         
+E       assert 2 == 0
+E        +  where 2 = CompletedProcess(args=['/Users/michal/PycharmProjects/iso-model-state/.venv/bin/python', '/Users/michal/PycharmProject...'t open file '/Users/michal/PycharmProjects/iso-model-state/scripts/run_e3.py': [Errno 2] No such file or directory\n").returncode
+
+tests/test_e3_runner.py:14: AssertionError
+____________ test_help_and_missing_dependency_have_useful_contract _____________
+
+tmp_path = PosixPath('/private/var/folders/r4/9rd28l515q59c0x7h1xwgbvc0000gn/T/pytest-of-michal/pytest-412/test_help_and_missing_dependen0')
+
+    def test_help_and_missing_dependency_have_useful_contract(tmp_path):
+        help_result = subprocess.run([sys.executable, str(SCRIPT), '--help'], capture_output=True, text=True)
+>       assert help_result.returncode == 0 and '--java' in help_result.stdout and '--jar' in help_result.stdout
+E       assert (2 == 0)
+E        +  where 2 = CompletedProcess(args=['/Users/michal/PycharmProjects/iso-model-state/.venv/bin/python', '/Users/michal/PycharmProject...'t open file '/Users/michal/PycharmProjects/iso-model-state/scripts/run_e3.py': [Errno 2] No such file or directory\n").returncode
+
+tests/test_e3_runner.py:28: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_e3_runner.py::test_research_command_reproduces_evidence - A...
+FAILED tests/test_e3_runner.py::test_help_and_missing_dependency_have_useful_contract
+2 failed in 0.16s

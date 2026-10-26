@@ -23,19 +23,23 @@ Nową sesję z agentem zaczynaj treścią `PROMPT-STARTOWY.md`.
 
 Identyfikatory tego repozytorium mają prefiks `PRO`.
 
-## Uruchomienie sprawdzeń E2
+## Uruchomienie sprawdzeń E2 i E3.1
 
-`uv run --locked pytest -q` instaluje zależności z `uv.lock` w lokalnym `.venv` i uruchamia testy. Wymagany Python 3.12+. Kolejne uruchomienia z dostępną pamięcią pakietów mogą użyć `--offline`.
+`uv run --locked pytest -q` instaluje zależności z `uv.lock` w lokalnym `.venv` i uruchamia testy. Wymagany Python 3.12+. Kolejne uruchomienia z dostępną pamięcią pakietów mogą użyć `--offline`. Pełny zestaw obejmuje teraz rzeczywiste TLC: wymaga lokalnego JAR i Javy według [instrukcji E3.1](tla/README.md); brak narzędzia nie pomija testów.
 
 Po korekcie DEC-PRO-006 usunięto wykazane wcześniej luki G3/G6: mutant G3 usuwa wszystkie wyjścia z `deferred`, a każde przejście ma adnotacje ISO, łącznie obejmujące 14 efektów PM/SI. Przyjęte uzasadnienie korekty zachowano w `model/proposals/e2-structure.yaml`; testy czytają model wiążący. Przyrost WIT1 dodaje wykonanie ścieżki, testy bramek i wybrane mutanty. Zielony wynik obecnego zestawu nie oznacza zakończenia E2; aktualny wynik jest w `docs/STAN.md`.
 
 `src/isomodel/` wczytuje model i wykonuje przyjęte przejścia, w tym uwagi W03/W05. Korpus ma świadków 28/28 przejść; niezależne wyrocznie S1–S15 badają WIT i generowane sekwencje Hypothesis. Projekcja grafu G1/G3 nie dowodzi całej osiągalności ani braku zakleszczeń. Pełne dowody czasowe pozostają w E3.
 
-**Model v0.7 wdraża DEC-PRO-010.** Późna blokada zatrzymuje odbiór, T10 zachowuje budżet odrzuceń, pusty zakres respektuje globalne bramki, a wpływ zmiany spoza zakresu unieważnia gotowość. [Raport E2](docs/E2-RAPORT.md) zawiera odtwarzalne wyniki i granice badania; **E2 v0.7 odebrano przez DEC-PRO-012**. Następny krok: [przygotowanie E3.1](docs/E3-PRZYROST-01.md). [Przyjęty pakiet zmian](model/proposals/e2-hardening.md).
+**Model v0.7 wdraża DEC-PRO-010.** Późna blokada zatrzymuje odbiór, T10 zachowuje budżet odrzuceń, pusty zakres respektuje globalne bramki, a wpływ zmiany spoza zakresu unieważnia gotowość. [Raport E2](docs/E2-RAPORT.md) zawiera odtwarzalne wyniki i granice badania; **E2 v0.7 odebrano przez DEC-PRO-012**. E3.1 wykonane: [raport lokalnego testu T03](docs/E3-01-RAPORT.md). E3 jako etap pozostaje w toku. [Przyjęty pakiet zmian](model/proposals/e2-hardening.md).
 
 `.venv/bin/python scripts/run_e2.py --output artifacts/e2` odtwarza raport i pełne dane. Kod wyjścia **0** oznacza powodzenie sprawdzeń, **1** niepowodzenie sprawdzeń, **2** błąd przygotowania raportu. Skrypt nie odczytuje decyzji odbioru; generowany status awaiting_acceptance nie zastępuje DEC-PRO-012 i bieżącego STAN.md. Testy diagnostyczne są zielone, gdy prawidłowo odtwarzają znaną lukę — nie są dowodem jej naprawy.
 
 Starszy skrypt spójności E1: `uv run --locked python scripts/check_model.py`. Wynik tego skryptu nie zastępuje testów E2 ani dowodów E3. Bieżące decyzje i punkt wznowienia: `docs/STAN.md`.
+
+## Lokalne sprawdzenie T03 w TLC — E3.1
+
+`.venv/bin/python scripts/run_e3.py --output artifacts/e3-01/reproduction` odtwarza bazową regułę, pięć kontroli danych, trzy mutanty i ich wykonane świadki. Kod 0 oznacza spełnienie oczekiwań badania, nie odbiór E3. [Instrukcja i setup](tla/README.md) · [Raport](docs/E3-01-RAPORT.md) · [Archiwum dowodów](tla/e3-01/manifest.json). Wynik dotyczy syntetycznej relacji jednego kroku; nie dowodzi pełnych S/L ani osiągalności.
 
 ## Wykonywalny WIT1
 

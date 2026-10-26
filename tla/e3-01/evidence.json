@@ -1,0 +1,3436 @@
+{
+  "status": "checks_passed_not_stage_acceptance",
+  "scope": "synthetic_local_T03_relation_one_step_not_full_process",
+  "toolchain": {
+    "java": "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+    "java_version": "openjdk version \"21.0.10\" 2026-01-20\nOpenJDK Runtime Environment JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110)\nOpenJDK 64-Bit Server VM JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110, mixed mode, sharing)",
+    "jar": "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+    "jar_sha256": "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88",
+    "release": "1.7.4"
+  },
+  "model_sha256": "ecca43e1402ee476502943caa16556d5609021b8894f3a702e26ca2da3cf21a6",
+  "source_files": {
+    "model/process.yaml": "2d329822e239555c1642d0a5a20aae0eb28fee17a6f2ff13968e48d7f428fc07",
+    "tests/fixtures/e3/t03_cases.json": "5f8b48a5949d856caafe570224ee6f5d0f0fe26be93767a2159848d69553eb94",
+    "tools/tla-toolchain.json": "9e53afe62b357304560f0788693c10ce19c7fb2434f09639f54c50c34165b319",
+    "scripts/run_e3.py": "f68ebb9d5a4d6a0be3dacf713f560ed75f1d05972214455acf0bfe07c82b61e1",
+    "docs/E3-01-MAPOWANIE.md": "d964f64d2b7ca2d1666ffccde957a06748a4c67b983b807d30a8af73d3ee4741",
+    "pyproject.toml": "5cfe92a551a2809ce03c107b3c665510149e7fd3ac8ceba154ca37a76174e82e",
+    "uv.lock": "027a3da0a1f3fbd763d5b9b7c8a8a71229b35202efe60d3d97e4e60f4ce9897a",
+    "src/isomodel/__init__.py": "ae0b53f3627b7e31691e724c264be16793b4f41d13d1b82571f32345a7229a29",
+    "src/isomodel/dependencies.py": "93015d7f47fe857afc7e5faf62e134e03518e2d2162dba2c7a9db21248fd62c1",
+    "src/isomodel/evidence.py": "b9f6f7cdcf103a728b312d2075ffdd0a77335267c2ae6623d5a2759aa4699e3b",
+    "src/isomodel/execution.py": "0180a0a4f80577709e44413a1db492cfce25e1b55d211b5c710354e1082fb197",
+    "src/isomodel/exploration.py": "43101db82742b51d6a65412f71cce7d1288a96ba4cbfe386db35b34df8015cbb",
+    "src/isomodel/expressions.py": "98a534f87f04dc1daa34f75a5698e919317bfeb5c4d6cf6901a89fc22bf77ac8",
+    "src/isomodel/graph.py": "422258394eaf2fb448692376453eca16cb8e3665f81331a39ebe9857b893dce2",
+    "src/isomodel/hardening.py": "be7d5e6fe5200ec8918d42c685bafb736ba68ad57496d831001d35c1564429bc",
+    "src/isomodel/loader.py": "a4ee8d4ac63eede378c02984a226dc3ba06ae785f5d5be7af1b7cbd3d259c4ee",
+    "src/isomodel/probes.py": "c80d9f768da70ca567260e9e5926e874291903d141e05f3f9194cd0c87254862",
+    "src/isomodel/reporting.py": "4f77e9c83f6eb701b41012d3f6342091fff6ff61c113577b13c4418340a99909",
+    "src/isomodel/safety.py": "9c4a2b2127a557e86954b4889d78f6b6f95c29549016e02b41c7d3e67718292f",
+    "src/isomodel/tla_projection.py": "d5bcd65104568357c76fd75fe222ac42bdee891b59923ef7bf4d12cbd92813df",
+    "src/isomodel/tlc.py": "a543da443779ed456cd8c465287bc0791f6f8fe092f075f64c3cc89c0e548de0",
+    "tla/smoke/Good.cfg": "97b92d75b2e62f142d586fbda80931edc993584ba0a0f3b644416d5cbf7bae6f",
+    "tla/smoke/Smoke.tla": "cdc62a17b083996c6c51cca80f753190710c4ceaac483265039b502462842e02",
+    "tla/smoke/Violation.cfg": "f611612a00b6d857dcad0c8724aebd31458284fa1808d0f257f8fcfb4563ac05",
+    "tests/test_tla_projection.py": "8e1597c006fd99852053b86911350b390956a79718df1a1eb99a3821f3e36497",
+    "tests/test_tlc.py": "9ea4b87cf5933d69fec8a8b61406c6c552362dddda0d84c744a9a853470c560e",
+    "tests/test_e3_runner.py": "a9b42ddd46d6693c5853a43847e3feb0436c72ab1142b1fa512faa67522e6b52",
+    "tests/conftest.py": "4e6b22589312521ba61788672f6a1f72ee5d5260c53b73e410c121b124f27ca5"
+  },
+  "source_sha256": "3f60b5d51f058464fe356cafcd44d10d2982b6a085fe4e71f4401927fba33547",
+  "smoke": {
+    "good": {
+      "status": "passed",
+      "returncode": 0,
+      "message_codes": [
+        2185,
+        2186,
+        2187,
+        2189,
+        2190,
+        2193,
+        2194,
+        2199,
+        2200,
+        2219,
+        2220,
+        2262,
+        2268
+      ],
+      "invariant": null,
+      "generated_states": 2,
+      "distinct_states": 2,
+      "queue_remaining": 0,
+      "toolchain": {
+        "java": "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+        "java_version": "openjdk version \"21.0.10\" 2026-01-20\nOpenJDK Runtime Environment JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110)\nOpenJDK 64-Bit Server VM JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110, mixed mode, sharing)",
+        "jar": "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+        "jar_sha256": "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88",
+        "release": "1.7.4"
+      },
+      "command": [
+        "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+        "-XX:+UseParallelGC",
+        "-Xmx256m",
+        "-cp",
+        "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+        "tlc2.TLC",
+        "-tool",
+        "-workers",
+        "1",
+        "-fp",
+        "0",
+        "-seed",
+        "1",
+        "-config",
+        "/Users/michal/PycharmProjects/iso-model-state/tla/smoke/Good.cfg",
+        "-metadir",
+        "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/smoke/good/run-a7l4c0mq/states",
+        "-dump",
+        "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/smoke/good/run-a7l4c0mq/visited",
+        "Smoke.tla"
+      ],
+      "cwd": "/Users/michal/PycharmProjects/iso-model-state/tla/smoke",
+      "elapsed_seconds": 0.664019166957587,
+      "module_sha256": "cdc62a17b083996c6c51cca80f753190710c4ceaac483265039b502462842e02",
+      "config_sha256": "97b92d75b2e62f142d586fbda80931edc993584ba0a0f3b644416d5cbf7bae6f",
+      "log_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/smoke/good/run-a7l4c0mq/tlc.log",
+      "log_sha256": "76b829f605f9b44745db91956afcef9e2c9a3af08096b22b449d4128fe4dbb89",
+      "states_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/smoke/good/run-a7l4c0mq/visited.dump"
+    },
+    "violation": {
+      "status": "invariant_violation",
+      "returncode": 12,
+      "message_codes": [
+        2110,
+        2121,
+        2185,
+        2186,
+        2187,
+        2189,
+        2190,
+        2194,
+        2199,
+        2200,
+        2217,
+        2219,
+        2220,
+        2262
+      ],
+      "invariant": "WithinLimit",
+      "generated_states": 2,
+      "distinct_states": 2,
+      "queue_remaining": 0,
+      "toolchain": {
+        "java": "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+        "java_version": "openjdk version \"21.0.10\" 2026-01-20\nOpenJDK Runtime Environment JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110)\nOpenJDK 64-Bit Server VM JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110, mixed mode, sharing)",
+        "jar": "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+        "jar_sha256": "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88",
+        "release": "1.7.4"
+      },
+      "command": [
+        "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+        "-XX:+UseParallelGC",
+        "-Xmx256m",
+        "-cp",
+        "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+        "tlc2.TLC",
+        "-tool",
+        "-workers",
+        "1",
+        "-fp",
+        "0",
+        "-seed",
+        "1",
+        "-config",
+        "/Users/michal/PycharmProjects/iso-model-state/tla/smoke/Violation.cfg",
+        "-metadir",
+        "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/smoke/violation/run-dul37gg6/states",
+        "-dump",
+        "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/smoke/violation/run-dul37gg6/visited",
+        "Smoke.tla"
+      ],
+      "cwd": "/Users/michal/PycharmProjects/iso-model-state/tla/smoke",
+      "elapsed_seconds": 0.7026781248860061,
+      "module_sha256": "cdc62a17b083996c6c51cca80f753190710c4ceaac483265039b502462842e02",
+      "config_sha256": "f611612a00b6d857dcad0c8724aebd31458284fa1808d0f257f8fcfb4563ac05",
+      "log_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/smoke/violation/run-dul37gg6/tlc.log",
+      "log_sha256": "34acd906db085667ea38003b88d88e69bb05b4371b571eef6824c295901c8e22",
+      "states_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/smoke/violation/run-dul37gg6/visited.dump"
+    }
+  },
+  "probes": [
+    {
+      "id": "baseline",
+      "kind": "baseline",
+      "model_sha256": "ecca43e1402ee476502943caa16556d5609021b8894f3a702e26ca2da3cf21a6",
+      "transition": "T03",
+      "expected_oracle_violation": null,
+      "cases": [
+        {
+          "id": "first_rejection",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          }
+        },
+        {
+          "id": "second_rejection",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 2,
+            "suspect": false
+          }
+        },
+        {
+          "id": "budget_exhausted",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 2,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "author_refused",
+          "actor": "A",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "reviewer_refused",
+          "actor": "R",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "draft_refused",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "approved_refused",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "approved",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "frame_preserved",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "r2",
+            "version": 2,
+            "rejections": 1,
+            "suspect": true
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "r2",
+            "version": 2,
+            "rejections": 2,
+            "suspect": true
+          }
+        }
+      ],
+      "python": [
+        {
+          "case": "first_rejection",
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          },
+          "global_frame_preserved": true,
+          "matches_oracle": true
+        },
+        {
+          "case": "second_rejection",
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 2,
+            "suspect": false
+          },
+          "global_frame_preserved": true,
+          "matches_oracle": true
+        },
+        {
+          "case": "budget_exhausted",
+          "enabled": false,
+          "after": null,
+          "reason": "guard",
+          "matches_oracle": true
+        },
+        {
+          "case": "author_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "actor",
+          "matches_oracle": true
+        },
+        {
+          "case": "reviewer_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "actor",
+          "matches_oracle": true
+        },
+        {
+          "case": "draft_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "state",
+          "matches_oracle": true
+        },
+        {
+          "case": "approved_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "state",
+          "matches_oracle": true
+        },
+        {
+          "case": "frame_preserved",
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "r2",
+            "version": 2,
+            "rejections": 2,
+            "suspect": true
+          },
+          "global_frame_preserved": true,
+          "matches_oracle": true
+        }
+      ],
+      "tlc": {
+        "status": "passed",
+        "returncode": 0,
+        "message_codes": [
+          2185,
+          2186,
+          2187,
+          2189,
+          2190,
+          2193,
+          2194,
+          2199,
+          2200,
+          2219,
+          2220,
+          2262,
+          2268,
+          2269
+        ],
+        "invariant": null,
+        "generated_states": 11,
+        "distinct_states": 11,
+        "queue_remaining": 0,
+        "toolchain": {
+          "java": "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+          "java_version": "openjdk version \"21.0.10\" 2026-01-20\nOpenJDK Runtime Environment JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110)\nOpenJDK 64-Bit Server VM JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110, mixed mode, sharing)",
+          "jar": "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+          "jar_sha256": "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88",
+          "release": "1.7.4"
+        },
+        "command": [
+          "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+          "-XX:+UseParallelGC",
+          "-Xmx256m",
+          "-cp",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+          "tlc2.TLC",
+          "-tool",
+          "-workers",
+          "1",
+          "-fp",
+          "0",
+          "-seed",
+          "1",
+          "-config",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/baseline/Projection.cfg",
+          "-metadir",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/baseline/runs/run-ah632pq2/states",
+          "-dump",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/baseline/runs/run-ah632pq2/visited",
+          "Projection.tla"
+        ],
+        "cwd": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/baseline",
+        "elapsed_seconds": 0.7488820422440767,
+        "module_sha256": "5ab75ef786862114f53f266405f247caaeb3caef8944fe06e618a8d49b55d588",
+        "config_sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+        "log_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/baseline/runs/run-ah632pq2/tlc.log",
+        "log_sha256": "e89596eb348c72c0cd3f8649df992255ad2d52c09f4933f428cebdc0ac9053e6",
+        "states_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/baseline/runs/run-ah632pq2/visited.dump"
+      },
+      "matched_expectation": true
+    },
+    {
+      "id": "renamed",
+      "kind": "data_control",
+      "model_sha256": "f71899882b98a0951fd8390fff40772a41c1efb2e067eb2050b6ad0f0e6713aa",
+      "transition": "T_RENAMED",
+      "expected_oracle_violation": null,
+      "cases": [
+        {
+          "id": "first_rejection",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          }
+        },
+        {
+          "id": "second_rejection",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 2,
+            "suspect": false
+          }
+        },
+        {
+          "id": "budget_exhausted",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 2,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "author_refused",
+          "actor": "A",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "reviewer_refused",
+          "actor": "R",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "draft_refused",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "approved_refused",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "approved",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "frame_preserved",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "r2",
+            "version": 2,
+            "rejections": 1,
+            "suspect": true
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "r2",
+            "version": 2,
+            "rejections": 2,
+            "suspect": true
+          }
+        }
+      ],
+      "python": [
+        {
+          "case": "first_rejection",
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          },
+          "global_frame_preserved": true,
+          "matches_oracle": true
+        },
+        {
+          "case": "second_rejection",
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 2,
+            "suspect": false
+          },
+          "global_frame_preserved": true,
+          "matches_oracle": true
+        },
+        {
+          "case": "budget_exhausted",
+          "enabled": false,
+          "after": null,
+          "reason": "guard",
+          "matches_oracle": true
+        },
+        {
+          "case": "author_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "actor",
+          "matches_oracle": true
+        },
+        {
+          "case": "reviewer_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "actor",
+          "matches_oracle": true
+        },
+        {
+          "case": "draft_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "state",
+          "matches_oracle": true
+        },
+        {
+          "case": "approved_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "state",
+          "matches_oracle": true
+        },
+        {
+          "case": "frame_preserved",
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "r2",
+            "version": 2,
+            "rejections": 2,
+            "suspect": true
+          },
+          "global_frame_preserved": true,
+          "matches_oracle": true
+        }
+      ],
+      "tlc": {
+        "status": "passed",
+        "returncode": 0,
+        "message_codes": [
+          2185,
+          2186,
+          2187,
+          2189,
+          2190,
+          2193,
+          2194,
+          2199,
+          2200,
+          2219,
+          2220,
+          2262,
+          2268,
+          2269
+        ],
+        "invariant": null,
+        "generated_states": 11,
+        "distinct_states": 11,
+        "queue_remaining": 0,
+        "toolchain": {
+          "java": "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+          "java_version": "openjdk version \"21.0.10\" 2026-01-20\nOpenJDK Runtime Environment JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110)\nOpenJDK 64-Bit Server VM JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110, mixed mode, sharing)",
+          "jar": "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+          "jar_sha256": "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88",
+          "release": "1.7.4"
+        },
+        "command": [
+          "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+          "-XX:+UseParallelGC",
+          "-Xmx256m",
+          "-cp",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+          "tlc2.TLC",
+          "-tool",
+          "-workers",
+          "1",
+          "-fp",
+          "0",
+          "-seed",
+          "1",
+          "-config",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/renamed/Projection.cfg",
+          "-metadir",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/renamed/runs/run-qrv50mpi/states",
+          "-dump",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/renamed/runs/run-qrv50mpi/visited",
+          "Projection.tla"
+        ],
+        "cwd": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/renamed",
+        "elapsed_seconds": 0.7384323747828603,
+        "module_sha256": "5ab75ef786862114f53f266405f247caaeb3caef8944fe06e618a8d49b55d588",
+        "config_sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+        "log_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/renamed/runs/run-qrv50mpi/tlc.log",
+        "log_sha256": "953a10bfab621caf32d025b7c3474c7db9f8e4abd3c6ca84e3279c39452aac8c",
+        "states_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/renamed/runs/run-qrv50mpi/visited.dump"
+      },
+      "matched_expectation": true
+    },
+    {
+      "id": "limit",
+      "kind": "data_control",
+      "model_sha256": "9a782ff1854ed61026a2a7141a81d3df1a3b1658878b0ebcc6b4091e28cfee33",
+      "transition": "T03",
+      "expected_oracle_violation": null,
+      "cases": [
+        {
+          "id": "first_rejection",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          }
+        },
+        {
+          "id": "second_rejection",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "budget_exhausted",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 2,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "author_refused",
+          "actor": "A",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "reviewer_refused",
+          "actor": "R",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "draft_refused",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "approved_refused",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "approved",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "frame_preserved",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "r2",
+            "version": 2,
+            "rejections": 1,
+            "suspect": true
+          },
+          "enabled": false,
+          "after": null
+        }
+      ],
+      "python": [
+        {
+          "case": "first_rejection",
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          },
+          "global_frame_preserved": true,
+          "matches_oracle": true
+        },
+        {
+          "case": "second_rejection",
+          "enabled": false,
+          "after": null,
+          "reason": "guard",
+          "matches_oracle": true
+        },
+        {
+          "case": "budget_exhausted",
+          "enabled": false,
+          "after": null,
+          "reason": "guard",
+          "matches_oracle": true
+        },
+        {
+          "case": "author_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "actor",
+          "matches_oracle": true
+        },
+        {
+          "case": "reviewer_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "actor",
+          "matches_oracle": true
+        },
+        {
+          "case": "draft_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "state",
+          "matches_oracle": true
+        },
+        {
+          "case": "approved_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "state",
+          "matches_oracle": true
+        },
+        {
+          "case": "frame_preserved",
+          "enabled": false,
+          "after": null,
+          "reason": "guard",
+          "matches_oracle": true
+        }
+      ],
+      "tlc": {
+        "status": "passed",
+        "returncode": 0,
+        "message_codes": [
+          2185,
+          2186,
+          2187,
+          2189,
+          2190,
+          2193,
+          2194,
+          2199,
+          2200,
+          2219,
+          2220,
+          2262,
+          2268,
+          2269
+        ],
+        "invariant": null,
+        "generated_states": 9,
+        "distinct_states": 9,
+        "queue_remaining": 0,
+        "toolchain": {
+          "java": "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+          "java_version": "openjdk version \"21.0.10\" 2026-01-20\nOpenJDK Runtime Environment JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110)\nOpenJDK 64-Bit Server VM JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110, mixed mode, sharing)",
+          "jar": "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+          "jar_sha256": "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88",
+          "release": "1.7.4"
+        },
+        "command": [
+          "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+          "-XX:+UseParallelGC",
+          "-Xmx256m",
+          "-cp",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+          "tlc2.TLC",
+          "-tool",
+          "-workers",
+          "1",
+          "-fp",
+          "0",
+          "-seed",
+          "1",
+          "-config",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/limit/Projection.cfg",
+          "-metadir",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/limit/runs/run-5lohhufa/states",
+          "-dump",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/limit/runs/run-5lohhufa/visited",
+          "Projection.tla"
+        ],
+        "cwd": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/limit",
+        "elapsed_seconds": 0.7106254999525845,
+        "module_sha256": "97d025c8a07371ac302532f833c67d2d1c275a789188926ab47f324546828df4",
+        "config_sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+        "log_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/limit/runs/run-5lohhufa/tlc.log",
+        "log_sha256": "8457159963ab35521d3142c2030cc84e9d3e8fd54b1350bdcc990c19a78c40a2",
+        "states_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/limit/runs/run-5lohhufa/visited.dump"
+      },
+      "matched_expectation": true
+    },
+    {
+      "id": "from",
+      "kind": "data_control",
+      "model_sha256": "aed795bb9ed27a209d5bafa99d69bb651f45d8cefc4fd274c2d79486aae4ed6c",
+      "transition": "T03",
+      "expected_oracle_violation": null,
+      "cases": [
+        {
+          "id": "first_rejection",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "second_rejection",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "budget_exhausted",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 2,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "author_refused",
+          "actor": "A",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "reviewer_refused",
+          "actor": "R",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "draft_refused",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "approved_refused",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "approved",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          }
+        },
+        {
+          "id": "frame_preserved",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "r2",
+            "version": 2,
+            "rejections": 1,
+            "suspect": true
+          },
+          "enabled": false,
+          "after": null
+        }
+      ],
+      "python": [
+        {
+          "case": "first_rejection",
+          "enabled": false,
+          "after": null,
+          "reason": "state",
+          "matches_oracle": true
+        },
+        {
+          "case": "second_rejection",
+          "enabled": false,
+          "after": null,
+          "reason": "state",
+          "matches_oracle": true
+        },
+        {
+          "case": "budget_exhausted",
+          "enabled": false,
+          "after": null,
+          "reason": "state",
+          "matches_oracle": true
+        },
+        {
+          "case": "author_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "actor",
+          "matches_oracle": true
+        },
+        {
+          "case": "reviewer_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "actor",
+          "matches_oracle": true
+        },
+        {
+          "case": "draft_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "state",
+          "matches_oracle": true
+        },
+        {
+          "case": "approved_refused",
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          },
+          "global_frame_preserved": true,
+          "matches_oracle": true
+        },
+        {
+          "case": "frame_preserved",
+          "enabled": false,
+          "after": null,
+          "reason": "state",
+          "matches_oracle": true
+        }
+      ],
+      "tlc": {
+        "status": "passed",
+        "returncode": 0,
+        "message_codes": [
+          2185,
+          2186,
+          2187,
+          2189,
+          2190,
+          2193,
+          2194,
+          2199,
+          2200,
+          2219,
+          2220,
+          2262,
+          2268,
+          2269
+        ],
+        "invariant": null,
+        "generated_states": 9,
+        "distinct_states": 9,
+        "queue_remaining": 0,
+        "toolchain": {
+          "java": "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+          "java_version": "openjdk version \"21.0.10\" 2026-01-20\nOpenJDK Runtime Environment JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110)\nOpenJDK 64-Bit Server VM JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110, mixed mode, sharing)",
+          "jar": "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+          "jar_sha256": "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88",
+          "release": "1.7.4"
+        },
+        "command": [
+          "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+          "-XX:+UseParallelGC",
+          "-Xmx256m",
+          "-cp",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+          "tlc2.TLC",
+          "-tool",
+          "-workers",
+          "1",
+          "-fp",
+          "0",
+          "-seed",
+          "1",
+          "-config",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/from/Projection.cfg",
+          "-metadir",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/from/runs/run-5qdknbeq/states",
+          "-dump",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/from/runs/run-5qdknbeq/visited",
+          "Projection.tla"
+        ],
+        "cwd": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/from",
+        "elapsed_seconds": 0.7358260829932988,
+        "module_sha256": "eb69a56cff528701e868dbe3f8acab7ab741707709a6a2c46f8334ccc37b129c",
+        "config_sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+        "log_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/from/runs/run-5qdknbeq/tlc.log",
+        "log_sha256": "7e7d0a958ec932e71324181cb0ab8d8dab78786325a0c2e742f714b81a845ad7",
+        "states_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/from/runs/run-5qdknbeq/visited.dump"
+      },
+      "matched_expectation": true
+    },
+    {
+      "id": "to",
+      "kind": "data_control",
+      "model_sha256": "6d4508ab73c2ea78202ae2703c2f60d215190c65a1b1bfc5fbca8dc507cb2021",
+      "transition": "T03",
+      "expected_oracle_violation": null,
+      "cases": [
+        {
+          "id": "first_rejection",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "deferred",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          }
+        },
+        {
+          "id": "second_rejection",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "deferred",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 2,
+            "suspect": false
+          }
+        },
+        {
+          "id": "budget_exhausted",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 2,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "author_refused",
+          "actor": "A",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "reviewer_refused",
+          "actor": "R",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "draft_refused",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "approved_refused",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "approved",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "frame_preserved",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "r2",
+            "version": 2,
+            "rejections": 1,
+            "suspect": true
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "deferred",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "r2",
+            "version": 2,
+            "rejections": 2,
+            "suspect": true
+          }
+        }
+      ],
+      "python": [
+        {
+          "case": "first_rejection",
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "deferred",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          },
+          "global_frame_preserved": true,
+          "matches_oracle": true
+        },
+        {
+          "case": "second_rejection",
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "deferred",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 2,
+            "suspect": false
+          },
+          "global_frame_preserved": true,
+          "matches_oracle": true
+        },
+        {
+          "case": "budget_exhausted",
+          "enabled": false,
+          "after": null,
+          "reason": "guard",
+          "matches_oracle": true
+        },
+        {
+          "case": "author_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "actor",
+          "matches_oracle": true
+        },
+        {
+          "case": "reviewer_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "actor",
+          "matches_oracle": true
+        },
+        {
+          "case": "draft_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "state",
+          "matches_oracle": true
+        },
+        {
+          "case": "approved_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "state",
+          "matches_oracle": true
+        },
+        {
+          "case": "frame_preserved",
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "deferred",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "r2",
+            "version": 2,
+            "rejections": 2,
+            "suspect": true
+          },
+          "global_frame_preserved": true,
+          "matches_oracle": true
+        }
+      ],
+      "tlc": {
+        "status": "passed",
+        "returncode": 0,
+        "message_codes": [
+          2185,
+          2186,
+          2187,
+          2189,
+          2190,
+          2193,
+          2194,
+          2199,
+          2200,
+          2219,
+          2220,
+          2262,
+          2268,
+          2269
+        ],
+        "invariant": null,
+        "generated_states": 11,
+        "distinct_states": 11,
+        "queue_remaining": 0,
+        "toolchain": {
+          "java": "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+          "java_version": "openjdk version \"21.0.10\" 2026-01-20\nOpenJDK Runtime Environment JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110)\nOpenJDK 64-Bit Server VM JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110, mixed mode, sharing)",
+          "jar": "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+          "jar_sha256": "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88",
+          "release": "1.7.4"
+        },
+        "command": [
+          "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+          "-XX:+UseParallelGC",
+          "-Xmx256m",
+          "-cp",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+          "tlc2.TLC",
+          "-tool",
+          "-workers",
+          "1",
+          "-fp",
+          "0",
+          "-seed",
+          "1",
+          "-config",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/to/Projection.cfg",
+          "-metadir",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/to/runs/run-l0b_vclz/states",
+          "-dump",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/to/runs/run-l0b_vclz/visited",
+          "Projection.tla"
+        ],
+        "cwd": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/to",
+        "elapsed_seconds": 0.7058644578792155,
+        "module_sha256": "1c8909bf17969d46189a7420b6181d8134b962fe233880710b9f03a5e78325a7",
+        "config_sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+        "log_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/to/runs/run-l0b_vclz/tlc.log",
+        "log_sha256": "bd95b38e895c503d307132425cc8c440a4b9094e29bd8c3fc30e821fa943a272",
+        "states_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/to/runs/run-l0b_vclz/visited.dump"
+      },
+      "matched_expectation": true
+    },
+    {
+      "id": "same_state",
+      "kind": "data_control",
+      "model_sha256": "74b8c758ec3aaf19e9408f662c6b888b647e79cb31855bbdd5b9e674a21d0ba4",
+      "transition": "T03",
+      "expected_oracle_violation": null,
+      "cases": [
+        {
+          "id": "first_rejection",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          }
+        },
+        {
+          "id": "second_rejection",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 2,
+            "suspect": false
+          }
+        },
+        {
+          "id": "budget_exhausted",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 2,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "author_refused",
+          "actor": "A",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "reviewer_refused",
+          "actor": "R",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "draft_refused",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "approved_refused",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "approved",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "frame_preserved",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "r2",
+            "version": 2,
+            "rejections": 1,
+            "suspect": true
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "r2",
+            "version": 2,
+            "rejections": 2,
+            "suspect": true
+          }
+        }
+      ],
+      "python": [
+        {
+          "case": "first_rejection",
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          },
+          "global_frame_preserved": true,
+          "matches_oracle": true
+        },
+        {
+          "case": "second_rejection",
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 2,
+            "suspect": false
+          },
+          "global_frame_preserved": true,
+          "matches_oracle": true
+        },
+        {
+          "case": "budget_exhausted",
+          "enabled": false,
+          "after": null,
+          "reason": "guard",
+          "matches_oracle": true
+        },
+        {
+          "case": "author_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "actor",
+          "matches_oracle": true
+        },
+        {
+          "case": "reviewer_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "actor",
+          "matches_oracle": true
+        },
+        {
+          "case": "draft_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "state",
+          "matches_oracle": true
+        },
+        {
+          "case": "approved_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "state",
+          "matches_oracle": true
+        },
+        {
+          "case": "frame_preserved",
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "r2",
+            "version": 2,
+            "rejections": 2,
+            "suspect": true
+          },
+          "global_frame_preserved": true,
+          "matches_oracle": true
+        }
+      ],
+      "tlc": {
+        "status": "passed",
+        "returncode": 0,
+        "message_codes": [
+          2185,
+          2186,
+          2187,
+          2189,
+          2190,
+          2193,
+          2194,
+          2199,
+          2200,
+          2219,
+          2220,
+          2262,
+          2268,
+          2269
+        ],
+        "invariant": null,
+        "generated_states": 11,
+        "distinct_states": 11,
+        "queue_remaining": 0,
+        "toolchain": {
+          "java": "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+          "java_version": "openjdk version \"21.0.10\" 2026-01-20\nOpenJDK Runtime Environment JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110)\nOpenJDK 64-Bit Server VM JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110, mixed mode, sharing)",
+          "jar": "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+          "jar_sha256": "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88",
+          "release": "1.7.4"
+        },
+        "command": [
+          "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+          "-XX:+UseParallelGC",
+          "-Xmx256m",
+          "-cp",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+          "tlc2.TLC",
+          "-tool",
+          "-workers",
+          "1",
+          "-fp",
+          "0",
+          "-seed",
+          "1",
+          "-config",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/same_state/Projection.cfg",
+          "-metadir",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/same_state/runs/run-lqv2jumb/states",
+          "-dump",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/same_state/runs/run-lqv2jumb/visited",
+          "Projection.tla"
+        ],
+        "cwd": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/same_state",
+        "elapsed_seconds": 0.7055235831066966,
+        "module_sha256": "95a7a5f9de70ec318a8d76234fb02a8132716705d8d26f83966ac9d5647159ae",
+        "config_sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+        "log_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/same_state/runs/run-lqv2jumb/tlc.log",
+        "log_sha256": "148665525cbcae2d61c4d3f966d6b570d24d4028ebecddac3e7fe34909b9f162",
+        "states_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/same_state/runs/run-lqv2jumb/visited.dump"
+      },
+      "matched_expectation": true
+    },
+    {
+      "id": "guard",
+      "kind": "mutant",
+      "model_sha256": "0ab599820af3d0028cfbfe274b6371ec9464b76940d23f24c04538a6530f8f51",
+      "transition": "T03",
+      "expected_oracle_violation": "Availability",
+      "cases": [
+        {
+          "id": "first_rejection",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          }
+        },
+        {
+          "id": "second_rejection",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 2,
+            "suspect": false
+          }
+        },
+        {
+          "id": "budget_exhausted",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 2,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "author_refused",
+          "actor": "A",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "reviewer_refused",
+          "actor": "R",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "draft_refused",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "approved_refused",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "approved",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "frame_preserved",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "r2",
+            "version": 2,
+            "rejections": 1,
+            "suspect": true
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "r2",
+            "version": 2,
+            "rejections": 2,
+            "suspect": true
+          }
+        }
+      ],
+      "python": [
+        {
+          "case": "first_rejection",
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          },
+          "global_frame_preserved": true,
+          "matches_oracle": true
+        },
+        {
+          "case": "second_rejection",
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 2,
+            "suspect": false
+          },
+          "global_frame_preserved": true,
+          "matches_oracle": true
+        },
+        {
+          "case": "budget_exhausted",
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 3,
+            "suspect": false
+          },
+          "global_frame_preserved": true,
+          "matches_oracle": false
+        },
+        {
+          "case": "author_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "actor",
+          "matches_oracle": true
+        },
+        {
+          "case": "reviewer_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "actor",
+          "matches_oracle": true
+        },
+        {
+          "case": "draft_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "state",
+          "matches_oracle": true
+        },
+        {
+          "case": "approved_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "state",
+          "matches_oracle": true
+        },
+        {
+          "case": "frame_preserved",
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "r2",
+            "version": 2,
+            "rejections": 2,
+            "suspect": true
+          },
+          "global_frame_preserved": true,
+          "matches_oracle": true
+        }
+      ],
+      "tlc": {
+        "status": "invariant_violation",
+        "returncode": 12,
+        "message_codes": [
+          2107,
+          2185,
+          2186,
+          2187,
+          2189,
+          2219,
+          2220,
+          2262,
+          2269
+        ],
+        "invariant": "Availability",
+        "generated_states": null,
+        "distinct_states": null,
+        "queue_remaining": null,
+        "toolchain": {
+          "java": "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+          "java_version": "openjdk version \"21.0.10\" 2026-01-20\nOpenJDK Runtime Environment JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110)\nOpenJDK 64-Bit Server VM JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110, mixed mode, sharing)",
+          "jar": "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+          "jar_sha256": "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88",
+          "release": "1.7.4"
+        },
+        "command": [
+          "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+          "-XX:+UseParallelGC",
+          "-Xmx256m",
+          "-cp",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+          "tlc2.TLC",
+          "-tool",
+          "-workers",
+          "1",
+          "-fp",
+          "0",
+          "-seed",
+          "1",
+          "-config",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/guard/Projection.cfg",
+          "-metadir",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/guard/runs/run-sm7pstu2/states",
+          "-dump",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/guard/runs/run-sm7pstu2/visited",
+          "Projection.tla"
+        ],
+        "cwd": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/guard",
+        "elapsed_seconds": 0.6908382079564035,
+        "module_sha256": "dd05bd7d97c2d0f06c8a75e97d95696edfb25b9de5f8153ef29cef094e604df7",
+        "config_sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+        "log_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/guard/runs/run-sm7pstu2/tlc.log",
+        "log_sha256": "76e84864aa14acb32aff1d1b508a92560686b71c71532935f7a71e02ca8f99ef",
+        "states_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/guard/runs/run-sm7pstu2/visited.dump"
+      },
+      "matched_expectation": true,
+      "executed_witness": {
+        "case": {
+          "id": "budget_exhausted",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 2,
+            "suspect": false
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 3,
+            "suspect": false
+          }
+        },
+        "python": [
+          {
+            "case": "budget_exhausted",
+            "enabled": true,
+            "after": {
+              "id": "r1",
+              "type": "REQ",
+              "state": "draft",
+              "depends_on": [
+                "p1"
+              ],
+              "predecessor": "none",
+              "version": 1,
+              "rejections": 3,
+              "suspect": false
+            },
+            "global_frame_preserved": true,
+            "matches_oracle": true
+          }
+        ],
+        "tlc": {
+          "status": "passed",
+          "returncode": 0,
+          "message_codes": [
+            2185,
+            2186,
+            2187,
+            2189,
+            2190,
+            2193,
+            2194,
+            2199,
+            2200,
+            2219,
+            2220,
+            2262,
+            2268
+          ],
+          "invariant": null,
+          "generated_states": 2,
+          "distinct_states": 2,
+          "queue_remaining": 0,
+          "toolchain": {
+            "java": "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+            "java_version": "openjdk version \"21.0.10\" 2026-01-20\nOpenJDK Runtime Environment JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110)\nOpenJDK 64-Bit Server VM JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110, mixed mode, sharing)",
+            "jar": "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+            "jar_sha256": "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88",
+            "release": "1.7.4"
+          },
+          "command": [
+            "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+            "-XX:+UseParallelGC",
+            "-Xmx256m",
+            "-cp",
+            "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+            "tlc2.TLC",
+            "-tool",
+            "-workers",
+            "1",
+            "-fp",
+            "0",
+            "-seed",
+            "1",
+            "-config",
+            "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/guard/witness/Projection.cfg",
+            "-metadir",
+            "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/guard/witness/runs/run-thtbzyvc/states",
+            "-dump",
+            "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/guard/witness/runs/run-thtbzyvc/visited",
+            "Projection.tla"
+          ],
+          "cwd": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/guard/witness",
+          "elapsed_seconds": 0.6810178332962096,
+          "module_sha256": "0db9a1173f4c7d491b95dd0a1defd84a143d41364ec22687584036ad4e679a68",
+          "config_sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+          "log_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/guard/witness/runs/run-thtbzyvc/tlc.log",
+          "log_sha256": "0bed1e9ace8d1aabc6016677a4876f6d1a9fe58ac1da8c47b98c031e1e99b91a",
+          "states_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/guard/witness/runs/run-thtbzyvc/visited.dump"
+        }
+      }
+    },
+    {
+      "id": "actor",
+      "kind": "mutant",
+      "model_sha256": "0f4ebde9f1502bbc3da509b8d763a329016a231c73cc228c7391210745783c15",
+      "transition": "T03",
+      "expected_oracle_violation": "Availability",
+      "cases": [
+        {
+          "id": "first_rejection",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          }
+        },
+        {
+          "id": "second_rejection",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 2,
+            "suspect": false
+          }
+        },
+        {
+          "id": "budget_exhausted",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 2,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "author_refused",
+          "actor": "A",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "reviewer_refused",
+          "actor": "R",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "draft_refused",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "approved_refused",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "approved",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "frame_preserved",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "r2",
+            "version": 2,
+            "rejections": 1,
+            "suspect": true
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "r2",
+            "version": 2,
+            "rejections": 2,
+            "suspect": true
+          }
+        }
+      ],
+      "python": [
+        {
+          "case": "first_rejection",
+          "enabled": false,
+          "after": null,
+          "reason": "actor",
+          "matches_oracle": false
+        },
+        {
+          "case": "second_rejection",
+          "enabled": false,
+          "after": null,
+          "reason": "actor",
+          "matches_oracle": false
+        },
+        {
+          "case": "budget_exhausted",
+          "enabled": false,
+          "after": null,
+          "reason": "actor",
+          "matches_oracle": true
+        },
+        {
+          "case": "author_refused",
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          },
+          "global_frame_preserved": true,
+          "matches_oracle": false
+        },
+        {
+          "case": "reviewer_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "actor",
+          "matches_oracle": true
+        },
+        {
+          "case": "draft_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "actor",
+          "matches_oracle": true
+        },
+        {
+          "case": "approved_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "actor",
+          "matches_oracle": true
+        },
+        {
+          "case": "frame_preserved",
+          "enabled": false,
+          "after": null,
+          "reason": "actor",
+          "matches_oracle": false
+        }
+      ],
+      "tlc": {
+        "status": "invariant_violation",
+        "returncode": 12,
+        "message_codes": [
+          2107,
+          2185,
+          2186,
+          2187,
+          2189,
+          2219,
+          2220,
+          2262
+        ],
+        "invariant": "Availability",
+        "generated_states": null,
+        "distinct_states": null,
+        "queue_remaining": null,
+        "toolchain": {
+          "java": "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+          "java_version": "openjdk version \"21.0.10\" 2026-01-20\nOpenJDK Runtime Environment JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110)\nOpenJDK 64-Bit Server VM JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110, mixed mode, sharing)",
+          "jar": "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+          "jar_sha256": "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88",
+          "release": "1.7.4"
+        },
+        "command": [
+          "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+          "-XX:+UseParallelGC",
+          "-Xmx256m",
+          "-cp",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+          "tlc2.TLC",
+          "-tool",
+          "-workers",
+          "1",
+          "-fp",
+          "0",
+          "-seed",
+          "1",
+          "-config",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/actor/Projection.cfg",
+          "-metadir",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/actor/runs/run-ux20eggm/states",
+          "-dump",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/actor/runs/run-ux20eggm/visited",
+          "Projection.tla"
+        ],
+        "cwd": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/actor",
+        "elapsed_seconds": 0.6831469591706991,
+        "module_sha256": "e50a2f5bb1e462e7a7ee0ceddee9ae4360bc54c0a69dc97975ff056979611f3a",
+        "config_sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+        "log_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/actor/runs/run-ux20eggm/tlc.log",
+        "log_sha256": "4a4061bd4191b565d304ddedc751c7e232ef4aaf06cd93db227174b7602d4c80",
+        "states_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/actor/runs/run-ux20eggm/visited.dump"
+      },
+      "matched_expectation": true,
+      "executed_witness": {
+        "case": {
+          "id": "author_refused",
+          "actor": "A",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          }
+        },
+        "python": [
+          {
+            "case": "author_refused",
+            "enabled": true,
+            "after": {
+              "id": "r1",
+              "type": "REQ",
+              "state": "draft",
+              "depends_on": [
+                "p1"
+              ],
+              "predecessor": "none",
+              "version": 1,
+              "rejections": 1,
+              "suspect": false
+            },
+            "global_frame_preserved": true,
+            "matches_oracle": true
+          }
+        ],
+        "tlc": {
+          "status": "passed",
+          "returncode": 0,
+          "message_codes": [
+            2185,
+            2186,
+            2187,
+            2189,
+            2190,
+            2193,
+            2194,
+            2199,
+            2200,
+            2219,
+            2220,
+            2262,
+            2268
+          ],
+          "invariant": null,
+          "generated_states": 2,
+          "distinct_states": 2,
+          "queue_remaining": 0,
+          "toolchain": {
+            "java": "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+            "java_version": "openjdk version \"21.0.10\" 2026-01-20\nOpenJDK Runtime Environment JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110)\nOpenJDK 64-Bit Server VM JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110, mixed mode, sharing)",
+            "jar": "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+            "jar_sha256": "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88",
+            "release": "1.7.4"
+          },
+          "command": [
+            "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+            "-XX:+UseParallelGC",
+            "-Xmx256m",
+            "-cp",
+            "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+            "tlc2.TLC",
+            "-tool",
+            "-workers",
+            "1",
+            "-fp",
+            "0",
+            "-seed",
+            "1",
+            "-config",
+            "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/actor/witness/Projection.cfg",
+            "-metadir",
+            "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/actor/witness/runs/run-ym0ef4pd/states",
+            "-dump",
+            "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/actor/witness/runs/run-ym0ef4pd/visited",
+            "Projection.tla"
+          ],
+          "cwd": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/actor/witness",
+          "elapsed_seconds": 0.6836971659213305,
+          "module_sha256": "802fb0481ec4afffa444460a03e41eb41da4f332ce67142aae59e5f0029fccb7",
+          "config_sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+          "log_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/actor/witness/runs/run-ym0ef4pd/tlc.log",
+          "log_sha256": "6fb25a8ba5cda3795e0510747ed492c375b2a6d5eb97c9db37e32cc89f1fa27c",
+          "states_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/actor/witness/runs/run-ym0ef4pd/visited.dump"
+        }
+      }
+    },
+    {
+      "id": "effect",
+      "kind": "mutant",
+      "model_sha256": "f43f8539aa775d5eda0bebee766f8b42f1147eb8cfa140fb631081e801fd2e4f",
+      "transition": "T03",
+      "expected_oracle_violation": "Successor",
+      "cases": [
+        {
+          "id": "first_rejection",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          }
+        },
+        {
+          "id": "second_rejection",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 2,
+            "suspect": false
+          }
+        },
+        {
+          "id": "budget_exhausted",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 2,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "author_refused",
+          "actor": "A",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "reviewer_refused",
+          "actor": "R",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "draft_refused",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "approved_refused",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "approved",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": false,
+          "after": null
+        },
+        {
+          "id": "frame_preserved",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "r2",
+            "version": 2,
+            "rejections": 1,
+            "suspect": true
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "r2",
+            "version": 2,
+            "rejections": 2,
+            "suspect": true
+          }
+        }
+      ],
+      "python": [
+        {
+          "case": "first_rejection",
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "global_frame_preserved": true,
+          "matches_oracle": false
+        },
+        {
+          "case": "second_rejection",
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 1,
+            "suspect": false
+          },
+          "global_frame_preserved": true,
+          "matches_oracle": false
+        },
+        {
+          "case": "budget_exhausted",
+          "enabled": false,
+          "after": null,
+          "reason": "guard",
+          "matches_oracle": true
+        },
+        {
+          "case": "author_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "actor",
+          "matches_oracle": true
+        },
+        {
+          "case": "reviewer_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "actor",
+          "matches_oracle": true
+        },
+        {
+          "case": "draft_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "state",
+          "matches_oracle": true
+        },
+        {
+          "case": "approved_refused",
+          "enabled": false,
+          "after": null,
+          "reason": "state",
+          "matches_oracle": true
+        },
+        {
+          "case": "frame_preserved",
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "r2",
+            "version": 2,
+            "rejections": 1,
+            "suspect": true
+          },
+          "global_frame_preserved": true,
+          "matches_oracle": false
+        }
+      ],
+      "tlc": {
+        "status": "invariant_violation",
+        "returncode": 12,
+        "message_codes": [
+          2110,
+          2121,
+          2185,
+          2186,
+          2187,
+          2189,
+          2190,
+          2194,
+          2199,
+          2200,
+          2217,
+          2219,
+          2220,
+          2262,
+          2269
+        ],
+        "invariant": "Successor",
+        "generated_states": 9,
+        "distinct_states": 9,
+        "queue_remaining": 7,
+        "toolchain": {
+          "java": "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+          "java_version": "openjdk version \"21.0.10\" 2026-01-20\nOpenJDK Runtime Environment JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110)\nOpenJDK 64-Bit Server VM JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110, mixed mode, sharing)",
+          "jar": "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+          "jar_sha256": "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88",
+          "release": "1.7.4"
+        },
+        "command": [
+          "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+          "-XX:+UseParallelGC",
+          "-Xmx256m",
+          "-cp",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+          "tlc2.TLC",
+          "-tool",
+          "-workers",
+          "1",
+          "-fp",
+          "0",
+          "-seed",
+          "1",
+          "-config",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/effect/Projection.cfg",
+          "-metadir",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/effect/runs/run-jxztvbp0/states",
+          "-dump",
+          "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/effect/runs/run-jxztvbp0/visited",
+          "Projection.tla"
+        ],
+        "cwd": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/effect",
+        "elapsed_seconds": 0.6854070830158889,
+        "module_sha256": "a32bb3cbb2874bc0d91d16d1003b7fb504d8189a0a3e6ec191e0efb49fc88b2e",
+        "config_sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+        "log_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/effect/runs/run-jxztvbp0/tlc.log",
+        "log_sha256": "8eb1fefca8d325d7c90ff0f49103253702a8a62fab960133e5512d996dadab8b",
+        "states_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/effect/runs/run-jxztvbp0/visited.dump"
+      },
+      "matched_expectation": true,
+      "executed_witness": {
+        "case": {
+          "id": "first_rejection",
+          "actor": "U",
+          "before": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "verified",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "enabled": true,
+          "after": {
+            "id": "r1",
+            "type": "REQ",
+            "state": "draft",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          }
+        },
+        "python": [
+          {
+            "case": "first_rejection",
+            "enabled": true,
+            "after": {
+              "id": "r1",
+              "type": "REQ",
+              "state": "draft",
+              "depends_on": [
+                "p1"
+              ],
+              "predecessor": "none",
+              "version": 1,
+              "rejections": 0,
+              "suspect": false
+            },
+            "global_frame_preserved": true,
+            "matches_oracle": true
+          }
+        ],
+        "tlc": {
+          "status": "passed",
+          "returncode": 0,
+          "message_codes": [
+            2185,
+            2186,
+            2187,
+            2189,
+            2190,
+            2193,
+            2194,
+            2199,
+            2200,
+            2219,
+            2220,
+            2262,
+            2268
+          ],
+          "invariant": null,
+          "generated_states": 2,
+          "distinct_states": 2,
+          "queue_remaining": 0,
+          "toolchain": {
+            "java": "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+            "java_version": "openjdk version \"21.0.10\" 2026-01-20\nOpenJDK Runtime Environment JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110)\nOpenJDK 64-Bit Server VM JBR-21.0.10+7-1163.110-jcef (build 21.0.10+7-b1163.110, mixed mode, sharing)",
+            "jar": "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+            "jar_sha256": "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88",
+            "release": "1.7.4"
+          },
+          "command": [
+            "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+            "-XX:+UseParallelGC",
+            "-Xmx256m",
+            "-cp",
+            "/Users/michal/PycharmProjects/iso-model-state/artifacts/tools/tla/1.7.4/tla2tools.jar",
+            "tlc2.TLC",
+            "-tool",
+            "-workers",
+            "1",
+            "-fp",
+            "0",
+            "-seed",
+            "1",
+            "-config",
+            "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/effect/witness/Projection.cfg",
+            "-metadir",
+            "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/effect/witness/runs/run-mvachiyc/states",
+            "-dump",
+            "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/effect/witness/runs/run-mvachiyc/visited",
+            "Projection.tla"
+          ],
+          "cwd": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/effect/witness",
+          "elapsed_seconds": 0.6636005421169102,
+          "module_sha256": "318e4ddbe467c54e95c230164620beb1d754fe02ec71fe44d9892a0e60a06afe",
+          "config_sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+          "log_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/effect/witness/runs/run-mvachiyc/tlc.log",
+          "log_sha256": "c14bd71ff5fcca203b6a155bbc19656207e40fef4eb0a6779d1532364af71be6",
+          "states_file": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-01/final-reviewed/effect/witness/runs/run-mvachiyc/visited.dump"
+        }
+      }
+    }
+  ],
+  "limitations": [
+    "Nie dowodzi osiągalności próbek, całych S1/S15, żywotności, sprawiedliwości ani braku zakleszczeń.",
+    "CHECK_DEADLOCK FALSE dotyczy wyłącznie lokalnego testu relacji.",
+    "Oczekiwania są danymi wyroczni; wynik TLC sprawdza ich zgodność, dump zachowuje odwiedzone stany.",
+    "TLC używa fingerprintów stanów; wynik nie jest dowodem dedukcyjnym.",
+    "E3.1 nie jest odbiorem E3 ani narzędziem do kontroli rzeczywistego repozytorium."
+  ]
+}

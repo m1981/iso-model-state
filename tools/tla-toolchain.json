@@ -1,0 +1,10 @@
+{
+  "version": "1.7.4",
+  "url": "https://github.com/tlaplus/tlaplus/releases/download/v1.7.4/tla2tools.jar",
+  "sha1": "bee4a54f3ee3d4afc347c3240ec2d9e93b075104",
+  "sha256": "936a262061c914694dfd669a543be24573c45d5aa0ff20a8b96b23d01e050e88",
+  "size": 2274532,
+  "java_default": "/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java",
+  "jar_default": "artifacts/tools/tla/1.7.4/tla2tools.jar",
+  "scope": "E3.1 local model-checking tool; no automatic download"
+}

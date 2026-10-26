@@ -1,0 +1,27 @@
+
+==================================== ERRORS ====================================
+________________ ERROR collecting tests/test_tla_projection.py _________________
+ImportError while importing test module '/Users/michal/PycharmProjects/iso-model-state/tests/test_tla_projection.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../../.local/share/uv/python/cpython-3.14.7-macos-aarch64-none/lib/python3.14/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_tla_projection.py:10: in <module>
+    from isomodel.tla_projection import ProjectionError, render_probe
+E   ModuleNotFoundError: No module named 'isomodel.tla_projection'
+______________________ ERROR collecting tests/test_tlc.py ______________________
+ImportError while importing test module '/Users/michal/PycharmProjects/iso-model-state/tests/test_tlc.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+../../.local/share/uv/python/cpython-3.14.7-macos-aarch64-none/lib/python3.14/importlib/__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/test_tlc.py:4: in <module>
+    from isomodel.tlc import classify_output, run_tlc, ToolchainError
+E   ModuleNotFoundError: No module named 'isomodel.tlc'
+=========================== short test summary info ============================
+ERROR tests/test_tla_projection.py
+ERROR tests/test_tlc.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 2 errors during collection !!!!!!!!!!!!!!!!!!!!
+2 errors in 0.16s

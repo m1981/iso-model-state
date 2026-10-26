@@ -1,0 +1,26 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+____________ test_malformed_dependency_is_readable_projection_error ____________
+
+    def test_malformed_dependency_is_readable_projection_error():
+        model, cases = inputs()
+        cases[0]['before']['depends_on'] = [{'id': 'p1'}]
+        with pytest.raises(ProjectionError, match='depends_on'):
+>           render_probe(model, 'T03', cases)
+
+tests/test_tla_projection.py:142: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/isomodel/tla_projection.py:134: in render_probe
+    _record(case['before'], model)
+src/isomodel/tla_projection.py:39: in _record
+    valid = {'str': lambda: isinstance(value, str), 'int': lambda: type(value) is int and value >= 0,
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+>   'bool': lambda: type(value) is bool, 'set': lambda: isinstance(value, list) and len(value) == len(set(value)) and all(isinstance(v, str) for v in value)}[kind]()
+                                                                                                      ^^^^^^^^^^
+E   TypeError: cannot use 'dict' as a set element (unhashable type: 'dict')
+
+src/isomodel/tla_projection.py:40: TypeError
+=========================== short test summary info ============================
+FAILED tests/test_tla_projection.py::test_malformed_dependency_is_readable_projection_error
+1 failed, 17 deselected in 0.14s

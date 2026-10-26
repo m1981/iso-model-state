@@ -1,0 +1,45 @@
+State 1:
+/\ case_id = 1
+/\ phase = 0
+/\ item = [state |-> "verified", rejections |-> 0, depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", suspect |-> FALSE, type |-> "REQ", version |-> 1]
+
+State 2:
+/\ case_id = 2
+/\ phase = 0
+/\ item = [state |-> "verified", rejections |-> 1, depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", suspect |-> FALSE, type |-> "REQ", version |-> 1]
+
+State 3:
+/\ case_id = 3
+/\ phase = 0
+/\ item = [state |-> "verified", rejections |-> 2, depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", suspect |-> FALSE, type |-> "REQ", version |-> 1]
+
+State 4:
+/\ case_id = 4
+/\ phase = 0
+/\ item = [state |-> "verified", rejections |-> 0, depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", suspect |-> FALSE, type |-> "REQ", version |-> 1]
+
+State 5:
+/\ case_id = 5
+/\ phase = 0
+/\ item = [state |-> "verified", rejections |-> 0, depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", suspect |-> FALSE, type |-> "REQ", version |-> 1]
+
+State 6:
+/\ case_id = 6
+/\ phase = 0
+/\ item = [state |-> "draft", rejections |-> 0, depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", suspect |-> FALSE, type |-> "REQ", version |-> 1]
+
+State 7:
+/\ case_id = 7
+/\ phase = 0
+/\ item = [state |-> "approved", rejections |-> 0, depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", suspect |-> FALSE, type |-> "REQ", version |-> 1]
+
+State 8:
+/\ case_id = 8
+/\ phase = 0
+/\ item = [state |-> "verified", rejections |-> 1, depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "r2", suspect |-> TRUE, type |-> "REQ", version |-> 2]
+
+State 9:
+/\ case_id = 1
+/\ phase = 1
+/\ item = [state |-> "draft", rejections |-> 1, depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", suspect |-> FALSE, type |-> "REQ", version |-> 1]
+

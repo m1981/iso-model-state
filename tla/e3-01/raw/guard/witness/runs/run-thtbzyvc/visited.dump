@@ -1,0 +1,10 @@
+State 1:
+/\ case_id = 1
+/\ phase = 0
+/\ item = [state |-> "verified", rejections |-> 2, depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", suspect |-> FALSE, type |-> "REQ", version |-> 1]
+
+State 2:
+/\ case_id = 1
+/\ phase = 1
+/\ item = [state |-> "draft", rejections |-> 3, depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", suspect |-> FALSE, type |-> "REQ", version |-> 1]
+

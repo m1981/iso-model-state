@@ -1,15 +1,16 @@
 # Stan prac
 
-Nadpisywany na końcu każdej sesji. Zaktualizowano: **2026-10-26**. Model **v0.7 / DEC-PRO-010**. Pakiet korekt przyjęty i zweryfikowany; niezależny przegląd bez otwartych ustaleń blokujących. **E2 v0.7 odebrane przez użytkownika — DEC-PRO-012.** Rozpoczęto przygotowanie E3; TLC jeszcze nie uruchomiono.
+Nadpisywany na końcu każdej sesji. Zaktualizowano: **2026-10-27**. Model **v0.7 / DEC-PRO-010**. Pakiet korekt przyjęty i zweryfikowany; niezależny przegląd bez otwartych ustaleń blokujących. **E2 v0.7 odebrane przez użytkownika — DEC-PRO-012.** Wykonano E3.1: lokalny test translacji T03 w TLC; E3 pozostaje w toku.
 
 ## Gdzie jesteśmy
 
 - **Cel:** kontrola kontekstu, zatwierdzeń i skutków zmian we współpracy operatora z agentem; dokument zamiaru `docs/KARTA-CELU-I-ZAKRESU.md`. Plan E2–E5 i DoD zachowane.
-- **Polecenie bieżące:** „d1 tak” na odbiór dostawy E2 v0.7 w zakresie sprawdzeń Pythonowych i przejście do przygotowania E3. Zapisano DEC-PRO-012; wcześniejsza DEC-PRO-010 dotyczyła korekty modelu.
+- **Polecenie bieżące:** „wejdz w role. zgoda, dalej” — rola inżyniera weryfikacji formalnej i automatyzacji testów, zgoda na przypięty TLC i wykonanie E3.1 z TDD oraz niezależną recenzją. DEC-PRO-013; wcześniejszy odbiór E2 pozostaje DEC-PRO-012.
 - **Wdrożono:** W04 blokuje późne pytania; T10 zachowuje licznik; W01 ma globalne bramki również przy pustym zakresie; nowe suspect w zakresie cofa ready/reviewed nawet po zmianie spoza zakresu. Accepted pozostaje niezmienne.
 - **Sprawdzenia:** 28/28 przejść i T04 dla pięciu typów; niezależne wyrocznie 16 właściwości S1–S15 (S7a/S7b); 43 próby WIT i 5 regresji korekty, trzy instancje maszyny Hypothesis (zakres podstawowy, bez p1, pusty).
 - **Niezależność:** S14/S15 napisał osobny subagent; drugi rozszerzył sekwencje i atomowość obserwatorów. Końcowy recenzent zbadał repozytorium bez historii tworzenia i zamknął jedyną uwagę dotyczącą brakującej macierzy W01.
-- **Następny krok:** przygotowany [E3.1](E3-PRZYROST-01.md): sprawdzenie translacji lokalnej reguły T03 metodą TDD. Java 21 z PyCharm działa; potrzebna zgoda U na pobranie przypiętego JAR TLC do artifacts/tools i lokalne uruchamianie. Przygotowanie nie jest wykonaniem ani odbiorem E3.
+- **E3.1 wykonane:** [raport](E3-01-RAPORT.md), [instrukcja](../tla/README.md), [niezależna recenzja](reviews/E3-01-WYKONANIE-2026-10-27.md). 417 testów passed, 413 kontroli spójności OK; baza, pięć kontroli danych i trzy mutanty w TLC, osobne świadki ich skutków. Model v0.7 i wykonawca E2 bez zmian.
+- **Następny krok / A:** przygotować E3.2 — mapowanie wielokrokowej pętli T01–T03, niezależne oczekiwania i przegląd przed implementacją. E3.1 nie zamyka etapu E3. Java/TLC dostępne zgodnie z DEC-PRO-013; nie pytać ponownie o tę samą zgodę.
 - **Materiały:** `docs/E2-RAPORT.md`, `docs/reviews/E2-V07-PRZEGLAD-2026-10-26.md`, przyjęty pakiet `model/proposals/e2-hardening.md`. Polecenie `.venv/bin/python scripts/run_e2.py --output artifacts/e2`: 0 = sprawdzenia OK, 1 = niepowodzenie, 2 = błąd raportu. Skrypt nie odczytuje decyzji odbioru; jego status awaiting_acceptance nie jest aktualnym statusem projektu. Odbiór E2 zapisuje DEC-PRO-012.
 
 ## Powrót do celu i przyszłe CLI — DEC-PRO-011
@@ -20,7 +21,9 @@ Nadpisywany na końcu każdej sesji. Zaktualizowano: **2026-10-26**. Model **v0.
 - **Sprawdzenie zapisu i aktualności E2:** 413 kontroli spójności OK, odnośniki i pojedynczy wpis DEC-PRO-011 sprawdzone. Bieżące hashe modelu oraz kodu/danych są identyczne z raportem E2 i końcową niezależną recenzją (`ecca43e…` / `12cf8f…`). Nie uruchamiano ponownie pełnej regresji ani nowej recenzji E2, bo przedmiot dowodów nie zmienił się; liczby 389 testów i 48 mutantów odnoszą się do zapisanej dostawy v0.7, nie do nowego przebiegu w tej sesji.
 - **Realizacja:** bramka E2 zamknięta przez DEC-PRO-012. A przygotował pierwszy przyrost E3 i sprawdził narzędzia; szczegóły poniżej. Kolejność i DoD E2–E5 bez zmian.
 
-## Przygotowanie E3.1 po odbiorze E2
+## Przygotowanie E3.1 po odbiorze E2 — zapis historyczny z 2026-10-26
+
+Poniższy stan poprzedza DEC-PRO-013. Zgoda została udzielona, a wykonanie opisuje następna sekcja; zapis przygotowania i jego recenzja pozostają historią.
 
 - **Odebrany przedmiot:** dostawa w commicie `a0cb7beada08ca100778eb1e6fac903d24205bd4`; model v0.7, kanoniczny SHA-256 `ecca43e1402ee476502943caa16556d5609021b8894f3a702e26ca2da3cf21a6`; kod/dane E2 `12cf8f7e37d731706f060293f69f5221c26b90950d199f922ab6ae09b8b0bed0`. Użytkownik przyjął zakres E2 i jawne ograniczenia; nie odebrał całego DoD, E3, API ani narzędzia dla rzeczywistego projektu.
 - **Dostawa przygotowania:** [E3-PRZYROST-01](E3-PRZYROST-01.md) określa przypadki T03, niezależną wyrocznię, TDD, mutanty i lokalny zakres dowodu. Decyzje agenta E3-DA01–03 w tym dokumencie. Model, wykonawca i testy E2 pozostają bez zmiany.
@@ -29,6 +32,14 @@ Nadpisywany na końcu każdej sesji. Zaktualizowano: **2026-10-26**. Model **v0.
 - **Otwarta sprawa / U:** zgoda na pobranie oficjalnego tla2tools.jar v1.7.4 (około 2,3 MB) do ignorowanego `artifacts/tools/tla/1.7.4/`, sprawdzenie sumy wydawcy, zapis SHA-256 i lokalne uruchamianie przez istniejącą Javę. Źródło i dokładny zakres w dokumencie przyrostu; powodem osobnej zgody jest PLAN, tabela „Narzędzia”.
 - **Kontrola zapisu:** 413 sprawdzeń spójności OK; tożsamość modelu i kodu/danych E2 zachowana, treść historycznego raportu zachowana pod adnotacją odbioru, DEC-PRO-012 i odnośniki sprawdzone. Nie ponawiano niezmienionej regresji E2.
 - **Następny krok / A:** po zgodzie sprawdzić narzędzie na poprawnym i naruszającym niezmiennik przykładzie, następnie wykonać RED/GREEN/REFACTOR E3.1 i niezależny przegląd wyniku. Odmowa pobrania zostawia specyfikację gotową, ale uniemożliwia wykonanie TLC w obecnie znalezionym środowisku. API pozostaje odłożone do E4.
+
+## Wykonanie E3.1 — 2026-10-27
+
+- Udzielona zgoda obejmuje lokalny JAR 1.7.4, istniejącą Javę i uruchamianie TLC. Pobrane bajty sprawdzono z sumą wydawcy i przypięto SHA-256; bez instalacji Javy i zmian globalnego środowiska.
+- [Raport](E3-01-RAPORT.md) opisuje rzeczywiste RED/GREEN, wykryty błąd ścieżki dump, końcowe 417 testów oraz 413 kontroli spójności. [Archiwum](../tla/e3-01/manifest.json) zachowuje pełne dowody i hashe. Komenda badawcza: `.venv/bin/python scripts/run_e3.py --output artifacts/e3-01/reproduction` (0/1/2/3: oczekiwania spełnione/rozbieżność/błąd/timeout).
+- Przed implementacją osobny R ocenił [mapowanie](E3-01-MAPOWANIE.md); osobny recenzent wykonania odtworzył badanie. Raport końcowy: [R](reviews/E3-01-WYKONANIE-2026-10-27.md). To nie odbiór całego E3.
+- Decyzje agenta: E3-DA04 w mapowaniu, E3-DA05/06 w raporcie. Nie zmieniono modelu, właściwości, interpretacji, dotychczasowych testów ani wykonawcy E2. Historyczny hash E2 dotyczy odebranej dostawy; nowy manifest obejmuje także przyrost E3.
+- Ograniczenia: syntetyczna relacja jednego kroku T03; brak dowodu osiągalności, pełnego S/L/F, zakleszczeń czy użyteczności w prawdziwym projekcie. API odłożone do E4. Właściciel A: przygotowanie kolejnego przyrostu i osobna metoda dla CTL L1; U odbiera dopiero gotowy etap E3.
 
 ## Kontrakt API procesu — propozycja architektoniczna, rewizja 2
 
@@ -116,6 +127,8 @@ Przyjęta przez DEC-PRO-005. Korekta G3/G6 zatwierdzona przez DEC-PRO-006 nie zm
 | DEC-PRO-010 | Przyjąć pakiet v0.7: W04 blokuje późne pytania, T10 zachowuje budżet odrzuceń wersji, W01 ma globalne bramki także dla pustego scope, nowy suspect w zakresie cofa ready/reviewed również po zmianie spoza scope. S14/S15 i doprecyzowanie L4; wdrożyć, zweryfikować i ponowić przegląd. Odbiór E2 pozostaje osobną decyzją. | Użytkownik 2026-10-26: „d1 tak” — odpowiedź na D1 o całym pakiecie e2-hardening. | `model/process.yaml`, `docs/WLASCIWOSCI.md`, `docs/INTERPRETACJE.md`, `PLAN.md`, `docs/STAN.md`, `model/proposals/e2-hardening.md`, `model/proposals/e2-hardening.yaml`, `src/isomodel/`, `tests/`, `mutants/`, `scripts/`, `docs/E2-RAPORT.md`, `README.md`, `examples/` | `model/process.yaml`, `docs/WLASCIWOSCI.md`, `docs/INTERPRETACJE.md`, `PLAN.md`, `docs/STAN.md`, `model/proposals/e2-hardening.md`, `model/proposals/e2-hardening.yaml`, `src/isomodel/`, `tests/`, `mutants/`, `scripts/`, `docs/E2-RAPORT.md`, `README.md`, `examples/`; ponadto G0–G6, S1–S15, L1–L5, WIT1–WIT5, INT-011/012/017/019, karta celu, kontrakt i niezależny audyt/przegląd E2. |
 | DEC-PRO-011 | Odłożyć dalszy rozwój API do wniosków z E4 i wrócić do zamknięcia E2. Akceptowana przyszła forma narzędzia: CLI z jawnym kontraktem i pomocnymi dla agenta komunikatami pomocy/błędów. Zachować kolejność i DoD E2–E5; nie stanowi odbioru E2, akceptacji AX01–AX06 ani polecenia implementacji CLI teraz. | Użytkownik 2026-10-26: „D1: tal. zanotuj tylko ze akceptuje w prszysloszci narzedzie CLI z jawnym kontraktem i pomocnymi dla agenta komunikatami pomocy, bledu.” | `PLAN.md`, `docs/STAN.md`: kierunek narzędzia, odłożenie API, punkt wznowienia. | `PLAN.md`, `docs/STAN.md`, `docs/KARTA-CELU-I-ZAKRESU.md`, `docs/WSPOLPRACA.md`, `PROMPT-STARTOWY.md`, `docs/E2-RAPORT.md`, `docs/reviews/E2-V07-PRZEGLAD-2026-10-26.md`, `model/process.yaml`, `docs/WLASCIWOSCI.md`, `docs/INTERPRETACJE.md`, `informative/README.md`, `informative/architecture-2026-10-26/process-api-contract-evidence-v2.md`, `informative/architecture-2026-10-26/review-evidence-v2.md`; semantyka modelu i wykonawca bez zmian. |
 | DEC-PRO-012 | Odebrać dostawę E2 v0.7 w zakresie sprawdzeń Pythonowych i przejść do przygotowania E3. Przyjęto ograniczenia: testy i mutanty nie są wyczerpującym dowodem S/L, nie wykonano TLC ani odtworzenia rzeczywistego projektu. Odbiór nie obejmuje API/CLI, całego DoD ani instalacji środowiska. | Użytkownik 2026-10-26: „d1 tak” — odpowiedź na D1 o odbiorze E2. Przedmiot: commit `a0cb7be`, dokładne hashe i dowody w sekcji przygotowania E3.1 powyżej. | `PLAN.md`, `docs/STAN.md`, `README.md`, `docs/E2-RAPORT.md`: status odbioru i punkt wznowienia; `docs/E3-PRZYROST-01.md`, `docs/reviews/E3-01-PRZYGOTOWANIE-2026-10-26.md`: przygotowanie następnego przyrostu. | `PLAN.md`, `docs/STAN.md`, `README.md`, `docs/E2-RAPORT.md`, `docs/E3-PRZYROST-01.md`, `docs/reviews/E3-01-PRZYGOTOWANIE-2026-10-26.md`, `docs/reviews/E2-V07-PRZEGLAD-2026-10-26.md`, `docs/KARTA-CELU-I-ZAKRESU.md`, `docs/WSPOLPRACA.md`, `PROMPT-STARTOWY.md`, `model/process.yaml`, `docs/WLASCIWOSCI.md`, `docs/INTERPRETACJE.md`, `scripts/run_e2.py`, `scripts/check_model.py`; model, kod, testy, mutanty i wcześniejszy raport recenzenta bez zmian. |
+| DEC-PRO-013 | Przyjąć rolę i sposób pracy dla E3.1: pobrać przypięty TLC 1.7.4 lokalnie, używać istniejącej Javy i wykonać lokalny przyrost T03 metodą TDD z niezależnym R. Bez zmiany reguł modelu i bez odbioru całego E3. | Użytkownik: „wejdz w role. zgoda, dalej” — zgoda w sesji rozpoczętej 2026-10-26, domknięcie zapisu 2026-10-27. | `src/isomodel/tla_projection.py`, `src/isomodel/tlc.py`, `scripts/run_e3.py`, nowe testy/fixture E3, `tools/`, `tla/`, mapowanie/raport/recenzje E3.1, `PLAN.md`, `README.md`, `docs/STAN.md`; lokalny JAR w artifacts. | Plan przyrostu i mapowanie, YAML T03, kontekst globalny wykonawcy, wyrocznie/testy, narzędzie i dowody TLC, regresja E2, instrukcja odtworzenia, niezależne recenzje; model i S/L/INT bez zmian. |
+
 
 ## Historia weryfikacji v0.5 i przygotowania propozycji WIT3
 
@@ -200,24 +213,25 @@ Poniższy opis zachowano historycznie; aktualne uzupełnienia i ograniczenia są
 ## Repozytorium
 
 - Użytkownik scalił poprzednią gałąź e1-model do main (PR #1, eceaf0e). Model v0.3 opublikowano na e1-model w 7e4856d; akceptację E1 i pierwszy przyrost E2 na e2-checks w c38a4b7.
-- Bieżąca gałąź: `e2-checks`; WIT1 zapisano w 2b830e0, WIT2/WIT4 w 9bfebae, kartę celu w 360a90d. WIT5 i v0.5 zapisano i wypchnięto w e5fc842; propozycję WIT3 zapisano w 7424b73, a przyjęty przyrost v0.6 w ffa68d6. Sprawdzenia i propozycję korekty E2 zapisano w de94da9; przyjęta korekta v0.7 jest dostarczana na tej samej gałęzi. Scalenie do main wymaga osobnej zgody użytkownika.
+- Bieżąca gałąź: `e3-checks`, utworzona z `e2-checks` po przygotowaniu E3.1 (8a1987e); WIT1 zapisano w 2b830e0, WIT2/WIT4 w 9bfebae, kartę celu w 360a90d. WIT5 i v0.5 zapisano i wypchnięto w e5fc842; propozycję WIT3 zapisano w 7424b73, a przyjęty przyrost v0.6 w ffa68d6. Sprawdzenia i propozycję korekty E2 zapisano w de94da9; przyjęta korekta v0.7 została dostarczona na e2-checks. Obecny przyrost E3.1 jest dostarczany na e3-checks. Scalenie do main wymaga osobnej zgody użytkownika.
 
 ## Sprawy otwarte
 
 | Sprawa | Właściciel | Następny krok |
 |---|---|---|
-| Kierunek architektury API | użytkownik | decyzja o kontrakcie i AX01–AX06; informative/architecture-2026-10-26/process-api-contract.md oraz review.md; bez zgody na wdrożenie lub zmiany kolejności etapów |
-| Odbiór E2 | użytkownik | przyjąć lub odrzucić gotową dostawę v0.7; dowody w E2-RAPORT i niezależnym przeglądzie; decyzja odrębna od DEC-PRO-010 |
-| Przejście do E3 | agent | po odbiorze E2 zapisać DEC i przygotować formalizację oraz wymagania środowiska zgodnie z PLAN |
+| Kierunek architektury API/CLI | agent | po E4 wrócić z oceną potrzeby AX01–AX06 według DEC-PRO-011; teraz bez decyzji U i implementacji API |
+| E3.2 i pozostałe dowody E3 | agent | przygotować wielokrokowe mapowanie T01–T03, potem kolejne reguły, S/L/F i OBS; L1 CTL wymaga jawnej metody |
+| Odbiór E3 | użytkownik | po dostawie całego etapu i niezależnej recenzji; E3.1 nie wystarcza do tej bramki |
 | Wywiad kontynuującej sesji vcs_lite | agent | trzy rundy zapisane; przed gotową rundą 4 ponownie sprawdzić /usage; 26.10 o 19:20 limit 5h = 100%; kontynuować tylko fork 3407bcbe…; wywiad-8f641/STATUS.md |
 | Wnioski wywiadu vcs_lite R1–R3 | agent | przy przygotowaniu E4/E5 użyć WNIOSKI.md i dowodów; najpierw zestaw kontrolny R1, bez ponawiania poprawnych zgód |
 | Historyczne materiały informative/ | agent | przy E5 uwzględnić INT-017 w nowym materiale; nie przepisywać migawek sesji 2026-10-23 |
 | REQ-210 i REQ-211 dla szablonu | użytkownik | decyzja; opis w informative/SESJA-2026-10-23.md §5 |
-| Instalacja Javy i TLA+ (E3) | użytkownik | zgoda przed E3 |
 | Dostęp do historii vcs-lite (E4) | użytkownik | zgoda przed E4 |
 | Porządki w vcs-lite | użytkownik | decyzja, czy i kiedy |
 
 ## Decyzje agenta do podważenia
+
+- 2026-10-27 (E3.1): E3-DA04 w `docs/E3-01-MAPOWANIE.md`, E3-DA05/06 w `docs/E3-01-RAPORT.md`; rzut i kontekst, osobne wykonane świadki mutantów oraz trwałe archiwum dowodów.
 
 - 2026-10-26 (API): propozycję i dowody projekcji wydzielono do informative/architecture-2026-10-26, aby nie nadać nowych uprawnień przez sam zapis dokumentu. Szczegółowe DA01–DA05 w §11 kontraktu; przegląd wykonał osobny przebieg bez historii tworzenia, zgodnie ze zleconą metodą.
 

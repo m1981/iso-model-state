@@ -36,7 +36,7 @@ Zgoda: DEC-PRO-001, 2026-10-23, użytkownik: „d1 tak” na DoD 1–10 i stos n
 
 Kolejność jest ścisła: bez zgody na E1 nie piszemy kodu, bo kod i dowody wywodzą się z modelu.
 
-Stan etapów: E1 przyjęty jako podstawa E2 przez DEC-PRO-005 (2026-10-24); E2: dostawa v0.7 odebrana przez użytkownika — DEC-PRO-012 (2026-10-26, „d1 tak”), na podstawie docs/E2-RAPORT.md i docs/reviews/E2-V07-PRZEGLAD-2026-10-26.md. E3: przygotowanie pierwszego przyrostu, bez wykonania TLC; [zakres E3.1 i środowisko](docs/E3-PRZYROST-01.md). Akceptacja modelu nie jest potwierdzeniem spełnienia właściwości G/S/L.
+Stan etapów: E1 przyjęty jako podstawa E2 przez DEC-PRO-005 (2026-10-24); E2: dostawa v0.7 odebrana przez użytkownika — DEC-PRO-012 (2026-10-26, „d1 tak”), na podstawie docs/E2-RAPORT.md i docs/reviews/E2-V07-PRZEGLAD-2026-10-26.md. E3: wykonany pierwszy przyrost lokalnego T03 w TLC, 417 testów passed, bez odbioru całego E3; [wynik i granice E3.1](docs/E3-01-RAPORT.md), [instrukcja](tla/README.md). Zgoda na narzędzie: DEC-PRO-013. Dalej przygotowanie wielokrokowego wycinka T01–T03, następnie reszta planowanego E3. Akceptacja modelu nie jest potwierdzeniem spełnienia właściwości G/S/L.
 
 ## Kierunek narzędzia i sposób kolejnych przyrostów
 
