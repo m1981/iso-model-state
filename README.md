@@ -31,9 +31,9 @@ Po korekcie DEC-PRO-006 usunięto wykazane wcześniej luki G3/G6: mutant G3 usuw
 
 `src/isomodel/` wczytuje model i wykonuje przyjęte przejścia, w tym uwagi W03/W05. Korpus ma świadków 28/28 przejść; niezależne wyrocznie S1–S15 badają WIT i generowane sekwencje Hypothesis. Projekcja grafu G1/G3 nie dowodzi całej osiągalności ani braku zakleszczeń. Pełne dowody czasowe pozostają w E3.
 
-**Model v0.7 wdraża DEC-PRO-010.** Późna blokada zatrzymuje odbiór, T10 zachowuje budżet odrzuceń, pusty zakres respektuje globalne bramki, a wpływ zmiany spoza zakresu unieważnia gotowość. [Raport E2](docs/E2-RAPORT.md) zawiera odtwarzalne wyniki i granice badania; odbiór E2 pozostaje osobną decyzją użytkownika. [Przyjęty pakiet zmian](model/proposals/e2-hardening.md).
+**Model v0.7 wdraża DEC-PRO-010.** Późna blokada zatrzymuje odbiór, T10 zachowuje budżet odrzuceń, pusty zakres respektuje globalne bramki, a wpływ zmiany spoza zakresu unieważnia gotowość. [Raport E2](docs/E2-RAPORT.md) zawiera odtwarzalne wyniki i granice badania; **E2 v0.7 odebrano przez DEC-PRO-012**. Następny krok: [przygotowanie E3.1](docs/E3-PRZYROST-01.md). [Przyjęty pakiet zmian](model/proposals/e2-hardening.md).
 
-`.venv/bin/python scripts/run_e2.py --output artifacts/e2` odtwarza raport i pełne dane. Oczekiwany kod wyjścia **1** oznacza brak gotowości do odbioru, **2** błąd przygotowania raportu. Testy diagnostyczne są zielone, gdy prawidłowo odtwarzają znaną lukę — nie są dowodem jej naprawy.
+`.venv/bin/python scripts/run_e2.py --output artifacts/e2` odtwarza raport i pełne dane. Kod wyjścia **0** oznacza powodzenie sprawdzeń, **1** niepowodzenie sprawdzeń, **2** błąd przygotowania raportu. Skrypt nie odczytuje decyzji odbioru; generowany status awaiting_acceptance nie zastępuje DEC-PRO-012 i bieżącego STAN.md. Testy diagnostyczne są zielone, gdy prawidłowo odtwarzają znaną lukę — nie są dowodem jej naprawy.
 
 Starszy skrypt spójności E1: `uv run --locked python scripts/check_model.py`. Wynik tego skryptu nie zastępuje testów E2 ani dowodów E3. Bieżące decyzje i punkt wznowienia: `docs/STAN.md`.
 
@@ -55,7 +55,7 @@ Starszy skrypt spójności E1: `uv run --locked python scripts/check_model.py`. 
 
 `uv run --locked --offline python scripts/run_scenario.py --scenario WIT5 --output artifacts/wit5` wykonuje 40 kroków: odbiór wydania 1, zgodę na zmianę a2 v1, otwarcie wydania 2 i jego odbiór. Cały rekord wcześniejszego odbioru pozostaje identyczny. Dziesięć wybranych mutantów sprawdza m.in. odmowę potraktowaną jak zgoda, niepasujący element/wersję/operację, brak zapisu wykorzystania zgody i zmianę historycznego odbioru.
 
-[Instrukcja i granice](examples/wit5/README.md) · [Raport WIT5](examples/wit5/report.md). Pełne zakończenie E2 pozostaje w planie.
+[Instrukcja i granice](examples/wit5/README.md) · [Raport WIT5](examples/wit5/report.md). Ten przebieg jest częścią dostawy E2 odebranej przez DEC-PRO-012; sam nie zastępuje dowodów E3.
 
 ## Zastąpienie wymagania i naprawa powiązań — WIT3
 

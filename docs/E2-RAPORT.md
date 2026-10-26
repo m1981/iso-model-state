@@ -1,5 +1,7 @@
 # E2 — raport sprawdzeń modelu v0.7
 
+**Aktualizacja odbioru, 2026-10-26:** użytkownik odebrał dostawę E2 v0.7 przez **DEC-PRO-012**, odpowiedź „d1 tak”. Przedmiot i ograniczenia odbioru: [STAN.md](STAN.md). Poniżej zachowano wygenerowany raport dowodowy sprzed tej decyzji; jego sformułowania o oczekiwaniu na odbiór są historyczne. Skrypt sprawdzeń nie odczytuje decyzji U i nie jest źródłem aktualnego statusu etapu.
+
 **Status: sprawdzenia zakończone pomyślnie; oczekuje odbioru użytkownika; E2 nie jest odebrane.** DEC-PRO-010 wdrożono w obowiązującym modelu. Regresje dawnych luk sprawdzają odmowę modelu bazowego oraz wykonanie naruszające reguły po celowej mutacji.
 
 ## Tożsamość badania

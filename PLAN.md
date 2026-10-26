@@ -36,11 +36,11 @@ Zgoda: DEC-PRO-001, 2026-10-23, użytkownik: „d1 tak” na DoD 1–10 i stos n
 
 Kolejność jest ścisła: bez zgody na E1 nie piszemy kodu, bo kod i dowody wywodzą się z modelu.
 
-Stan etapów: E1 przyjęty jako podstawa E2 przez DEC-PRO-005 (2026-10-24); E2: dostawa v0.7 zweryfikowana, niezależny przegląd bez otwartych blokad; oczekuje osobnego odbioru użytkownika (docs/E2-RAPORT.md i docs/reviews/E2-V07-PRZEGLAD-2026-10-26.md). Akceptacja modelu nie jest potwierdzeniem spełnienia właściwości G/S/L.
+Stan etapów: E1 przyjęty jako podstawa E2 przez DEC-PRO-005 (2026-10-24); E2: dostawa v0.7 odebrana przez użytkownika — DEC-PRO-012 (2026-10-26, „d1 tak”), na podstawie docs/E2-RAPORT.md i docs/reviews/E2-V07-PRZEGLAD-2026-10-26.md. E3: przygotowanie pierwszego przyrostu, bez wykonania TLC; [zakres E3.1 i środowisko](docs/E3-PRZYROST-01.md). Akceptacja modelu nie jest potwierdzeniem spełnienia właściwości G/S/L.
 
 ## Kierunek narzędzia i sposób kolejnych przyrostów
 
-DEC-PRO-011 (2026-10-26): dalszy rozwój API jest odłożony do wniosków z E4. Wracamy do bramki E2, następnie E3–E5 w dotychczasowej kolejności. Kontrakt API i recenzje zachowujemy jako materiał do późniejszego wykorzystania; nie są przyjętym zakresem wdrożenia.
+DEC-PRO-011 (2026-10-26): dalszy rozwój API jest odłożony do wniosków z E4. Powrót do bramki E2 wykonano; odbiór zapisała DEC-PRO-012. Dalej E3–E5 w dotychczasowej kolejności. Kontrakt API i recenzje zachowujemy jako materiał do późniejszego wykorzystania; nie są przyjętym zakresem wdrożenia.
 
 Użytkownik akceptuje przyszłe narzędzie **CLI z jawnym kontraktem i pomocnymi dla agenta komunikatami pomocy i błędów**. Nie jest to jeszcze wybór komend ani zgoda na rozpoczęcie implementacji CLI. Kontrakt przed implementacją określi wejścia, wyniki, kody zakończenia i skutki poleceń; pomoc poda przykłady, a błąd wskaże przyczynę, przedmiot i dozwolony następny krok. CLI samo nie zapewnia izolacji uprawnień ani ochrony przed obejściem procesu.
 
