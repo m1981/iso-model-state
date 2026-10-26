@@ -1,0 +1,274 @@
+{
+  "source_sha256": "6c8f5981969e576ab8069eefcef9b48b8d15ee212b93ce9a4f36bbe54275a818",
+  "note": "Widoczne wiadomości i wyniki historycznych narzędzi; nie są nowym uruchomieniem. S05 to api-request-blob bez UUID/czasu, identyfikowany linią i hashem źródła. Bez ukrytego rozumowania.",
+  "records": [
+    {
+      "id": "S01",
+      "title": "DEC096 dotyczy jednego punktu DoD",
+      "line": 187,
+      "uuid": "1f11a96a-1444-4ccb-abc6-13715d772983",
+      "timestamp": "2026-10-23T17:18:58.163Z",
+      "record_type": "assistant",
+      "role": "assistant",
+      "visible_text": "Zapisałem Twoje decyzje i przygotowałem makietę okna wyszukiwania. Otworzyłem ją w przeglądarce: `packages/vcs_lite/docs/ui-mockups/E-04-szukaj.html`. Potrzebuję wyboru układu okna, żeby przejść do specyfikacji i testów.\n\n## Do decyzji\n\n**D1. Układ okna: A.** (rekomendacja)\n- **A (P15a):** przełączniki „Aa” (wielkość liter) i „W” (całe słowo) w polu frazy, z prawej maska plików. Wyniki to płaska lista: z lewej linia z podświetlonym trafieniem, z prawej plik i numer linii. Tak działa „Find in Files” w PyCharmie.\n- **B (P15b):** zamiast przełączników zwykłe pola wyboru pod frazą, a trafienia pogrupowane pod nagłówkiem pliku.\n- Dlaczego A: znasz ten układ z PyCharma, mieści więcej trafień na ekranie i zajmuje jeden wiersz paska.\n- Co, jeśli nie: B lepiej opisuje opcje bez podpowiedzi, ale przy wielu plikach nagłówki zajmują miejsce.\n\nOdpowiedź w formie „D1: A” albo „D1: B”. Uwagi do szczegółów z tabeli na dole makiety też są mile widziane.\n\n## Informacyjnie\n- **Przykład w makiecie:** fraza „tydzień próbny” pokazuje prawdziwe trafienia z repo. Są tylko w `SPEC.md`, bo pliki nieśledzone, np. `PROMPT-STARTOWY.md`, nie są przeszukiwane.\n- **Moje propozycje, których nie było w Twoich decyzjach** (wszystkie w tabeli makiety):\n  - pozycja w menu Edycja „Szukaj w plikach…” ze skrótem ⌘⇧F, obok podwójnego ⇧;\n  - Enter otwiera trafienie i zamyka okno;\n  - okno pamięta frazę i opcje do zamknięcia vcs-lite.\n- **Zapisane w `SPEC.md`:** DEC-VCS-093–095 to D1–D3. DEC-VCS-096: „Juz po okresie probnym” odczytałem jako zaliczony punkt DoD „przez tydzień zastępuje PyCharm”. Popraw, jeśli chodziło o co innego.\n- **Testy:** po zmianach w `SPEC.md` przechodzi 22 z 22 testów śledzenia powiązań; pełnego zestawu nie uruchamiałem, bo kod się nie zmienił.\n\nDalej: po wyborze układu dopiszę REQ, DES i scenariusze AT dla wyszukiwania i przygotuję commit ze specyfikacją na Twoje polecenie."
+    },
+    {
+      "id": "S02",
+      "title": "Jednoczesna zgoda i odmowa",
+      "line": 2670,
+      "uuid": "050ae6b5-c845-4fdf-8344-c930cea0a121",
+      "timestamp": "2026-10-25T16:11:08.963Z",
+      "record_type": "user",
+      "role": "user",
+      "visible_text": "Nie chce menu tylko kopiowanie do schowka. D1 tak D2 nie"
+    },
+    {
+      "id": "S03",
+      "title": "Odstępstwo H48 już wykonane przed pytaniem",
+      "line": 4719,
+      "uuid": "1423ea2d-3fa9-4d5e-991d-fd016a2d59aa",
+      "timestamp": "2026-10-25T22:49:06.383Z",
+      "record_type": "assistant",
+      "role": "assistant",
+      "visible_text": "Panel „Historia” już działa. Lista commitów ma graf gałęzi, a obok są szczegóły i pliki zaznaczonego commita. Działają też filtr, przełącznik gałęzi, diff pliku z commita i menu commita. Zrobiłem kroki 3–6 metodą TDD i przechodzi wszystkie 639 testów. Uruchomiłem okno demo z nowym repo `delta`, którego historia ma wszystkie kształty z makiety.\n\n**Czeka na Ciebie: krok 22**\nW oknie wybierz `delta`, a potem:\n1. Obejrzyj graf. Powinno być widać:\n   - prostą linię `main` i łuk do `feature/log`;\n   - merge „Merge o1 and o2”, który łączy trzy gałęzie;\n   - gałąź `eksperyment` z boku;\n   - etykiety `main`, `origin/main` i `v0.3`;\n   - dwa najnowsze commity ze strzałką ↑, pogrubione.\n2. Kliknij „Merge branch 'feature/log'”, a potem hash rodzica w szczegółach. Zaznaczenie powinno przejść na rodzica.\n3. Przy commicie „Draw the commit graph” kliknij dwukrotnie plik w szczegółach. Diff powinien się otworzyć w przeglądarce.\n4. Wpisz „ola” w filtr. Powinien zostać tylko commit autorki Ola Nowak, bez linii grafu.\n5. Przełącz „Bieżąca”. Gałąź `eksperyment` powinna zniknąć.\n6. Prawym przyciskiem na commicie wybierz „Kopiuj hash” i wklej (⌘V). „Kopiuj adres commita” jest tu wyszarzone, bo zdalne repo demo to folder na dysku.\n7. Zrzut panelu mile widziany.\n\nSwoje prawdziwe repo zobaczysz po ponownym uruchomieniu vcs-lite z Aplikacji.\n\n**Do decyzji**\n- **D1: Pełna data commita: w szczegółach czy w podpowiedzi?** Reguła H-48 mówiła o podpowiedzi po najechaniu na wiersz listy. Pełna data i godzina są teraz w szczegółach zaznaczonego commita, a podpowiedzi nad wierszem nie ma. Rekomenduję zostawić tak, jak jest.\n  - *Dlaczego:* podpowiedzi w Tk działają dla całego widżetu, nie dla pojedynczego wiersza listy. Zrobienie ich osobno dla każdego wiersza to sporo dodatkowego kodu.\n  - *Co, jeśli nie:* dorobię podpowiedź z pełną datą nad wierszem listy.\n\n**Informacyjnie**\n- **Nowe moduły:**\n  - `core/log.py`, `core/gitlog.py`, `core/graph.py`: odczyt historii i graf;\n  - `app/history.py`: stan panelu;\n  - `ui/history_panel.py`: wygląd panelu.\n- Diff pliku z commita idzie przez `PageOpener`, który wydzieliłem w kroku 1. Po obejrzeniu diffu repo nie jest odświeżane.\n- Pole tekstu zastępczego z okna wyszukiwania przeniosłem do wspólnych widżetów, bo używa go teraz też filtr historii.\n- Algorytm grafu sprawdziłem na Twoich repo, tylko je czytając (OBS-VCS-016):\n  - `pi-mono` ma 3994 commity i graf układa się w 0,009 s;\n  - w `mychat` część wierszy ma 12 gałęzi naraz, więc widać tam przycięcie do 8.\n- Wszystkie scenariusze historii AT-VCS-049–060 mają już testy.\n- Niezatwierdzone w git: kopiowanie adresu zdalnego repo oraz cała historia (specyfikacja i kod). Gdy zechcesz, zrobię osobne commity: najpierw specyfikacja, potem kod.\n\nDalej: krok 22 i D1, potem krok 7, czyli pomiar pamięci przy stale widocznej historii."
+    },
+    {
+      "id": "S04",
+      "title": "Późniejsza akceptacja daty w szczegółach",
+      "line": 4721,
+      "uuid": "2f75a780-da63-44a9-811d-e22f1bcc9660",
+      "timestamp": "2026-10-25T22:59:42.618Z",
+      "record_type": "user",
+      "role": "user",
+      "visible_text": "d1 dziala cudnie. tylk te rysunki troche takie poszarpane. Czy masz opcje jak to mozemy zrobic barjdziej smooth. 2) Chcialbym zeby dopisal do listy funkcje ktora bardzo lubie z pycharm (jak najezdzam na plik na liscie plikow (w historii lub na gornej przegladarce plikow i jak klikne z menu kontekstoweg pokaz historie to historia sie filtruje tylko do tego pliku i widze jego historie. To genialne!"
+    },
+    {
+      "id": "S05",
+      "title": "Stała instrukcja commitowania przekazana w toku pracy",
+      "line": 4759,
+      "uuid": null,
+      "timestamp": null,
+      "record_type": "api-request-blob",
+      "role": "user",
+      "visible_text": "ok\nThe user sent a new message while you were working:\nrob commity po kazdym logicznym przyroscie\n\nThis is how Claude Code surfaces messages the user sends mid-turn — within the running turn, often alongside the next tool result, rather than as a separate conversation turn. Address the message above as you continue this turn."
+    },
+    {
+      "id": "S06",
+      "title": "Błędy niezamierzonego zapisu w katalogu głównym",
+      "line": 4804,
+      "uuid": "3eb6e54e-7bca-4028-a286-42a8a51c51a2",
+      "timestamp": "2026-10-25T23:01:31.514Z",
+      "record_type": "user",
+      "role": "user",
+      "visible_text": "warning: could not open directory 'packages/vcs_lite/docs/ACCEPTANCE.feature packages/vcs_lite/docs/DESIGN.md packages/vcs_lite/docs/MANUAL-UI.md packages/vcs_lite/docs/PROMPT-STARTOWY.md packages/vcs_lite/docs/SPEC.md packages/vcs_lite/docs/ui-reference/UI-REFERENCE.md packages/vcs_lite/docs/PROPOZYCJA-historia.md packages/vcs_lite/docs/ui-reference/': No such file or directory\nfatal: pathspec 'packages/vcs_lite/docs/ACCEPTANCE.feature packages/vcs_lite/docs/DESIGN.md packages/vcs_lite/docs/MANUAL-UI.md packages/vcs_lite/docs/PROMPT-STARTOWY.md packages/vcs_lite/docs/SPEC.md packages/vcs_lite/docs/ui-reference/UI-REFERENCE.md packages/vcs_lite/docs/PROPOZYCJA-historia.md packages/vcs_lite/docs/ui-reference/E-06-historia.html' did not match any files\nerror: unable to create file /.augmentignore: Read-only file system\nerror: unable to create file /.coveragerc: Read-only file system\nerror: unable to create file /.gitignore: Read-only file system\nerror: unable to create file /.projlist: Read-only file system\nerror: unable to create file /README.md: Read-only file system\nerror: unable to create file /bin/byte-help: Operation not permitted\nerror: unable to create file /bin/export-chats: Operation not permitted\nerror: unable to create file /bin/git-recent: Operation not permitted\nerror: unable to create file /bin/mdcat: Operation not permitted\nerror: unable to create file /bin/package.json: Operation not permitted\nerror: unable to create symlink /bin/rsum: Operation not permitted\nerror: unable to create file /bin/summarize.ts: Operation not permitted\nerror: unable to create file /bin/tools.json: Operation not permitted\nfatal: cannot create directory at '/docs': Read-only file system\nugrep: warning: /private/tmp/claude-501/-Users-michal-PycharmProjects-byte-brewery-packages-vcs-lite/8f641aae-350b-4ad2-9431-6665906acd89/scratchpad/log-spec.txt: No such file or directory\nugrep: warning: /private/tmp/claude-501/-Users-michal-PycharmProjects-byte-brewery-packages-vcs-lite/8f641aae-350b-4ad2-9431-6665906acd89/scratchpad/log-spec.txt: No such file or directory\nShell cwd was reset to /Users/michal/PycharmProjects/byte-brewery/packages/vcs_lite"
+    },
+    {
+      "id": "S07",
+      "title": "Commity specyfikacji i implementacji",
+      "line": 4860,
+      "uuid": "56d41dfd-f059-42ac-bffa-1ccc9b4822a0",
+      "timestamp": "2026-10-25T23:04:00.812Z",
+      "record_type": "assistant",
+      "role": "assistant",
+      "visible_text": "Zrobiłem dwa commity z dotychczasową pracą: specyfikację (`981d766`) i kod (`5cf280f`). Przechodzą wszystkie 639 testów. Od teraz commituję po każdym zakończonym kroku, bez osobnego polecenia; push nadal tylko na Twoje polecenie. Na zrzucie widać, skąd biorą się postrzępione linie, i mam na to poprawkę. Pokaż historię pliku też da się zrobić tak jak w PyCharmie; potrzebuję do niej dwóch decyzji.\n\n**Do decyzji: graf**\n- **D1: Rysować każdą linię grafu w całości, od commita do jego rodzica?** Rekomenduję: tak.\n  - *Przyczyna ze zrzutu:* łuk z kropki merge mieści się teraz w połowie wiersza, czyli 12 pt w pionie na 16–32 pt w poziomie. Dlatego biegnie prawie poziomo i skręca pod ostrym kątem.\n  - *Poprawka:* przejście do innej kolumny rysuję jako gładką krzywą przez całą wysokość wiersza (24 pt), która wychodzi i wchodzi pionowo. Resztę linii rysuję jednym prostym odcinkiem w kolumnie, zamiast kawałków w każdym wierszu. Tak rysują VS Code Git Graph i PyCharm.\n  - *Co, jeśli nie:* poprawię tylko kształt krzywych w połowie wiersza. Będzie trochę lepiej, ale zakręty zostaną strome.\n\n**Do decyzji: historia pliku**\nProponuję tak:\n- pozycja „Pokaż historię” w menu kontekstowym pliku i folderu: w liście zmian, w drzewie PROJEKT i w plikach commita w historii;\n- panel „Historia” zawęża się wtedy do tej ścieżki;\n- w nagłówku pojawia się znacznik „Plik: ścieżka ✕”, który przywraca całą historię;\n- historia pliku idzie za zmianami nazwy (`git log --follow`); dla folderu bez tego;\n- działa razem z filtrem tekstu i przełącznikiem gałęzi.\n\n- **D2: Co robi dwuklik na commicie w historii pliku?** Rekomenduję: od razu otwiera diff tego pliku w tym commicie.\n  - *Dlaczego:* przeglądając historię pliku, chcesz zobaczyć jego zmiany, a nie szukać go na liście plików commita.\n  - *Co, jeśli nie:* dwuklik działa jak zwykle, a diff otwierasz z listy plików w szczegółach.\n- **D3: Lista historii pliku bez linii grafu?** Rekomenduję: tak, same kropki, jak przy filtrze tekstu (H-34).\n  - *Dlaczego:* commity, które nie zmieniały pliku, są pominięte, więc gałęzie i tak by się rwały.\n  - *Co, jeśli nie:* graf z liniami tylko między commitami, które zmieniały plik. Takie linie mogą łączyć commity, które w prawdziwej historii nie sąsiadują.\n\n**Informacyjnie**\n- Zapisałem Twoje „d1 działa cudnie” jako DEC-VCS-122: pełna data zostaje w szczegółach commita. Oba tematy zapisałem jako pytania Q-VCS-062 i Q-VCS-063.\n- W indeksie gita czeka zmiana `.gitignore`, która dopisuje `packages/vcs_lite/assets/.DS_Store`. Nie zrobiłem jej ja, więc nie weszła do moich commitów i zostaje dla Ciebie.\n- Krok 22 (ręczny przegląd panelu historii) przyjmuję jako sprawdzony, z uwagą o liniach grafu.\n\nDalej: po Twojej odpowiedzi (np. „D1 tak, D2 tak, D3 tak”) poprawiam graf i robię commit, potem historię pliku i drugi commit."
+    },
+    {
+      "id": "S08",
+      "title": "Czerwona kontrola brakujących testów AT061–063",
+      "line": 5017,
+      "uuid": "2e92bbc6-84ff-4a5b-b128-bcb7073723d3",
+      "timestamp": "2026-10-25T23:15:14.149Z",
+      "record_type": "user",
+      "role": "user",
+      "visible_text": "FAILED packages/vcs_lite/tests/test_traceability.py::test_req_vcs_205_confirmed_scenarios_have_tests\n1 failed, 642 passed in 50.58s\nE         AT-VCS-061 (@confirmed) nie ma testu test_at_vcs_061_…\nE         AT-VCS-062 (@confirmed) nie ma testu test_at_vcs_062_…\nE         AT-VCS-063 (@confirmed) nie ma testu test_at_vcs_063_…\nE       AssertionError: \nE       assert not ['AT-VCS-061 (@confirmed) nie ma testu test_at_vcs_061_…', 'AT-VCS-062 (@confirmed) nie ma testu test_at_vcs_062_…', 'AT-VCS-063 (@confirmed) nie ma testu test_at_vcs_063_…']\nTRACE zgodny\nShell cwd was reset to /Users/michal/PycharmProjects/byte-brewery/packages/vcs_lite"
+    },
+    {
+      "id": "S09",
+      "title": "Commit po czerwonej kontroli",
+      "line": 5028,
+      "uuid": "0a9ffde8-a21f-4a45-9220-ebbaf40b4787",
+      "timestamp": "2026-10-25T23:15:18.605Z",
+      "record_type": "assistant",
+      "role": "assistant",
+      "visible_text": "cd /Users/michal/PycharmProjects/byte-brewery && git commit -q -F - -- packages/vcs_lite/src/vcs_lite/core/graph.py packages/vcs_lite/src/vcs_lite/app/history.py packages/vcs_lite/src/vcs_lite/ui/history_panel.py packages/vcs_lite/tests/core/test_graph.py packages/vcs_lite/tests/ui/test_history_panel.py packages/vcs_lite/docs/TRACE.md <<'EOF'\nDraw each graph edge whole with Bezier curves over a full row\n\nGraphLayout records an Edge from every commit to each parent through one\nlane, plus the open ones still waiting for a parent below. The panel\ndraws the edges crossing the view: a change of column as one cubic\nBezier over a whole row, leaving and entering vertically, the rest as a\nstraight line down the lane (DEC-VCS-123). Only the file-history\nscenarios AT-VCS-061-063 still lack their tests.\n\nCo-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>\nEOF\ngit log --oneline -1"
+    },
+    {
+      "id": "S10",
+      "title": "Raport wykonania commita",
+      "line": 5035,
+      "uuid": "ab986663-4fa0-437d-89d9-92d03853a28c",
+      "timestamp": "2026-10-25T23:15:41.909Z",
+      "record_type": "assistant",
+      "role": "assistant",
+      "visible_text": "Graf jest w commicie `fa90b77`. Przechodzę do historii pliku. Najpierw sprawdzam, czy `--follow` przyjmuje ścieżkę w trybie dosłownym `:(literal)`."
+    },
+    {
+      "id": "S11",
+      "title": "Brak folderu do próby manualnej",
+      "line": 5152,
+      "uuid": "d785ba60-74ad-4802-aafd-a2a9eb1087e5",
+      "timestamp": "2026-10-25T23:28:20.702Z",
+      "record_type": "user",
+      "role": "user",
+      "visible_text": "ad 6. nie znalazlem zadnego folderu w trzech repozytoriach. Czy zle rozumiem o co ci chodzi?"
+    },
+    {
+      "id": "S12",
+      "title": "Instrukcja odsyłająca tylko do numerów",
+      "line": 5345,
+      "uuid": "b3809016-4281-4efa-a483-c8de91030717",
+      "timestamp": "2026-10-25T23:38:05.707Z",
+      "record_type": "assistant",
+      "role": "assistant",
+      "visible_text": "Wypchnąłem 9 commitów na `origin/main` (`27b814d..5d101b2`). W poprzedniej wiadomości pomyliłem się: napisałem 11, a było 9. Wcześniej sprawdziłem, że na `origin/main` nikt nic nie dodał w międzyczasie.\n\n**Informacyjnie**\n- Wypchnięcie zapisałem w Punkcie wznowienia w `SPEC.md`, w osobnym commicie `d341a0c`. Ten commit jest tylko lokalny i pójdzie z następnym pushem.\n- Zmiana `.gitignore` z `assets/.DS_Store` nadal czeka w indeksie i nie weszła do pusha.\n\nDalej: kroki 18 i 19, kiedy je sprawdzisz."
+    },
+    {
+      "id": "S13",
+      "title": "Użytkownik prosi o znaczenie numerów",
+      "line": 5356,
+      "uuid": "a2dbff5d-9caf-449a-9b7d-542f1b720dbe",
+      "timestamp": "2026-10-25T23:43:52.478Z",
+      "record_type": "user",
+      "role": "user",
+      "visible_text": "co to sa kroki 18 i 19"
+    },
+    {
+      "id": "S14",
+      "title": "Wyjaśnienie kroków manualnych",
+      "line": 5361,
+      "uuid": "2c2e80c6-d0f4-4f2d-85f7-46d5be1320f6",
+      "timestamp": "2026-10-25T23:43:59.586Z",
+      "record_type": "assistant",
+      "role": "assistant",
+      "visible_text": "Kroki 18 i 19 to ręczne sprawdzenia z listy `MANUAL-UI.md`. Testy automatyczne ich nie obejmują, bo wymagają prawdziwego Docka i prawdziwego schowka.\n\n**Krok 18: vcs-lite jako aplikacja z logo**\n1. Otwórz vcs-lite z Findera (Aplikacje) albo przez Spotlight (⌘spacja, „vcs-lite”).\n   - Powinno być: logo vcs-lite w Docku, w menu nazwa „vcs-lite”, okno z Twoimi repozytoriami.\n2. Zamknij go i uruchom w terminalu `uv run vcs-lite` w katalogu byte-brewery.\n   - Powinno być: to samo logo w Docku, a w menu nazwa „Python”. Tak ma być przy starcie z terminala (DEC-VCS-112).\n\n**Krok 19: kopiowanie adresu zdalnego repo**\n1. W oknie vcs-lite kliknij prawym przyciskiem (albo dwoma palcami) kafelek repo inny niż wybrany.\n2. Wklej (⌘V) w terminalu albo w notatce.\n   - Powinno się wkleić `https://…`, np. `https://github.com/m1981/byte-brewery.git`, także dla repo z adresem w postaci `git@github.com:…`.\n   - Menu nie powinno się otworzyć, a wybrane repo nie powinno się zmienić.\n\nOba kroki zrobisz w jednym podejściu: otwórz vcs-lite z Aplikacji (krok 18) i od razu sprawdź kopiowanie (krok 19). Odpowiedz na przykład „krok 18: ok, krok 19: ok” albo opisz, co wygląda inaczej."
+    }
+  ],
+  "commits": [
+    {
+      "hash": "fa90b773067212037100702b69055d07432c5913",
+      "subject": "Draw each graph edge whole with Bezier curves over a full row",
+      "files": [
+        "packages/vcs_lite/docs/TRACE.md",
+        "packages/vcs_lite/src/vcs_lite/app/history.py",
+        "packages/vcs_lite/src/vcs_lite/core/graph.py",
+        "packages/vcs_lite/src/vcs_lite/ui/history_panel.py",
+        "packages/vcs_lite/tests/core/test_graph.py",
+        "packages/vcs_lite/tests/ui/test_history_panel.py"
+      ]
+    },
+    {
+      "hash": "c49f161e111fb330f69469fc37411c1140d019a3",
+      "subject": "Give the demo history folders for the history of a folder",
+      "files": [
+        "packages/vcs_lite/docs/MANUAL-UI.md",
+        "packages/vcs_lite/tools/make_demo.py"
+      ]
+    },
+    {
+      "hash": "981d76620d99dc74a99c42a1fdb8cc5d34285b01",
+      "subject": "Specify the remote address copy and the history panel",
+      "files": [
+        "packages/vcs_lite/docs/ACCEPTANCE.feature",
+        "packages/vcs_lite/docs/DESIGN.md",
+        "packages/vcs_lite/docs/MANUAL-UI.md",
+        "packages/vcs_lite/docs/PROMPT-STARTOWY.md",
+        "packages/vcs_lite/docs/PROPOZYCJA-historia.md",
+        "packages/vcs_lite/docs/SPEC.md",
+        "packages/vcs_lite/docs/ui-reference/E-06-historia.html",
+        "packages/vcs_lite/docs/ui-reference/UI-REFERENCE.md"
+      ]
+    },
+    {
+      "hash": "5cf280faf8fc746aae1bf9417294d90a9656536a",
+      "subject": "Add the history panel and copy a repository's remote address",
+      "files": [
+        "packages/vcs_lite/docs/TRACE.md",
+        "packages/vcs_lite/src/vcs_lite/app/history.py",
+        "packages/vcs_lite/src/vcs_lite/app/model.py",
+        "packages/vcs_lite/src/vcs_lite/app/opening.py",
+        "packages/vcs_lite/src/vcs_lite/core/browser.py",
+        "packages/vcs_lite/src/vcs_lite/core/gitlog.py",
+        "packages/vcs_lite/src/vcs_lite/core/graph.py",
+        "packages/vcs_lite/src/vcs_lite/core/log.py",
+        "packages/vcs_lite/src/vcs_lite/core/repo.py",
+        "packages/vcs_lite/src/vcs_lite/core/settings.py",
+        "packages/vcs_lite/src/vcs_lite/ui/history_panel.py",
+        "packages/vcs_lite/src/vcs_lite/ui/main.py",
+        "packages/vcs_lite/src/vcs_lite/ui/main_window.py",
+        "packages/vcs_lite/src/vcs_lite/ui/search_dialog.py",
+        "packages/vcs_lite/src/vcs_lite/ui/sidebar.py",
+        "packages/vcs_lite/src/vcs_lite/ui/theme.py",
+        "packages/vcs_lite/src/vcs_lite/ui/widgets.py",
+        "packages/vcs_lite/tests/app/test_history_session.py",
+        "packages/vcs_lite/tests/app/test_model.py",
+        "packages/vcs_lite/tests/core/test_browser.py",
+        "packages/vcs_lite/tests/core/test_gitlog.py",
+        "packages/vcs_lite/tests/core/test_graph.py",
+        "packages/vcs_lite/tests/core/test_log_values.py",
+        "packages/vcs_lite/tests/core/test_repo.py",
+        "packages/vcs_lite/tests/core/test_settings.py",
+        "packages/vcs_lite/tests/ui/test_copy_remote.py",
+        "packages/vcs_lite/tests/ui/test_history_panel.py",
+        "packages/vcs_lite/tests/ui/test_window_layout.py",
+        "packages/vcs_lite/tests/world.py",
+        "packages/vcs_lite/tools/make_demo.py"
+      ]
+    },
+    {
+      "hash": "9f28e9af157c254f15cafcf739a6bdbcd162fa74",
+      "subject": "Show the history of a file or folder from its context menu",
+      "files": [
+        "packages/vcs_lite/docs/TRACE.md",
+        "packages/vcs_lite/src/vcs_lite/app/history.py",
+        "packages/vcs_lite/src/vcs_lite/core/gitlog.py",
+        "packages/vcs_lite/src/vcs_lite/core/log.py",
+        "packages/vcs_lite/src/vcs_lite/ui/file_list.py",
+        "packages/vcs_lite/src/vcs_lite/ui/history_panel.py",
+        "packages/vcs_lite/src/vcs_lite/ui/main_window.py",
+        "packages/vcs_lite/tests/app/test_history_session.py",
+        "packages/vcs_lite/tests/core/test_gitlog.py",
+        "packages/vcs_lite/tests/ui/test_history_panel.py"
+      ]
+    }
+  ],
+  "documents": [
+    {
+      "commit": "5744bc0b4b977b448b8712e03b610fe2d5e8f3f6",
+      "file": "packages/vcs_lite/docs/ACCEPTANCE.feature",
+      "excerpts": [
+        {
+          "line": 3,
+          "text": "# Status @confirmed oznacza potwierdzoną potrzebę, a nie przejście testu."
+        }
+      ]
+    },
+    {
+      "commit": "5744bc0b4b977b448b8712e03b610fe2d5e8f3f6",
+      "file": "packages/vcs_lite/docs/PROMPT-STARTOWY.md",
+      "excerpts": [
+        {
+          "line": 14,
+          "text": "- Commit po każdym logicznym przyroście bez pytania (od 2026-10-26: „rob commity po kazdym logicznym przyroscie”); pushe robię sam albo na wyraźne polecenie. Commit tylko wskazanych plików (`git commit -- <ścieżki>`), bo w indeksie mogą czekać moje zmiany. Przed commitem: testy na samym stanie indeksu (git checkout-index do katalogu tymczasowego). Nigdy git add na całym katalogu (wpada .DS_Store), tylko wskazane pliki. Kolejność: najpierw commit ze specyfikacją, potem kod z testami i TRACE.md."
+        }
+      ]
+    },
+    {
+      "commit": "34a8dd3c888928ed4d9a12cd11fe942a17426973",
+      "file": "packages/vcs_lite/docs/SPEC.md",
+      "excerpts": [
+        {
+          "line": 144,
+          "text": "| DEC-VCS-096 | Tydzień próbny (DoD) zakończony; punkt DoD „przez tydzień zastępuje PyCharm” uznany za spełniony (odczytanie agenta, do podważenia). | Użytkownik 2026-10-23: „Juz po okresie probnym”. Definition of Done v1. |"
+        },
+        {
+          "line": 168,
+          "text": "| DEC-VCS-120 | Reguły H-01–H-49 z `PROPOZYCJA-historia.md` przyjęte (m.in. graf bez linii podczas filtrowania H-34, najwyżej 8 torów H-33, kolory torów 4–8 dobrane przez agenta, filtr po wiadomości, autorze i początku hasha H-44, adres commita dla GitHuba, GitLaba i Bitbucketa H-47). Scenariusze AT-VCS-049–060 zmieniają status z `@proposal` na `@confirmed` razem z ich testem, bo reguła REQ-VCS-205 wymaga testu dla każdego `@confirmed` (decyzja agenta). | Użytkownik 2026-10-25: „d1 tak” na rekomendację przyjęcia reguł H-01–H-49. |"
+        },
+        {
+          "line": 170,
+          "text": "| DEC-VCS-122 | Pełna data i godzina commita są w szczegółach zaznaczonego commita, bez podpowiedzi nad wierszem listy; zmienia H-48 w tej części. | Użytkownik 2026-10-25: „d1 dziala cudnie” na rekomendację zostawienia daty w szczegółach. |"
+        }
+      ]
+    }
+  ]
+}

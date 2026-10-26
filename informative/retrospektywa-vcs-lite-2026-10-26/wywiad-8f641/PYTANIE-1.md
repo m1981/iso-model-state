@@ -1,6 +1,6 @@
 # Pierwsze pytanie do kontynuującej sesji vcs_lite
 
-Treść identyczna bajtowo z pierwszym pytaniem poprzedniego wywiadu; hash tekstu w PROWENIENCJA.json. Próba wysłania nie przyniosła odpowiedzi merytorycznej z powodu limitu sesji.
+Treść identyczna bajtowo z pierwszym pytaniem poprzedniego wywiadu; hash tekstu w PROWENIENCJA.json. Pierwsza próba zatrzymała się na limicie; ponowienie 2026-10-26 przyniosło odpowiedź zapisaną w [RUNDA-1.md](RUNDA-1.md).
 
 Rozpoczynamy AUTORYZOWANY PRZEZ UŻYTKOWNIKA wywiad retrospektywny o współpracy w tej wznowionej sesji vcs_lite. To odgałęzienie historii, nie kontynuacja implementacji. Nie wykonuj żadnych działań w repo ani narzędziach. Twoje odpowiedzi będą porównane z zapisami sesji. Nie przyjmuj, że poprzedni projekt był sukcesem tylko dlatego, że użytkownik tak go wspomina.
 
