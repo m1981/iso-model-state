@@ -12,6 +12,15 @@ Nadpisywany na końcu każdej sesji. Zaktualizowano: **2026-10-26**. Model **v0.
 - **Następny krok:** użytkownik rozstrzyga odbiór E2 na podstawie dostawy v0.7 i niezależnego przeglądu. Po zgodzie agent zapisze decyzję i przygotuje E3 zgodnie z PLAN; ewentualna instalacja środowiska wymaga odrębnej zgody. E3/TLC jeszcze nie rozpoczęto.
 - **Materiały:** `docs/E2-RAPORT.md`, `docs/reviews/E2-V07-PRZEGLAD-2026-10-26.md`, przyjęty pakiet `model/proposals/e2-hardening.md`. Polecenie `.venv/bin/python scripts/run_e2.py --output artifacts/e2`: 0 = sprawdzenia OK bez odbioru etapu, 1 = niepowodzenie, 2 = błąd raportu.
 
+## Wywiad z agentem vcs_lite — 2026-10-26
+
+- **Polecenie użytkownika:** „Super, go” na plan krytycznego wywiadu; dotyczy rozmowy, nie odbioru E2. Źródłowa sesja e5a1e620-442a-4613-9606-6bffe6dfbe04; odgałęzienie wywiadu d412a546-fc3a-4db6-90bb-237cda269c8b. Dokument PLAN w katalogu retrospektywy wskazuje inną sesję, więc go nie zmieniano.
+- **Wykonano:** pięć etapów planu w czterech wymianach z Claude; najpierw doświadczenia, potem próba podważenia, prezentacja naszego modelu i korekty. Narzędzia rozmówcy oraz MCP wyłączone. Prowadzący osobno sprawdził 14 zapisów wiadomości/wyników narzędzi, cztery commity i historyczną konwencję. Przez parentUuid potwierdzono, że wznowienie dotyczy wcześniejszej gałęzi, bez późniejszej retrospektywy i promptu.
+- **Wynik:** trzy projekty sprawdzeń: R1 zgoda kontekstowa bez ponownych pytań, R2 zrozumiały punkt wznowienia, R3 pochodzenie i trafność dowodu testowego. Brak pomiaru przewagi lub kosztu; eksperymentów nie uruchamiano. Nie zmieniono modelu, E2–E5 ani repozytorium vcs_lite.
+- **Korekta ważna dla dalszej pracy:** agent wycofał zarzut „cichej zmiany” REQ-VCS-017. Propozycja przed zgodą wprost wskazywała tę zmianę; nie wolno wykorzystać epizodu jako dowodu braku zgody. Brak zapisu przeglądu zależnych nie jest dowodem, że przeglądu nie wykonano. Nie przyjęto też propozycji obowiązkowego czerwonego wyniku na rodzicu dla każdego testu.
+- **Dowody i synteza:** [WNIOSKI](../informative/retrospektywa-vcs-lite-2026-10-26/wywiad-e5a1/WNIOSKI.md), RUNDA-1–4, DOWODY.json i PROWENIENCJA.json w tym samym katalogu. Raw odpowiedzi pozostają w ignorowanym artifacts/retrospektywa-vcs-lite; w dostawie nie ma ukrytego rozumowania ani pełnego źródłowego JSONL.
+- **Następny krok:** odbiór E2 nadal czeka na użytkownika; agent zachowuje R1–R3 jako materiał do E4/E5 po odpowiednich bramkach, bez samodzielnego przesuwania kolejności. Wywiad nie odtwarza DEC-VCS-096/102, które leżą poza widoczną gałęzią.
+
 ## Sprawdzenia v0.7 — 2026-10-26
 
 - S14/S15: przed implementacją wyroczni 9 failed / 11 passed; po implementacji i rozszerzeniu 68 passed (23 nowe i 45 wcześniejszych testów safety). Wyrocznie nie importują wykonawcy ani parsera; S15 liczy T03 z historii par ID/wersja, nie z bieżącego licznika.
@@ -160,6 +169,7 @@ Poniższy opis zachowano historycznie; aktualne uzupełnienia i ograniczenia są
 |---|---|---|
 | Odbiór E2 | użytkownik | przyjąć lub odrzucić gotową dostawę v0.7; dowody w E2-RAPORT i niezależnym przeglądzie; decyzja odrębna od DEC-PRO-010 |
 | Przejście do E3 | agent | po odbiorze E2 zapisać DEC i przygotować formalizację oraz wymagania środowiska zgodnie z PLAN |
+| Wnioski wywiadu vcs_lite R1–R3 | agent | przy przygotowaniu E4/E5 użyć WNIOSKI.md i dowodów; najpierw zestaw kontrolny R1, bez ponawiania poprawnych zgód |
 | Historyczne materiały informative/ | agent | przy E5 uwzględnić INT-017 w nowym materiale; nie przepisywać migawek sesji 2026-10-23 |
 | REQ-210 i REQ-211 dla szablonu | użytkownik | decyzja; opis w informative/SESJA-2026-10-23.md §5 |
 | Instalacja Javy i TLA+ (E3) | użytkownik | zgoda przed E3 |
@@ -167,6 +177,9 @@ Poniższy opis zachowano historycznie; aktualne uzupełnienia i ograniczenia są
 | Porządki w vcs-lite | użytkownik | decyzja, czy i kiedy |
 
 ## Decyzje agenta do podważenia
+
+- 2026-10-26 (wywiad): użyto wskazanej w rozmowie sesji e5a1… i osobnego katalogu wywiad-e5a1, pozostawiając wcześniejszy PLAN z innym ID bez zmian; rozdziela to źródła i nie nadpisuje materiału użytkownika.
+- 2026-10-26 (wywiad): zachowano surowe brzmienie czterech wymian wraz z błędami i korektami, a zweryfikowaną syntezę wydzielono w WNIOSKI; dzięki temu opinia uczestnika nie staje się automatycznie ustaleniem projektu.
 
 - 2026-10-26 (v0.7): zachowano historyczny wynik v0.6 i dodano osobny korpus wykonywanych regresji, aby nie przepisywać dowodów dawnej luki.
 - 2026-10-26 (v0.7): zastąpiono maskowany mutant T07(r1) przypadkiem liścia a2 i oznaczono go WIT3/T07, ponieważ po poprawnej propagacji obserwator sam unieważnia gotowość; S7a ma odrębne mutanty.

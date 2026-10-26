@@ -21,3 +21,4 @@ Ten folder jest **informacyjny** w sensie norm ISO: wyjaśnia, uzasadnia i przec
 | `WIZUALIZACJA-2026-10-24.md`, `visuals-v0.4/` | Przewodnik po modelu v0.4, trzy diagramy i mapowanie tematów dziewięciu pakietów Aneksu E | 2026-10-24 |
 | `ROADMAPA-2026-10-24.md` | Propozycja dostaw w ramach E2–E5 i konkretny zakres pierwszego wykonywalnego WIT1 | 2026-10-24 |
 | `KARTA-CELU-I-ZAKRESU-2026-10-24.md` | Historyczna propozycja; przyjęta treść jest w [docs/KARTA-CELU-I-ZAKRESU.md](../docs/KARTA-CELU-I-ZAKRESU.md), DEC-PRO-007 | 2026-10-24 |
+| `retrospektywa-vcs-lite-2026-10-26/wywiad-e5a1/WNIOSKI.md` | [Zweryfikowane wnioski z wywiadu z agentem vcs_lite](retrospektywa-vcs-lite-2026-10-26/wywiad-e5a1/WNIOSKI.md), cztery wymiany, dowody i trzy projekty eksperymentów; bez zmiany modelu | 2026-10-26 |
