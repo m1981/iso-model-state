@@ -18,6 +18,7 @@ Ten folder jest **informacyjny** w sensie norm ISO: wyjaśnia, uzasadnia i przec
 | `NORMA.md` | Gdzie jest pełny tekst ISO/IEC 29110-5-1-2 i jak z niego korzystać; wykryte w normie niespójności | 2026-10-23 |
 | `PRZEGLAD-VCS-LITE.md` | Przegląd projektu vcs-lite względem normy: niespójności, luki, co działa | 2026-10-23 |
 | `szablon-projektu/` | Szablon dokumentów dla nowych projektów (wejście do etapu E5) | 2026-10-23 |
+| `architecture-2026-10-26/` | [Propozycja kontraktu API procesu](architecture-2026-10-26/process-api-contract.md): zmiana wymagania, granice zaufania, uprawnienia, awarie, scenariusze akceptacyjne, niezależna recenzja i wykonana projekcja v0.7; bez implementacji API | 2026-10-26 |
 | `WIZUALIZACJA-2026-10-24.md`, `visuals-v0.4/` | Przewodnik po modelu v0.4, trzy diagramy i mapowanie tematów dziewięciu pakietów Aneksu E | 2026-10-24 |
 | `ROADMAPA-2026-10-24.md` | Propozycja dostaw w ramach E2–E5 i konkretny zakres pierwszego wykonywalnego WIT1 | 2026-10-24 |
 | `KARTA-CELU-I-ZAKRESU-2026-10-24.md` | Historyczna propozycja; przyjęta treść jest w [docs/KARTA-CELU-I-ZAKRESU.md](../docs/KARTA-CELU-I-ZAKRESU.md), DEC-PRO-007 | 2026-10-24 |

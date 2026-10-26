@@ -12,6 +12,15 @@ Nadpisywany na końcu każdej sesji. Zaktualizowano: **2026-10-26**. Model **v0.
 - **Następny krok:** użytkownik rozstrzyga odbiór E2 na podstawie dostawy v0.7 i niezależnego przeglądu. Po zgodzie agent zapisze decyzję i przygotuje E3 zgodnie z PLAN; ewentualna instalacja środowiska wymaga odrębnej zgody. E3/TLC jeszcze nie rozpoczęto.
 - **Materiały:** `docs/E2-RAPORT.md`, `docs/reviews/E2-V07-PRZEGLAD-2026-10-26.md`, przyjęty pakiet `model/proposals/e2-hardening.md`. Polecenie `.venv/bin/python scripts/run_e2.py --output artifacts/e2`: 0 = sprawdzenia OK bez odbioru etapu, 1 = niepowodzenie, 2 = błąd raportu.
 
+## Kontrakt API procesu — propozycja architektoniczna
+
+- **Polecenie:** użytkownik zlecił wejście w rolę architekta i wykonanie zaproponowanej metody: kontrakt jednego scenariusza, analiza prób obejścia i niezależny przegląd. To upoważnienie do przygotowania propozycji; model v0.7, E2 i kolejność E2–E5 pozostają bez zmiany.
+- **Dostawa:** [kontrakt API zmiany zatwierdzonego wymagania](../informative/architecture-2026-10-26/process-api-contract.md): granice zaufania, macierz ról, zamknięta lista operacji, tożsamość treści i decyzji, trzy czynności U odpowiadające pięciu przejściom, odrębne rewizje procesu/zadań, ponowienia i awarie Git, 40 scenariuszy Given–When–Then. AX01–AX06 są jawnymi propozycjami adaptera, nie obecnymi regułami modelu.
+- **Weryfikacja:** projekcja przykładu na obecnym modelu wykonała 41 kroków (28 prefiks + 13 zmiany), bez naruszeń wyroczni S; trzy próby niedozwolone odrzucone. Dane example-scenario.json i verification.json w katalogu kontraktu. Nie wykonano API, testów integracyjnych AC01–AC40 ani wdrożenia izolacji.
+- **Niezależność:** osobny recenzent bez historii tworzenia zbadał zgodność i obejścia; raport [review.md](../informative/architecture-2026-10-26/review.md) zawiera ustalenia oraz ich aktualny stan. Pierwszy przegląd wykrył luki finalizacji T04, potwierdzeń U i kontekstu zależności po T11; kontrakt uzupełniono. Końcowy przegląd zamknął R01–R03: brak otwartych ustaleń blokujących przedstawienie kierunku operatorowi. Recenzent niezależnie odtworzył 41 kroków i wyrocznie S; trzy negatywne próby pozostają sprawdzeniem autora.
+- **Decyzje autora:** DA01–DA05 w §11 kontraktu; wybór jednego scenariusza, oddzielnego kanału U, manifestów/dowodów, rezerwacji T04 i źródła oficjalnego odbioru.
+- **Następny krok:** operator rozstrzyga przyjęcie kierunku AX01–AX06 na podstawie kompletnej propozycji i recenzji. Przyjęcie kierunku nie jest zgodą na implementację ani odbiorem E2. Agent następnie przygotuje umieszczenie integracji w planie; istniejące E2–E5 nie są przestawione przez zapis materiału informative.
+
 ## Wywiad z agentem vcs_lite — 2026-10-26
 
 - **Polecenie użytkownika:** „Super, go” na plan krytycznego wywiadu; dotyczy rozmowy, nie odbioru E2. Źródłowa sesja e5a1e620-442a-4613-9606-6bffe6dfbe04; odgałęzienie wywiadu d412a546-fc3a-4db6-90bb-237cda269c8b. Dokument PLAN w katalogu retrospektywy wskazuje inną sesję, więc go nie zmieniano.
@@ -176,6 +185,7 @@ Poniższy opis zachowano historycznie; aktualne uzupełnienia i ograniczenia są
 
 | Sprawa | Właściciel | Następny krok |
 |---|---|---|
+| Kierunek architektury API | użytkownik | decyzja o kontrakcie i AX01–AX06; informative/architecture-2026-10-26/process-api-contract.md oraz review.md; bez zgody na wdrożenie lub zmiany kolejności etapów |
 | Odbiór E2 | użytkownik | przyjąć lub odrzucić gotową dostawę v0.7; dowody w E2-RAPORT i niezależnym przeglądzie; decyzja odrębna od DEC-PRO-010 |
 | Przejście do E3 | agent | po odbiorze E2 zapisać DEC i przygotować formalizację oraz wymagania środowiska zgodnie z PLAN |
 | Wywiad kontynuującej sesji vcs_lite | agent | trzy rundy zapisane; przed gotową rundą 4 ponownie sprawdzić /usage; 26.10 o 19:20 limit 5h = 100%; kontynuować tylko fork 3407bcbe…; wywiad-8f641/STATUS.md |
@@ -187,6 +197,8 @@ Poniższy opis zachowano historycznie; aktualne uzupełnienia i ograniczenia są
 | Porządki w vcs-lite | użytkownik | decyzja, czy i kiedy |
 
 ## Decyzje agenta do podważenia
+
+- 2026-10-26 (API): propozycję i dowody projekcji wydzielono do informative/architecture-2026-10-26, aby nie nadać nowych uprawnień przez sam zapis dokumentu. Szczegółowe DA01–DA05 w §11 kontraktu; przegląd wykonał osobny przebieg bez historii tworzenia, zgodnie ze zleconą metodą.
 
 - 2026-10-26 (ponowienie wywiadu): po odczycie 100% limitu 5h zachowano trzy odpowiedzi i niewysłane pytanie czwarte; synteza oznaczona jako wstępna, aby brakującej odpowiedzi nie zastępować domysłem. Przed kolejną rundą ponownie odczytać /usage.
 

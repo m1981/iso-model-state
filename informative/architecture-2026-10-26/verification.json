@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-26",
+  "scope": "Model projection only; NOT API acceptance tests",
+  "model_version": 0.7,
+  "model_file_sha256": "2d329822e239555c1642d0a5a20aae0eb28fee17a6f2ff13968e48d7f428fc07",
+  "model_canonical_sha256": "ecca43e1402ee476502943caa16556d5609021b8894f3a702e26ca2da3cf21a6",
+  "scenario_sha256": "a1ce942228899a7e0365cd7390b25a2eb3260151ea5323710e96c413641e193b",
+  "steps": 41,
+  "prefix_steps": 28,
+  "scenario_steps": 13,
+  "user_transitions_in_scenario": 5,
+  "outcome": "completed",
+  "safety_violations": [],
+  "final": {
+    "release_state": "accepted",
+    "release_number": 1,
+    "r1_version": 2,
+    "dependents_unchanged_versions": [
+      "a1",
+      "d1",
+      "c1"
+    ]
+  },
+  "negative_probes": [
+    {
+      "id": "agent_attempts_T05",
+      "expected": "rejected",
+      "actual": "rejected",
+      "step": 32,
+      "reason": "actor: Aktor nie jest uprawniony do tego przejścia"
+    },
+    {
+      "id": "rejected_consent",
+      "expected": "rejected",
+      "actual": "rejected",
+      "step": 32,
+      "reason": "guard: Warunek przejścia niespełniony"
+    },
+    {
+      "id": "premature_T11",
+      "expected": "rejected",
+      "actual": "rejected",
+      "step": 33,
+      "reason": "guard: Warunek przejścia niespełniony"
+    }
+  ],
+  "unverified": [
+    "AX01",
+    "AX02",
+    "AX03",
+    "AX04",
+    "AX05",
+    "AX06"
+  ]
+}
