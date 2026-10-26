@@ -21,6 +21,12 @@ Nadpisywany na końcu każdej sesji. Zaktualizowano: **2026-10-26**. Model **v0.
 - **Dowody i synteza:** [WNIOSKI](../informative/retrospektywa-vcs-lite-2026-10-26/wywiad-e5a1/WNIOSKI.md), RUNDA-1–4, DOWODY.json i PROWENIENCJA.json w tym samym katalogu. Raw odpowiedzi pozostają w ignorowanym artifacts/retrospektywa-vcs-lite; w dostawie nie ma ukrytego rozumowania ani pełnego źródłowego JSONL.
 - **Następny krok:** odbiór E2 nadal czeka na użytkownika; agent zachowuje R1–R3 jako materiał do E4/E5 po odpowiednich bramkach, bez samodzielnego przesuwania kolejności. Wywiad nie odtwarza DEC-VCS-096/102, które leżą poza widoczną gałęzią.
 
+## Drugi wywiad vcs_lite — przygotowany, limit Claude
+
+- Użytkownik wskazał kontynuującą sesję `8f641aae-350b-4ad2-9431-6665906acd89` i zażądał zachowania oryginału. Zweryfikowano `--fork-session` w CLI i utworzono odgałęzienie **`3407bcbe-95ac-493e-bae1-d257b62e3f85`**. Oryginalny JSONL ma identyczny SHA-256 przed i po próbie; prywatna kopia pozostaje w ignorowanym artifacts.
+- Pierwsze pytanie identyczne z poprzednim wywiadem. Claude zwrócił limit sesji, z resetem wskazanym na **2026-10-26 15:50 Europe/Warsaw**. **Brak odpowiedzi merytorycznej; nie wykonano jeszcze porównania wywiadów.** Nie ustawiono automatycznego wznowienia.
+- Materiały: [STATUS i instrukcja wznowienia](../informative/retrospektywa-vcs-lite-2026-10-26/wywiad-8f641/STATUS.md), PYTANIE-1.md i PROWENIENCJA.json. Właściciel: agent. Następny krok po odzyskaniu dostępności: wznowić wyłącznie nowe ID, ponowić pierwsze pytanie, przeprowadzić pozostałe bloki i porównać dowody. Nie wracać do oryginału w celu dopisywania wywiadu.
+
 ## Sprawdzenia v0.7 — 2026-10-26
 
 - S14/S15: przed implementacją wyroczni 9 failed / 11 passed; po implementacji i rozszerzeniu 68 passed (23 nowe i 45 wcześniejszych testów safety). Wyrocznie nie importują wykonawcy ani parsera; S15 liczy T03 z historii par ID/wersja, nie z bieżącego licznika.
@@ -169,6 +175,7 @@ Poniższy opis zachowano historycznie; aktualne uzupełnienia i ograniczenia są
 |---|---|---|
 | Odbiór E2 | użytkownik | przyjąć lub odrzucić gotową dostawę v0.7; dowody w E2-RAPORT i niezależnym przeglądzie; decyzja odrębna od DEC-PRO-010 |
 | Przejście do E3 | agent | po odbiorze E2 zapisać DEC i przygotować formalizację oraz wymagania środowiska zgodnie z PLAN |
+| Wywiad kontynuującej sesji vcs_lite | agent | po odnowieniu limitu Claude wznowić odgałęzienie 3407bcbe…; oryginał 8f641aae… pozostaje nienaruszony; instrukcja w wywiad-8f641/STATUS.md |
 | Wnioski wywiadu vcs_lite R1–R3 | agent | przy przygotowaniu E4/E5 użyć WNIOSKI.md i dowodów; najpierw zestaw kontrolny R1, bez ponawiania poprawnych zgód |
 | Historyczne materiały informative/ | agent | przy E5 uwzględnić INT-017 w nowym materiale; nie przepisywać migawek sesji 2026-10-23 |
 | REQ-210 i REQ-211 dla szablonu | użytkownik | decyzja; opis w informative/SESJA-2026-10-23.md §5 |
@@ -177,6 +184,8 @@ Poniższy opis zachowano historycznie; aktualne uzupełnienia i ograniczenia są
 | Porządki w vcs-lite | użytkownik | decyzja, czy i kiedy |
 
 ## Decyzje agenta do podważenia
+
+- 2026-10-26 (drugi wywiad): po potwierdzeniu flagi --fork-session zapisano hash i lokalną kopię oryginału oraz sprawdzono nowe ID; limit Claude zatrzymuje wywiad bez dopisywania do źródła i bez pozorowania odpowiedzi.
 
 - 2026-10-26 (wywiad): użyto wskazanej w rozmowie sesji e5a1… i osobnego katalogu wywiad-e5a1, pozostawiając wcześniejszy PLAN z innym ID bez zmian; rozdziela to źródła i nie nadpisuje materiału użytkownika.
 - 2026-10-26 (wywiad): zachowano surowe brzmienie czterech wymian wraz z błędami i korektami, a zweryfikowaną syntezę wydzielono w WNIOSKI; dzięki temu opinia uczestnika nie staje się automatycznie ustaleniem projektu.
