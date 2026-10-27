@@ -1,16 +1,17 @@
 # Stan prac
 
-Nadpisywany na końcu każdej sesji. Zaktualizowano: **2026-10-27**. Model **v0.7 / DEC-PRO-010**. Pakiet korekt przyjęty i zweryfikowany; niezależny przegląd bez otwartych ustaleń blokujących. **E2 v0.7 odebrane przez użytkownika — DEC-PRO-012.** Wykonano E3.1: lokalny test translacji T03 w TLC; E3 pozostaje w toku.
+Nadpisywany na końcu każdej sesji. Zaktualizowano: **2026-10-27**. Model **v0.7 / DEC-PRO-010**. Pakiet korekt przyjęty i zweryfikowany; niezależny przegląd bez otwartych ustaleń blokujących. **E2 v0.7 odebrane przez użytkownika — DEC-PRO-012.** Wykonano E3.2: ograniczony wielokrokowy wycinek T01–T03 w TLC; E3 pozostaje w toku.
 
 ## Gdzie jesteśmy
 
 - **Cel:** kontrola kontekstu, zatwierdzeń i skutków zmian we współpracy operatora z agentem; dokument zamiaru `docs/KARTA-CELU-I-ZAKRESU.md`. Plan E2–E5 i DoD zachowane.
-- **Polecenie bieżące:** „wejdz w role. zgoda, dalej” — rola inżyniera weryfikacji formalnej i automatyzacji testów, zgoda na przypięty TLC i wykonanie E3.1 z TDD oraz niezależną recenzją. DEC-PRO-013; wcześniejszy odbiór E2 pozostaje DEC-PRO-012.
+- **Polecenie bieżące:** „wykonaj dalej w rezimie” — kontynuacja jako inżynier weryfikacji formalnej i automatyzacji testów, E3.2 z przeglądem mapowania, niezależną wyrocznią, TDD i recenzją wykonania. Narzędzie udostępnione przez DEC-PRO-013; odbiór E2 pozostaje DEC-PRO-012. To polecenie wykonania, nie odbiór całego E3.
 - **Wdrożono:** W04 blokuje późne pytania; T10 zachowuje licznik; W01 ma globalne bramki również przy pustym zakresie; nowe suspect w zakresie cofa ready/reviewed nawet po zmianie spoza zakresu. Accepted pozostaje niezmienne.
 - **Sprawdzenia:** 28/28 przejść i T04 dla pięciu typów; niezależne wyrocznie 16 właściwości S1–S15 (S7a/S7b); 43 próby WIT i 5 regresji korekty, trzy instancje maszyny Hypothesis (zakres podstawowy, bez p1, pusty).
 - **Niezależność:** S14/S15 napisał osobny subagent; drugi rozszerzył sekwencje i atomowość obserwatorów. Końcowy recenzent zbadał repozytorium bez historii tworzenia i zamknął jedyną uwagę dotyczącą brakującej macierzy W01.
 - **E3.1 wykonane:** [raport](E3-01-RAPORT.md), [instrukcja](../tla/README.md), [niezależna recenzja](reviews/E3-01-WYKONANIE-2026-10-27.md). 417 testów passed, 413 kontroli spójności OK; baza, pięć kontroli danych i trzy mutanty w TLC, osobne świadki ich skutków. Model v0.7 i wykonawca E2 bez zmian.
-- **Następny krok / A:** przygotować E3.2 — mapowanie wielokrokowej pętli T01–T03, niezależne oczekiwania i przegląd przed implementacją. E3.1 nie zamyka etapu E3. Java/TLC dostępne zgodnie z DEC-PRO-013; nie pytać ponownie o tę samą zgodę.
+- **E3.2 wykonane:** [raport](E3-02-RAPORT.md), [wyrocznia](E3-02-WYROCZNIA.md), [recenzja](reviews/E3-02-WYKONANIE-2026-10-27.md). 433 testy passed, 413 kontroli spójności OK, 31 przebiegów TLC odtworzonych niezależnie; 8 kontekstów, 3 kontrole danych, 8 mutantów z wykonanymi świadkami, 3 osobne monitory historii i zatwierdzenie po dwóch odrzuceniach.
+- **Następny krok / A:** przygotować E3.3 — mapowanie tworzenia produktu i linii bazowej (T00/T04) oraz dynamicznych zależności; najpierw uzasadnić instancję i rzut, przegląd, potem TDD. E3.2 nie zamyka etapu E3. Java/TLC dostępne zgodnie z DEC-PRO-013; nie pytać ponownie o tę samą zgodę.
 - **Materiały:** `docs/E2-RAPORT.md`, `docs/reviews/E2-V07-PRZEGLAD-2026-10-26.md`, przyjęty pakiet `model/proposals/e2-hardening.md`. Polecenie `.venv/bin/python scripts/run_e2.py --output artifacts/e2`: 0 = sprawdzenia OK, 1 = niepowodzenie, 2 = błąd raportu. Skrypt nie odczytuje decyzji odbioru; jego status awaiting_acceptance nie jest aktualnym statusem projektu. Odbiór E2 zapisuje DEC-PRO-012.
 
 ## Powrót do celu i przyszłe CLI — DEC-PRO-011
@@ -40,6 +41,15 @@ Poniższy stan poprzedza DEC-PRO-013. Zgoda została udzielona, a wykonanie opis
 - Przed implementacją osobny R ocenił [mapowanie](E3-01-MAPOWANIE.md); osobny recenzent wykonania odtworzył badanie. Raport końcowy: [R](reviews/E3-01-WYKONANIE-2026-10-27.md). To nie odbiór całego E3.
 - Decyzje agenta: E3-DA04 w mapowaniu, E3-DA05/06 w raporcie. Nie zmieniono modelu, właściwości, interpretacji, dotychczasowych testów ani wykonawcy E2. Historyczny hash E2 dotyczy odebranej dostawy; nowy manifest obejmuje także przyrost E3.
 - Ograniczenia: syntetyczna relacja jednego kroku T03; brak dowodu osiągalności, pełnego S/L/F, zakleszczeń czy użyteczności w prawdziwym projekcie. API odłożone do E4. Właściciel A: przygotowanie kolejnego przyrostu i osobna metoda dla CTL L1; U odbiera dopiero gotowy etap E3.
+
+## Wykonanie E3.2 — 2026-10-27
+
+- Zakres: osiem syntetycznych kontekstów, jeden zmieniany produkt, stałe zależności i wersja, wszystkie kombinacje T01/T02/T03 × A/R/U × checks/evidence do 8 wykonanych kroków. To badanie wycinka, nie pełne S/L/F ani dowód zakleszczeń.
+- Najpierw [mapowanie](E3-02-MAPOWANIE.md) i [recenzja przed kodem](reviews/E3-02-MAPOWANIE-2026-10-27.md), osobno przygotowana wyrocznia. Wyniki oraz przebiegi RED/GREEN: [raport](E3-02-RAPORT.md). Nie zmieniono YAML, właściwości, interpretacji ani wykonawcy E2. Rozszerzono translator, zachowując regresję E3.1 i historyczne archiwum.
+- Poprawiono porównanie zbiorowego depends_on, odmowy niepoprawnych danych na granicy uprzęży oraz przypisanie wyniku do źródeł sprawdzanych przed i po badaniu. R wykazał m.in. tekstowe evidence="false" interpretowane przez truthiness; poprawka i jej czerwone testy są zapisane. Nie jest to odkrycie nowej luki w zaakceptowanej regule procesu.
+- Komenda: `.venv/bin/python scripts/run_e3_loop.py --output artifacts/e3-02/reproduction`; nowy/pusty katalog, toolchain bez zmian, kody 0/1/2/3. Instrukcja: [tla/README](../tla/README.md). Wynik zero nie odbiera etapu.
+- Końcowy hash 24 źródeł: `3b527c6de498bd4a4da3c77a45fb7a4b4432e1375eab5f3dbeb2c1f6f2d8126e`. [Manifest archiwum](../tla/e3-02/manifest.json) zachowuje 263 pliki, w tym surowe wyniki autora i niezależnego odtworzenia. R ocenił finalny stan w [raporcie](reviews/E3-02-WYKONANIE-2026-10-27.md); podpis użytkownika pod E3 pozostaje przyszłą bramką.
+- Decyzje agenta: E3-DA07/08 w mapowaniu (granica badania i niezależny autor), E3-DA09/10 w raporcie (osobna czułość monitorów, rzeczywiste zbiory stanów i dwa archiwa). Otwarte / A: E3.3, reszta przejść, S/L przy F, jawna metoda CTL L1 i OBS. API nadal odłożone do E4.
 
 ## Kontrakt API procesu — propozycja architektoniczna, rewizja 2
 
@@ -213,15 +223,15 @@ Poniższy opis zachowano historycznie; aktualne uzupełnienia i ograniczenia są
 ## Repozytorium
 
 - Użytkownik scalił poprzednią gałąź e1-model do main (PR #1, eceaf0e). Model v0.3 opublikowano na e1-model w 7e4856d; akceptację E1 i pierwszy przyrost E2 na e2-checks w c38a4b7.
-- Bieżąca gałąź: `e3-checks`, utworzona z `e2-checks` po przygotowaniu E3.1 (8a1987e); WIT1 zapisano w 2b830e0, WIT2/WIT4 w 9bfebae, kartę celu w 360a90d. WIT5 i v0.5 zapisano i wypchnięto w e5fc842; propozycję WIT3 zapisano w 7424b73, a przyjęty przyrost v0.6 w ffa68d6. Sprawdzenia i propozycję korekty E2 zapisano w de94da9; przyjęta korekta v0.7 została dostarczona na e2-checks. Obecny przyrost E3.1 jest dostarczany na e3-checks. Scalenie do main wymaga osobnej zgody użytkownika.
+- Bieżąca gałąź: `e3-checks`, utworzona z `e2-checks` po przygotowaniu E3.1 (8a1987e); WIT1 zapisano w 2b830e0, WIT2/WIT4 w 9bfebae, kartę celu w 360a90d. WIT5 i v0.5 zapisano i wypchnięto w e5fc842; propozycję WIT3 zapisano w 7424b73, a przyjęty przyrost v0.6 w ffa68d6. Sprawdzenia i propozycję korekty E2 zapisano w de94da9; przyjęta korekta v0.7 została dostarczona na e2-checks. E3.1 zapisano i wypchnięto w 790b822. E3.2 jest dostarczany na tej samej gałęzi e3-checks. Scalenie do main wymaga osobnej zgody użytkownika.
 
 ## Sprawy otwarte
 
 | Sprawa | Właściciel | Następny krok |
 |---|---|---|
 | Kierunek architektury API/CLI | agent | po E4 wrócić z oceną potrzeby AX01–AX06 według DEC-PRO-011; teraz bez decyzji U i implementacji API |
-| E3.2 i pozostałe dowody E3 | agent | przygotować wielokrokowe mapowanie T01–T03, potem kolejne reguły, S/L/F i OBS; L1 CTL wymaga jawnej metody |
-| Odbiór E3 | użytkownik | po dostawie całego etapu i niezależnej recenzji; E3.1 nie wystarcza do tej bramki |
+| E3.3 i pozostałe dowody E3 | agent | przygotować mapowanie T00/T04 i dynamicznych zależności, potem kolejne reguły, S/L/F i OBS; L1 CTL wymaga jawnej metody |
+| Odbiór E3 | użytkownik | po dostawie całego etapu i niezależnej recenzji; E3.1/E3.2 nie wystarczają do tej bramki |
 | Wywiad kontynuującej sesji vcs_lite | agent | trzy rundy zapisane; przed gotową rundą 4 ponownie sprawdzić /usage; 26.10 o 19:20 limit 5h = 100%; kontynuować tylko fork 3407bcbe…; wywiad-8f641/STATUS.md |
 | Wnioski wywiadu vcs_lite R1–R3 | agent | przy przygotowaniu E4/E5 użyć WNIOSKI.md i dowodów; najpierw zestaw kontrolny R1, bez ponawiania poprawnych zgód |
 | Historyczne materiały informative/ | agent | przy E5 uwzględnić INT-017 w nowym materiale; nie przepisywać migawek sesji 2026-10-23 |
@@ -230,6 +240,8 @@ Poniższy opis zachowano historycznie; aktualne uzupełnienia i ograniczenia są
 | Porządki w vcs-lite | użytkownik | decyzja, czy i kiedy |
 
 ## Decyzje agenta do podważenia
+
+- 2026-10-27 (E3.2): E3-DA07/08 w mapowaniu E3.2, E3-DA09/10 w raporcie E3.2; zakres, niezależność, czułość monitorów oraz tożsamość i zachowanie dowodów.
 
 - 2026-10-27 (E3.1): E3-DA04 w `docs/E3-01-MAPOWANIE.md`, E3-DA05/06 w `docs/E3-01-RAPORT.md`; rzut i kontekst, osobne wykonane świadki mutantów oraz trwałe archiwum dowodów.
 

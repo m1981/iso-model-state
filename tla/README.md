@@ -45,3 +45,16 @@ Pełny `pytest -q` obejmuje TLC i wymaga tego środowiska; brak narzędzia końc
 Tylko T03 jest przedmiotem tego rzutu; pozostałe T00–T02, T04–T14, P00–P05 i W01–W07 nie są wygenerowane jako akcje procesu. Dopuszczenie lokalnych konstrukcji składni nie oznacza walidacji innych przejść. Brak następcy jest oczekiwaną odmową albo końcem jednego kroku, więc test ma `CHECK_DEADLOCK FALSE`. Nie przenosić tego ustawienia do dowodu braku zakleszczeń.
 
 Do dalszego E3 pozostają pełna relacja procesu, osiągalność, własności S/L, sprawiedliwość, mutanty czasowe i OBS. L1 (`AG EF done`) wymaga osobnego rozwiązania dla CTL. Nie zastępujemy go milcząco własnością LTL.
+
+## Badanie wielokrokowe E3.2
+
+E3.2 rozszerza translator o T01/T02, stałe zależności, metadane typu oraz jawne wejścia checks/evidence. [Raport i granice](../docs/E3-02-RAPORT.md), [mapowanie](../docs/E3-02-MAPOWANIE.md), [wyrocznia](../docs/E3-02-WYROCZNIA.md).
+
+```sh
+.venv/bin/python scripts/run_e3_loop.py --help
+.venv/bin/python scripts/run_e3_loop.py --output artifacts/e3-02/reproduction
+```
+
+Używa tego samego toolchainu i kodów 0/1/2/3 co E3.1. Katalog wyjściowy musi być nowy albo pusty. Runner wykonuje 31 uruchomień TLC, każde z limitem do 60 s; nie edytować źródeł w czasie badania. Hash wejść jest kontrolowany przed i po wykonaniu; zmiana unieważnia wynik. Nowy katalog zachowuje poprzedni komplet dowodów. Ustawienia `--java` i `--jar` działają tak jak wyżej; automatyczne pobieranie nie występuje.
+
+Osiem kontekstów z syntetycznego Init, trzy reguły i głębokość 8 nie stanowią pełnej eksploracji procesu. W szczególności koniec w verified dla DES/CODE nie oznacza zakleszczenia: T04 jest poza wycinkiem. Brak dowodu to bool false reprezentujący nieobecne pole evidence; tekst `"false"` jest błędem wejścia. Wyniki w `tla/e3-02/` obejmują surowe dowody autora i niezależnego recenzenta, z przenośnym manifestem. Archiwum E3.1 pozostaje zapisem wcześniejszej wersji.

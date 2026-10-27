@@ -1,0 +1,63 @@
+State 1:
+/\ depth = 0
+/\ seen = FALSE
+/\ used = 0
+/\ ok = TRUE
+/\ item = [id |-> "p1", depends_on |-> {}, state |-> "draft", suspect |-> FALSE, type |-> "PLAN", rejections |-> 0, predecessor |-> "none", version |-> 1]
+
+State 2:
+/\ depth = 1
+/\ seen = TRUE
+/\ used = 0
+/\ ok = TRUE
+/\ item = [id |-> "p1", depends_on |-> {}, state |-> "verified", suspect |-> FALSE, type |-> "PLAN", rejections |-> 0, predecessor |-> "none", version |-> 1]
+
+State 3:
+/\ depth = 2
+/\ seen = TRUE
+/\ used = 0
+/\ ok = TRUE
+/\ item = [id |-> "p1", depends_on |-> {}, state |-> "approved", suspect |-> FALSE, type |-> "PLAN", rejections |-> 0, predecessor |-> "none", version |-> 1]
+
+State 4:
+/\ depth = 2
+/\ seen = TRUE
+/\ used = 1
+/\ ok = TRUE
+/\ item = [id |-> "p1", depends_on |-> {}, state |-> "draft", suspect |-> FALSE, type |-> "PLAN", rejections |-> 1, predecessor |-> "none", version |-> 1]
+
+State 5:
+/\ depth = 3
+/\ seen = TRUE
+/\ used = 1
+/\ ok = TRUE
+/\ item = [id |-> "p1", depends_on |-> {}, state |-> "verified", suspect |-> FALSE, type |-> "PLAN", rejections |-> 1, predecessor |-> "none", version |-> 1]
+
+State 6:
+/\ depth = 4
+/\ seen = TRUE
+/\ used = 1
+/\ ok = TRUE
+/\ item = [id |-> "p1", depends_on |-> {}, state |-> "approved", suspect |-> FALSE, type |-> "PLAN", rejections |-> 1, predecessor |-> "none", version |-> 1]
+
+State 7:
+/\ depth = 4
+/\ seen = TRUE
+/\ used = 2
+/\ ok = TRUE
+/\ item = [id |-> "p1", depends_on |-> {}, state |-> "draft", suspect |-> FALSE, type |-> "PLAN", rejections |-> 2, predecessor |-> "none", version |-> 1]
+
+State 8:
+/\ depth = 5
+/\ seen = TRUE
+/\ used = 2
+/\ ok = TRUE
+/\ item = [id |-> "p1", depends_on |-> {}, state |-> "verified", suspect |-> FALSE, type |-> "PLAN", rejections |-> 2, predecessor |-> "none", version |-> 1]
+
+State 9:
+/\ depth = 6
+/\ seen = TRUE
+/\ used = 2
+/\ ok = TRUE
+/\ item = [id |-> "p1", depends_on |-> {}, state |-> "approved", suspect |-> FALSE, type |-> "PLAN", rejections |-> 2, predecessor |-> "none", version |-> 1]
+

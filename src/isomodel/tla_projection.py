@@ -47,18 +47,23 @@ def _record(record, model):
     literal(record)
 
 
-def _expression(text, model, record):
+def _expression(text, model, record, context=None):
     try:
         tree = compile_expression(text, model)
     except (UnsupportedSemantics, ValueError) as error:
         raise ProjectionError(str(error)) from error
 
-    def visit(node):
+    def visit(node, bound=None):
+        bound = bound or {}
         op = node[0]
         if op == 'literal':
             return literal(node[1]), 'bool' if type(node[1]) is bool else 'int'
         if op == 'name':
             name = node[1]
+            if name in bound:
+                return bound[name], 'record'
+            if context is not None and name == 'e':
+                return record, 'record'
             if name in FIELDS:
                 return f'{record}.{name}', FIELDS[name]
             if name in model['parameters'] and type(model['parameters'][name]) in (int, bool):
@@ -67,14 +72,45 @@ def _expression(text, model, record):
             if name in model['item_states'] or name == 'none':
                 return literal(name), 'str'
             raise ProjectionError(f'Nazwa poza lokalnym wycinkiem: {name}')
+        if context is not None:
+            if op == 'call' and node[2] == (('name', 'e'),):
+                if node[1] == 'checks_ok':
+                    return 'checks', 'bool'
+                if node[1] == 'deps':
+                    return f'Deps({record})', 'records'
+                if node[1] == 'type':
+                    return f'Types[{record}.type]', 'type_record'
+            if op == 'attr':
+                parent, kind = visit(node[1], bound)
+                field = node[2]
+                if kind == 'type_record' and field == 'requires_approval':
+                    return parent + '.requires_approval', 'bool'
+                if kind == 'record' and field in FIELDS:
+                    return parent + '.' + field, FIELDS[field]
+                raise ProjectionError('Atrybut poza wycinkiem E3.2.')
+            if op == 'set':
+                entries = [visit(child, bound) for child in node[1]]
+                if any(kind != 'str' for _, kind in entries):
+                    raise ProjectionError('Wymagany zbiór stanów.')
+                return '{' + ', '.join(value for value, _ in entries) + '}', 'set'
+            if op in {'in', 'not in'}:
+                left, lk = visit(node[1], bound); right, rk = visit(node[2], bound)
+                if lk != 'str' or rk != 'set':
+                    raise ProjectionError('Niepoprawne typy przynależności.')
+                return f'({left} ' + ('\\in' if op == 'in' else '\\notin') + f' {right})', 'bool'
+            if op == 'forall' and node[1] == 'd' and node[2] == ('call', 'deps', (('name', 'e'),)):
+                body, kind = visit(node[3], bound | {'d': 'dep'})
+                if kind != 'bool':
+                    raise ProjectionError('Treść forall musi być bool.')
+                return f'(\\A dep \\in Deps({record}): {body})', 'bool'
         if op == 'not':
-            value, kind = visit(node[1])
+            value, kind = visit(node[1], bound)
             if kind != 'bool':
                 raise ProjectionError('not wymaga bool.')
             return f'~({value})', 'bool'
         if op not in {'<', '=', '+', 'and', 'or', '=>'}:
             raise ProjectionError(f'Operator poza lokalnym wycinkiem: {op}')
-        left, lk = visit(node[1]); right, rk = visit(node[2])
+        left, lk = visit(node[1], bound); right, rk = visit(node[2], bound)
         required = 'int' if op in {'<', '+'} else 'bool'
         if (op == '=' and lk != rk) or (op != '=' and (lk != required or rk != required)):
             raise ProjectionError(f'Nieobsługiwane typy operandów {op}: {lk}/{rk}')
@@ -83,14 +119,21 @@ def _expression(text, model, record):
     return visit(tree)
 
 
-def compile_action(model, transition_id):
+def compile_action(model, transition_id, *, context=None, name='LocalAction'):
+    if not re.fullmatch(r'[A-Za-z_][A-Za-z_0-9]*', name):
+        raise ProjectionError('Niepoprawna nazwa operatora TLA+.')
     if set(model['item_variables']) | {'id', 'type'} != set(FIELDS):
         raise ProjectionError('Zmieniony schemat produktu wymaga przeglądu rzutu E3.1.')
     matches = [t for t in model['item_transitions'] if t['id'] == transition_id]
     if len(matches) != 1:
         raise ProjectionError('Wybierz dokładnie jedno przejście elementu.')
     t = matches[0]
-    if set(t) - {'id', 'name', 'from', 'to', 'actor', 'guard', 'effects', 'iso', 'description'}:
+    allowed = {'id', 'name', 'from', 'to', 'actor', 'guard', 'effects', 'iso', 'description'}
+    if context is not None:
+        allowed.add('evidence')
+        if t.get('evidence') not in (None, 'DEC z cytatem użytkownika'):
+            raise ProjectionError('Nieobsługiwany rodzaj evidence w E3.2.')
+    if set(t) - allowed:
         raise ProjectionError('Metadane wykonawcze przejścia poza wycinkiem E3.1.')
     actors = [t['actor']] if isinstance(t['actor'], str) else t['actor']
     if not isinstance(actors, list) or not actors or any(a not in model['actors'] for a in actors):
@@ -99,7 +142,7 @@ def compile_action(model, transition_id):
         raise ProjectionError('Niepoprawne stany wejściowe.')
     if t['to'] not in model['item_states'] and t['to'] != '=':
         raise ProjectionError('Nieobsługiwany stan docelowy.')
-    guard, kind = _expression(t['guard'], model, 'before')
+    guard, kind = _expression(t['guard'], model, 'before', context)
     if kind != 'bool':
         raise ProjectionError('Warunek musi mieć typ bool.')
     states = ['s0 == ' + ('before' if t['to'] == '=' else f'[before EXCEPT !.state = {literal(t["to"])}]')]
@@ -110,13 +153,15 @@ def compile_action(model, transition_id):
         if not match:
             raise ProjectionError(f'Skutek poza lokalnym wycinkiem: {effect}')
         target, expression = match.groups()
-        code, kind = _expression(expression, model, f's{i-1}')
+        code, kind = _expression(expression, model, f's{i-1}', context)
         if kind != FIELDS[target]:
             raise ProjectionError(f'Niepoprawny typ przypisania do {target}.')
         states.append(f's{i} == [s{i-1} EXCEPT !.{target} = {code}]')
-    return '\n'.join(['LocalAction(before, after, actor) ==',
+    args = 'before, after, actor' + (', checks, evidence' if context is not None else '')
+    evidence_guard = ['    /\\ evidence'] if context is not None and t.get('evidence') else []
+    return '\n'.join([f'{name}({args}) ==',
         f'    /\\ actor \\in {literal(actors)}', f'    /\\ before.state \\in {literal(t["from"])}',
-        f'    /\\ {guard}', '    /\\ after = LET ' + '\n                   '.join(states),
+        f'    /\\ {guard}', *evidence_guard, '    /\\ after = LET ' + '\n                   '.join(states),
         f'               IN s{len(t["effects"])}'])
 
 

@@ -1,0 +1,22 @@
+............F.                                                           [100%]
+=================================== FAILURES ===================================
+________ test_evidence_abstraction_does_not_represent_malformed_records ________
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+
+    def test_evidence_abstraction_does_not_represent_malformed_records(model):
+        from run_e3_loop import load_oracle, global_state
+        from isomodel.execution import execute_step, StepRejected
+        c = load_oracle().contexts()[0]
+        for transition, actor, state in [('T01','A','draft'), ('T02','U','verified')]:
+            before = global_state(model, c, c['item'] | {'state': state})
+            for bad in [{'simulation':False,'decision':'SIM','quote':'x'}, {'simulation':True,'decision':'SIM','quote':''},
+                        {'simulation':True,'decision':'SIM','quote':'x','extra':True}]:
+>               with pytest.raises(StepRejected) as error:
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               Failed: DID NOT RAISE StepRejected
+
+tests/test_tla_loop.py:119: Failed
+=========================== short test summary info ============================
+FAILED tests/test_tla_loop.py::test_evidence_abstraction_does_not_represent_malformed_records
+1 failed, 13 passed, 2 deselected in 0.44s

@@ -1,0 +1,56 @@
+State 1:
+/\ depth = 0
+/\ seen = FALSE
+/\ used = 0
+/\ ok = TRUE
+/\ item = [depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", rejections |-> 0, state |-> "draft", suspect |-> FALSE, type |-> "REQ", version |-> 2]
+
+State 2:
+/\ depth = 1
+/\ seen = TRUE
+/\ used = 0
+/\ ok = TRUE
+/\ item = [depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", rejections |-> 0, state |-> "verified", suspect |-> FALSE, type |-> "REQ", version |-> 2]
+
+State 3:
+/\ depth = 2
+/\ seen = TRUE
+/\ used = 0
+/\ ok = TRUE
+/\ item = [depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", rejections |-> 0, state |-> "approved", suspect |-> FALSE, type |-> "REQ", version |-> 2]
+
+State 4:
+/\ depth = 2
+/\ seen = TRUE
+/\ used = 1
+/\ ok = TRUE
+/\ item = [depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", rejections |-> 1, state |-> "draft", suspect |-> FALSE, type |-> "REQ", version |-> 2]
+
+State 5:
+/\ depth = 3
+/\ seen = TRUE
+/\ used = 1
+/\ ok = TRUE
+/\ item = [depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", rejections |-> 1, state |-> "verified", suspect |-> FALSE, type |-> "REQ", version |-> 2]
+
+State 6:
+/\ depth = 4
+/\ seen = TRUE
+/\ used = 1
+/\ ok = TRUE
+/\ item = [depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", rejections |-> 1, state |-> "approved", suspect |-> FALSE, type |-> "REQ", version |-> 2]
+
+State 7:
+/\ depth = 4
+/\ seen = TRUE
+/\ used = 2
+/\ ok = TRUE
+/\ item = [depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", rejections |-> 2, state |-> "draft", suspect |-> FALSE, type |-> "REQ", version |-> 2]
+
+State 8:
+/\ depth = 5
+/\ seen = TRUE
+/\ used = 2
+/\ ok = TRUE
+/\ item = [depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", rejections |-> 2, state |-> "verified", suspect |-> FALSE, type |-> "REQ", version |-> 2]
+

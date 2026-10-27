@@ -1,0 +1,8 @@
+State 1:
+/\ depth = 0
+/\ item = [depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", rejections |-> 0, state |-> "draft", suspect |-> FALSE, type |-> "REQ", version |-> 2]
+
+State 2:
+/\ depth = 1
+/\ item = [depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", rejections |-> 0, state |-> "verified", suspect |-> FALSE, type |-> "REQ", version |-> 2]
+

@@ -1,0 +1,175 @@
+FFFFFFF                                                                  [100%]
+=================================== FAILURES ===================================
+_ test_invalid_context_and_commands_are_refused_before_execution[missing_dependencies] _
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+fault = 'missing_dependencies'
+
+    @pytest.mark.parametrize('fault', ['missing_dependencies', 'bool_budget', 'text_evidence', 'text_checks', 'bool_operation'])
+    def test_invalid_context_and_commands_are_refused_before_execution(model, fault):
+        from run_e3_loop import load_oracle, oracle_table, actual_step
+        c = load_oracle().contexts()[0]
+        table = oracle_table(c)
+        if fault == 'missing_dependencies':
+            del c['dependencies']
+        elif fault == 'bool_budget':
+            c['budget'] = True
+        else:
+            cmd = dict(operation=2, actor='U', checks=True, evidence=True)
+            cmd[{'text_evidence': 'evidence', 'text_checks': 'checks', 'bool_operation': 'operation'}[fault]] = True if fault == 'bool_operation' else 'false'
+            with pytest.raises(ProjectionError):
+                actual_step(model, c, c['item'] | {'state': 'verified'}, cmd, ('T01','T02','T03'))
+            table['commands'][0] = cmd
+        with pytest.raises(ProjectionError):
+>           render_loop(model, c, **table)
+
+tests/test_tla_loop.py:108: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+src/isomodel/tla_loop.py:45: in render_loop
+    header = prelude(model, context, transitions)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+context = {'id': 'req_approved', 'item': {'id': 'r1', 'type': 'REQ', 'depends_on': ['p1'], 'predecessor': 'none', ...}, 'budget': 2, 'requires_approval': True}
+transitions = ('T01', 'T02', 'T03')
+
+    def prelude(model, context, transitions):
+        if len(transitions) != 3 or len(set(transitions)) != 3:
+            raise ProjectionError('Wymagane trzy różne przejścia wycinka.')
+        _record(context['item'], model)
+>       deps = context['dependencies']
+               ^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'dependencies'
+
+src/isomodel/tla_loop.py:15: KeyError
+_ test_invalid_context_and_commands_are_refused_before_execution[bool_budget] __
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+fault = 'bool_budget'
+
+    @pytest.mark.parametrize('fault', ['missing_dependencies', 'bool_budget', 'text_evidence', 'text_checks', 'bool_operation'])
+    def test_invalid_context_and_commands_are_refused_before_execution(model, fault):
+        from run_e3_loop import load_oracle, oracle_table, actual_step
+        c = load_oracle().contexts()[0]
+        table = oracle_table(c)
+        if fault == 'missing_dependencies':
+            del c['dependencies']
+        elif fault == 'bool_budget':
+            c['budget'] = True
+        else:
+            cmd = dict(operation=2, actor='U', checks=True, evidence=True)
+            cmd[{'text_evidence': 'evidence', 'text_checks': 'checks', 'bool_operation': 'operation'}[fault]] = True if fault == 'bool_operation' else 'false'
+            with pytest.raises(ProjectionError):
+                actual_step(model, c, c['item'] | {'state': 'verified'}, cmd, ('T01','T02','T03'))
+            table['commands'][0] = cmd
+>       with pytest.raises(ProjectionError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_tla_loop.py:107: Failed
+_ test_invalid_context_and_commands_are_refused_before_execution[text_evidence] _
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+fault = 'text_evidence'
+
+    @pytest.mark.parametrize('fault', ['missing_dependencies', 'bool_budget', 'text_evidence', 'text_checks', 'bool_operation'])
+    def test_invalid_context_and_commands_are_refused_before_execution(model, fault):
+        from run_e3_loop import load_oracle, oracle_table, actual_step
+        c = load_oracle().contexts()[0]
+        table = oracle_table(c)
+        if fault == 'missing_dependencies':
+            del c['dependencies']
+        elif fault == 'bool_budget':
+            c['budget'] = True
+        else:
+            cmd = dict(operation=2, actor='U', checks=True, evidence=True)
+            cmd[{'text_evidence': 'evidence', 'text_checks': 'checks', 'bool_operation': 'operation'}[fault]] = True if fault == 'bool_operation' else 'false'
+>           with pytest.raises(ProjectionError):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE ProjectionError
+
+tests/test_tla_loop.py:104: Failed
+_ test_invalid_context_and_commands_are_refused_before_execution[text_checks] __
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+fault = 'text_checks'
+
+    @pytest.mark.parametrize('fault', ['missing_dependencies', 'bool_budget', 'text_evidence', 'text_checks', 'bool_operation'])
+    def test_invalid_context_and_commands_are_refused_before_execution(model, fault):
+        from run_e3_loop import load_oracle, oracle_table, actual_step
+        c = load_oracle().contexts()[0]
+        table = oracle_table(c)
+        if fault == 'missing_dependencies':
+            del c['dependencies']
+        elif fault == 'bool_budget':
+            c['budget'] = True
+        else:
+            cmd = dict(operation=2, actor='U', checks=True, evidence=True)
+            cmd[{'text_evidence': 'evidence', 'text_checks': 'checks', 'bool_operation': 'operation'}[fault]] = True if fault == 'bool_operation' else 'false'
+>           with pytest.raises(ProjectionError):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE ProjectionError
+
+tests/test_tla_loop.py:104: Failed
+_ test_invalid_context_and_commands_are_refused_before_execution[bool_operation] _
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+fault = 'bool_operation'
+
+    @pytest.mark.parametrize('fault', ['missing_dependencies', 'bool_budget', 'text_evidence', 'text_checks', 'bool_operation'])
+    def test_invalid_context_and_commands_are_refused_before_execution(model, fault):
+        from run_e3_loop import load_oracle, oracle_table, actual_step
+        c = load_oracle().contexts()[0]
+        table = oracle_table(c)
+        if fault == 'missing_dependencies':
+            del c['dependencies']
+        elif fault == 'bool_budget':
+            c['budget'] = True
+        else:
+            cmd = dict(operation=2, actor='U', checks=True, evidence=True)
+            cmd[{'text_evidence': 'evidence', 'text_checks': 'checks', 'bool_operation': 'operation'}[fault]] = True if fault == 'bool_operation' else 'false'
+>           with pytest.raises(ProjectionError):
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E           Failed: DID NOT RAISE ProjectionError
+
+tests/test_tla_loop.py:104: Failed
+________ test_evidence_abstraction_does_not_represent_malformed_records ________
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+
+    def test_evidence_abstraction_does_not_represent_malformed_records(model):
+        from run_e3_loop import load_oracle, global_state
+        from isomodel.execution import execute_step, StepRejected
+        c = load_oracle().contexts()[0]
+        for transition, actor, state in [('T01','A','draft'), ('T02','U','verified')]:
+            before = global_state(model, c, c['item'] | {'state': state})
+            for bad in [{'simulation':False,'decision':'SIM','quote':'x'}, {'simulation':True,'decision':'SIM','quote':''},
+                        {'simulation':True,'decision':'SIM','quote':'x','extra':True}]:
+>               with pytest.raises(StepRejected) as error:
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E               Failed: DID NOT RAISE StepRejected
+
+tests/test_tla_loop.py:119: Failed
+_____________________ test_changed_sources_invalidate_run ______________________
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x108f87e10>
+
+    def test_changed_sources_invalidate_run(monkeypatch):
+        import run_e3_loop as runner
+        monkeypatch.setattr(runner, 'source_manifest', lambda: {'source': 'changed'}, raising=False)
+        with pytest.raises(ValueError, match='źród'):
+>           runner.verify_sources({'source': 'before'})
+            ^^^^^^^^^^^^^^^^^^^^^
+E           AttributeError: module 'run_e3_loop' has no attribute 'verify_sources'
+
+tests/test_tla_loop.py:128: AttributeError
+=========================== short test summary info ============================
+FAILED tests/test_tla_loop.py::test_invalid_context_and_commands_are_refused_before_execution[missing_dependencies]
+FAILED tests/test_tla_loop.py::test_invalid_context_and_commands_are_refused_before_execution[bool_budget]
+FAILED tests/test_tla_loop.py::test_invalid_context_and_commands_are_refused_before_execution[text_evidence]
+FAILED tests/test_tla_loop.py::test_invalid_context_and_commands_are_refused_before_execution[text_checks]
+FAILED tests/test_tla_loop.py::test_invalid_context_and_commands_are_refused_before_execution[bool_operation]
+FAILED tests/test_tla_loop.py::test_evidence_abstraction_does_not_represent_malformed_records
+FAILED tests/test_tla_loop.py::test_changed_sources_invalidate_run - Attribut...
+7 failed, 9 deselected in 0.26s

@@ -1,0 +1,86 @@
+@!@!@STARTMSG 2262:0 @!@!@
+TLC2 Version 2.19 of 08 August 2024 (rev: 5a47802)
+@!@!@ENDMSG 2262 @!@!@
+@!@!@STARTMSG 2187:0 @!@!@
+Running breadth-first search Model-Checking with fp 0 and seed 1 with 1 worker on 8 cores with 228MB heap and 64MB offheap memory [pid: 83752] (Mac OS X 26.2 aarch64, JetBrains s.r.o. 21.0.10 x86_64, MSBDiskFPSet, DiskStateQueue).
+@!@!@ENDMSG 2187 @!@!@
+@!@!@STARTMSG 2220:0 @!@!@
+Starting SANY...
+@!@!@ENDMSG 2220 @!@!@
+Parsing file /Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/reset/Loop.tla
+Parsing file /private/var/folders/r4/9rd28l515q59c0x7h1xwgbvc0000gn/T/Integers.tla
+Parsing file /private/var/folders/r4/9rd28l515q59c0x7h1xwgbvc0000gn/T/Sequences.tla
+Parsing file /private/var/folders/r4/9rd28l515q59c0x7h1xwgbvc0000gn/T/Naturals.tla
+Semantic processing of module Naturals
+Semantic processing of module Integers
+Semantic processing of module Sequences
+Semantic processing of module Loop
+@!@!@STARTMSG 2219:0 @!@!@
+SANY finished.
+@!@!@ENDMSG 2219 @!@!@
+@!@!@STARTMSG 2185:0 @!@!@
+Starting... (2026-10-27 18:30:27)
+@!@!@ENDMSG 2185 @!@!@
+@!@!@STARTMSG 2189:0 @!@!@
+Computing initial states...
+@!@!@ENDMSG 2189 @!@!@
+@!@!@STARTMSG 2190:0 @!@!@
+Finished computing initial states: 1 distinct state generated at 2026-10-27 18:30:27.
+@!@!@ENDMSG 2190 @!@!@
+@!@!@STARTMSG 2110:1 @!@!@
+Invariant Successor is violated.
+@!@!@ENDMSG 2110 @!@!@
+@!@!@STARTMSG 2121:1 @!@!@
+The behavior up to this point is:
+@!@!@ENDMSG 2121 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+1: <Initial predicate>
+/\ depth = 0
+/\ seen = FALSE
+/\ used = 0
+/\ ok = TRUE
+/\ item = [depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", rejections |-> 0, state |-> "draft", suspect |-> FALSE, type |-> "REQ", version |-> 2]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+2: <Next line 1074, col 9 to line 1080, col 47 of module Loop>
+/\ depth = 1
+/\ seen = TRUE
+/\ used = 0
+/\ ok = TRUE
+/\ item = [depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", rejections |-> 0, state |-> "verified", suspect |-> FALSE, type |-> "REQ", version |-> 2]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+3: <Next line 1074, col 9 to line 1080, col 47 of module Loop>
+/\ depth = 2
+/\ seen = TRUE
+/\ used = 1
+/\ ok = TRUE
+/\ item = [depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", rejections |-> 1, state |-> "draft", suspect |-> FALSE, type |-> "REQ", version |-> 2]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2217:4 @!@!@
+4: <Next line 1074, col 9 to line 1080, col 47 of module Loop>
+/\ depth = 3
+/\ seen = TRUE
+/\ used = 1
+/\ ok = FALSE
+/\ item = [depends_on |-> {"p1"}, id |-> "r1", predecessor |-> "none", rejections |-> 0, state |-> "verified", suspect |-> FALSE, type |-> "REQ", version |-> 2]
+
+@!@!@ENDMSG 2217 @!@!@
+@!@!@STARTMSG 2200:0 @!@!@
+Progress(4) at 2026-10-27 18:30:27: 10 states generated (2,181 s/min), 5 distinct states found (1,090 ds/min), 0 states left on queue.
+@!@!@ENDMSG 2200 @!@!@
+@!@!@STARTMSG 2199:0 @!@!@
+10 states generated, 5 distinct states found, 0 states left on queue.
+@!@!@ENDMSG 2199 @!@!@
+@!@!@STARTMSG 2194:0 @!@!@
+The depth of the complete state graph search is 4.
+@!@!@ENDMSG 2194 @!@!@
+@!@!@STARTMSG 2268:0 @!@!@
+The average outdegree of the complete state graph is 1 (minimum is 0, the maximum 2 and the 95th percentile is 2).
+@!@!@ENDMSG 2268 @!@!@
+@!@!@STARTMSG 2186:0 @!@!@
+Finished in 279ms at (2026-10-27 18:30:27)
+@!@!@ENDMSG 2186 @!@!@

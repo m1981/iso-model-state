@@ -1,0 +1,7 @@
+State 1:
+/\ depth = 0
+/\ seen = FALSE
+/\ used = 0
+/\ ok = TRUE
+/\ item = [depends_on |-> {"a1", "d1"}, id |-> "c1", predecessor |-> "none", rejections |-> 0, state |-> "draft", suspect |-> FALSE, type |-> "CODE", version |-> 2]
+

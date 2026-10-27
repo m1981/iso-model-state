@@ -1,0 +1,1320 @@
+{
+  "description": "E3.2: finalne dowody autora i niezależnego recenzenta. Original to rzeczywista ścieżka przebiegu, archive to kopia w repo; hashe dotyczą surowych bajtów.",
+  "files": [
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/evidence.json",
+      "archive": "author/evidence.json",
+      "sha256": "243d0a47d864ec72bee4a7e793e5966f158a62f386dc7f02aa00e72d7bbaabcf"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/report.md",
+      "archive": "author/report.md",
+      "sha256": "19ffdcab8a510fbe5e4ec6ba1fbff6d7e84ac5f05ba27f0ee5489c0ecd954b91"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/req_baselined/Loop.tla",
+      "archive": "author/req_baselined/Loop.tla",
+      "sha256": "d3233ef8fc9b24f0f82448eeea0316e883c1559285e8c4f6ef5192b6acd598ce"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/req_baselined/Loop.cfg",
+      "archive": "author/req_baselined/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/code_good/Loop.tla",
+      "archive": "author/code_good/Loop.tla",
+      "sha256": "a59a6e18afe98ab196f3a44f024c666e6640ef7e4a3530bcf36e0b38fb9082c1"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/code_good/Loop.cfg",
+      "archive": "author/code_good/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/acceptance_witness/Loop.tla",
+      "archive": "author/acceptance_witness/Loop.tla",
+      "sha256": "3efb27bbe983f6d6ec64ae3eb75bd7ed4dbaf94d2dbd831f6b946fae17cf9038"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/acceptance_witness/Loop.cfg",
+      "archive": "author/acceptance_witness/Loop.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/req_approved/Loop.tla",
+      "archive": "author/req_approved/Loop.tla",
+      "sha256": "c63ddf064fc3e43f53b8bff39862ec6312b8f4d1d3f949dfb97b05b7db856755"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/req_approved/Loop.cfg",
+      "archive": "author/req_approved/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/req_draft/Loop.tla",
+      "archive": "author/req_draft/Loop.tla",
+      "sha256": "bd7160440d0b818a437145bc7a14103ad97ff42368e78f900acb51e3926a3175"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/req_draft/Loop.cfg",
+      "archive": "author/req_draft/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/plan_empty/Loop.tla",
+      "archive": "author/plan_empty/Loop.tla",
+      "sha256": "8683ede599d0456e81ac08ad27ff7cd39e19ff85ab8f53cc0c99c6f272d177c2"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/plan_empty/Loop.cfg",
+      "archive": "author/plan_empty/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/code_mixed/Loop.tla",
+      "archive": "author/code_mixed/Loop.tla",
+      "sha256": "52f03739396cfba3ba803934b9a05607d77e48da6dfb7f1dfb086f678300c197"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/code_mixed/Loop.cfg",
+      "archive": "author/code_mixed/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/req_suspect/Loop.tla",
+      "archive": "author/req_suspect/Loop.tla",
+      "sha256": "1763e3f3928cd85b14d9ac72383e85d7a7769947ffca019087391852eb3fd582"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/req_suspect/Loop.cfg",
+      "archive": "author/req_suspect/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/des_no_approval/Loop.tla",
+      "archive": "author/des_no_approval/Loop.tla",
+      "sha256": "40f64df8ed2d1ab0a5801160d70967934f40115d2181d34878ed3facdaf97071"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/des_no_approval/Loop.cfg",
+      "archive": "author/des_no_approval/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/des_no_approval/runs/run-h7xp92n1/visited.dump",
+      "archive": "author/des_no_approval/runs/run-h7xp92n1/visited.dump",
+      "sha256": "2df063094cd931b80d85ee3613b3dd3d50cc6e9b001249b0075d5e4ebe573615"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/des_no_approval/runs/run-h7xp92n1/tlc.log",
+      "archive": "author/des_no_approval/runs/run-h7xp92n1/tlc.log",
+      "sha256": "64c94859ee38f70d82baab35985c5014f729b24e3de1fa45d4157a597e43baf0"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/req_suspect/runs/run-4in85etg/visited.dump",
+      "archive": "author/req_suspect/runs/run-4in85etg/visited.dump",
+      "sha256": "80864fb321e4d9b59240d8fc80fa991e0db915940d787df58ca719b576e7852b"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/req_suspect/runs/run-4in85etg/tlc.log",
+      "archive": "author/req_suspect/runs/run-4in85etg/tlc.log",
+      "sha256": "4a3bf6423966bffba72891a37eee7e6585b447df57cc7c9c694688b4287f1fe6"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/code_mixed/runs/run-duqluf3p/visited.dump",
+      "archive": "author/code_mixed/runs/run-duqluf3p/visited.dump",
+      "sha256": "cc045ef9d683e36cdeac3bd3531e6ec219585dc9dfdd985ccd05ab3d4d68098a"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/code_mixed/runs/run-duqluf3p/tlc.log",
+      "archive": "author/code_mixed/runs/run-duqluf3p/tlc.log",
+      "sha256": "b7f1e3e83de8a9065f2bc44692c82927a2d8af7d1edd5973b5523c6423963b94"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/plan_empty/runs/run-8ks2y_58/visited.dump",
+      "archive": "author/plan_empty/runs/run-8ks2y_58/visited.dump",
+      "sha256": "de68f821ab6b7fcee28c53c68824e12b0d9c73775098ec18184ac11ad1877e8a"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/plan_empty/runs/run-8ks2y_58/tlc.log",
+      "archive": "author/plan_empty/runs/run-8ks2y_58/tlc.log",
+      "sha256": "408a8b0c2c73fbf9c9888fcb2ff7918969b05262b6e8b059055cc1f714c8c776"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/req_draft/runs/run-tjuasma4/visited.dump",
+      "archive": "author/req_draft/runs/run-tjuasma4/visited.dump",
+      "sha256": "ac623ca5e7b8cc722874f3988f80b6eeb8aefac8ac88f3ace45321d65bedc00f"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/req_draft/runs/run-tjuasma4/tlc.log",
+      "archive": "author/req_draft/runs/run-tjuasma4/tlc.log",
+      "sha256": "87af752c285a2b76fb3def8ba3dc1ce48202f940245d4f73668fd2f0ce276b7d"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/history/HistoryBudget/Loop.tla",
+      "archive": "author/history/HistoryBudget/Loop.tla",
+      "sha256": "67df34604639ee703a618c038169e261e5f78c04cfa4e3c3efa0852a39a1714e"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/history/HistoryBudget/Loop.cfg",
+      "archive": "author/history/HistoryBudget/Loop.cfg",
+      "sha256": "c70c3f3b0d49094ed49f5a5e93eae3006c409ab5316f93ff3d2064a048763620"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/history/VerifiedHistory/Loop.tla",
+      "archive": "author/history/VerifiedHistory/Loop.tla",
+      "sha256": "8803325bf99f5fc2b91dd84a8c0d0146a3f592416cf7edfee1b5cf5cbd32cbb5"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/history/VerifiedHistory/Loop.cfg",
+      "archive": "author/history/VerifiedHistory/Loop.cfg",
+      "sha256": "778ccc819fd4ce66a3a6de71df72ed65c8d4ad42e4b12a541140d0afffa31f78"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/history/CounterHistory/Loop.tla",
+      "archive": "author/history/CounterHistory/Loop.tla",
+      "sha256": "c74d0a91007922756a28e618e3fe9cab0ea6de5261794efd9be1279a5b569ae7"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/history/CounterHistory/Loop.cfg",
+      "archive": "author/history/CounterHistory/Loop.cfg",
+      "sha256": "a0b37ce1e13efc4ceb65d8b6be0c574b672d846c0e92487f4803d2b86f1d0fe0"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/history/CounterHistory/runs/run-xhwu45xk/visited.dump",
+      "archive": "author/history/CounterHistory/runs/run-xhwu45xk/visited.dump",
+      "sha256": "caa4e04ce777ebf9f3f1cdf02f89002e339026b64e6b3230c1498650a900f25c"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/history/CounterHistory/runs/run-xhwu45xk/tlc.log",
+      "archive": "author/history/CounterHistory/runs/run-xhwu45xk/tlc.log",
+      "sha256": "671d19d9e40327b11eafab567c5c6c00ae1897bc83993971875849cc9041657e"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/history/VerifiedHistory/runs/run-hr4rnuad/visited.dump",
+      "archive": "author/history/VerifiedHistory/runs/run-hr4rnuad/visited.dump",
+      "sha256": "93d8d22af608b3e9db65e9391b1a43b58c452662b4218cdc95e01ed300737119"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/history/VerifiedHistory/runs/run-hr4rnuad/tlc.log",
+      "archive": "author/history/VerifiedHistory/runs/run-hr4rnuad/tlc.log",
+      "sha256": "a7bb397a9ea89b0d27b11bd56dc41a76080f076cb8b5b110e96c0a3b3ff44eb8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/history/HistoryBudget/runs/run-1yldetd4/visited.dump",
+      "archive": "author/history/HistoryBudget/runs/run-1yldetd4/visited.dump",
+      "sha256": "08b8f1cbf59af6cc6f7d973c7cba516b57f716610a81c1590301d70a914673a2"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/history/HistoryBudget/runs/run-1yldetd4/tlc.log",
+      "archive": "author/history/HistoryBudget/runs/run-1yldetd4/tlc.log",
+      "sha256": "54f911e8aecd714b92cf3b3af2334cf8ff06dd9c3139e1e2b98d3c5f2dddea19"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/req_approved/runs/run-xhtadvry/visited.dump",
+      "archive": "author/req_approved/runs/run-xhtadvry/visited.dump",
+      "sha256": "a8e18142227bde0f147215656a04af555fbd606e16bfad3b90cc8705f09a0d23"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/req_approved/runs/run-xhtadvry/tlc.log",
+      "archive": "author/req_approved/runs/run-xhtadvry/tlc.log",
+      "sha256": "e07428be3278f73d7cdd4a34e1df69a11b90e70d4dc94370cfa430a0cc648871"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/acceptance_witness/runs/run-p94zulcx/visited.dump",
+      "archive": "author/acceptance_witness/runs/run-p94zulcx/visited.dump",
+      "sha256": "68096b9db2fc38ed1a025f93b0e430fa05ef658b64883445418098b954244b87"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/acceptance_witness/runs/run-p94zulcx/tlc.log",
+      "archive": "author/acceptance_witness/runs/run-p94zulcx/tlc.log",
+      "sha256": "ef3fc281be54b205f0add020ee21a818641ff5a8e22521abd0207235cbfa8a1e"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/controls/limit/Loop.tla",
+      "archive": "author/controls/limit/Loop.tla",
+      "sha256": "261911a7bf4193126d7c7673de0de29f4298da92eba92605caa16b5abd794a9a"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/controls/limit/Loop.cfg",
+      "archive": "author/controls/limit/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/controls/renamed/Loop.tla",
+      "archive": "author/controls/renamed/Loop.tla",
+      "sha256": "c63ddf064fc3e43f53b8bff39862ec6312b8f4d1d3f949dfb97b05b7db856755"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/controls/renamed/Loop.cfg",
+      "archive": "author/controls/renamed/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/controls/approval_metadata/Loop.tla",
+      "archive": "author/controls/approval_metadata/Loop.tla",
+      "sha256": "8dfcfc20b50b85c3e8de0e8c4a4c60dc7b1ff2dc8f67b39458bde5fcbd1f4ad1"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/controls/approval_metadata/Loop.cfg",
+      "archive": "author/controls/approval_metadata/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/controls/approval_metadata/runs/run-nol98km4/visited.dump",
+      "archive": "author/controls/approval_metadata/runs/run-nol98km4/visited.dump",
+      "sha256": "f41f782b9f9cd0e9fb1df171d7ef691bde67cebc64d270d6e337022e28ffeacb"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/controls/approval_metadata/runs/run-nol98km4/tlc.log",
+      "archive": "author/controls/approval_metadata/runs/run-nol98km4/tlc.log",
+      "sha256": "ca3ee882f6831bbd671f653d33fb13918f8ce90ddc1166ee9cfe27e2f893d298"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/controls/renamed/runs/run-g1toj091/visited.dump",
+      "archive": "author/controls/renamed/runs/run-g1toj091/visited.dump",
+      "sha256": "a8e18142227bde0f147215656a04af555fbd606e16bfad3b90cc8705f09a0d23"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/controls/renamed/runs/run-g1toj091/tlc.log",
+      "archive": "author/controls/renamed/runs/run-g1toj091/tlc.log",
+      "sha256": "671b77f6ceabebebae4761178b126af80a607f198df52e8fa474736dfa7405ed"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/controls/limit/runs/run-guoboppb/visited.dump",
+      "archive": "author/controls/limit/runs/run-guoboppb/visited.dump",
+      "sha256": "f38e177433d0352221b4eaa459accf3f6aaeb050277deb6c360ae194f424904b"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/controls/limit/runs/run-guoboppb/tlc.log",
+      "archive": "author/controls/limit/runs/run-guoboppb/tlc.log",
+      "sha256": "8c1f32eacc9a0c9035b07a5b1f7fa9761e02851b8d5131ab1318ff943635e06d"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/code_good/runs/run-qwclc661/visited.dump",
+      "archive": "author/code_good/runs/run-qwclc661/visited.dump",
+      "sha256": "9cc3e2dc18e64e3af80ef4825f2a6e453be0ae71aa2b5be6059c79cb82fa4e46"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/code_good/runs/run-qwclc661/tlc.log",
+      "archive": "author/code_good/runs/run-qwclc661/tlc.log",
+      "sha256": "7973ae7db67be4873ab35498e46877702791d9364dd117a03feb8e8242eb7db1"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/req_baselined/runs/run-7fsep3tf/visited.dump",
+      "archive": "author/req_baselined/runs/run-7fsep3tf/visited.dump",
+      "sha256": "a8e18142227bde0f147215656a04af555fbd606e16bfad3b90cc8705f09a0d23"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/req_baselined/runs/run-7fsep3tf/tlc.log",
+      "archive": "author/req_baselined/runs/run-7fsep3tf/tlc.log",
+      "sha256": "f05b3f87bbc868b713ab0669216819763b297b68de2ac24d08701bc6f2859ad1"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/evidence/Loop.tla",
+      "archive": "author/mutants/evidence/Loop.tla",
+      "sha256": "7eb5c9e1d0756cf738bba0dd22c1646ec60deddb2f0e3fabd34f0ead9e4ad5e9"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/evidence/Loop.cfg",
+      "archive": "author/mutants/evidence/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/checks/Loop.tla",
+      "archive": "author/mutants/checks/Loop.tla",
+      "sha256": "36b682cfe89bfec73329fc0d4e53a202b1699392246f8898ce8e3c71bd723820"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/checks/Loop.cfg",
+      "archive": "author/mutants/checks/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/reset/Loop.tla",
+      "archive": "author/mutants/reset/Loop.tla",
+      "sha256": "c74d0a91007922756a28e618e3fe9cab0ea6de5261794efd9be1279a5b569ae7"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/reset/Loop.cfg",
+      "archive": "author/mutants/reset/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/dependency/Loop.tla",
+      "archive": "author/mutants/dependency/Loop.tla",
+      "sha256": "73325ed85ec5839b38a21fdc0075ad2564d3282833fc24d5f583dbcc36da3abf"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/dependency/Loop.cfg",
+      "archive": "author/mutants/dependency/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/verification/Loop.tla",
+      "archive": "author/mutants/verification/Loop.tla",
+      "sha256": "8803325bf99f5fc2b91dd84a8c0d0146a3f592416cf7edfee1b5cf5cbd32cbb5"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/verification/Loop.cfg",
+      "archive": "author/mutants/verification/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/suspect/Loop.tla",
+      "archive": "author/mutants/suspect/Loop.tla",
+      "sha256": "9e57c59104e373fa4e9939d8e003891db9f6228c6567c5725b1202e038bf667c"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/suspect/Loop.cfg",
+      "archive": "author/mutants/suspect/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/actor/Loop.tla",
+      "archive": "author/mutants/actor/Loop.tla",
+      "sha256": "0e9a80b242b775c7c83c709a4decb7b6ad83de8cae77f2be987e3f51c9bdd11c"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/actor/Loop.cfg",
+      "archive": "author/mutants/actor/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/budget/Loop.tla",
+      "archive": "author/mutants/budget/Loop.tla",
+      "sha256": "67df34604639ee703a618c038169e261e5f78c04cfa4e3c3efa0852a39a1714e"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/budget/Loop.cfg",
+      "archive": "author/mutants/budget/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/budget/witness/Loop.tla",
+      "archive": "author/mutants/budget/witness/Loop.tla",
+      "sha256": "2079429d3e62538d378738d6469f65b3f9c049e7d25d53a660c6f51dc41f753a"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/budget/witness/Loop.cfg",
+      "archive": "author/mutants/budget/witness/Loop.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/budget/runs/run-hbk3lpsf/visited.dump",
+      "archive": "author/mutants/budget/runs/run-hbk3lpsf/visited.dump",
+      "sha256": "bcbefefc39c940201a94fac113c64e670b55e9dd4c4796da88a3bb40f6b3e1b8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/budget/runs/run-hbk3lpsf/tlc.log",
+      "archive": "author/mutants/budget/runs/run-hbk3lpsf/tlc.log",
+      "sha256": "9a0c64a922b9802e609054b0384843037dc4d89105b5771836c29e729f57683a"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/budget/witness/runs/run-hbpqpdad/visited.dump",
+      "archive": "author/mutants/budget/witness/runs/run-hbpqpdad/visited.dump",
+      "sha256": "e998248faa4c749c736d4f707bfea306579110589e98db74a5b69c00cb52a6d8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/budget/witness/runs/run-hbpqpdad/tlc.log",
+      "archive": "author/mutants/budget/witness/runs/run-hbpqpdad/tlc.log",
+      "sha256": "f8f60c77b3e6e4ad9bdaeae9b5193784f87dc27623fbd70200122acc35a09d24"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/actor/witness/Loop.tla",
+      "archive": "author/mutants/actor/witness/Loop.tla",
+      "sha256": "3d6348e6eb7049ada0b6c77910e9757bd71675fbdd08d248194e3f1d99f65910"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/actor/witness/Loop.cfg",
+      "archive": "author/mutants/actor/witness/Loop.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/actor/runs/run-e8yb7olp/visited.dump",
+      "archive": "author/mutants/actor/runs/run-e8yb7olp/visited.dump",
+      "sha256": "34de62cf21c8f5405e491962771868665ce378eda7105f8805032de0ed446731"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/actor/runs/run-e8yb7olp/tlc.log",
+      "archive": "author/mutants/actor/runs/run-e8yb7olp/tlc.log",
+      "sha256": "102dcb0eea6129394b60e7462fce4b22c3d6a0015dce3c598b619958d0ad9d0a"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/actor/witness/runs/run-1zs0npea/visited.dump",
+      "archive": "author/mutants/actor/witness/runs/run-1zs0npea/visited.dump",
+      "sha256": "02b41ef2afdb62bb73f58fb1a04b1be996b75028af9860aa9933fc2d382368c4"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/actor/witness/runs/run-1zs0npea/tlc.log",
+      "archive": "author/mutants/actor/witness/runs/run-1zs0npea/tlc.log",
+      "sha256": "bac9ce4b65d81b5c18ec6432f647682a75dcad82da523652bb2aef095dc8064e"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/suspect/witness/Loop.tla",
+      "archive": "author/mutants/suspect/witness/Loop.tla",
+      "sha256": "f502a40547743ef536ee9a7a6200f1a91ac1f7d75e60a84768bff3485c0c97ae"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/suspect/witness/Loop.cfg",
+      "archive": "author/mutants/suspect/witness/Loop.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/suspect/runs/run-9yd0iq04/visited.dump",
+      "archive": "author/mutants/suspect/runs/run-9yd0iq04/visited.dump",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/suspect/runs/run-9yd0iq04/tlc.log",
+      "archive": "author/mutants/suspect/runs/run-9yd0iq04/tlc.log",
+      "sha256": "b9e14348ea3f3010f99b7905b6dfe27245256deed123d1471c9489c4b4647094"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/suspect/witness/runs/run-f04do755/visited.dump",
+      "archive": "author/mutants/suspect/witness/runs/run-f04do755/visited.dump",
+      "sha256": "726859f8df9516110460892ab98ff9f92cf021baf9548636ff96d7870a579bef"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/suspect/witness/runs/run-f04do755/tlc.log",
+      "archive": "author/mutants/suspect/witness/runs/run-f04do755/tlc.log",
+      "sha256": "86a762a3c8c35c98049a84a9ad754166253072e2b222fdd4df59c7348d81787c"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/verification/witness/Loop.tla",
+      "archive": "author/mutants/verification/witness/Loop.tla",
+      "sha256": "6f3caac6b9ff678dc58117901d457cbaed3efaebbadc8b15c4598708301e3351"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/verification/witness/Loop.cfg",
+      "archive": "author/mutants/verification/witness/Loop.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/verification/runs/run-pzym1w9u/visited.dump",
+      "archive": "author/mutants/verification/runs/run-pzym1w9u/visited.dump",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/verification/runs/run-pzym1w9u/tlc.log",
+      "archive": "author/mutants/verification/runs/run-pzym1w9u/tlc.log",
+      "sha256": "91d5eca36378446e836f68b22bb022358926714410da50e08d0cfa90039dcf09"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/verification/witness/runs/run-rptcaasf/visited.dump",
+      "archive": "author/mutants/verification/witness/runs/run-rptcaasf/visited.dump",
+      "sha256": "7897caa8e9120a2635b6eaaea92464b686c11a27e53461591a469b9d49f54a83"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/verification/witness/runs/run-rptcaasf/tlc.log",
+      "archive": "author/mutants/verification/witness/runs/run-rptcaasf/tlc.log",
+      "sha256": "b936fbd598608371df82d546c2ee4080eff34ba9eb139317f0940a3430531359"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/dependency/witness/Loop.tla",
+      "archive": "author/mutants/dependency/witness/Loop.tla",
+      "sha256": "5e28c8a3aaf6d803abd1f4236aefd7c918c402944b14e2ae05b741f6af9572a8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/dependency/witness/Loop.cfg",
+      "archive": "author/mutants/dependency/witness/Loop.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/dependency/runs/run-vw41ab7m/visited.dump",
+      "archive": "author/mutants/dependency/runs/run-vw41ab7m/visited.dump",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/dependency/runs/run-vw41ab7m/tlc.log",
+      "archive": "author/mutants/dependency/runs/run-vw41ab7m/tlc.log",
+      "sha256": "a05ea0eb61ca6e4d153379451a3f070926b5c04bec2e4a3028fba78084e61c04"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/dependency/witness/runs/run-61yzbyg1/visited.dump",
+      "archive": "author/mutants/dependency/witness/runs/run-61yzbyg1/visited.dump",
+      "sha256": "928c6c22e4ebd07f0dd6c71f42a435856e36d98a7080e62bb9264d9ab4bd4908"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/dependency/witness/runs/run-61yzbyg1/tlc.log",
+      "archive": "author/mutants/dependency/witness/runs/run-61yzbyg1/tlc.log",
+      "sha256": "a147416ccfb57135f665d3218b6bb09071cbe91bbcce5a87c2a6c4babe6aadb5"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/reset/witness/Loop.tla",
+      "archive": "author/mutants/reset/witness/Loop.tla",
+      "sha256": "a6577d539ec1394a965ff53489eda9894b4ef384785cf4c7a30c65302347dfab"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/reset/witness/Loop.cfg",
+      "archive": "author/mutants/reset/witness/Loop.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/reset/runs/run-9_p73uox/visited.dump",
+      "archive": "author/mutants/reset/runs/run-9_p73uox/visited.dump",
+      "sha256": "caa4e04ce777ebf9f3f1cdf02f89002e339026b64e6b3230c1498650a900f25c"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/reset/runs/run-9_p73uox/tlc.log",
+      "archive": "author/mutants/reset/runs/run-9_p73uox/tlc.log",
+      "sha256": "2603e1c28c858c95a689e14a1c104203d50d9ae687dc901cdac6d4fc5a937acc"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/reset/witness/runs/run-99zkb4jg/visited.dump",
+      "archive": "author/mutants/reset/witness/runs/run-99zkb4jg/visited.dump",
+      "sha256": "c4115ea91f78963f7ea0123bbd6bf8238c2ef69feda3d484350abe52fe14a8e6"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/reset/witness/runs/run-99zkb4jg/tlc.log",
+      "archive": "author/mutants/reset/witness/runs/run-99zkb4jg/tlc.log",
+      "sha256": "2a6d8ffbae6cb9a8563989f1e1163d327c31b28e4404d7fb96f30cd125003e97"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/checks/witness/Loop.tla",
+      "archive": "author/mutants/checks/witness/Loop.tla",
+      "sha256": "9350d1d43c78f23fe3a8af31b36acba22f3925ad4bd008715f32e38aef0df24d"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/checks/witness/Loop.cfg",
+      "archive": "author/mutants/checks/witness/Loop.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/checks/runs/run-p11rlv_p/visited.dump",
+      "archive": "author/mutants/checks/runs/run-p11rlv_p/visited.dump",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/checks/runs/run-p11rlv_p/tlc.log",
+      "archive": "author/mutants/checks/runs/run-p11rlv_p/tlc.log",
+      "sha256": "e86b92c9cbb59bbe5c1d82ee6460b38eb25a3531a2ebe3ac6ff94c6ce576f5dc"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/checks/witness/runs/run-u7wbq2a8/visited.dump",
+      "archive": "author/mutants/checks/witness/runs/run-u7wbq2a8/visited.dump",
+      "sha256": "3dc8f855e0a9b96e67936665cb66e8f9d9e6b2b22b2381a249b0ecc5e3db5c32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/checks/witness/runs/run-u7wbq2a8/tlc.log",
+      "archive": "author/mutants/checks/witness/runs/run-u7wbq2a8/tlc.log",
+      "sha256": "521f66645061121c3d0d334b78dbe9fdb1ea92c3f0b40e002be39956d6ab4cd8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/evidence/witness/Loop.tla",
+      "archive": "author/mutants/evidence/witness/Loop.tla",
+      "sha256": "d456acd304847be8f165ab4eb3fc570fc8601e4c1ffe1fac733ccc79553153de"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/evidence/witness/Loop.cfg",
+      "archive": "author/mutants/evidence/witness/Loop.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/evidence/runs/run-xm2q_2dw/visited.dump",
+      "archive": "author/mutants/evidence/runs/run-xm2q_2dw/visited.dump",
+      "sha256": "34de62cf21c8f5405e491962771868665ce378eda7105f8805032de0ed446731"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/evidence/runs/run-xm2q_2dw/tlc.log",
+      "archive": "author/mutants/evidence/runs/run-xm2q_2dw/tlc.log",
+      "sha256": "00ca55bebabd93143a2917b21e2d1d3bf15969d2e45e993c14cdb220e9fa8c7d"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/evidence/witness/runs/run-k2sk_v7e/visited.dump",
+      "archive": "author/mutants/evidence/witness/runs/run-k2sk_v7e/visited.dump",
+      "sha256": "02b41ef2afdb62bb73f58fb1a04b1be996b75028af9860aa9933fc2d382368c4"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/final/mutants/evidence/witness/runs/run-k2sk_v7e/tlc.log",
+      "archive": "author/mutants/evidence/witness/runs/run-k2sk_v7e/tlc.log",
+      "sha256": "3a6db42f2977c419cc376ce2791c60140077c925b9fe80fbecb9f4ead822cc98"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/evidence.json",
+      "archive": "reviewer/evidence.json",
+      "sha256": "330b56679cf29c689dbd650b31e9e36e167757d7bc8c94091b371f390dcd55f8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/report.md",
+      "archive": "reviewer/report.md",
+      "sha256": "19ffdcab8a510fbe5e4ec6ba1fbff6d7e84ac5f05ba27f0ee5489c0ecd954b91"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/req_baselined/Loop.tla",
+      "archive": "reviewer/req_baselined/Loop.tla",
+      "sha256": "d3233ef8fc9b24f0f82448eeea0316e883c1559285e8c4f6ef5192b6acd598ce"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/req_baselined/Loop.cfg",
+      "archive": "reviewer/req_baselined/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/code_good/Loop.tla",
+      "archive": "reviewer/code_good/Loop.tla",
+      "sha256": "a59a6e18afe98ab196f3a44f024c666e6640ef7e4a3530bcf36e0b38fb9082c1"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/code_good/Loop.cfg",
+      "archive": "reviewer/code_good/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/acceptance_witness/Loop.tla",
+      "archive": "reviewer/acceptance_witness/Loop.tla",
+      "sha256": "3efb27bbe983f6d6ec64ae3eb75bd7ed4dbaf94d2dbd831f6b946fae17cf9038"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/acceptance_witness/Loop.cfg",
+      "archive": "reviewer/acceptance_witness/Loop.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/req_approved/Loop.tla",
+      "archive": "reviewer/req_approved/Loop.tla",
+      "sha256": "c63ddf064fc3e43f53b8bff39862ec6312b8f4d1d3f949dfb97b05b7db856755"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/req_approved/Loop.cfg",
+      "archive": "reviewer/req_approved/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/req_draft/Loop.tla",
+      "archive": "reviewer/req_draft/Loop.tla",
+      "sha256": "bd7160440d0b818a437145bc7a14103ad97ff42368e78f900acb51e3926a3175"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/req_draft/Loop.cfg",
+      "archive": "reviewer/req_draft/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/plan_empty/Loop.tla",
+      "archive": "reviewer/plan_empty/Loop.tla",
+      "sha256": "8683ede599d0456e81ac08ad27ff7cd39e19ff85ab8f53cc0c99c6f272d177c2"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/plan_empty/Loop.cfg",
+      "archive": "reviewer/plan_empty/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/code_mixed/Loop.tla",
+      "archive": "reviewer/code_mixed/Loop.tla",
+      "sha256": "52f03739396cfba3ba803934b9a05607d77e48da6dfb7f1dfb086f678300c197"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/code_mixed/Loop.cfg",
+      "archive": "reviewer/code_mixed/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/req_suspect/Loop.tla",
+      "archive": "reviewer/req_suspect/Loop.tla",
+      "sha256": "1763e3f3928cd85b14d9ac72383e85d7a7769947ffca019087391852eb3fd582"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/req_suspect/Loop.cfg",
+      "archive": "reviewer/req_suspect/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/des_no_approval/Loop.tla",
+      "archive": "reviewer/des_no_approval/Loop.tla",
+      "sha256": "40f64df8ed2d1ab0a5801160d70967934f40115d2181d34878ed3facdaf97071"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/des_no_approval/Loop.cfg",
+      "archive": "reviewer/des_no_approval/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/des_no_approval/runs/run-_yat0g36/visited.dump",
+      "archive": "reviewer/des_no_approval/runs/run-_yat0g36/visited.dump",
+      "sha256": "2df063094cd931b80d85ee3613b3dd3d50cc6e9b001249b0075d5e4ebe573615"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/des_no_approval/runs/run-_yat0g36/tlc.log",
+      "archive": "reviewer/des_no_approval/runs/run-_yat0g36/tlc.log",
+      "sha256": "e5ae2ef1db9d74d365cbe0ff43cecfd971de9c182ca3484593c20d7005ec84c7"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/req_suspect/runs/run-voehludc/visited.dump",
+      "archive": "reviewer/req_suspect/runs/run-voehludc/visited.dump",
+      "sha256": "80864fb321e4d9b59240d8fc80fa991e0db915940d787df58ca719b576e7852b"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/req_suspect/runs/run-voehludc/tlc.log",
+      "archive": "reviewer/req_suspect/runs/run-voehludc/tlc.log",
+      "sha256": "5efbb913feec6b3d35f2ce11c80e4ab9dea31bc16c80cbec0899326553cb7969"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/code_mixed/runs/run-kjp60s3j/visited.dump",
+      "archive": "reviewer/code_mixed/runs/run-kjp60s3j/visited.dump",
+      "sha256": "cc045ef9d683e36cdeac3bd3531e6ec219585dc9dfdd985ccd05ab3d4d68098a"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/code_mixed/runs/run-kjp60s3j/tlc.log",
+      "archive": "reviewer/code_mixed/runs/run-kjp60s3j/tlc.log",
+      "sha256": "2f14bcf54853446a89bc27f7c3b06d95c7979eb45e0a546b6d525f5af61ab8e4"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/plan_empty/runs/run-w4anqnyu/visited.dump",
+      "archive": "reviewer/plan_empty/runs/run-w4anqnyu/visited.dump",
+      "sha256": "de68f821ab6b7fcee28c53c68824e12b0d9c73775098ec18184ac11ad1877e8a"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/plan_empty/runs/run-w4anqnyu/tlc.log",
+      "archive": "reviewer/plan_empty/runs/run-w4anqnyu/tlc.log",
+      "sha256": "7dc1e938013bd928947dc0ea2a4410fb91fc7403cae1879860e471159499b28c"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/req_draft/runs/run-bfvyq8ok/visited.dump",
+      "archive": "reviewer/req_draft/runs/run-bfvyq8ok/visited.dump",
+      "sha256": "ac623ca5e7b8cc722874f3988f80b6eeb8aefac8ac88f3ace45321d65bedc00f"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/req_draft/runs/run-bfvyq8ok/tlc.log",
+      "archive": "reviewer/req_draft/runs/run-bfvyq8ok/tlc.log",
+      "sha256": "03a84c92bc58888501e558a0f3026098c1246bb1c31e3d334aae3db2051dad6e"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/history/HistoryBudget/Loop.tla",
+      "archive": "reviewer/history/HistoryBudget/Loop.tla",
+      "sha256": "67df34604639ee703a618c038169e261e5f78c04cfa4e3c3efa0852a39a1714e"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/history/HistoryBudget/Loop.cfg",
+      "archive": "reviewer/history/HistoryBudget/Loop.cfg",
+      "sha256": "c70c3f3b0d49094ed49f5a5e93eae3006c409ab5316f93ff3d2064a048763620"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/history/VerifiedHistory/Loop.tla",
+      "archive": "reviewer/history/VerifiedHistory/Loop.tla",
+      "sha256": "8803325bf99f5fc2b91dd84a8c0d0146a3f592416cf7edfee1b5cf5cbd32cbb5"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/history/VerifiedHistory/Loop.cfg",
+      "archive": "reviewer/history/VerifiedHistory/Loop.cfg",
+      "sha256": "778ccc819fd4ce66a3a6de71df72ed65c8d4ad42e4b12a541140d0afffa31f78"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/history/CounterHistory/Loop.tla",
+      "archive": "reviewer/history/CounterHistory/Loop.tla",
+      "sha256": "c74d0a91007922756a28e618e3fe9cab0ea6de5261794efd9be1279a5b569ae7"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/history/CounterHistory/Loop.cfg",
+      "archive": "reviewer/history/CounterHistory/Loop.cfg",
+      "sha256": "a0b37ce1e13efc4ceb65d8b6be0c574b672d846c0e92487f4803d2b86f1d0fe0"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/history/CounterHistory/runs/run-lfpi94t7/visited.dump",
+      "archive": "reviewer/history/CounterHistory/runs/run-lfpi94t7/visited.dump",
+      "sha256": "caa4e04ce777ebf9f3f1cdf02f89002e339026b64e6b3230c1498650a900f25c"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/history/CounterHistory/runs/run-lfpi94t7/tlc.log",
+      "archive": "reviewer/history/CounterHistory/runs/run-lfpi94t7/tlc.log",
+      "sha256": "ebe321527a98fbd51488c7a5b574bd125593ecdc95ef4bcc2e79806426619f28"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/history/VerifiedHistory/runs/run-ebn17r8z/visited.dump",
+      "archive": "reviewer/history/VerifiedHistory/runs/run-ebn17r8z/visited.dump",
+      "sha256": "93d8d22af608b3e9db65e9391b1a43b58c452662b4218cdc95e01ed300737119"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/history/VerifiedHistory/runs/run-ebn17r8z/tlc.log",
+      "archive": "reviewer/history/VerifiedHistory/runs/run-ebn17r8z/tlc.log",
+      "sha256": "70cf290e526766dc2f47abed14d9c7423aa3ec6f52dd50ffc45b60dfd8acf369"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/history/HistoryBudget/runs/run-vatxcsmd/visited.dump",
+      "archive": "reviewer/history/HistoryBudget/runs/run-vatxcsmd/visited.dump",
+      "sha256": "08b8f1cbf59af6cc6f7d973c7cba516b57f716610a81c1590301d70a914673a2"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/history/HistoryBudget/runs/run-vatxcsmd/tlc.log",
+      "archive": "reviewer/history/HistoryBudget/runs/run-vatxcsmd/tlc.log",
+      "sha256": "15af2fe1c54f674f517ccef3ec2a245eb4c5238514450ce73dfa5744b37277db"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/req_approved/runs/run-sxgjttg9/visited.dump",
+      "archive": "reviewer/req_approved/runs/run-sxgjttg9/visited.dump",
+      "sha256": "a8e18142227bde0f147215656a04af555fbd606e16bfad3b90cc8705f09a0d23"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/req_approved/runs/run-sxgjttg9/tlc.log",
+      "archive": "reviewer/req_approved/runs/run-sxgjttg9/tlc.log",
+      "sha256": "10245ee353a30536880613d84784cd5bf5060afde1eee01aa29306919b2fe87a"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/acceptance_witness/runs/run-deeli8tb/visited.dump",
+      "archive": "reviewer/acceptance_witness/runs/run-deeli8tb/visited.dump",
+      "sha256": "68096b9db2fc38ed1a025f93b0e430fa05ef658b64883445418098b954244b87"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/acceptance_witness/runs/run-deeli8tb/tlc.log",
+      "archive": "reviewer/acceptance_witness/runs/run-deeli8tb/tlc.log",
+      "sha256": "e2106e395427a4d36dc7b42716e7ba304cede9da483cc9ff8ea51d4de99fbab1"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/controls/limit/Loop.tla",
+      "archive": "reviewer/controls/limit/Loop.tla",
+      "sha256": "261911a7bf4193126d7c7673de0de29f4298da92eba92605caa16b5abd794a9a"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/controls/limit/Loop.cfg",
+      "archive": "reviewer/controls/limit/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/controls/renamed/Loop.tla",
+      "archive": "reviewer/controls/renamed/Loop.tla",
+      "sha256": "c63ddf064fc3e43f53b8bff39862ec6312b8f4d1d3f949dfb97b05b7db856755"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/controls/renamed/Loop.cfg",
+      "archive": "reviewer/controls/renamed/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/controls/approval_metadata/Loop.tla",
+      "archive": "reviewer/controls/approval_metadata/Loop.tla",
+      "sha256": "8dfcfc20b50b85c3e8de0e8c4a4c60dc7b1ff2dc8f67b39458bde5fcbd1f4ad1"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/controls/approval_metadata/Loop.cfg",
+      "archive": "reviewer/controls/approval_metadata/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/controls/approval_metadata/runs/run-_1hy88i7/visited.dump",
+      "archive": "reviewer/controls/approval_metadata/runs/run-_1hy88i7/visited.dump",
+      "sha256": "f41f782b9f9cd0e9fb1df171d7ef691bde67cebc64d270d6e337022e28ffeacb"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/controls/approval_metadata/runs/run-_1hy88i7/tlc.log",
+      "archive": "reviewer/controls/approval_metadata/runs/run-_1hy88i7/tlc.log",
+      "sha256": "234b04a03e61847510f55e3119a24e37e2e3c2ad282fa3255b83ee40ee980cee"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/controls/renamed/runs/run-6gp796un/visited.dump",
+      "archive": "reviewer/controls/renamed/runs/run-6gp796un/visited.dump",
+      "sha256": "a8e18142227bde0f147215656a04af555fbd606e16bfad3b90cc8705f09a0d23"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/controls/renamed/runs/run-6gp796un/tlc.log",
+      "archive": "reviewer/controls/renamed/runs/run-6gp796un/tlc.log",
+      "sha256": "c05659ea392541c8784b788fad4f4d3a898299ce9ef46ca9937b519e1301d7bb"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/controls/limit/runs/run-688bys81/visited.dump",
+      "archive": "reviewer/controls/limit/runs/run-688bys81/visited.dump",
+      "sha256": "f38e177433d0352221b4eaa459accf3f6aaeb050277deb6c360ae194f424904b"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/controls/limit/runs/run-688bys81/tlc.log",
+      "archive": "reviewer/controls/limit/runs/run-688bys81/tlc.log",
+      "sha256": "8c97dcd37fc6f4db27a620da5d13afcbb4d488e7cfcda10483b70ae0c846043a"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/code_good/runs/run-dt5erhno/visited.dump",
+      "archive": "reviewer/code_good/runs/run-dt5erhno/visited.dump",
+      "sha256": "9cc3e2dc18e64e3af80ef4825f2a6e453be0ae71aa2b5be6059c79cb82fa4e46"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/code_good/runs/run-dt5erhno/tlc.log",
+      "archive": "reviewer/code_good/runs/run-dt5erhno/tlc.log",
+      "sha256": "7caca9e29b9e8f16d7d1f78605bf58259b246f781b89bdea836983a2bcb8ca5d"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/req_baselined/runs/run-t0sos982/visited.dump",
+      "archive": "reviewer/req_baselined/runs/run-t0sos982/visited.dump",
+      "sha256": "a8e18142227bde0f147215656a04af555fbd606e16bfad3b90cc8705f09a0d23"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/req_baselined/runs/run-t0sos982/tlc.log",
+      "archive": "reviewer/req_baselined/runs/run-t0sos982/tlc.log",
+      "sha256": "6be65836002ee29f9ac4ceec6870a2213a167adc040bb4fcbafd1f86aafeb3ea"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/evidence/Loop.tla",
+      "archive": "reviewer/mutants/evidence/Loop.tla",
+      "sha256": "7eb5c9e1d0756cf738bba0dd22c1646ec60deddb2f0e3fabd34f0ead9e4ad5e9"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/evidence/Loop.cfg",
+      "archive": "reviewer/mutants/evidence/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/checks/Loop.tla",
+      "archive": "reviewer/mutants/checks/Loop.tla",
+      "sha256": "36b682cfe89bfec73329fc0d4e53a202b1699392246f8898ce8e3c71bd723820"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/checks/Loop.cfg",
+      "archive": "reviewer/mutants/checks/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/reset/Loop.tla",
+      "archive": "reviewer/mutants/reset/Loop.tla",
+      "sha256": "c74d0a91007922756a28e618e3fe9cab0ea6de5261794efd9be1279a5b569ae7"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/reset/Loop.cfg",
+      "archive": "reviewer/mutants/reset/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/dependency/Loop.tla",
+      "archive": "reviewer/mutants/dependency/Loop.tla",
+      "sha256": "73325ed85ec5839b38a21fdc0075ad2564d3282833fc24d5f583dbcc36da3abf"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/dependency/Loop.cfg",
+      "archive": "reviewer/mutants/dependency/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/verification/Loop.tla",
+      "archive": "reviewer/mutants/verification/Loop.tla",
+      "sha256": "8803325bf99f5fc2b91dd84a8c0d0146a3f592416cf7edfee1b5cf5cbd32cbb5"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/verification/Loop.cfg",
+      "archive": "reviewer/mutants/verification/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/suspect/Loop.tla",
+      "archive": "reviewer/mutants/suspect/Loop.tla",
+      "sha256": "9e57c59104e373fa4e9939d8e003891db9f6228c6567c5725b1202e038bf667c"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/suspect/Loop.cfg",
+      "archive": "reviewer/mutants/suspect/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/actor/Loop.tla",
+      "archive": "reviewer/mutants/actor/Loop.tla",
+      "sha256": "0e9a80b242b775c7c83c709a4decb7b6ad83de8cae77f2be987e3f51c9bdd11c"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/actor/Loop.cfg",
+      "archive": "reviewer/mutants/actor/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/budget/Loop.tla",
+      "archive": "reviewer/mutants/budget/Loop.tla",
+      "sha256": "67df34604639ee703a618c038169e261e5f78c04cfa4e3c3efa0852a39a1714e"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/budget/Loop.cfg",
+      "archive": "reviewer/mutants/budget/Loop.cfg",
+      "sha256": "e38c444a54d92b7663286882c439a6665f202fe72681913877abdc81ca22cf32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/budget/witness/Loop.tla",
+      "archive": "reviewer/mutants/budget/witness/Loop.tla",
+      "sha256": "2079429d3e62538d378738d6469f65b3f9c049e7d25d53a660c6f51dc41f753a"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/budget/witness/Loop.cfg",
+      "archive": "reviewer/mutants/budget/witness/Loop.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/budget/runs/run-4bqqor6h/visited.dump",
+      "archive": "reviewer/mutants/budget/runs/run-4bqqor6h/visited.dump",
+      "sha256": "bcbefefc39c940201a94fac113c64e670b55e9dd4c4796da88a3bb40f6b3e1b8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/budget/runs/run-4bqqor6h/tlc.log",
+      "archive": "reviewer/mutants/budget/runs/run-4bqqor6h/tlc.log",
+      "sha256": "969993ad4bce70a1aa64858bbde61b8cf28dbb9e30c6d6efe427bc1b74c102c1"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/budget/witness/runs/run-eepwq19b/visited.dump",
+      "archive": "reviewer/mutants/budget/witness/runs/run-eepwq19b/visited.dump",
+      "sha256": "e998248faa4c749c736d4f707bfea306579110589e98db74a5b69c00cb52a6d8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/budget/witness/runs/run-eepwq19b/tlc.log",
+      "archive": "reviewer/mutants/budget/witness/runs/run-eepwq19b/tlc.log",
+      "sha256": "1402805b7028aab86a2b1602632a6dfe99f061ea6f81e6ef99a365591c1dae8f"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/actor/witness/Loop.tla",
+      "archive": "reviewer/mutants/actor/witness/Loop.tla",
+      "sha256": "3d6348e6eb7049ada0b6c77910e9757bd71675fbdd08d248194e3f1d99f65910"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/actor/witness/Loop.cfg",
+      "archive": "reviewer/mutants/actor/witness/Loop.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/actor/runs/run-fz_4lxrb/visited.dump",
+      "archive": "reviewer/mutants/actor/runs/run-fz_4lxrb/visited.dump",
+      "sha256": "34de62cf21c8f5405e491962771868665ce378eda7105f8805032de0ed446731"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/actor/runs/run-fz_4lxrb/tlc.log",
+      "archive": "reviewer/mutants/actor/runs/run-fz_4lxrb/tlc.log",
+      "sha256": "b10d445d28a4364fdcc9a018c1a295f34701145d604354ac9f0a18e511bcfc90"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/actor/witness/runs/run-a27qc0z1/visited.dump",
+      "archive": "reviewer/mutants/actor/witness/runs/run-a27qc0z1/visited.dump",
+      "sha256": "02b41ef2afdb62bb73f58fb1a04b1be996b75028af9860aa9933fc2d382368c4"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/actor/witness/runs/run-a27qc0z1/tlc.log",
+      "archive": "reviewer/mutants/actor/witness/runs/run-a27qc0z1/tlc.log",
+      "sha256": "c2761baed9ae1c5797826a7deb758a147227d23403b617254d169b96e31e3edf"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/suspect/witness/Loop.tla",
+      "archive": "reviewer/mutants/suspect/witness/Loop.tla",
+      "sha256": "f502a40547743ef536ee9a7a6200f1a91ac1f7d75e60a84768bff3485c0c97ae"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/suspect/witness/Loop.cfg",
+      "archive": "reviewer/mutants/suspect/witness/Loop.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/suspect/runs/run-xlsevunq/visited.dump",
+      "archive": "reviewer/mutants/suspect/runs/run-xlsevunq/visited.dump",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/suspect/runs/run-xlsevunq/tlc.log",
+      "archive": "reviewer/mutants/suspect/runs/run-xlsevunq/tlc.log",
+      "sha256": "1b092cdf61ec4c1645a5e42f7c5c4f2b1e39fe86a4a21dd9dd52cefdea19f16b"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/suspect/witness/runs/run-6_g_rugr/visited.dump",
+      "archive": "reviewer/mutants/suspect/witness/runs/run-6_g_rugr/visited.dump",
+      "sha256": "726859f8df9516110460892ab98ff9f92cf021baf9548636ff96d7870a579bef"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/suspect/witness/runs/run-6_g_rugr/tlc.log",
+      "archive": "reviewer/mutants/suspect/witness/runs/run-6_g_rugr/tlc.log",
+      "sha256": "0530a7dde99ffa255194609e61d4fd0240aa2db55f7ba2e2044d024fa3501f0e"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/verification/witness/Loop.tla",
+      "archive": "reviewer/mutants/verification/witness/Loop.tla",
+      "sha256": "6f3caac6b9ff678dc58117901d457cbaed3efaebbadc8b15c4598708301e3351"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/verification/witness/Loop.cfg",
+      "archive": "reviewer/mutants/verification/witness/Loop.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/verification/runs/run-q4ydckre/visited.dump",
+      "archive": "reviewer/mutants/verification/runs/run-q4ydckre/visited.dump",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/verification/runs/run-q4ydckre/tlc.log",
+      "archive": "reviewer/mutants/verification/runs/run-q4ydckre/tlc.log",
+      "sha256": "3d365199170bb67e2ff1f5e0aff2d44e3e01d8fc8ac1764d37cfa1d2bc9c7906"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/verification/witness/runs/run-vdu_s0su/visited.dump",
+      "archive": "reviewer/mutants/verification/witness/runs/run-vdu_s0su/visited.dump",
+      "sha256": "7897caa8e9120a2635b6eaaea92464b686c11a27e53461591a469b9d49f54a83"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/verification/witness/runs/run-vdu_s0su/tlc.log",
+      "archive": "reviewer/mutants/verification/witness/runs/run-vdu_s0su/tlc.log",
+      "sha256": "f06ea096d719dae508c70d7f0186a927b54b7616842528cfa132848125fd4a45"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/dependency/witness/Loop.tla",
+      "archive": "reviewer/mutants/dependency/witness/Loop.tla",
+      "sha256": "5e28c8a3aaf6d803abd1f4236aefd7c918c402944b14e2ae05b741f6af9572a8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/dependency/witness/Loop.cfg",
+      "archive": "reviewer/mutants/dependency/witness/Loop.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/dependency/runs/run-ebwqcxqs/visited.dump",
+      "archive": "reviewer/mutants/dependency/runs/run-ebwqcxqs/visited.dump",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/dependency/runs/run-ebwqcxqs/tlc.log",
+      "archive": "reviewer/mutants/dependency/runs/run-ebwqcxqs/tlc.log",
+      "sha256": "4d61d4220a7bafac32497c150efa95f51803830f70e59ff89776227e7ea22a63"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/dependency/witness/runs/run-avf420ks/visited.dump",
+      "archive": "reviewer/mutants/dependency/witness/runs/run-avf420ks/visited.dump",
+      "sha256": "928c6c22e4ebd07f0dd6c71f42a435856e36d98a7080e62bb9264d9ab4bd4908"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/dependency/witness/runs/run-avf420ks/tlc.log",
+      "archive": "reviewer/mutants/dependency/witness/runs/run-avf420ks/tlc.log",
+      "sha256": "ef88647a37703b3c9eb7d2c6b1ef58581808117feda9f33db0b9bd4e75e7c9c5"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/reset/witness/Loop.tla",
+      "archive": "reviewer/mutants/reset/witness/Loop.tla",
+      "sha256": "a6577d539ec1394a965ff53489eda9894b4ef384785cf4c7a30c65302347dfab"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/reset/witness/Loop.cfg",
+      "archive": "reviewer/mutants/reset/witness/Loop.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/reset/runs/run-86jbrakt/visited.dump",
+      "archive": "reviewer/mutants/reset/runs/run-86jbrakt/visited.dump",
+      "sha256": "caa4e04ce777ebf9f3f1cdf02f89002e339026b64e6b3230c1498650a900f25c"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/reset/runs/run-86jbrakt/tlc.log",
+      "archive": "reviewer/mutants/reset/runs/run-86jbrakt/tlc.log",
+      "sha256": "21e7103b571117e1a4e8104b6305b7491b63ccdb4e1c1f8150bd7b3991fd1451"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/reset/witness/runs/run-7yriv6us/visited.dump",
+      "archive": "reviewer/mutants/reset/witness/runs/run-7yriv6us/visited.dump",
+      "sha256": "c4115ea91f78963f7ea0123bbd6bf8238c2ef69feda3d484350abe52fe14a8e6"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/reset/witness/runs/run-7yriv6us/tlc.log",
+      "archive": "reviewer/mutants/reset/witness/runs/run-7yriv6us/tlc.log",
+      "sha256": "8dcced988a524905c90c9e653c3de2cdb077ed253ae85e9d3bb507549b542399"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/checks/witness/Loop.tla",
+      "archive": "reviewer/mutants/checks/witness/Loop.tla",
+      "sha256": "9350d1d43c78f23fe3a8af31b36acba22f3925ad4bd008715f32e38aef0df24d"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/checks/witness/Loop.cfg",
+      "archive": "reviewer/mutants/checks/witness/Loop.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/checks/runs/run-mwrc9eh2/visited.dump",
+      "archive": "reviewer/mutants/checks/runs/run-mwrc9eh2/visited.dump",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/checks/runs/run-mwrc9eh2/tlc.log",
+      "archive": "reviewer/mutants/checks/runs/run-mwrc9eh2/tlc.log",
+      "sha256": "1ed90ff5795cc6edeedbd3ea358699c9af8f5fa7b18324afc8fb1d384b6efd6d"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/checks/witness/runs/run-gm65pxoc/visited.dump",
+      "archive": "reviewer/mutants/checks/witness/runs/run-gm65pxoc/visited.dump",
+      "sha256": "3dc8f855e0a9b96e67936665cb66e8f9d9e6b2b22b2381a249b0ecc5e3db5c32"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/checks/witness/runs/run-gm65pxoc/tlc.log",
+      "archive": "reviewer/mutants/checks/witness/runs/run-gm65pxoc/tlc.log",
+      "sha256": "ef595f1f3d7728591d33249c78cabc703782a2e38039fdb7b1a31bdad581096f"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/evidence/witness/Loop.tla",
+      "archive": "reviewer/mutants/evidence/witness/Loop.tla",
+      "sha256": "d456acd304847be8f165ab4eb3fc570fc8601e4c1ffe1fac733ccc79553153de"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/evidence/witness/Loop.cfg",
+      "archive": "reviewer/mutants/evidence/witness/Loop.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/evidence/runs/run-c91n406_/visited.dump",
+      "archive": "reviewer/mutants/evidence/runs/run-c91n406_/visited.dump",
+      "sha256": "34de62cf21c8f5405e491962771868665ce378eda7105f8805032de0ed446731"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/evidence/runs/run-c91n406_/tlc.log",
+      "archive": "reviewer/mutants/evidence/runs/run-c91n406_/tlc.log",
+      "sha256": "8b86f2ee7275c7f60d1231d6cc1762887e9a90c5203005136a5ee89f64c00b96"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/evidence/witness/runs/run-s5l4uzf0/visited.dump",
+      "archive": "reviewer/mutants/evidence/witness/runs/run-s5l4uzf0/visited.dump",
+      "sha256": "02b41ef2afdb62bb73f58fb1a04b1be996b75028af9860aa9933fc2d382368c4"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/reviewer-final/mutants/evidence/witness/runs/run-s5l4uzf0/tlc.log",
+      "archive": "reviewer/mutants/evidence/witness/runs/run-s5l4uzf0/tlc.log",
+      "sha256": "04a72c07db998c4932bc876776cb0feed71314fb62b4790abd2f342aac4156f7"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/green-monitors.log",
+      "archive": "tdd/green-monitors.log",
+      "sha256": "513586fe566aa2cb00309120798add679018a25e0683bb2d798787228b766007"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/first-unit.log",
+      "archive": "tdd/first-unit.log",
+      "sha256": "9528f7870ec6b92fbe7e405e4dc50551631b23e43bfc0eb336a0e15d704219a1"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/green-review-unit-final.log",
+      "archive": "tdd/green-review-unit-final.log",
+      "sha256": "08a5e536135df75514a2e0bc353edda4a582e6a9a360d2e681e638e922897234"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/red-collection.log",
+      "archive": "tdd/red-collection.log",
+      "sha256": "a80ca16761ce6ef04c92cca0d0b3faa8d91cda842a99be2c9443648971d56d56"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/green-review-unit.log",
+      "archive": "tdd/green-review-unit.log",
+      "sha256": "f1f4b532de2a53261011b405b2025360de6021c41416277d118784451a02d30a"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/consistency.log",
+      "archive": "tdd/consistency.log",
+      "sha256": "2ffcaefa1b439aa723954c4600a4c5d6d81586ab2e0a17dadc6b8dc340f379db"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/first-integration.log",
+      "archive": "tdd/first-integration.log",
+      "sha256": "50d1134cb2a6fbbc09e7c4ca7021aca7abae6b168a7ba0b0618df7c1920f9e67"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/red-monitors.log",
+      "archive": "tdd/red-monitors.log",
+      "sha256": "276bf07beb73402d11614b0a84ff0901b6e2c615b32b3560dbd6d95242046198"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/red-review.log",
+      "archive": "tdd/red-review.log",
+      "sha256": "de3524fa7f57d97f742d7efa74455ca746859e3b6b698c00ebac77179537c78d"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/green-focused.log",
+      "archive": "tdd/green-focused.log",
+      "sha256": "83c8620075c9c7dd6a0537f0e0d2d2ed576c0077eec33086eedfbde3e380b5f4"
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-02/regression-final.log",
+      "archive": "tdd/regression-final.log",
+      "sha256": "435742ce8d2b06e531f3e6095aec9393a40a531d98b50832a39ba3317c68cba4"
+    }
+  ]
+}
