@@ -64,6 +64,8 @@ def _expression(text, model, record, context=None):
                 return bound[name], 'record'
             if context is not None and name == 'e':
                 return record, 'record'
+            if context is not None and context.get('catalog') and name == 'proposed_predecessor':
+                return '"none"', 'str'
             if name in FIELDS:
                 return f'{record}.{name}', FIELDS[name]
             if name in model['parameters'] and type(model['parameters'][name]) in (int, bool):
@@ -73,13 +75,26 @@ def _expression(text, model, record, context=None):
                 return literal(name), 'str'
             raise ProjectionError(f'Nazwa poza lokalnym wycinkiem: {name}')
         if context is not None:
+            deps_expression = f'Deps({record}' + (', ' + context['world'] if context.get('catalog') else '') + ')'
             if op == 'call' and node[2] == (('name', 'e'),):
                 if node[1] == 'checks_ok':
-                    return 'checks', 'bool'
+                    return context.get('checks', 'checks'), 'bool'
                 if node[1] == 'deps':
-                    return f'Deps({record})', 'records'
+                    return deps_expression, 'records'
                 if node[1] == 'type':
                     return f'Types[{record}.type]', 'type_record'
+            if context.get('catalog') and op == 'call':
+                world = context['world']
+                if node[1] == 'item' and len(node[2]) == 1:
+                    ident, kind = visit(node[2][0], bound)
+                    if kind != 'str':
+                        raise ProjectionError('item wymaga identyfikatora.')
+                    return f'Lookup({world}, {ident})', 'record'
+                if node[2] == (('name', 'e'), ('attr', ('name', 'e'), 'depends_on')):
+                    if node[1] == 'dependency_types_ok':
+                        return f'DependencyTypesOK({world}, {record}, {record}.depends_on)', 'bool'
+                    if node[1] == 'acyclic_dependencies':
+                        return 'GraphAcyclic', 'bool'
             if op == 'attr':
                 parent, kind = visit(node[1], bound)
                 field = node[2]
@@ -102,7 +117,7 @@ def _expression(text, model, record, context=None):
                 body, kind = visit(node[3], bound | {'d': 'dep'})
                 if kind != 'bool':
                     raise ProjectionError('Treść forall musi być bool.')
-                return f'(\\A dep \\in Deps({record}): {body})', 'bool'
+                return f'(\\A dep \\in {deps_expression}: {body})', 'bool'
         if op == 'not':
             value, kind = visit(node[1], bound)
             if kind != 'bool':
@@ -119,7 +134,9 @@ def _expression(text, model, record, context=None):
     return visit(tree)
 
 
-def compile_action(model, transition_id, *, context=None, name='LocalAction'):
+def compile_action(model, transition_id, *, context=None, name='LocalAction', catalog=False):
+    if catalog:
+        context = {'catalog': True, 'world': 'before', 'checks': 'command.checks'}
     if not re.fullmatch(r'[A-Za-z_][A-Za-z_0-9]*', name):
         raise ProjectionError('Niepoprawna nazwa operatora TLA+.')
     if set(model['item_variables']) | {'id', 'type'} != set(FIELDS):
@@ -131,8 +148,13 @@ def compile_action(model, transition_id, *, context=None, name='LocalAction'):
     allowed = {'id', 'name', 'from', 'to', 'actor', 'guard', 'effects', 'iso', 'description'}
     if context is not None:
         allowed.add('evidence')
-        if t.get('evidence') not in (None, 'DEC z cytatem użytkownika'):
+        evidence_types = (None, 'DEC z cytatem użytkownika') + (('commit lub tag na polecenie użytkownika',) if catalog else ())
+        if t.get('evidence') not in evidence_types:
             raise ProjectionError('Nieobsługiwany rodzaj evidence w E3.2.')
+    if catalog:
+        allowed.add('arguments')
+        if 'arguments' in t and t['arguments'] != {'predecessor': {'bind': 'proposed_predecessor', 'type': 'optional_item_id', 'default': 'none'}}:
+            raise ProjectionError('E3.3 obsługuje wyłącznie domyślny predecessor=none.')
     if set(t) - allowed:
         raise ProjectionError('Metadane wykonawcze przejścia poza wycinkiem E3.1.')
     actors = [t['actor']] if isinstance(t['actor'], str) else t['actor']
@@ -142,14 +164,16 @@ def compile_action(model, transition_id, *, context=None, name='LocalAction'):
         raise ProjectionError('Niepoprawne stany wejściowe.')
     if t['to'] not in model['item_states'] and t['to'] != '=':
         raise ProjectionError('Nieobsługiwany stan docelowy.')
-    guard, kind = _expression(t['guard'], model, 'before', context)
+    record = 'before[command.item]' if catalog else 'before'
+    guard, kind = _expression(t['guard'], model, record, context)
     if kind != 'bool':
         raise ProjectionError('Warunek musi mieć typ bool.')
-    states = ['s0 == ' + ('before' if t['to'] == '=' else f'[before EXCEPT !.state = {literal(t["to"])}]')]
+    states = ['s0 == ' + (record if t['to'] == '=' else f'[{record} EXCEPT !.state = {literal(t["to"])}]')]
     if not isinstance(t['effects'], list):
         raise ProjectionError('effects musi być listą.')
     for i, effect in enumerate(t['effects'], 1):
-        match = re.fullmatch(r'(version|rejections|suspect)\s*:=\s*(.+)', effect)
+        targets = 'version|rejections|suspect' + ('|predecessor' if catalog else '')
+        match = re.fullmatch(r'(' + targets + r')\s*:=\s*(.+)', effect)
         if not match:
             raise ProjectionError(f'Skutek poza lokalnym wycinkiem: {effect}')
         target, expression = match.groups()
@@ -157,12 +181,15 @@ def compile_action(model, transition_id, *, context=None, name='LocalAction'):
         if kind != FIELDS[target]:
             raise ProjectionError(f'Niepoprawny typ przypisania do {target}.')
         states.append(f's{i} == [s{i-1} EXCEPT !.{target} = {code}]')
-    args = 'before, after, actor' + (', checks, evidence' if context is not None else '')
-    evidence_guard = ['    /\\ evidence'] if context is not None and t.get('evidence') else []
+    args = 'before, after, command' if catalog else 'before, after, actor' + (', checks, evidence' if context is not None else '')
+    actor = 'command.actor' if catalog else 'actor'
+    evidence_guard = ['    /\\ ' + ('command.evidence' if catalog else 'evidence')] if context is not None and t.get('evidence') else []
+    outcome = 'LET ' + '\n                   '.join(states) + f'\n               IN s{len(t["effects"])}'
+    if catalog:
+        outcome = '[before EXCEPT ![command.item] = ' + outcome + ']'
     return '\n'.join([f'{name}({args}) ==',
-        f'    /\\ actor \\in {literal(actors)}', f'    /\\ before.state \\in {literal(t["from"])}',
-        f'    /\\ {guard}', *evidence_guard, '    /\\ after = LET ' + '\n                   '.join(states),
-        f'               IN s{len(t["effects"])}'])
+        f'    /\\ {actor} \\in {literal(actors)}', f'    /\\ {record}.state \\in {literal(t["from"])}',
+        f'    /\\ {guard}', *evidence_guard, '    /\\ after = ' + outcome])
 
 
 def render_probe(model, transition_id, cases):

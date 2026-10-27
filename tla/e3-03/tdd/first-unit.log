@@ -1,0 +1,20 @@
+..........F                                                              [100%]
+=================================== FAILURES ===================================
+__________________________ test_help_and_missing_tool __________________________
+
+tmp_path = PosixPath('/private/var/folders/r4/9rd28l515q59c0x7h1xwgbvc0000gn/T/pytest-of-michal/pytest-440/test_help_and_missing_tool0')
+
+    def test_help_and_missing_tool(tmp_path):
+        script = ROOT / 'scripts/run_e3_catalog.py'
+        p = subprocess.run([sys.executable,str(script),'--help'],capture_output=True,text=True)
+        assert p.returncode == 0 and '--java' in p.stdout
+        p = subprocess.run([sys.executable,str(script),'--jar',str(tmp_path/'missing'),'--output',str(tmp_path/'out')],capture_output=True,text=True)
+>       assert p.returncode == 2 and 'JAR' in p.stderr
+E       assert (2 == 2 and 'JAR' in "E3.3: [Errno 2] No such file or directory: '/Users/michal/PycharmProjects/iso-model-state/docs/E3-03-WYROCZNIA.md'\n")
+E        +  where 2 = CompletedProcess(args=['/Users/michal/PycharmProjects/iso-model-state/.venv/bin/python', '/Users/michal/PycharmProject..."E3.3: [Errno 2] No such file or directory: '/Users/michal/PycharmProjects/iso-model-state/docs/E3-03-WYROCZNIA.md'\n").returncode
+E        +  and   "E3.3: [Errno 2] No such file or directory: '/Users/michal/PycharmProjects/iso-model-state/docs/E3-03-WYROCZNIA.md'\n" = CompletedProcess(args=['/Users/michal/PycharmProjects/iso-model-state/.venv/bin/python', '/Users/michal/PycharmProject..."E3.3: [Errno 2] No such file or directory: '/Users/michal/PycharmProjects/iso-model-state/docs/E3-03-WYROCZNIA.md'\n").stderr
+
+tests/test_tla_catalog.py:56: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_tla_catalog.py::test_help_and_missing_tool - assert (2 == 2...
+1 failed, 10 passed, 1 deselected in 2.17s

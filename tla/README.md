@@ -58,3 +58,23 @@ E3.2 rozszerza translator o T01/T02, stałe zależności, metadane typu oraz jaw
 Używa tego samego toolchainu i kodów 0/1/2/3 co E3.1. Katalog wyjściowy musi być nowy albo pusty. Runner wykonuje 31 uruchomień TLC, każde z limitem do 60 s; nie edytować źródeł w czasie badania. Hash wejść jest kontrolowany przed i po wykonaniu; zmiana unieważnia wynik. Nowy katalog zachowuje poprzedni komplet dowodów. Ustawienia `--java` i `--jar` działają tak jak wyżej; automatyczne pobieranie nie występuje.
 
 Osiem kontekstów z syntetycznego Init, trzy reguły i głębokość 8 nie stanowią pełnej eksploracji procesu. W szczególności koniec w verified dla DES/CODE nie oznacza zakleszczenia: T04 jest poza wycinkiem. Brak dowodu to bool false reprezentujący nieobecne pole evidence; tekst `"false"` jest błędem wejścia. Wyniki w `tla/e3-02/` obejmują surowe dowody autora i niezależnego recenzenta, z przenośnym manifestem. Archiwum E3.1 pozostaje zapisem wcześniejszej wersji.
+
+## Katalog PLAN–REQ — E3.3
+
+[Raport](../docs/E3-03-RAPORT.md), [mapowanie](../docs/E3-03-MAPOWANIE.md), [niezależna wyrocznia](../docs/E3-03-WYROCZNIA.md). T00–T04 działają na pełnym ośmioelementowym katalogu, z dwoma aktywnymi produktami. Init pochodzi z modelu; dojrzałość zależności zmienia się w toku badania. Topologia i sześć pozostałych produktów są zamrożone, a T00 używa wyłącznie domyślnego predecessor=none.
+
+```sh
+.venv/bin/python scripts/run_e3_catalog.py --help
+.venv/bin/python scripts/run_e3_catalog.py --output artifacts/e3-03/reproduction
+```
+
+Ten sam toolchain, limity i kody zakończenia co wyżej. Runner wykonuje 27 uruchomień TLC, porównuje pełne zbiory stanów z Pythonem i niezależną wyrocznią, zachowuje świadek ośmiu kroków oraz dwie osobne odmowy. Źródła muszą pozostać niezmienne podczas przebiegu. Katalog wyniku musi być nowy albo pusty.
+
+Surowe dowody obu odtworzeń znajdują się w `e3-03/author.tar.gz` i `e3-03/reviewer.tar.gz`. [Manifest](e3-03/manifest.json) podaje SHA-256 każdego archiwum i każdego pliku wewnątrz oraz ścieżkę oryginalną. Archiwa zachowują bajty modułów, konfiguracji, logów, dump i wyników JSON; pomijają wyłącznie roboczy katalog TLC `states/`. Czytelne podsumowania są obok archiwów. Przykład odczytu bez rozpakowania:
+
+```sh
+tar -xOf tla/e3-03/author.tar.gz evidence.json
+tar -xOf tla/e3-03/author.tar.gz baseline/Catalog.tla
+```
+
+Wynik nie dowodzi całego procesu, nie bada L przy F ani nie zamyka E3. Historyczne archiwa E3.1/E3.2 pozostają niezmienione.

@@ -1,0 +1,25 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+__________ test_history_does_not_infer_approval_from_a_mutated_create __________
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+tmp_path = PosixPath('/private/var/folders/r4/9rd28l515q59c0x7h1xwgbvc0000gn/T/pytest-of-michal/pytest-441/test_history_does_not_infer_ap0')
+
+    def test_history_does_not_infer_approval_from_a_mutated_create(model,tmp_path):
+        from argparse import Namespace
+        from run_e3_catalog import load_oracle,run_module
+        oracle=load_oracle();model['item_transitions'][0]['to']='approved'
+        module,cfg=render_catalog(model,oracle.initial_items(),oracle.tla_oracle())
+        cfg='\n'.join(line for line in cfg.splitlines() if not line.startswith('INVARIANT ') or line=='INVARIANT ApprovedHistory')+'\n'
+        result=run_module((module,cfg),tmp_path,Namespace(java='/Applications/PyCharm.app/Contents/jbr/Contents/Home/bin/java',jar=ROOT/'artifacts/tools/tla/1.7.4/tla2tools.jar',timeout=60))
+>       assert result['status']=='invariant_violation' and result['invariant']=='ApprovedHistory',result
+E       AssertionError: {'status': 'tool_error', 'returncode': 150, 'message_codes': [2185, 2186, 2187, 2219, 2220, 2262, ...], 'invariant': None, ...}
+E       assert ('tool_error' == 'invariant_violation'
+E         
+E         - invariant_violation
+E         + tool_error)
+
+tests/test_tla_catalog.py:89: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_tla_catalog.py::test_history_does_not_infer_approval_from_a_mutated_create
+1 failed, 15 deselected in 2.09s

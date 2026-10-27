@@ -1,0 +1,2041 @@
+{
+  "format_version": 1,
+  "source_sha256": "e16b2d1a2e35289be0e4ea630b0360ab4a88a0f35912b37f0bf0c49593854eb9",
+  "source_files": {
+    "model/process.yaml": "2d329822e239555c1642d0a5a20aae0eb28fee17a6f2ff13968e48d7f428fc07",
+    "tools/tla-toolchain.json": "9e53afe62b357304560f0788693c10ce19c7fb2434f09639f54c50c34165b319",
+    "pyproject.toml": "5cfe92a551a2809ce03c107b3c665510149e7fd3ac8ceba154ca37a76174e82e",
+    "uv.lock": "027a3da0a1f3fbd763d5b9b7c8a8a71229b35202efe60d3d97e4e60f4ce9897a",
+    "scripts/run_e3_catalog.py": "5d96a2250ed09ea63b151057a3e6bd596f33ffaa525ed345391c92cd4fd3d6db",
+    "tests/test_tla_catalog.py": "05fa2942d68720b37aca8956b496511cfd7719d21febe6b5db4c95a8279413df",
+    "tests/fixtures/e3/catalog_oracle.py": "d725f86bfc9eb3ea0a71908fb6f43271bcdc8aa8df9c3ef1b4727f53ed4b7087",
+    "docs/E3-03-MAPOWANIE.md": "07bea5948e14e7c195444db7661f7f87c984b832c777350c35c48255acb2de31",
+    "docs/E3-03-WYROCZNIA.md": "23e16d6c97a1d939c6237744ccf541daf6ba5cdbd7a3e3019aa5bcf230ad01a2",
+    "src/isomodel/__init__.py": "ae0b53f3627b7e31691e724c264be16793b4f41d13d1b82571f32345a7229a29",
+    "src/isomodel/dependencies.py": "93015d7f47fe857afc7e5faf62e134e03518e2d2162dba2c7a9db21248fd62c1",
+    "src/isomodel/evidence.py": "b9f6f7cdcf103a728b312d2075ffdd0a77335267c2ae6623d5a2759aa4699e3b",
+    "src/isomodel/execution.py": "0180a0a4f80577709e44413a1db492cfce25e1b55d211b5c710354e1082fb197",
+    "src/isomodel/exploration.py": "43101db82742b51d6a65412f71cce7d1288a96ba4cbfe386db35b34df8015cbb",
+    "src/isomodel/expressions.py": "98a534f87f04dc1daa34f75a5698e919317bfeb5c4d6cf6901a89fc22bf77ac8",
+    "src/isomodel/graph.py": "422258394eaf2fb448692376453eca16cb8e3665f81331a39ebe9857b893dce2",
+    "src/isomodel/hardening.py": "be7d5e6fe5200ec8918d42c685bafb736ba68ad57496d831001d35c1564429bc",
+    "src/isomodel/loader.py": "a4ee8d4ac63eede378c02984a226dc3ba06ae785f5d5be7af1b7cbd3d259c4ee",
+    "src/isomodel/probes.py": "c80d9f768da70ca567260e9e5926e874291903d141e05f3f9194cd0c87254862",
+    "src/isomodel/reporting.py": "4f77e9c83f6eb701b41012d3f6342091fff6ff61c113577b13c4418340a99909",
+    "src/isomodel/safety.py": "9c4a2b2127a557e86954b4889d78f6b6f95c29549016e02b41c7d3e67718292f",
+    "src/isomodel/tla_catalog.py": "76ded46eda77373c6c69c0ae9c9286dbe1680c6b731c961c8a608141c3e22907",
+    "src/isomodel/tla_loop.py": "97c0eafe2c2cd1456b04ba2a73c28ba74f82816e53fbc8ea06fbdb12f67baef8",
+    "src/isomodel/tla_projection.py": "857d65de74bc4a9ed6ab26c55c7beb9024845ce0d147e812c20f202c4c66c917",
+    "src/isomodel/tlc.py": "a543da443779ed456cd8c465287bc0791f6f8fe092f075f64c3cc89c0e548de0"
+  },
+  "archives": {
+    "author.tar.gz": {
+      "sha256": "937a3b8b5e579e3477e3cdd25ce5ef41a01fd9b16bc6f69395c2c196a9ad69bf",
+      "bytes": 165352,
+      "files": 137
+    },
+    "reviewer.tar.gz": {
+      "sha256": "1ea217299418759b7ab1bcc3b7c1234c1bf867c655a0c3806366d94aeca04216",
+      "bytes": 165362,
+      "files": 137
+    }
+  },
+  "files": [
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/baseline/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "baseline/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/baseline/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "baseline/Catalog.tla",
+      "sha256": "86a62422bfc5386c0c89072ebb186ecd7ead505bda6931c410ca280442fedea6",
+      "bytes": 19275
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/baseline/runs/run-0ral85qh/result.json",
+      "archive": "author.tar.gz",
+      "member": "baseline/runs/run-0ral85qh/result.json",
+      "sha256": "198389e2467cdadc42966755ff37a13350f2c92301b8ced4c7ca066d71dc0453",
+      "bytes": 2258
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/baseline/runs/run-0ral85qh/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "baseline/runs/run-0ral85qh/tlc.log",
+      "sha256": "26115ecf1b7915261acff6ea82bdee930df49c22131c497664ab30963e915817",
+      "bytes": 2276
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/baseline/runs/run-0ral85qh/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "baseline/runs/run-0ral85qh/visited.dump",
+      "sha256": "7b3277506097086718fcdac3adf8e3c123c8545316bc84adaa37fd87ac9a94dc",
+      "bytes": 114229
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/controls/created_version/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "controls/created_version/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/controls/created_version/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "controls/created_version/Catalog.tla",
+      "sha256": "dd75a55eb1e2c816a4ce807ccfa8e61b711d5c7c6eb7945deed72da4072633cb",
+      "bytes": 19275
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/controls/created_version/runs/run-lahtg58o/result.json",
+      "archive": "author.tar.gz",
+      "member": "controls/created_version/runs/run-lahtg58o/result.json",
+      "sha256": "2ca30322207c29f4fc8d0cf3a0fd875192d7cb36af0c6b1e5e60ce21f8ad3451",
+      "bytes": 2354
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/controls/created_version/runs/run-lahtg58o/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "controls/created_version/runs/run-lahtg58o/tlc.log",
+      "sha256": "bec9f7302ad2c095c9729d1a6d9fd7e197d3dcfdc4b85af36d3743729007d149",
+      "bytes": 2292
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/controls/created_version/runs/run-lahtg58o/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "controls/created_version/runs/run-lahtg58o/visited.dump",
+      "sha256": "adb29b2327d95e62aa4257555508d07cd17d152e282777c0f11ba60807882d27",
+      "bytes": 114229
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/controls/limit/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "controls/limit/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/controls/limit/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "controls/limit/Catalog.tla",
+      "sha256": "ddff103625f7d13125767571f751427c1c96cda03c668dbead1c5fa348bf3f90",
+      "bytes": 19275
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/controls/limit/runs/run-9q5n6vba/result.json",
+      "archive": "author.tar.gz",
+      "member": "controls/limit/runs/run-9q5n6vba/result.json",
+      "sha256": "fdbb1be97757dee7af936287c4e3cb32427ca6adef7f526b7650712cc9def3a0",
+      "bytes": 2294
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/controls/limit/runs/run-9q5n6vba/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "controls/limit/runs/run-9q5n6vba/tlc.log",
+      "sha256": "71be9016be8afcdd008d86bb75a7edc8e9cb7cbb96ff4e151193e9de54a517f2",
+      "bytes": 2281
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/controls/limit/runs/run-9q5n6vba/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "controls/limit/runs/run-9q5n6vba/visited.dump",
+      "sha256": "3f6a3de9e1fbb301ab92642b069b68c7143ba74e6b3ceb6710b4620d9eee178c",
+      "bytes": 57708
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/controls/renamed/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "controls/renamed/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/controls/renamed/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "controls/renamed/Catalog.tla",
+      "sha256": "86a62422bfc5386c0c89072ebb186ecd7ead505bda6931c410ca280442fedea6",
+      "bytes": 19275
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/controls/renamed/runs/run-4w5m79vp/result.json",
+      "archive": "author.tar.gz",
+      "member": "controls/renamed/runs/run-4w5m79vp/result.json",
+      "sha256": "62334c0bbe1f9395f5f1127f2d8abbf9488cfd44bbae9b4ce6a5a71f205ba2a9",
+      "bytes": 2306
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/controls/renamed/runs/run-4w5m79vp/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "controls/renamed/runs/run-4w5m79vp/tlc.log",
+      "sha256": "6c5662e29ede3b723bdc14c0af53d20df328a0403c3ef23ba27bceb852638659",
+      "bytes": 2284
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/controls/renamed/runs/run-4w5m79vp/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "controls/renamed/runs/run-4w5m79vp/visited.dump",
+      "sha256": "7b3277506097086718fcdac3adf8e3c123c8545316bc84adaa37fd87ac9a94dc",
+      "bytes": 114229
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/evidence.json",
+      "archive": "author.tar.gz",
+      "member": "evidence.json",
+      "sha256": "7d298dd0e3cb990addbf7fef0d6d9919c72b1984d73482e0b37cefc06751c44d",
+      "bytes": 827485
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/monitors/ApprovedHistory/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "monitors/ApprovedHistory/Catalog.cfg",
+      "sha256": "296dab68516208f41d7bcf5274272cbe5a460f4ae12dc787092339789a80cbee",
+      "bytes": 67
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/monitors/ApprovedHistory/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "monitors/ApprovedHistory/Catalog.tla",
+      "sha256": "745217b2e41a4af393efa0648288f509adee8ee8c182d2c54b59f2e9c0b20871",
+      "bytes": 19179
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/monitors/ApprovedHistory/runs/run-iy4606l5/result.json",
+      "archive": "author.tar.gz",
+      "member": "monitors/ApprovedHistory/runs/run-iy4606l5/result.json",
+      "sha256": "e4acd6925a732c6b6873b6a961fcd93628a2c8c7cae2d36089b5aad4983dacc5",
+      "bytes": 2399
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/monitors/ApprovedHistory/runs/run-iy4606l5/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "monitors/ApprovedHistory/runs/run-iy4606l5/tlc.log",
+      "sha256": "5c4fe9a6e3df4c12fd416bb7412683f968924d35689cbfca785049788eab7a97",
+      "bytes": 8001
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/monitors/ApprovedHistory/runs/run-iy4606l5/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "monitors/ApprovedHistory/runs/run-iy4606l5/visited.dump",
+      "sha256": "981d25a3f510e235a104de3327072858a1bcae3073ae163046ba9bfe437b66a3",
+      "bytes": 10879
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/monitors/CreatedVersion/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "monitors/CreatedVersion/Catalog.cfg",
+      "sha256": "7e65a0db0e83ef19483edf00a09628df716f0e679c5ee8d0e4ad70bb42acacdb",
+      "bytes": 66
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/monitors/CreatedVersion/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "monitors/CreatedVersion/Catalog.tla",
+      "sha256": "593807629604c17bafe514fb5cf77abc86ecd48be6e343609983362070c0670c",
+      "bytes": 19224
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/monitors/CreatedVersion/runs/run-04l220ir/result.json",
+      "archive": "author.tar.gz",
+      "member": "monitors/CreatedVersion/runs/run-04l220ir/result.json",
+      "sha256": "16fd4a549253e8536defa29786febabb4a206dd8454ab13bb6af06c9ab188270",
+      "bytes": 2381
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/monitors/CreatedVersion/runs/run-04l220ir/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "monitors/CreatedVersion/runs/run-04l220ir/tlc.log",
+      "sha256": "b34a84e6b220585bf180770d3b554f1accc1c22384b9a5c66bc68382d52fdd87",
+      "bytes": 4891
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/monitors/CreatedVersion/runs/run-04l220ir/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "monitors/CreatedVersion/runs/run-04l220ir/visited.dump",
+      "sha256": "7d595e839bde36a37d41caaab8ee0f4f7d17ea2c87705714bef6470ae0d0cb6e",
+      "bytes": 2712
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/acyclic/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "mutants/acyclic/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/acyclic/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "mutants/acyclic/Catalog.tla",
+      "sha256": "c8685b4aa2ba13d87d2ca23c7805ef53f4da283b1e2b37f87ecd64c41d446f0b",
+      "bytes": 19269
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/acyclic/runs/run-subj1vj5/result.json",
+      "archive": "author.tar.gz",
+      "member": "mutants/acyclic/runs/run-subj1vj5/result.json",
+      "sha256": "cc2970ba65edae40d3e0c1382cbe89ee571446252e028aff1a51e03bc10d0c2c",
+      "bytes": 2280
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/acyclic/runs/run-subj1vj5/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "mutants/acyclic/runs/run-subj1vj5/tlc.log",
+      "sha256": "7f95f091ee204e8050a25ee54f330ca3bfec975f283070d1a744b10c665ad0d3",
+      "bytes": 2747
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/acyclic/runs/run-subj1vj5/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "mutants/acyclic/runs/run-subj1vj5/visited.dump",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/acyclic/witness/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "mutants/acyclic/witness/Catalog.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+      "bytes": 84
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/acyclic/witness/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "mutants/acyclic/witness/Catalog.tla",
+      "sha256": "c87460da5b13dbea5a6607a8d8e1a6fc59ff3f0e19853ed6a262722da80927e6",
+      "bytes": 7568
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/acyclic/witness/runs/run-rpn_ba_g/result.json",
+      "archive": "author.tar.gz",
+      "member": "mutants/acyclic/witness/runs/run-rpn_ba_g/result.json",
+      "sha256": "5092e7b6eb469506750480d6611714f4362d34770955730a671d843c10fb18bb",
+      "bytes": 2345
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/acyclic/witness/runs/run-rpn_ba_g/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "mutants/acyclic/witness/runs/run-rpn_ba_g/tlc.log",
+      "sha256": "45693d1269504858d502b1b07946b180bebf98d63356cfed89271e5c767ff176",
+      "bytes": 2273
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/acyclic/witness/runs/run-rpn_ba_g/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "mutants/acyclic/witness/runs/run-rpn_ba_g/visited.dump",
+      "sha256": "c469d9641c3727749b2f773759b36c4f0d7702162a0e9872a3664f17c671116e",
+      "bytes": 2555
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/approval/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "mutants/approval/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/approval/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "mutants/approval/Catalog.tla",
+      "sha256": "745217b2e41a4af393efa0648288f509adee8ee8c182d2c54b59f2e9c0b20871",
+      "bytes": 19179
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/approval/runs/run-xwzhd_h5/result.json",
+      "archive": "author.tar.gz",
+      "member": "mutants/approval/runs/run-xwzhd_h5/result.json",
+      "sha256": "463269ef2368d57243878dd10eceefc2d25c5c0b9073eb36f92011f87e7c02f4",
+      "bytes": 2348
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/approval/runs/run-xwzhd_h5/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "mutants/approval/runs/run-xwzhd_h5/tlc.log",
+      "sha256": "4382f3cc987c3e3f914579ffee42738d0f74a88f0f28a7a63f3ce209b7b10e12",
+      "bytes": 6518
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/approval/runs/run-xwzhd_h5/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "mutants/approval/runs/run-xwzhd_h5/visited.dump",
+      "sha256": "998813754ca391dead9c8c3d7fc0f7f00b8eea974049ce23cfc570b20a1eb7d2",
+      "bytes": 5430
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/approval/witness/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "mutants/approval/witness/Catalog.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+      "bytes": 84
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/approval/witness/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "mutants/approval/witness/Catalog.tla",
+      "sha256": "6d5640442dc91f832b8022c6c23204f4411ec7fec4789001d019f83618fb8246",
+      "bytes": 10148
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/approval/witness/runs/run-p0m_lf4h/result.json",
+      "archive": "author.tar.gz",
+      "member": "mutants/approval/witness/runs/run-p0m_lf4h/result.json",
+      "sha256": "8a1e649031dbdea3a681f8d2a8659f461c9dab367baa1d218e6488544768ed15",
+      "bytes": 2351
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/approval/witness/runs/run-p0m_lf4h/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "mutants/approval/witness/runs/run-p0m_lf4h/tlc.log",
+      "sha256": "eb7468cc32ead19ddd2ff5c407539f9909c7c1de36ccbc1f21010094560602c6",
+      "bytes": 2274
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/approval/witness/runs/run-p0m_lf4h/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "mutants/approval/witness/runs/run-p0m_lf4h/visited.dump",
+      "sha256": "114d44c525ebd8c4819a0c652eb11a108df0d934fb3aa684329767ba727e383d",
+      "bytes": 5118
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_actor/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_actor/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_actor/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_actor/Catalog.tla",
+      "sha256": "a3c8ea804c15e235c7838d4e3daab6f30dcb0bd99f96d6b78e440a24d455bc33",
+      "bytes": 19275
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_actor/runs/run-ye4ep789/result.json",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_actor/runs/run-ye4ep789/result.json",
+      "sha256": "9f857515f5da973f7c3707e662826706c539087d598de9f4e51f3d07f9e43223",
+      "bytes": 2384
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_actor/runs/run-ye4ep789/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_actor/runs/run-ye4ep789/tlc.log",
+      "sha256": "d96e0bcb61a836a771c19730746c387a1b34e448e5cb8804ddb1facbc8d1ddd9",
+      "bytes": 7998
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_actor/runs/run-ye4ep789/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_actor/runs/run-ye4ep789/visited.dump",
+      "sha256": "e3d3e9c49f5d228f969e96758b15b58e092da12d4236b9ee173f40884e64ae6b",
+      "bytes": 8154
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_actor/witness/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_actor/witness/Catalog.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+      "bytes": 84
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_actor/witness/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_actor/witness/Catalog.tla",
+      "sha256": "ffd32ad1ca839a2a9ecaa43b522eede08b6abfafebe06a7c58ddc9d5004a36d1",
+      "bytes": 11578
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_actor/witness/runs/run-rb0ow1j6/result.json",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_actor/witness/runs/run-rb0ow1j6/result.json",
+      "sha256": "aad722808dc4583ee6ef2be54abb85184a969dcd5bb1cdf94cc76d6570fad26d",
+      "bytes": 2387
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_actor/witness/runs/run-rb0ow1j6/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_actor/witness/runs/run-rb0ow1j6/tlc.log",
+      "sha256": "350bfd5be3dcba3bd7496add711d328aa1bf465e0c853006ae0287ee667bd461",
+      "bytes": 2280
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_actor/witness/runs/run-rb0ow1j6/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_actor/witness/runs/run-rb0ow1j6/visited.dump",
+      "sha256": "d9f4e420ad7756a9ad7d032a49a2cf4cb6eaea04312fe637009e85a9d1c99b72",
+      "bytes": 6399
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_dependency/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_dependency/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_dependency/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_dependency/Catalog.tla",
+      "sha256": "8690d79efecf892aeae335d63c2048e4ea1c22dfcba81abdb24eb54ba0d6ab33",
+      "bytes": 19205
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_dependency/runs/run-le75_88b/result.json",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_dependency/runs/run-le75_88b/result.json",
+      "sha256": "f8cd81ac590696089ba0bdc1f1803ab39452d3d1fed0120d805592be71408984",
+      "bytes": 2415
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_dependency/runs/run-le75_88b/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_dependency/runs/run-le75_88b/tlc.log",
+      "sha256": "61ff525aafd57b6fcba7f791b2adb3d13026e4a8e745cd44d0062134dc8c51f7",
+      "bytes": 12449
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_dependency/runs/run-le75_88b/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_dependency/runs/run-le75_88b/visited.dump",
+      "sha256": "26c7b93c6120b7117c020f8828fe1980a8dc02447866dd4baf0f639a819cda9f",
+      "bytes": 25946
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_dependency/witness/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_dependency/witness/Catalog.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+      "bytes": 84
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_dependency/witness/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_dependency/witness/Catalog.tla",
+      "sha256": "f43590ed0a7a1b6a3309a6eafbf2dbbf7f837c8ac99a99df7d47d34ef313a81b",
+      "bytes": 15523
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_dependency/witness/runs/run-0n1bbo_3/result.json",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_dependency/witness/runs/run-0n1bbo_3/result.json",
+      "sha256": "3565453c6be8f312c0d7c46349863180c11c47be5be0faea761f2813c7ceb12b",
+      "bytes": 2417
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_dependency/witness/runs/run-0n1bbo_3/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_dependency/witness/runs/run-0n1bbo_3/tlc.log",
+      "sha256": "fd5c12b6e715e726f14eaba948300916fb9da737af2277db24ea27ef3e3bca56",
+      "bytes": 2289
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_dependency/witness/runs/run-0n1bbo_3/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_dependency/witness/runs/run-0n1bbo_3/visited.dump",
+      "sha256": "e41703c4c2b5067f4db6e2f0c19daee3702fe5ecbbe4644160b06f667061986d",
+      "bytes": 10254
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_evidence/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_evidence/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_evidence/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_evidence/Catalog.tla",
+      "sha256": "c1dcc5f13d00293feea24801d502e1bffba5fefaddfdf88f3b05cfe10f0a0768",
+      "bytes": 19251
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_evidence/runs/run-_uyyav6t/result.json",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_evidence/runs/run-_uyyav6t/result.json",
+      "sha256": "8f387a8ad6e59d563f7ed7c180bf55063c5ce05ec9b2d003c24d8bb47dec7ea2",
+      "bytes": 2402
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_evidence/runs/run-_uyyav6t/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_evidence/runs/run-_uyyav6t/tlc.log",
+      "sha256": "006120c3cf0a267d0b21df7474fa6dd94ee0f4f8d646558d1b05c7c820a99017",
+      "bytes": 7999
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_evidence/runs/run-_uyyav6t/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_evidence/runs/run-_uyyav6t/visited.dump",
+      "sha256": "e3d3e9c49f5d228f969e96758b15b58e092da12d4236b9ee173f40884e64ae6b",
+      "bytes": 8154
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_evidence/witness/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_evidence/witness/Catalog.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+      "bytes": 84
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_evidence/witness/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_evidence/witness/Catalog.tla",
+      "sha256": "dccedaf826691de280ed11e5bb2a34774043e506c87ec2127943f027537c49c7",
+      "bytes": 11555
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_evidence/witness/runs/run-gqxwlm52/result.json",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_evidence/witness/runs/run-gqxwlm52/result.json",
+      "sha256": "6cc5272e85aa1bfad87a0922f5c24514f7c0298858bd88685bcd9d8ca489744c",
+      "bytes": 2404
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_evidence/witness/runs/run-gqxwlm52/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_evidence/witness/runs/run-gqxwlm52/tlc.log",
+      "sha256": "d75ee69371a0147305b851f0b005f38f6ba0dc9fb8b7acabe6c0d1ca5a577146",
+      "bytes": 2287
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/baseline_evidence/witness/runs/run-gqxwlm52/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "mutants/baseline_evidence/witness/runs/run-gqxwlm52/visited.dump",
+      "sha256": "d9f4e420ad7756a9ad7d032a49a2cf4cb6eaea04312fe637009e85a9d1c99b72",
+      "bytes": 6399
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/create_actor/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "mutants/create_actor/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/create_actor/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "mutants/create_actor/Catalog.tla",
+      "sha256": "76ea5ef25676c6ddf99b4fba34b01fddf21c8957b99479d19e198fb8ba920c9a",
+      "bytes": 19275
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/create_actor/runs/run-vwxwk2kr/result.json",
+      "archive": "author.tar.gz",
+      "member": "mutants/create_actor/runs/run-vwxwk2kr/result.json",
+      "sha256": "09fb5925c88864ee3d84d2e258a2ce6271f90119a84d668c5c67affc8dc7ba26",
+      "bytes": 2310
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/create_actor/runs/run-vwxwk2kr/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "mutants/create_actor/runs/run-vwxwk2kr/tlc.log",
+      "sha256": "ba24ce7ddd11ccbf0b9f51445a49b87edfc34c19dcfb37a59610fdda4205b3c2",
+      "bytes": 2752
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/create_actor/runs/run-vwxwk2kr/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "mutants/create_actor/runs/run-vwxwk2kr/visited.dump",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/create_actor/witness/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "mutants/create_actor/witness/Catalog.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+      "bytes": 84
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/create_actor/witness/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "mutants/create_actor/witness/Catalog.tla",
+      "sha256": "ef00bce1ca007b38c99ff29467630971eba7606088b6c19e07ec8bfaaeda58e8",
+      "bytes": 7575
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/create_actor/witness/runs/run-bsldndjz/result.json",
+      "archive": "author.tar.gz",
+      "member": "mutants/create_actor/witness/runs/run-bsldndjz/result.json",
+      "sha256": "ef8c7d3ce91185098cab6473f798b45a4aa8a83ff763b5130169011da20cbfd0",
+      "bytes": 2375
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/create_actor/witness/runs/run-bsldndjz/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "mutants/create_actor/witness/runs/run-bsldndjz/tlc.log",
+      "sha256": "db8340c9e86eb2bcaffbebb5b9638133375f9392ef8ee6059c29ce991b8b13c4",
+      "bytes": 2278
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/create_actor/witness/runs/run-bsldndjz/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "mutants/create_actor/witness/runs/run-bsldndjz/visited.dump",
+      "sha256": "88b0525f6cfb424c007fc70f08b236b44afbf7a319369ddc2f10710406eff865",
+      "bytes": 2555
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/create_version/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "mutants/create_version/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/create_version/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "mutants/create_version/Catalog.tla",
+      "sha256": "593807629604c17bafe514fb5cf77abc86ecd48be6e343609983362070c0670c",
+      "bytes": 19224
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/create_version/runs/run-7pd1r86v/result.json",
+      "archive": "author.tar.gz",
+      "member": "mutants/create_version/runs/run-7pd1r86v/result.json",
+      "sha256": "1e4c27e0c5abbb695b4ada7d556a3fc5430817c8374f758171dd3d7f6acbd8ae",
+      "bytes": 2370
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/create_version/runs/run-7pd1r86v/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "mutants/create_version/runs/run-7pd1r86v/tlc.log",
+      "sha256": "25c1184c8ef9bd556968de3d7081f2c46d5e8faefb74893bf918e92e1614c373",
+      "bytes": 4885
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/create_version/runs/run-7pd1r86v/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "mutants/create_version/runs/run-7pd1r86v/visited.dump",
+      "sha256": "7d595e839bde36a37d41caaab8ee0f4f7d17ea2c87705714bef6470ae0d0cb6e",
+      "bytes": 2712
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/create_version/witness/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "mutants/create_version/witness/Catalog.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+      "bytes": 84
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/create_version/witness/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "mutants/create_version/witness/Catalog.tla",
+      "sha256": "da1208e5dfa4792f34d2231c04ae119648956afa606c0b058e7113c352565832",
+      "bytes": 7524
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/create_version/witness/runs/run-eawtv2k2/result.json",
+      "archive": "author.tar.gz",
+      "member": "mutants/create_version/witness/runs/run-eawtv2k2/result.json",
+      "sha256": "3bc78aca46ca20100e03c06f70fa57cd16226787facb03b9397d2422e36b4dfd",
+      "bytes": 2386
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/create_version/witness/runs/run-eawtv2k2/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "mutants/create_version/witness/runs/run-eawtv2k2/tlc.log",
+      "sha256": "4a99387a0e2a949033f63f1d682f229401fdc7060fae4dbb0d7be6b6d67173d1",
+      "bytes": 2280
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/create_version/witness/runs/run-eawtv2k2/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "mutants/create_version/witness/runs/run-eawtv2k2/visited.dump",
+      "sha256": "20013081d205947b34e297aa4bae1f11ec8f4a0b4c578583f6258215629be298",
+      "bytes": 2555
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/dependency_types/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "mutants/dependency_types/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/dependency_types/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "mutants/dependency_types/Catalog.tla",
+      "sha256": "b0cd5c20fdf7294eff34397b9aea2708292ffc822d8f3cdaf16c4b408164cb9c",
+      "bytes": 19195
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/dependency_types/runs/run-7v4wvdot/result.json",
+      "archive": "author.tar.gz",
+      "member": "mutants/dependency_types/runs/run-7v4wvdot/result.json",
+      "sha256": "4ac8284e72888851090e964c6c90c7a22f43f45c7bf9614e4449680aebec294c",
+      "bytes": 2334
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/dependency_types/runs/run-7v4wvdot/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "mutants/dependency_types/runs/run-7v4wvdot/tlc.log",
+      "sha256": "aefa5033518d5593536ffc77002b7311fa78e7294c7b2d2a558836c82c14974d",
+      "bytes": 2752
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/dependency_types/runs/run-7v4wvdot/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "mutants/dependency_types/runs/run-7v4wvdot/visited.dump",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/dependency_types/witness/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "mutants/dependency_types/witness/Catalog.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+      "bytes": 84
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/dependency_types/witness/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "mutants/dependency_types/witness/Catalog.tla",
+      "sha256": "7d91ec53d947de94be62a5fc0aa336ae815903f0c55c76029fb39d6916fd302c",
+      "bytes": 7487
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/dependency_types/witness/runs/run-dbttsiof/result.json",
+      "archive": "author.tar.gz",
+      "member": "mutants/dependency_types/witness/runs/run-dbttsiof/result.json",
+      "sha256": "ce95a8853eeb991f9aa3fd2d0624210ecb5a290e07199c310d5b1fa5a5b5293b",
+      "bytes": 2399
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/dependency_types/witness/runs/run-dbttsiof/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "mutants/dependency_types/witness/runs/run-dbttsiof/tlc.log",
+      "sha256": "b068aa7228d553b3efc4a501e28b8351002168875e708c5d2e388c19e7e47082",
+      "bytes": 2282
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/mutants/dependency_types/witness/runs/run-dbttsiof/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "mutants/dependency_types/witness/runs/run-dbttsiof/visited.dump",
+      "sha256": "4ac1ccc2e076758853fb1b85b89606a6a57bf39fbfa3cda6d4efb5069d02d1f0",
+      "bytes": 2547
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/negative_contexts/acyclic/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "negative_contexts/acyclic/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/negative_contexts/acyclic/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "negative_contexts/acyclic/Catalog.tla",
+      "sha256": "6a3659231665adb4d03c728c1bb558f973c956c2f3555bb0715ac1d9d4c95d13",
+      "bytes": 19277
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/negative_contexts/acyclic/runs/run-ro6wruy0/result.json",
+      "archive": "author.tar.gz",
+      "member": "negative_contexts/acyclic/runs/run-ro6wruy0/result.json",
+      "sha256": "e95adfb3534928726439a203ce904d2b3c1cde7283c5a31042e095bd810f6fac",
+      "bytes": 2357
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/negative_contexts/acyclic/runs/run-ro6wruy0/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "negative_contexts/acyclic/runs/run-ro6wruy0/tlc.log",
+      "sha256": "c21a3928d8e0b09274aa791a26212fcdab76ceab7b03d17e8989244f884bd8cb",
+      "bytes": 2275
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/negative_contexts/acyclic/runs/run-ro6wruy0/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "negative_contexts/acyclic/runs/run-ro6wruy0/visited.dump",
+      "sha256": "b4e9eb81b500557c6154b52209d0a46ae6668cc09e47e61cc78ee6500ac3f19f",
+      "bytes": 1355
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/negative_contexts/dependency_types/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "negative_contexts/dependency_types/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/negative_contexts/dependency_types/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "negative_contexts/dependency_types/Catalog.tla",
+      "sha256": "4e4080ba11c132bddb7e92e5c8a6dd7db830aede819df3c03a63b0d5a67a175e",
+      "bytes": 19271
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/negative_contexts/dependency_types/runs/run-r9vku_1f/result.json",
+      "archive": "author.tar.gz",
+      "member": "negative_contexts/dependency_types/runs/run-r9vku_1f/result.json",
+      "sha256": "e1d5623b9797301fdc4b371282c65336831c98b8d9acc63b80d38386c2ee5d6b",
+      "bytes": 2413
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/negative_contexts/dependency_types/runs/run-r9vku_1f/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "negative_contexts/dependency_types/runs/run-r9vku_1f/tlc.log",
+      "sha256": "38c22555703c657484222dbd83d5e65a8d997570e8914bbd4be689d995545c6a",
+      "bytes": 2296
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/negative_contexts/dependency_types/runs/run-r9vku_1f/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "negative_contexts/dependency_types/runs/run-r9vku_1f/visited.dump",
+      "sha256": "799732431b7d78b93539eff61fba2b4db34298e2554c4ac62477f2bb95444ec5",
+      "bytes": 17677
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/refusals/1/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "refusals/1/Catalog.cfg",
+      "sha256": "fafaaf916a0d6aab148e8e97f4213fa2c17c192641b3fb0e9dcd5b1ec98714ad",
+      "bytes": 59
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/refusals/1/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "refusals/1/Catalog.tla",
+      "sha256": "ac2a17f943379b5a0aedadd55b4e1ced6ba5052c30537e14d69801783bfc2afc",
+      "bytes": 4961
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/refusals/1/runs/run-je8qcvij/result.json",
+      "archive": "author.tar.gz",
+      "member": "refusals/1/runs/run-je8qcvij/result.json",
+      "sha256": "a8e5565d8b333ac690ba4889f7b4829eee1ed00877424f99806f9ac59b49c9b9",
+      "bytes": 2267
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/refusals/1/runs/run-je8qcvij/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "refusals/1/runs/run-je8qcvij/tlc.log",
+      "sha256": "1c7941e68c3fade18009dc4ea7c14f6815f9771c71f9dbaddd6947a6c523ea9b",
+      "bytes": 2260
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/refusals/1/runs/run-je8qcvij/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "refusals/1/runs/run-je8qcvij/visited.dump",
+      "sha256": "e40772aebe4e0c7529334cb04065bf7a53e1dc3d6cb52795a4b9145d80f77b52",
+      "bytes": 1279
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/refusals/2/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "refusals/2/Catalog.cfg",
+      "sha256": "fafaaf916a0d6aab148e8e97f4213fa2c17c192641b3fb0e9dcd5b1ec98714ad",
+      "bytes": 59
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/refusals/2/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "refusals/2/Catalog.tla",
+      "sha256": "48bc0847cc75820f5ff48f67fc67ccaedc095d6e3bb40636445b7452b8e9aac2",
+      "bytes": 4967
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/refusals/2/runs/run-eov0ppsw/result.json",
+      "archive": "author.tar.gz",
+      "member": "refusals/2/runs/run-eov0ppsw/result.json",
+      "sha256": "9fd17bbcdbd9290c9c4f6ec1859aa152aaa9beeb2a37dd7e518f56866c4c42a7",
+      "bytes": 2267
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/refusals/2/runs/run-eov0ppsw/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "refusals/2/runs/run-eov0ppsw/tlc.log",
+      "sha256": "d8028d6d9fbc982cc1c98c7c0172159e12cc080b4393a463b5a2ee8c9562eb33",
+      "bytes": 2260
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/refusals/2/runs/run-eov0ppsw/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "refusals/2/runs/run-eov0ppsw/visited.dump",
+      "sha256": "6d6d2b9f0643ad7ec48553b0c22bc0252350b1f7bbc45501d9d6a979d870124c",
+      "bytes": 1285
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/report.md",
+      "archive": "author.tar.gz",
+      "member": "report.md",
+      "sha256": "152fd2008a1b3adcd40c50ee3659425c8073cdbd2648bb012b5ae47a200bf9bf",
+      "bytes": 1155
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/witness/Catalog.cfg",
+      "archive": "author.tar.gz",
+      "member": "witness/Catalog.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+      "bytes": 84
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/witness/Catalog.tla",
+      "archive": "author.tar.gz",
+      "member": "witness/Catalog.tla",
+      "sha256": "40fc88b5876bdf58fb379bb5c89530ef2bac5a6ed23fc30ac4f3adc902171642",
+      "bytes": 16933
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/witness/runs/run-0ql3ku6s/result.json",
+      "archive": "author.tar.gz",
+      "member": "witness/runs/run-0ql3ku6s/result.json",
+      "sha256": "8583c4151d37d5bcd787483a1a85916ccadf6cab949e3f5a3b036e2f2b8ade84",
+      "bytes": 2249
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/witness/runs/run-0ql3ku6s/tlc.log",
+      "archive": "author.tar.gz",
+      "member": "witness/runs/run-0ql3ku6s/tlc.log",
+      "sha256": "0bfb771c12b3ece9dfd6acdb430e7d271e7f43d902497a109299beeb32a04d84",
+      "bytes": 2261
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/author-final-v2/witness/runs/run-0ql3ku6s/visited.dump",
+      "archive": "author.tar.gz",
+      "member": "witness/runs/run-0ql3ku6s/visited.dump",
+      "sha256": "c4b299820494ddd01b40e043dac62c4583eead29e0fa30dd6cfa87112270c1bd",
+      "bytes": 11541
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/baseline/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "baseline/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/baseline/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "baseline/Catalog.tla",
+      "sha256": "86a62422bfc5386c0c89072ebb186ecd7ead505bda6931c410ca280442fedea6",
+      "bytes": 19275
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/baseline/runs/run-k929krb6/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "baseline/runs/run-k929krb6/result.json",
+      "sha256": "f8f03828789f6a42ef0316d33fa2b43d1d8f4045ff71d283f52ba71a0d976a76",
+      "bytes": 2270
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/baseline/runs/run-k929krb6/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "baseline/runs/run-k929krb6/tlc.log",
+      "sha256": "801e2b2b8cb9c6324fb1135edc46021575b79ea06fe777a16efa9899c732a2df",
+      "bytes": 2278
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/baseline/runs/run-k929krb6/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "baseline/runs/run-k929krb6/visited.dump",
+      "sha256": "7b3277506097086718fcdac3adf8e3c123c8545316bc84adaa37fd87ac9a94dc",
+      "bytes": 114229
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/controls/created_version/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "controls/created_version/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/controls/created_version/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "controls/created_version/Catalog.tla",
+      "sha256": "dd75a55eb1e2c816a4ce807ccfa8e61b711d5c7c6eb7945deed72da4072633cb",
+      "bytes": 19275
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/controls/created_version/runs/run-8s899qn5/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "controls/created_version/runs/run-8s899qn5/result.json",
+      "sha256": "481eeffcf80704672fc4838fe4820ceb847b92f4655e3431b9d5501612a966d9",
+      "bytes": 2366
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/controls/created_version/runs/run-8s899qn5/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "controls/created_version/runs/run-8s899qn5/tlc.log",
+      "sha256": "41fc309b0728cff96c908a38036c615d571488bdb16792b44101844dd6ef062f",
+      "bytes": 2293
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/controls/created_version/runs/run-8s899qn5/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "controls/created_version/runs/run-8s899qn5/visited.dump",
+      "sha256": "adb29b2327d95e62aa4257555508d07cd17d152e282777c0f11ba60807882d27",
+      "bytes": 114229
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/controls/limit/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "controls/limit/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/controls/limit/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "controls/limit/Catalog.tla",
+      "sha256": "ddff103625f7d13125767571f751427c1c96cda03c668dbead1c5fa348bf3f90",
+      "bytes": 19275
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/controls/limit/runs/run-b1818f4i/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "controls/limit/runs/run-b1818f4i/result.json",
+      "sha256": "ad2f6712e79203301769a2cb44de544baa4bfa08250908d8422daecb73d88da0",
+      "bytes": 2306
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/controls/limit/runs/run-b1818f4i/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "controls/limit/runs/run-b1818f4i/tlc.log",
+      "sha256": "bddf5fb8a092cb43a67512235a1c0b80721ec4a5b32fbc257f0f8b0217f61859",
+      "bytes": 2283
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/controls/limit/runs/run-b1818f4i/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "controls/limit/runs/run-b1818f4i/visited.dump",
+      "sha256": "3f6a3de9e1fbb301ab92642b069b68c7143ba74e6b3ceb6710b4620d9eee178c",
+      "bytes": 57708
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/controls/renamed/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "controls/renamed/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/controls/renamed/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "controls/renamed/Catalog.tla",
+      "sha256": "86a62422bfc5386c0c89072ebb186ecd7ead505bda6931c410ca280442fedea6",
+      "bytes": 19275
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/controls/renamed/runs/run-a5tzxks1/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "controls/renamed/runs/run-a5tzxks1/result.json",
+      "sha256": "a7d74d583bf16a25ad4c7d091e81efa1d3b9255e280de8f8c198ad76e588609a",
+      "bytes": 2318
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/controls/renamed/runs/run-a5tzxks1/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "controls/renamed/runs/run-a5tzxks1/tlc.log",
+      "sha256": "6b1d98eedc963e1ff97422e1adb079ee20029e8098e7a5e5e36abc69d76a3f56",
+      "bytes": 2286
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/controls/renamed/runs/run-a5tzxks1/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "controls/renamed/runs/run-a5tzxks1/visited.dump",
+      "sha256": "7b3277506097086718fcdac3adf8e3c123c8545316bc84adaa37fd87ac9a94dc",
+      "bytes": 114229
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/evidence.json",
+      "archive": "reviewer.tar.gz",
+      "member": "evidence.json",
+      "sha256": "23aa5d6721a91a95fdb80a6ea6cf447aaba1250d514bdefebe5ab9fcb44aa453",
+      "bytes": 827807
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/monitors/ApprovedHistory/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "monitors/ApprovedHistory/Catalog.cfg",
+      "sha256": "296dab68516208f41d7bcf5274272cbe5a460f4ae12dc787092339789a80cbee",
+      "bytes": 67
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/monitors/ApprovedHistory/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "monitors/ApprovedHistory/Catalog.tla",
+      "sha256": "745217b2e41a4af393efa0648288f509adee8ee8c182d2c54b59f2e9c0b20871",
+      "bytes": 19179
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/monitors/ApprovedHistory/runs/run-0ivenlt2/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "monitors/ApprovedHistory/runs/run-0ivenlt2/result.json",
+      "sha256": "a4a4dc16abb994dc709ddb85df92c1b3a205f9ec7fb5c60abb05dfe872d43fae",
+      "bytes": 2411
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/monitors/ApprovedHistory/runs/run-0ivenlt2/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "monitors/ApprovedHistory/runs/run-0ivenlt2/tlc.log",
+      "sha256": "f17eecf3cfdf17d384c362a5c467b2c3c12dceec7e23aae2a3cd4bbed9c9902f",
+      "bytes": 8003
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/monitors/ApprovedHistory/runs/run-0ivenlt2/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "monitors/ApprovedHistory/runs/run-0ivenlt2/visited.dump",
+      "sha256": "981d25a3f510e235a104de3327072858a1bcae3073ae163046ba9bfe437b66a3",
+      "bytes": 10879
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/monitors/CreatedVersion/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "monitors/CreatedVersion/Catalog.cfg",
+      "sha256": "7e65a0db0e83ef19483edf00a09628df716f0e679c5ee8d0e4ad70bb42acacdb",
+      "bytes": 66
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/monitors/CreatedVersion/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "monitors/CreatedVersion/Catalog.tla",
+      "sha256": "593807629604c17bafe514fb5cf77abc86ecd48be6e343609983362070c0670c",
+      "bytes": 19224
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/monitors/CreatedVersion/runs/run-qt5ssx6z/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "monitors/CreatedVersion/runs/run-qt5ssx6z/result.json",
+      "sha256": "f11a4142a3ccd683a0a04ce53bd02a39710a835343357c79851b72e3b08b3fff",
+      "bytes": 2393
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/monitors/CreatedVersion/runs/run-qt5ssx6z/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "monitors/CreatedVersion/runs/run-qt5ssx6z/tlc.log",
+      "sha256": "569faae3803acf8623bf0ceed48cf61b62fb78e5b2d2c0dfc437e26e1846ff6c",
+      "bytes": 4893
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/monitors/CreatedVersion/runs/run-qt5ssx6z/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "monitors/CreatedVersion/runs/run-qt5ssx6z/visited.dump",
+      "sha256": "7d595e839bde36a37d41caaab8ee0f4f7d17ea2c87705714bef6470ae0d0cb6e",
+      "bytes": 2712
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/acyclic/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/acyclic/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/acyclic/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/acyclic/Catalog.tla",
+      "sha256": "c8685b4aa2ba13d87d2ca23c7805ef53f4da283b1e2b37f87ecd64c41d446f0b",
+      "bytes": 19269
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/acyclic/runs/run-32da1f35/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/acyclic/runs/run-32da1f35/result.json",
+      "sha256": "f34105b62c2d81f1020acf0450aeb790817bf32a83f81d4be88c3d85e702e176",
+      "bytes": 2292
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/acyclic/runs/run-32da1f35/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/acyclic/runs/run-32da1f35/tlc.log",
+      "sha256": "203c5400abf0adb3723dac8afd8e18b25961baf438bf9d2fbe29af95aa9d1eed",
+      "bytes": 2749
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/acyclic/runs/run-32da1f35/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/acyclic/runs/run-32da1f35/visited.dump",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/acyclic/witness/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/acyclic/witness/Catalog.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+      "bytes": 84
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/acyclic/witness/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/acyclic/witness/Catalog.tla",
+      "sha256": "c87460da5b13dbea5a6607a8d8e1a6fc59ff3f0e19853ed6a262722da80927e6",
+      "bytes": 7568
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/acyclic/witness/runs/run-o337o9wu/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/acyclic/witness/runs/run-o337o9wu/result.json",
+      "sha256": "f1671cd624c897036c1e533abdf5b46104e76ef4ff7c481a64245c57975207d9",
+      "bytes": 2356
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/acyclic/witness/runs/run-o337o9wu/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/acyclic/witness/runs/run-o337o9wu/tlc.log",
+      "sha256": "1461d7496cd1add8bec8d62bb3491567998dcd1ceb3b87264f4e09f31ea17714",
+      "bytes": 2275
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/acyclic/witness/runs/run-o337o9wu/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/acyclic/witness/runs/run-o337o9wu/visited.dump",
+      "sha256": "c469d9641c3727749b2f773759b36c4f0d7702162a0e9872a3664f17c671116e",
+      "bytes": 2555
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/approval/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/approval/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/approval/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/approval/Catalog.tla",
+      "sha256": "745217b2e41a4af393efa0648288f509adee8ee8c182d2c54b59f2e9c0b20871",
+      "bytes": 19179
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/approval/runs/run-1gs9ut0x/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/approval/runs/run-1gs9ut0x/result.json",
+      "sha256": "17422fe175753a3a04ad497c22953f839acd4ce51f6f29016ed5808993bbd53b",
+      "bytes": 2360
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/approval/runs/run-1gs9ut0x/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/approval/runs/run-1gs9ut0x/tlc.log",
+      "sha256": "a4f674e65011912a592872536fa6a1192991fbcaecd50aa5ea6ab958a4f46ad9",
+      "bytes": 6520
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/approval/runs/run-1gs9ut0x/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/approval/runs/run-1gs9ut0x/visited.dump",
+      "sha256": "998813754ca391dead9c8c3d7fc0f7f00b8eea974049ce23cfc570b20a1eb7d2",
+      "bytes": 5430
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/approval/witness/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/approval/witness/Catalog.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+      "bytes": 84
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/approval/witness/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/approval/witness/Catalog.tla",
+      "sha256": "6d5640442dc91f832b8022c6c23204f4411ec7fec4789001d019f83618fb8246",
+      "bytes": 10148
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/approval/witness/runs/run-kndy5vwo/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/approval/witness/runs/run-kndy5vwo/result.json",
+      "sha256": "ba383fc1e0af7d491aabdb638e4755eb54de53c6083601783e20e8c8d1d02eb8",
+      "bytes": 2362
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/approval/witness/runs/run-kndy5vwo/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/approval/witness/runs/run-kndy5vwo/tlc.log",
+      "sha256": "d09ddbe317bf4dfcb4dfe7072d06a0040c13987653343e8d267685ce0654028a",
+      "bytes": 2276
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/approval/witness/runs/run-kndy5vwo/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/approval/witness/runs/run-kndy5vwo/visited.dump",
+      "sha256": "114d44c525ebd8c4819a0c652eb11a108df0d934fb3aa684329767ba727e383d",
+      "bytes": 5118
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_actor/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_actor/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_actor/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_actor/Catalog.tla",
+      "sha256": "a3c8ea804c15e235c7838d4e3daab6f30dcb0bd99f96d6b78e440a24d455bc33",
+      "bytes": 19275
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_actor/runs/run-l09nhg45/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_actor/runs/run-l09nhg45/result.json",
+      "sha256": "cfd337630d000066c3f2a7d2f28a212b4bee1ef3d9890660847f8ae4027d04bf",
+      "bytes": 2395
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_actor/runs/run-l09nhg45/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_actor/runs/run-l09nhg45/tlc.log",
+      "sha256": "1fdb455126f2bbac8c167795ed195d2717b5b2b90bf1995e318a8440ed2edc8b",
+      "bytes": 8000
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_actor/runs/run-l09nhg45/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_actor/runs/run-l09nhg45/visited.dump",
+      "sha256": "e3d3e9c49f5d228f969e96758b15b58e092da12d4236b9ee173f40884e64ae6b",
+      "bytes": 8154
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_actor/witness/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_actor/witness/Catalog.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+      "bytes": 84
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_actor/witness/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_actor/witness/Catalog.tla",
+      "sha256": "ffd32ad1ca839a2a9ecaa43b522eede08b6abfafebe06a7c58ddc9d5004a36d1",
+      "bytes": 11578
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_actor/witness/runs/run-ui79dblq/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_actor/witness/runs/run-ui79dblq/result.json",
+      "sha256": "241a3e01a8b68ae2f6d1f9bb7f4107aef0e1c925e67c93f56b6fe441c6b67c3a",
+      "bytes": 2398
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_actor/witness/runs/run-ui79dblq/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_actor/witness/runs/run-ui79dblq/tlc.log",
+      "sha256": "ab8e8b29ab91ca51bd7b987c9d2ef2938dbb18601e0eeaea1e569a316fd363b7",
+      "bytes": 2286
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_actor/witness/runs/run-ui79dblq/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_actor/witness/runs/run-ui79dblq/visited.dump",
+      "sha256": "d9f4e420ad7756a9ad7d032a49a2cf4cb6eaea04312fe637009e85a9d1c99b72",
+      "bytes": 6399
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_dependency/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_dependency/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_dependency/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_dependency/Catalog.tla",
+      "sha256": "8690d79efecf892aeae335d63c2048e4ea1c22dfcba81abdb24eb54ba0d6ab33",
+      "bytes": 19205
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_dependency/runs/run-k2ow7jj_/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_dependency/runs/run-k2ow7jj_/result.json",
+      "sha256": "a860f0b572a45949b54a29465cc9d563197957d4500dd42189f8c97bbe6b40d1",
+      "bytes": 2427
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_dependency/runs/run-k2ow7jj_/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_dependency/runs/run-k2ow7jj_/tlc.log",
+      "sha256": "d4189311be9e6bcdef5969575d2be04e4880150b13d48ebad87b0e61acbe1873",
+      "bytes": 12451
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_dependency/runs/run-k2ow7jj_/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_dependency/runs/run-k2ow7jj_/visited.dump",
+      "sha256": "26c7b93c6120b7117c020f8828fe1980a8dc02447866dd4baf0f639a819cda9f",
+      "bytes": 25946
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_dependency/witness/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_dependency/witness/Catalog.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+      "bytes": 84
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_dependency/witness/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_dependency/witness/Catalog.tla",
+      "sha256": "f43590ed0a7a1b6a3309a6eafbf2dbbf7f837c8ac99a99df7d47d34ef313a81b",
+      "bytes": 15523
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_dependency/witness/runs/run-xzqwg5js/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_dependency/witness/runs/run-xzqwg5js/result.json",
+      "sha256": "609295cc38da3b9ca1e89305b1b8071a9ac6bf5c4df58c9b27411cada6684c98",
+      "bytes": 2429
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_dependency/witness/runs/run-xzqwg5js/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_dependency/witness/runs/run-xzqwg5js/tlc.log",
+      "sha256": "fbd21fd68e59d39d13c5b7782d012c4a8414e986d93f8541245a34ad7444a1f4",
+      "bytes": 2291
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_dependency/witness/runs/run-xzqwg5js/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_dependency/witness/runs/run-xzqwg5js/visited.dump",
+      "sha256": "e41703c4c2b5067f4db6e2f0c19daee3702fe5ecbbe4644160b06f667061986d",
+      "bytes": 10254
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_evidence/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_evidence/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_evidence/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_evidence/Catalog.tla",
+      "sha256": "c1dcc5f13d00293feea24801d502e1bffba5fefaddfdf88f3b05cfe10f0a0768",
+      "bytes": 19251
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_evidence/runs/run-pk9sij0q/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_evidence/runs/run-pk9sij0q/result.json",
+      "sha256": "dd4e9e02cf0ea5f5c16e263840439d0e3b609cea73303499d86b2447720a4484",
+      "bytes": 2414
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_evidence/runs/run-pk9sij0q/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_evidence/runs/run-pk9sij0q/tlc.log",
+      "sha256": "05facdd4a8350ee2e0314432a82bedc1ed147aa5b7560fd614bbde35f37c5231",
+      "bytes": 8003
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_evidence/runs/run-pk9sij0q/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_evidence/runs/run-pk9sij0q/visited.dump",
+      "sha256": "e3d3e9c49f5d228f969e96758b15b58e092da12d4236b9ee173f40884e64ae6b",
+      "bytes": 8154
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_evidence/witness/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_evidence/witness/Catalog.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+      "bytes": 84
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_evidence/witness/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_evidence/witness/Catalog.tla",
+      "sha256": "dccedaf826691de280ed11e5bb2a34774043e506c87ec2127943f027537c49c7",
+      "bytes": 11555
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_evidence/witness/runs/run-r_id2tkb/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_evidence/witness/runs/run-r_id2tkb/result.json",
+      "sha256": "4bc3d524bdc8697b882ff0e378cdb2d71daeb6df74d9636cd2988ab464efbd1a",
+      "bytes": 2417
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_evidence/witness/runs/run-r_id2tkb/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_evidence/witness/runs/run-r_id2tkb/tlc.log",
+      "sha256": "e2de3ae1b45c0eafa77b6c51ec0a8a332cab31e210af1c229e4fdd8dea54881e",
+      "bytes": 2289
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/baseline_evidence/witness/runs/run-r_id2tkb/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/baseline_evidence/witness/runs/run-r_id2tkb/visited.dump",
+      "sha256": "d9f4e420ad7756a9ad7d032a49a2cf4cb6eaea04312fe637009e85a9d1c99b72",
+      "bytes": 6399
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/create_actor/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/create_actor/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/create_actor/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/create_actor/Catalog.tla",
+      "sha256": "76ea5ef25676c6ddf99b4fba34b01fddf21c8957b99479d19e198fb8ba920c9a",
+      "bytes": 19275
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/create_actor/runs/run-s_g6grh9/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/create_actor/runs/run-s_g6grh9/result.json",
+      "sha256": "04f5aa190a9f97c6612755ff46a26855ddb707d2ea51a4cf2f6887ddb67ce448",
+      "bytes": 2322
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/create_actor/runs/run-s_g6grh9/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/create_actor/runs/run-s_g6grh9/tlc.log",
+      "sha256": "bb2afc1d221c514b29479c9d868efa90295bb1a0773024f2ab22f89a18e5c70d",
+      "bytes": 2754
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/create_actor/runs/run-s_g6grh9/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/create_actor/runs/run-s_g6grh9/visited.dump",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/create_actor/witness/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/create_actor/witness/Catalog.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+      "bytes": 84
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/create_actor/witness/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/create_actor/witness/Catalog.tla",
+      "sha256": "ef00bce1ca007b38c99ff29467630971eba7606088b6c19e07ec8bfaaeda58e8",
+      "bytes": 7575
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/create_actor/witness/runs/run-axdkk814/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/create_actor/witness/runs/run-axdkk814/result.json",
+      "sha256": "90c5816dbefbf1d3705a0776ab3735e58fcd8bbc4a50d2791940866e85466ee9",
+      "bytes": 2387
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/create_actor/witness/runs/run-axdkk814/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/create_actor/witness/runs/run-axdkk814/tlc.log",
+      "sha256": "9f1d400213f67ccdbba88417838e845723d1627d3d9257af9cb64f66de03ffb1",
+      "bytes": 2280
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/create_actor/witness/runs/run-axdkk814/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/create_actor/witness/runs/run-axdkk814/visited.dump",
+      "sha256": "88b0525f6cfb424c007fc70f08b236b44afbf7a319369ddc2f10710406eff865",
+      "bytes": 2555
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/create_version/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/create_version/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/create_version/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/create_version/Catalog.tla",
+      "sha256": "593807629604c17bafe514fb5cf77abc86ecd48be6e343609983362070c0670c",
+      "bytes": 19224
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/create_version/runs/run-jondh34d/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/create_version/runs/run-jondh34d/result.json",
+      "sha256": "aa5f2bcfa3d92f574b363946d62f0a9e2d2179908b0e03092907a22f4f14d6c4",
+      "bytes": 2382
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/create_version/runs/run-jondh34d/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/create_version/runs/run-jondh34d/tlc.log",
+      "sha256": "96a4af8330bfffe0bbb895b3d0dd817ff5b610aff7ba29b3610d9a6ceb140eaa",
+      "bytes": 4887
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/create_version/runs/run-jondh34d/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/create_version/runs/run-jondh34d/visited.dump",
+      "sha256": "7d595e839bde36a37d41caaab8ee0f4f7d17ea2c87705714bef6470ae0d0cb6e",
+      "bytes": 2712
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/create_version/witness/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/create_version/witness/Catalog.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+      "bytes": 84
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/create_version/witness/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/create_version/witness/Catalog.tla",
+      "sha256": "da1208e5dfa4792f34d2231c04ae119648956afa606c0b058e7113c352565832",
+      "bytes": 7524
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/create_version/witness/runs/run-3j1lwm5t/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/create_version/witness/runs/run-3j1lwm5t/result.json",
+      "sha256": "ae18aba0cf5c0e1ae0548713e60bbb297604b750a82e69aa4de1a4daf534b728",
+      "bytes": 2399
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/create_version/witness/runs/run-3j1lwm5t/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/create_version/witness/runs/run-3j1lwm5t/tlc.log",
+      "sha256": "a030a428f3991b4560c5598220ad665ba0de0c447ed107c5345b3845328096de",
+      "bytes": 2282
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/create_version/witness/runs/run-3j1lwm5t/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/create_version/witness/runs/run-3j1lwm5t/visited.dump",
+      "sha256": "20013081d205947b34e297aa4bae1f11ec8f4a0b4c578583f6258215629be298",
+      "bytes": 2555
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/dependency_types/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/dependency_types/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/dependency_types/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/dependency_types/Catalog.tla",
+      "sha256": "b0cd5c20fdf7294eff34397b9aea2708292ffc822d8f3cdaf16c4b408164cb9c",
+      "bytes": 19195
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/dependency_types/runs/run-htqf1efd/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/dependency_types/runs/run-htqf1efd/result.json",
+      "sha256": "0fb8f33409098db6c830b5d0218b3bdac6d1580ba073374e9c0a79d495a622a9",
+      "bytes": 2346
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/dependency_types/runs/run-htqf1efd/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/dependency_types/runs/run-htqf1efd/tlc.log",
+      "sha256": "34d55baadcf8160fd137948acb88d95c071064f3016038ea58b5a1a34f080dc8",
+      "bytes": 2754
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/dependency_types/runs/run-htqf1efd/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/dependency_types/runs/run-htqf1efd/visited.dump",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/dependency_types/witness/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/dependency_types/witness/Catalog.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+      "bytes": 84
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/dependency_types/witness/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/dependency_types/witness/Catalog.tla",
+      "sha256": "7d91ec53d947de94be62a5fc0aa336ae815903f0c55c76029fb39d6916fd302c",
+      "bytes": 7487
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/dependency_types/witness/runs/run-ji9ytiho/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/dependency_types/witness/runs/run-ji9ytiho/result.json",
+      "sha256": "05954cd616f5cd8a9ac513ab9ed4284f3de2a6435d66d9be93ffff1f2a2f02b0",
+      "bytes": 2411
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/dependency_types/witness/runs/run-ji9ytiho/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/dependency_types/witness/runs/run-ji9ytiho/tlc.log",
+      "sha256": "42e33ed639f146f61a3bd9a9da9b200f8d0106807baf88e11e28c9207880c5f3",
+      "bytes": 2284
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/mutants/dependency_types/witness/runs/run-ji9ytiho/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "mutants/dependency_types/witness/runs/run-ji9ytiho/visited.dump",
+      "sha256": "4ac1ccc2e076758853fb1b85b89606a6a57bf39fbfa3cda6d4efb5069d02d1f0",
+      "bytes": 2547
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/negative_contexts/acyclic/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "negative_contexts/acyclic/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/negative_contexts/acyclic/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "negative_contexts/acyclic/Catalog.tla",
+      "sha256": "6a3659231665adb4d03c728c1bb558f973c956c2f3555bb0715ac1d9d4c95d13",
+      "bytes": 19277
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/negative_contexts/acyclic/runs/run-pbkoxgai/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "negative_contexts/acyclic/runs/run-pbkoxgai/result.json",
+      "sha256": "acfa3e023a46541ef129d3c060147c98ff8490e0c5a55e1103c15772bb56e0af",
+      "bytes": 2369
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/negative_contexts/acyclic/runs/run-pbkoxgai/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "negative_contexts/acyclic/runs/run-pbkoxgai/tlc.log",
+      "sha256": "f9c8615e2bd4500430e7844e6a74482271fd01cc6eaa739941abfed20a91dba8",
+      "bytes": 2277
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/negative_contexts/acyclic/runs/run-pbkoxgai/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "negative_contexts/acyclic/runs/run-pbkoxgai/visited.dump",
+      "sha256": "b4e9eb81b500557c6154b52209d0a46ae6668cc09e47e61cc78ee6500ac3f19f",
+      "bytes": 1355
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/negative_contexts/dependency_types/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "negative_contexts/dependency_types/Catalog.cfg",
+      "sha256": "ed7276b68e5cc01adc6e7cdd813358f222753f8d9203b3768f23f6ccca72acb5",
+      "bytes": 210
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/negative_contexts/dependency_types/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "negative_contexts/dependency_types/Catalog.tla",
+      "sha256": "4e4080ba11c132bddb7e92e5c8a6dd7db830aede819df3c03a63b0d5a67a175e",
+      "bytes": 19271
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/negative_contexts/dependency_types/runs/run-eeo3s85p/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "negative_contexts/dependency_types/runs/run-eeo3s85p/result.json",
+      "sha256": "d7d805f27beb878019d1a71b65b42c70410b3276a76aedc31844f380183e669f",
+      "bytes": 2425
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/negative_contexts/dependency_types/runs/run-eeo3s85p/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "negative_contexts/dependency_types/runs/run-eeo3s85p/tlc.log",
+      "sha256": "cca65ce000584697492904df2a4add11630d30a4c13471fe7a98867a51cd4b60",
+      "bytes": 2298
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/negative_contexts/dependency_types/runs/run-eeo3s85p/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "negative_contexts/dependency_types/runs/run-eeo3s85p/visited.dump",
+      "sha256": "799732431b7d78b93539eff61fba2b4db34298e2554c4ac62477f2bb95444ec5",
+      "bytes": 17677
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/refusals/1/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "refusals/1/Catalog.cfg",
+      "sha256": "fafaaf916a0d6aab148e8e97f4213fa2c17c192641b3fb0e9dcd5b1ec98714ad",
+      "bytes": 59
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/refusals/1/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "refusals/1/Catalog.tla",
+      "sha256": "ac2a17f943379b5a0aedadd55b4e1ced6ba5052c30537e14d69801783bfc2afc",
+      "bytes": 4961
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/refusals/1/runs/run-xrtq6jjj/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "refusals/1/runs/run-xrtq6jjj/result.json",
+      "sha256": "c519c6afc0b93a015013f46cc9113e6da2c3e50988e04833003ef1132904f689",
+      "bytes": 2279
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/refusals/1/runs/run-xrtq6jjj/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "refusals/1/runs/run-xrtq6jjj/tlc.log",
+      "sha256": "859fdb3fa64c5a1010aa88abe9e47736aece0d21cf78be314692dc26db4b74e5",
+      "bytes": 2262
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/refusals/1/runs/run-xrtq6jjj/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "refusals/1/runs/run-xrtq6jjj/visited.dump",
+      "sha256": "e40772aebe4e0c7529334cb04065bf7a53e1dc3d6cb52795a4b9145d80f77b52",
+      "bytes": 1279
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/refusals/2/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "refusals/2/Catalog.cfg",
+      "sha256": "fafaaf916a0d6aab148e8e97f4213fa2c17c192641b3fb0e9dcd5b1ec98714ad",
+      "bytes": 59
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/refusals/2/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "refusals/2/Catalog.tla",
+      "sha256": "48bc0847cc75820f5ff48f67fc67ccaedc095d6e3bb40636445b7452b8e9aac2",
+      "bytes": 4967
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/refusals/2/runs/run-0tijbgbi/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "refusals/2/runs/run-0tijbgbi/result.json",
+      "sha256": "9ebfd15c89c33ec15e39009adf0243427737b79ab178e2c920ad450a589fc5bf",
+      "bytes": 2279
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/refusals/2/runs/run-0tijbgbi/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "refusals/2/runs/run-0tijbgbi/tlc.log",
+      "sha256": "44c2a6bbdb6d247222588a9513a1379f36cf1da976223b9155b92554c17c2c31",
+      "bytes": 2262
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/refusals/2/runs/run-0tijbgbi/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "refusals/2/runs/run-0tijbgbi/visited.dump",
+      "sha256": "6d6d2b9f0643ad7ec48553b0c22bc0252350b1f7bbc45501d9d6a979d870124c",
+      "bytes": 1285
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/report.md",
+      "archive": "reviewer.tar.gz",
+      "member": "report.md",
+      "sha256": "152fd2008a1b3adcd40c50ee3659425c8073cdbd2648bb012b5ae47a200bf9bf",
+      "bytes": 1155
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/witness/Catalog.cfg",
+      "archive": "reviewer.tar.gz",
+      "member": "witness/Catalog.cfg",
+      "sha256": "3315b1744dcdab80abc892dcf444d275e4ceff6d193f0151e2b76978abf4a4b8",
+      "bytes": 84
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/witness/Catalog.tla",
+      "archive": "reviewer.tar.gz",
+      "member": "witness/Catalog.tla",
+      "sha256": "40fc88b5876bdf58fb379bb5c89530ef2bac5a6ed23fc30ac4f3adc902171642",
+      "bytes": 16933
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/witness/runs/run-yz3qlchs/result.json",
+      "archive": "reviewer.tar.gz",
+      "member": "witness/runs/run-yz3qlchs/result.json",
+      "sha256": "98d10ddf7c572351af0bfcfdf09863e8d2eca285ea721c126cbb32c3b5efd571",
+      "bytes": 2261
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/witness/runs/run-yz3qlchs/tlc.log",
+      "archive": "reviewer.tar.gz",
+      "member": "witness/runs/run-yz3qlchs/tlc.log",
+      "sha256": "1e5cf4b143a1b3f7840eca0e8e5120d39e089a0fae9116fe74a90669ccdb1cd9",
+      "bytes": 2263
+    },
+    {
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-03/reviewer-final-v2/witness/runs/run-yz3qlchs/visited.dump",
+      "archive": "reviewer.tar.gz",
+      "member": "witness/runs/run-yz3qlchs/visited.dump",
+      "sha256": "c4b299820494ddd01b40e043dac62c4583eead29e0fa30dd6cfa87112270c1bd",
+      "bytes": 11541
+    },
+    {
+      "path": "tdd/author-final-command.log",
+      "sha256": "dc01f8534cc28d79accd95d12cb3dbad401c24252acfc5ea6e49348b809940b0",
+      "bytes": 90
+    },
+    {
+      "path": "tdd/author-final-v2-command.log",
+      "sha256": "4970f7cd5b204f9d188c25b1943cd8220739d6bc39332755e1b039a9e8dab21c",
+      "bytes": 108
+    },
+    {
+      "path": "tdd/catalog-green-v2.log",
+      "sha256": "248f423fdcf7ed784e1a95d98d64bf80233ea0b7ab0a42987ceb75cde3726950",
+      "bytes": 110
+    },
+    {
+      "path": "tdd/consistency.log",
+      "sha256": "2ffcaefa1b439aa723954c4600a4c5d6d81586ab2e0a17dadc6b8dc340f379db",
+      "bytes": 186
+    },
+    {
+      "path": "tdd/first-unit.log",
+      "sha256": "766e00bb4657d741cf6974427f827135be65975f300dfbe5315ce2fe4a17cadc",
+      "bytes": 1906
+    },
+    {
+      "path": "tdd/full-regression-v2.log",
+      "sha256": "dd6468c707e8a93db823fa8925a5f775b9226daee5290e266aac1d24c5bd93d9",
+      "bytes": 592
+    },
+    {
+      "path": "tdd/full-regression.log",
+      "sha256": "1b9bda639de0e87d907d250b101f4f47b0a5871580e5ca62e8de27c3eb8568fd",
+      "bytes": 1935
+    },
+    {
+      "path": "tdd/green-unit.log",
+      "sha256": "112be472a0244e746b39b76f2fcb33e611489a5fc11be5ba74ae3e45355065b9",
+      "bytes": 113
+    },
+    {
+      "path": "tdd/initial-refusal-tlc.log",
+      "sha256": "c11cb45ebc57987c0a69a6c1c4c3fc7e8caf1561ba6bcf85102c81ca010ce743",
+      "bytes": 1307
+    },
+    {
+      "path": "tdd/initial-run-report.md",
+      "sha256": "1f668a5397b648cff3f68631a8bc0104554b64494d46c846aba5a2571f605693",
+      "bytes": 1141
+    },
+    {
+      "path": "tdd/red-collection.log",
+      "sha256": "077152f56059f1de5817400d04377b53f117d634122d49abab6d6400e8b3cd93",
+      "bytes": 993
+    },
+    {
+      "path": "tdd/red-history-semantic.log",
+      "sha256": "4bb03b52c76f412bb9d0c8ab616d5dfea2368ec32bd5b9e578dc2ae84c16db51",
+      "bytes": 1924
+    },
+    {
+      "path": "tdd/red-history.log",
+      "sha256": "af562b14bdca77cdb2da1bfd36660dc5d5636015e8573a23f8b4a8599e060be3",
+      "bytes": 1938
+    },
+    {
+      "path": "author-summary.md",
+      "sha256": "152fd2008a1b3adcd40c50ee3659425c8073cdbd2648bb012b5ae47a200bf9bf",
+      "bytes": 1155
+    },
+    {
+      "path": "reviewer-summary.md",
+      "sha256": "152fd2008a1b3adcd40c50ee3659425c8073cdbd2648bb012b5ae47a200bf9bf",
+      "bytes": 1155
+    }
+  ],
+  "excluded": [
+    "TLC working states/ directory only (fingerprint/checkpoint cache)"
+  ]
+}
