@@ -49,6 +49,10 @@ Starszy skrypt spójności E1: `uv run --locked python scripts/check_model.py`. 
 
 `.venv/bin/python scripts/run_e3_catalog.py --output artifacts/e3-03/reproduction` bada T00–T04 na planie i wymaganiu, od rzeczywistego Init. Zależności czyta z bieżącego katalogu: wymaganie można przygotować wcześniej, lecz zweryfikować dopiero po zatwierdzeniu planu, a ustalić jego linię bazową po linii bazowej planu. [Raport](docs/E3-03-RAPORT.md) · [Niezależna recenzja](docs/reviews/E3-03-WYKONANIE-2026-10-27.md) · [Manifest dowodów](tla/e3-03/manifest.json). Dwa aktywne produkty, stała topologia i 16 kroków ograniczają wynik; to nadal część E3.
 
+## Przygotowanie badania wpływu zmiany — E3.4
+
+[Zakres i oczekiwania](docs/E3-04-MAPOWANIE.md) · [Scenariusz i odtworzenie przygotowania](docs/preparations/e3-04/README.md) · [Niezależny przegląd](docs/reviews/E3-04-PRZYGOTOWANIE-2026-10-27.md). Istniejący E2 wykonał 42 kroki zmiany wymagania i testu oraz przeglądu projektu i kodu; sprawdzono 14 pełnych punktów kontrolnych i 5 odmów. To przygotowanie następnego badania, bez nowego generatora i TLC E3.4.
+
 ## Wykonywalny WIT1
 
 `uv run --locked --offline python scripts/run_wit1.py --output artifacts/wit1` wykonuje 29 kroków na siedmiu elementach i zapisuje raport Markdown oraz pełny ślad JSON. Osiągnięte `accepted` i wszystkie cytaty dotyczą wyłącznie symulacji. Skrypt sprawdza też siedem prób obejścia bramek i odpowiadające im mutanty.

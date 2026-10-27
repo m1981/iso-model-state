@@ -1,0 +1,106 @@
+{
+  "status": "preparation_checked_not_e34_verification",
+  "source_files": {
+    "model/process.yaml": "2d329822e239555c1642d0a5a20aae0eb28fee17a6f2ff13968e48d7f428fc07",
+    "docs/preparations/e3-04/check_preparation.py": "14dc6fe09377c69ff8d57ea2a21266f7dc565c5979024d2b5532d89e02df8163",
+    "docs/preparations/e3-04/scenario.json": "4c90d18b6209617b1b9cb1a514c3a958c89997f00279e2d7af76d69fd609ea22",
+    "docs/preparations/e3-04/expected-checkpoints.json": "89a4a5517bbab803d8b1beff192406fa90d82105830ff1494702543f3d66fac1",
+    "docs/preparations/e3-04/refusals.json": "3f6d62cc530aeedccc3402fd021889595009d8fde3d08838233c9fa739f2ca4d",
+    "src/isomodel/__init__.py": "ae0b53f3627b7e31691e724c264be16793b4f41d13d1b82571f32345a7229a29",
+    "src/isomodel/dependencies.py": "93015d7f47fe857afc7e5faf62e134e03518e2d2162dba2c7a9db21248fd62c1",
+    "src/isomodel/evidence.py": "b9f6f7cdcf103a728b312d2075ffdd0a77335267c2ae6623d5a2759aa4699e3b",
+    "src/isomodel/execution.py": "0180a0a4f80577709e44413a1db492cfce25e1b55d211b5c710354e1082fb197",
+    "src/isomodel/exploration.py": "43101db82742b51d6a65412f71cce7d1288a96ba4cbfe386db35b34df8015cbb",
+    "src/isomodel/expressions.py": "98a534f87f04dc1daa34f75a5698e919317bfeb5c4d6cf6901a89fc22bf77ac8",
+    "src/isomodel/graph.py": "422258394eaf2fb448692376453eca16cb8e3665f81331a39ebe9857b893dce2",
+    "src/isomodel/hardening.py": "be7d5e6fe5200ec8918d42c685bafb736ba68ad57496d831001d35c1564429bc",
+    "src/isomodel/loader.py": "a4ee8d4ac63eede378c02984a226dc3ba06ae785f5d5be7af1b7cbd3d259c4ee",
+    "src/isomodel/probes.py": "c80d9f768da70ca567260e9e5926e874291903d141e05f3f9194cd0c87254862",
+    "src/isomodel/reporting.py": "4f77e9c83f6eb701b41012d3f6342091fff6ff61c113577b13c4418340a99909",
+    "src/isomodel/safety.py": "9c4a2b2127a557e86954b4889d78f6b6f95c29549016e02b41c7d3e67718292f",
+    "src/isomodel/tla_catalog.py": "76ded46eda77373c6c69c0ae9c9286dbe1680c6b731c961c8a608141c3e22907",
+    "src/isomodel/tla_loop.py": "97c0eafe2c2cd1456b04ba2a73c28ba74f82816e53fbc8ea06fbdb12f67baef8",
+    "src/isomodel/tla_projection.py": "857d65de74bc4a9ed6ab26c55c7beb9024845ce0d147e812c20f202c4c66c917",
+    "src/isomodel/tlc.py": "a543da443779ed456cd8c465287bc0791f6f8fe092f075f64c3cc89c0e548de0"
+  },
+  "source_sha256": "26e63b7d4d94dac480dafef5f2f1a6d01ef4f93fe6f9192529c0e84b4b736929",
+  "model_sha256": "ecca43e1402ee476502943caa16556d5609021b8894f3a702e26ca2da3cf21a6",
+  "steps": 42,
+  "full_checkpoints": 14,
+  "refusals": [
+    {
+      "after_step": 30,
+      "event": {
+        "transition": "T11",
+        "actor": "A",
+        "item": "d1",
+        "evidence": {
+          "simulation": true,
+          "decision": "SIM-DEC-T11-d1",
+          "reference": "SIM-REF-T11-d1",
+          "quote": "Demonstracja E3.4: T11-d1"
+        }
+      },
+      "expected_code": "guard",
+      "observed_code": "guard",
+      "unchanged": true
+    },
+    {
+      "after_step": 30,
+      "event": {
+        "transition": "T13",
+        "actor": "A",
+        "item": "a1"
+      },
+      "expected_code": "state",
+      "observed_code": "state",
+      "unchanged": true
+    },
+    {
+      "after_step": 33,
+      "event": {
+        "transition": "T05",
+        "actor": "U",
+        "item": "r1",
+        "question": "q0"
+      },
+      "expected_code": "guard",
+      "observed_code": "guard",
+      "unchanged": true
+    },
+    {
+      "after_step": 34,
+      "event": {
+        "transition": "T11",
+        "actor": "A",
+        "item": "c1",
+        "evidence": {
+          "simulation": true,
+          "decision": "SIM-DEC-T11-c1",
+          "reference": "SIM-REF-T11-c1",
+          "quote": "Demonstracja E3.4: T11-c1"
+        }
+      },
+      "expected_code": "guard",
+      "observed_code": "guard",
+      "unchanged": true
+    },
+    {
+      "after_step": 41,
+      "event": {
+        "transition": "T11",
+        "actor": "A",
+        "item": "c1"
+      },
+      "expected_code": "evidence",
+      "observed_code": "evidence",
+      "unchanged": true
+    }
+  ],
+  "i03": {
+    "mature_but_suspect_dependencies": "applied",
+    "draft_dependency": "guard"
+  },
+  "archive_sha256": "35f5a0659239b53f39ebf4e661493f896e4320f9da5355fa86150d1c5efc21e3",
+  "uncompressed_sha256": "8519c37d009157c9acd223a59cb94f998b89bd271b453205b55547851c941055"
+}

@@ -1,0 +1,2029 @@
+{
+  "origin": "Oczekiwania autora przygotowania, ręcznie z modelu; nie wyrocznia przyszłego generatora.",
+  "checkpoints": [
+    {
+      "after_step": 29,
+      "state": {
+        "items": {
+          "p1": {
+            "id": "p1",
+            "type": "PLAN",
+            "depends_on": [],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r1": {
+            "id": "r1",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r2": {
+            "id": "r2",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "d1": {
+            "id": "d1",
+            "type": "DES",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "a1": {
+            "id": "a1",
+            "type": "AT",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "a2": {
+            "id": "a2",
+            "type": "AT",
+            "depends_on": [
+              "r2"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "c1": {
+            "id": "c1",
+            "type": "CODE",
+            "depends_on": [
+              "d1",
+              "a1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r3": {
+            "id": "r3",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "none",
+            "version": 0,
+            "rejections": 0,
+            "suspect": false
+          }
+        },
+        "questions": {
+          "q0": {
+            "id": "q0",
+            "state": "resolved",
+            "blocking": true,
+            "age": 1,
+            "kind": "change",
+            "about": "r1",
+            "about_version": 1,
+            "requested_transition": "T05",
+            "resolution": "approved",
+            "consumed": false
+          }
+        },
+        "releases": {
+          "1": {
+            "number": 1,
+            "state": "in_preparation",
+            "scope": [
+              "p1",
+              "r1",
+              "r2",
+              "d1",
+              "a1",
+              "a2",
+              "c1"
+            ],
+            "snapshot": null,
+            "acceptance": null
+          }
+        },
+        "current_release": 1,
+        "next_release_required": false
+      },
+      "records": [
+        {
+          "kind": "decision",
+          "id": "SIM-DEC-P02-q0",
+          "question": "q0",
+          "quote": "Demonstracja E3.4: P02-q0",
+          "simulation": true,
+          "resolution": "approved",
+          "about": "r1",
+          "about_version": 1,
+          "requested_transition": "T05"
+        }
+      ]
+    },
+    {
+      "after_step": 30,
+      "state": {
+        "items": {
+          "p1": {
+            "id": "p1",
+            "type": "PLAN",
+            "depends_on": [],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r1": {
+            "id": "r1",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "draft",
+            "version": 2,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r2": {
+            "id": "r2",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "d1": {
+            "id": "d1",
+            "type": "DES",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "a1": {
+            "id": "a1",
+            "type": "AT",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "a2": {
+            "id": "a2",
+            "type": "AT",
+            "depends_on": [
+              "r2"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "c1": {
+            "id": "c1",
+            "type": "CODE",
+            "depends_on": [
+              "d1",
+              "a1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "r3": {
+            "id": "r3",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "none",
+            "version": 0,
+            "rejections": 0,
+            "suspect": false
+          }
+        },
+        "questions": {
+          "q0": {
+            "id": "q0",
+            "state": "resolved",
+            "blocking": true,
+            "age": 1,
+            "kind": "change",
+            "about": "r1",
+            "about_version": 1,
+            "requested_transition": "T05",
+            "resolution": "approved",
+            "consumed": true
+          }
+        },
+        "releases": {
+          "1": {
+            "number": 1,
+            "state": "in_preparation",
+            "scope": [
+              "p1",
+              "r1",
+              "r2",
+              "d1",
+              "a1",
+              "a2",
+              "c1"
+            ],
+            "snapshot": null,
+            "acceptance": null
+          }
+        },
+        "current_release": 1,
+        "next_release_required": false
+      },
+      "records": []
+    },
+    {
+      "after_step": 31,
+      "state": {
+        "items": {
+          "p1": {
+            "id": "p1",
+            "type": "PLAN",
+            "depends_on": [],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r1": {
+            "id": "r1",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "verified",
+            "version": 2,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r2": {
+            "id": "r2",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "d1": {
+            "id": "d1",
+            "type": "DES",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "a1": {
+            "id": "a1",
+            "type": "AT",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "a2": {
+            "id": "a2",
+            "type": "AT",
+            "depends_on": [
+              "r2"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "c1": {
+            "id": "c1",
+            "type": "CODE",
+            "depends_on": [
+              "d1",
+              "a1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "r3": {
+            "id": "r3",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "none",
+            "version": 0,
+            "rejections": 0,
+            "suspect": false
+          }
+        },
+        "questions": {
+          "q0": {
+            "id": "q0",
+            "state": "resolved",
+            "blocking": true,
+            "age": 1,
+            "kind": "change",
+            "about": "r1",
+            "about_version": 1,
+            "requested_transition": "T05",
+            "resolution": "approved",
+            "consumed": true
+          }
+        },
+        "releases": {
+          "1": {
+            "number": 1,
+            "state": "in_preparation",
+            "scope": [
+              "p1",
+              "r1",
+              "r2",
+              "d1",
+              "a1",
+              "a2",
+              "c1"
+            ],
+            "snapshot": null,
+            "acceptance": null
+          }
+        },
+        "current_release": 1,
+        "next_release_required": false
+      },
+      "records": []
+    },
+    {
+      "after_step": 32,
+      "state": {
+        "items": {
+          "p1": {
+            "id": "p1",
+            "type": "PLAN",
+            "depends_on": [],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r1": {
+            "id": "r1",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "approved",
+            "version": 2,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r2": {
+            "id": "r2",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "d1": {
+            "id": "d1",
+            "type": "DES",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "a1": {
+            "id": "a1",
+            "type": "AT",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "a2": {
+            "id": "a2",
+            "type": "AT",
+            "depends_on": [
+              "r2"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "c1": {
+            "id": "c1",
+            "type": "CODE",
+            "depends_on": [
+              "d1",
+              "a1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "r3": {
+            "id": "r3",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "none",
+            "version": 0,
+            "rejections": 0,
+            "suspect": false
+          }
+        },
+        "questions": {
+          "q0": {
+            "id": "q0",
+            "state": "resolved",
+            "blocking": true,
+            "age": 1,
+            "kind": "change",
+            "about": "r1",
+            "about_version": 1,
+            "requested_transition": "T05",
+            "resolution": "approved",
+            "consumed": true
+          }
+        },
+        "releases": {
+          "1": {
+            "number": 1,
+            "state": "in_preparation",
+            "scope": [
+              "p1",
+              "r1",
+              "r2",
+              "d1",
+              "a1",
+              "a2",
+              "c1"
+            ],
+            "snapshot": null,
+            "acceptance": null
+          }
+        },
+        "current_release": 1,
+        "next_release_required": false
+      },
+      "records": []
+    },
+    {
+      "after_step": 33,
+      "state": {
+        "items": {
+          "p1": {
+            "id": "p1",
+            "type": "PLAN",
+            "depends_on": [],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r1": {
+            "id": "r1",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 2,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r2": {
+            "id": "r2",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "d1": {
+            "id": "d1",
+            "type": "DES",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "a1": {
+            "id": "a1",
+            "type": "AT",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "a2": {
+            "id": "a2",
+            "type": "AT",
+            "depends_on": [
+              "r2"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "c1": {
+            "id": "c1",
+            "type": "CODE",
+            "depends_on": [
+              "d1",
+              "a1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "r3": {
+            "id": "r3",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "none",
+            "version": 0,
+            "rejections": 0,
+            "suspect": false
+          }
+        },
+        "questions": {
+          "q0": {
+            "id": "q0",
+            "state": "resolved",
+            "blocking": true,
+            "age": 1,
+            "kind": "change",
+            "about": "r1",
+            "about_version": 1,
+            "requested_transition": "T05",
+            "resolution": "approved",
+            "consumed": true
+          }
+        },
+        "releases": {
+          "1": {
+            "number": 1,
+            "state": "in_preparation",
+            "scope": [
+              "p1",
+              "r1",
+              "r2",
+              "d1",
+              "a1",
+              "a2",
+              "c1"
+            ],
+            "snapshot": null,
+            "acceptance": null
+          }
+        },
+        "current_release": 1,
+        "next_release_required": false
+      },
+      "records": []
+    },
+    {
+      "after_step": 34,
+      "state": {
+        "items": {
+          "p1": {
+            "id": "p1",
+            "type": "PLAN",
+            "depends_on": [],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r1": {
+            "id": "r1",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 2,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r2": {
+            "id": "r2",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "d1": {
+            "id": "d1",
+            "type": "DES",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "a1": {
+            "id": "a1",
+            "type": "AT",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "a2": {
+            "id": "a2",
+            "type": "AT",
+            "depends_on": [
+              "r2"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "c1": {
+            "id": "c1",
+            "type": "CODE",
+            "depends_on": [
+              "d1",
+              "a1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "r3": {
+            "id": "r3",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "none",
+            "version": 0,
+            "rejections": 0,
+            "suspect": false
+          }
+        },
+        "questions": {
+          "q0": {
+            "id": "q0",
+            "state": "resolved",
+            "blocking": true,
+            "age": 1,
+            "kind": "change",
+            "about": "r1",
+            "about_version": 1,
+            "requested_transition": "T05",
+            "resolution": "approved",
+            "consumed": true
+          }
+        },
+        "releases": {
+          "1": {
+            "number": 1,
+            "state": "in_preparation",
+            "scope": [
+              "p1",
+              "r1",
+              "r2",
+              "d1",
+              "a1",
+              "a2",
+              "c1"
+            ],
+            "snapshot": null,
+            "acceptance": null
+          }
+        },
+        "current_release": 1,
+        "next_release_required": false
+      },
+      "records": []
+    },
+    {
+      "after_step": 35,
+      "state": {
+        "items": {
+          "p1": {
+            "id": "p1",
+            "type": "PLAN",
+            "depends_on": [],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r1": {
+            "id": "r1",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 2,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r2": {
+            "id": "r2",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "d1": {
+            "id": "d1",
+            "type": "DES",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "a1": {
+            "id": "a1",
+            "type": "AT",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "a2": {
+            "id": "a2",
+            "type": "AT",
+            "depends_on": [
+              "r2"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "c1": {
+            "id": "c1",
+            "type": "CODE",
+            "depends_on": [
+              "d1",
+              "a1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "r3": {
+            "id": "r3",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "none",
+            "version": 0,
+            "rejections": 0,
+            "suspect": false
+          }
+        },
+        "questions": {
+          "q0": {
+            "id": "q0",
+            "state": "resolved",
+            "blocking": true,
+            "age": 1,
+            "kind": "change",
+            "about": "r1",
+            "about_version": 1,
+            "requested_transition": "T05",
+            "resolution": "approved",
+            "consumed": true
+          },
+          "q1": {
+            "id": "q1",
+            "state": "open",
+            "blocking": true,
+            "age": 2,
+            "kind": "change",
+            "about": "a1",
+            "about_version": 1,
+            "requested_transition": "T05",
+            "resolution": "none",
+            "consumed": false
+          }
+        },
+        "releases": {
+          "1": {
+            "number": 1,
+            "state": "in_preparation",
+            "scope": [
+              "p1",
+              "r1",
+              "r2",
+              "d1",
+              "a1",
+              "a2",
+              "c1"
+            ],
+            "snapshot": null,
+            "acceptance": null
+          }
+        },
+        "current_release": 1,
+        "next_release_required": false
+      },
+      "records": []
+    },
+    {
+      "after_step": 36,
+      "state": {
+        "items": {
+          "p1": {
+            "id": "p1",
+            "type": "PLAN",
+            "depends_on": [],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r1": {
+            "id": "r1",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 2,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r2": {
+            "id": "r2",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "d1": {
+            "id": "d1",
+            "type": "DES",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "a1": {
+            "id": "a1",
+            "type": "AT",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "a2": {
+            "id": "a2",
+            "type": "AT",
+            "depends_on": [
+              "r2"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "c1": {
+            "id": "c1",
+            "type": "CODE",
+            "depends_on": [
+              "d1",
+              "a1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "r3": {
+            "id": "r3",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "none",
+            "version": 0,
+            "rejections": 0,
+            "suspect": false
+          }
+        },
+        "questions": {
+          "q0": {
+            "id": "q0",
+            "state": "resolved",
+            "blocking": true,
+            "age": 1,
+            "kind": "change",
+            "about": "r1",
+            "about_version": 1,
+            "requested_transition": "T05",
+            "resolution": "approved",
+            "consumed": true
+          },
+          "q1": {
+            "id": "q1",
+            "state": "asked",
+            "blocking": true,
+            "age": 2,
+            "kind": "change",
+            "about": "a1",
+            "about_version": 1,
+            "requested_transition": "T05",
+            "resolution": "none",
+            "consumed": false
+          }
+        },
+        "releases": {
+          "1": {
+            "number": 1,
+            "state": "in_preparation",
+            "scope": [
+              "p1",
+              "r1",
+              "r2",
+              "d1",
+              "a1",
+              "a2",
+              "c1"
+            ],
+            "snapshot": null,
+            "acceptance": null
+          }
+        },
+        "current_release": 1,
+        "next_release_required": false
+      },
+      "records": []
+    },
+    {
+      "after_step": 37,
+      "state": {
+        "items": {
+          "p1": {
+            "id": "p1",
+            "type": "PLAN",
+            "depends_on": [],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r1": {
+            "id": "r1",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 2,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r2": {
+            "id": "r2",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "d1": {
+            "id": "d1",
+            "type": "DES",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "a1": {
+            "id": "a1",
+            "type": "AT",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "a2": {
+            "id": "a2",
+            "type": "AT",
+            "depends_on": [
+              "r2"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "c1": {
+            "id": "c1",
+            "type": "CODE",
+            "depends_on": [
+              "d1",
+              "a1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "r3": {
+            "id": "r3",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "none",
+            "version": 0,
+            "rejections": 0,
+            "suspect": false
+          }
+        },
+        "questions": {
+          "q0": {
+            "id": "q0",
+            "state": "resolved",
+            "blocking": true,
+            "age": 1,
+            "kind": "change",
+            "about": "r1",
+            "about_version": 1,
+            "requested_transition": "T05",
+            "resolution": "approved",
+            "consumed": true
+          },
+          "q1": {
+            "id": "q1",
+            "state": "resolved",
+            "blocking": true,
+            "age": 2,
+            "kind": "change",
+            "about": "a1",
+            "about_version": 1,
+            "requested_transition": "T05",
+            "resolution": "approved",
+            "consumed": false
+          }
+        },
+        "releases": {
+          "1": {
+            "number": 1,
+            "state": "in_preparation",
+            "scope": [
+              "p1",
+              "r1",
+              "r2",
+              "d1",
+              "a1",
+              "a2",
+              "c1"
+            ],
+            "snapshot": null,
+            "acceptance": null
+          }
+        },
+        "current_release": 1,
+        "next_release_required": false
+      },
+      "records": [
+        {
+          "kind": "decision",
+          "id": "SIM-DEC-P02-q1",
+          "question": "q1",
+          "quote": "Demonstracja E3.4: P02-q1",
+          "simulation": true,
+          "resolution": "approved",
+          "about": "a1",
+          "about_version": 1,
+          "requested_transition": "T05"
+        }
+      ]
+    },
+    {
+      "after_step": 38,
+      "state": {
+        "items": {
+          "p1": {
+            "id": "p1",
+            "type": "PLAN",
+            "depends_on": [],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r1": {
+            "id": "r1",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 2,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r2": {
+            "id": "r2",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "d1": {
+            "id": "d1",
+            "type": "DES",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "a1": {
+            "id": "a1",
+            "type": "AT",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "draft",
+            "version": 2,
+            "rejections": 0,
+            "suspect": false
+          },
+          "a2": {
+            "id": "a2",
+            "type": "AT",
+            "depends_on": [
+              "r2"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "c1": {
+            "id": "c1",
+            "type": "CODE",
+            "depends_on": [
+              "d1",
+              "a1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "r3": {
+            "id": "r3",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "none",
+            "version": 0,
+            "rejections": 0,
+            "suspect": false
+          }
+        },
+        "questions": {
+          "q0": {
+            "id": "q0",
+            "state": "resolved",
+            "blocking": true,
+            "age": 1,
+            "kind": "change",
+            "about": "r1",
+            "about_version": 1,
+            "requested_transition": "T05",
+            "resolution": "approved",
+            "consumed": true
+          },
+          "q1": {
+            "id": "q1",
+            "state": "resolved",
+            "blocking": true,
+            "age": 2,
+            "kind": "change",
+            "about": "a1",
+            "about_version": 1,
+            "requested_transition": "T05",
+            "resolution": "approved",
+            "consumed": true
+          }
+        },
+        "releases": {
+          "1": {
+            "number": 1,
+            "state": "in_preparation",
+            "scope": [
+              "p1",
+              "r1",
+              "r2",
+              "d1",
+              "a1",
+              "a2",
+              "c1"
+            ],
+            "snapshot": null,
+            "acceptance": null
+          }
+        },
+        "current_release": 1,
+        "next_release_required": false
+      },
+      "records": []
+    },
+    {
+      "after_step": 39,
+      "state": {
+        "items": {
+          "p1": {
+            "id": "p1",
+            "type": "PLAN",
+            "depends_on": [],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r1": {
+            "id": "r1",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 2,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r2": {
+            "id": "r2",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "d1": {
+            "id": "d1",
+            "type": "DES",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "a1": {
+            "id": "a1",
+            "type": "AT",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "verified",
+            "version": 2,
+            "rejections": 0,
+            "suspect": false
+          },
+          "a2": {
+            "id": "a2",
+            "type": "AT",
+            "depends_on": [
+              "r2"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "c1": {
+            "id": "c1",
+            "type": "CODE",
+            "depends_on": [
+              "d1",
+              "a1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "r3": {
+            "id": "r3",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "none",
+            "version": 0,
+            "rejections": 0,
+            "suspect": false
+          }
+        },
+        "questions": {
+          "q0": {
+            "id": "q0",
+            "state": "resolved",
+            "blocking": true,
+            "age": 1,
+            "kind": "change",
+            "about": "r1",
+            "about_version": 1,
+            "requested_transition": "T05",
+            "resolution": "approved",
+            "consumed": true
+          },
+          "q1": {
+            "id": "q1",
+            "state": "resolved",
+            "blocking": true,
+            "age": 2,
+            "kind": "change",
+            "about": "a1",
+            "about_version": 1,
+            "requested_transition": "T05",
+            "resolution": "approved",
+            "consumed": true
+          }
+        },
+        "releases": {
+          "1": {
+            "number": 1,
+            "state": "in_preparation",
+            "scope": [
+              "p1",
+              "r1",
+              "r2",
+              "d1",
+              "a1",
+              "a2",
+              "c1"
+            ],
+            "snapshot": null,
+            "acceptance": null
+          }
+        },
+        "current_release": 1,
+        "next_release_required": false
+      },
+      "records": []
+    },
+    {
+      "after_step": 40,
+      "state": {
+        "items": {
+          "p1": {
+            "id": "p1",
+            "type": "PLAN",
+            "depends_on": [],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r1": {
+            "id": "r1",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 2,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r2": {
+            "id": "r2",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "d1": {
+            "id": "d1",
+            "type": "DES",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "a1": {
+            "id": "a1",
+            "type": "AT",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "approved",
+            "version": 2,
+            "rejections": 0,
+            "suspect": false
+          },
+          "a2": {
+            "id": "a2",
+            "type": "AT",
+            "depends_on": [
+              "r2"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "c1": {
+            "id": "c1",
+            "type": "CODE",
+            "depends_on": [
+              "d1",
+              "a1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "r3": {
+            "id": "r3",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "none",
+            "version": 0,
+            "rejections": 0,
+            "suspect": false
+          }
+        },
+        "questions": {
+          "q0": {
+            "id": "q0",
+            "state": "resolved",
+            "blocking": true,
+            "age": 1,
+            "kind": "change",
+            "about": "r1",
+            "about_version": 1,
+            "requested_transition": "T05",
+            "resolution": "approved",
+            "consumed": true
+          },
+          "q1": {
+            "id": "q1",
+            "state": "resolved",
+            "blocking": true,
+            "age": 2,
+            "kind": "change",
+            "about": "a1",
+            "about_version": 1,
+            "requested_transition": "T05",
+            "resolution": "approved",
+            "consumed": true
+          }
+        },
+        "releases": {
+          "1": {
+            "number": 1,
+            "state": "in_preparation",
+            "scope": [
+              "p1",
+              "r1",
+              "r2",
+              "d1",
+              "a1",
+              "a2",
+              "c1"
+            ],
+            "snapshot": null,
+            "acceptance": null
+          }
+        },
+        "current_release": 1,
+        "next_release_required": false
+      },
+      "records": []
+    },
+    {
+      "after_step": 41,
+      "state": {
+        "items": {
+          "p1": {
+            "id": "p1",
+            "type": "PLAN",
+            "depends_on": [],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r1": {
+            "id": "r1",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 2,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r2": {
+            "id": "r2",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "d1": {
+            "id": "d1",
+            "type": "DES",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "a1": {
+            "id": "a1",
+            "type": "AT",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 2,
+            "rejections": 0,
+            "suspect": false
+          },
+          "a2": {
+            "id": "a2",
+            "type": "AT",
+            "depends_on": [
+              "r2"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "c1": {
+            "id": "c1",
+            "type": "CODE",
+            "depends_on": [
+              "d1",
+              "a1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": true
+          },
+          "r3": {
+            "id": "r3",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "none",
+            "version": 0,
+            "rejections": 0,
+            "suspect": false
+          }
+        },
+        "questions": {
+          "q0": {
+            "id": "q0",
+            "state": "resolved",
+            "blocking": true,
+            "age": 1,
+            "kind": "change",
+            "about": "r1",
+            "about_version": 1,
+            "requested_transition": "T05",
+            "resolution": "approved",
+            "consumed": true
+          },
+          "q1": {
+            "id": "q1",
+            "state": "resolved",
+            "blocking": true,
+            "age": 2,
+            "kind": "change",
+            "about": "a1",
+            "about_version": 1,
+            "requested_transition": "T05",
+            "resolution": "approved",
+            "consumed": true
+          }
+        },
+        "releases": {
+          "1": {
+            "number": 1,
+            "state": "in_preparation",
+            "scope": [
+              "p1",
+              "r1",
+              "r2",
+              "d1",
+              "a1",
+              "a2",
+              "c1"
+            ],
+            "snapshot": null,
+            "acceptance": null
+          }
+        },
+        "current_release": 1,
+        "next_release_required": false
+      },
+      "records": []
+    },
+    {
+      "after_step": 42,
+      "state": {
+        "items": {
+          "p1": {
+            "id": "p1",
+            "type": "PLAN",
+            "depends_on": [],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r1": {
+            "id": "r1",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 2,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r2": {
+            "id": "r2",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "d1": {
+            "id": "d1",
+            "type": "DES",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "a1": {
+            "id": "a1",
+            "type": "AT",
+            "depends_on": [
+              "r1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 2,
+            "rejections": 0,
+            "suspect": false
+          },
+          "a2": {
+            "id": "a2",
+            "type": "AT",
+            "depends_on": [
+              "r2"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "c1": {
+            "id": "c1",
+            "type": "CODE",
+            "depends_on": [
+              "d1",
+              "a1"
+            ],
+            "predecessor": "none",
+            "state": "baselined",
+            "version": 1,
+            "rejections": 0,
+            "suspect": false
+          },
+          "r3": {
+            "id": "r3",
+            "type": "REQ",
+            "depends_on": [
+              "p1"
+            ],
+            "predecessor": "none",
+            "state": "none",
+            "version": 0,
+            "rejections": 0,
+            "suspect": false
+          }
+        },
+        "questions": {
+          "q0": {
+            "id": "q0",
+            "state": "resolved",
+            "blocking": true,
+            "age": 1,
+            "kind": "change",
+            "about": "r1",
+            "about_version": 1,
+            "requested_transition": "T05",
+            "resolution": "approved",
+            "consumed": true
+          },
+          "q1": {
+            "id": "q1",
+            "state": "resolved",
+            "blocking": true,
+            "age": 2,
+            "kind": "change",
+            "about": "a1",
+            "about_version": 1,
+            "requested_transition": "T05",
+            "resolution": "approved",
+            "consumed": true
+          }
+        },
+        "releases": {
+          "1": {
+            "number": 1,
+            "state": "in_preparation",
+            "scope": [
+              "p1",
+              "r1",
+              "r2",
+              "d1",
+              "a1",
+              "a2",
+              "c1"
+            ],
+            "snapshot": null,
+            "acceptance": null
+          }
+        },
+        "current_release": 1,
+        "next_release_required": false
+      },
+      "records": []
+    }
+  ]
+}

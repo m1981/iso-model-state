@@ -1,0 +1,55 @@
+{
+  "status": "preparation_only_not_tlc",
+  "source_sha256": "26e63b7d4d94dac480dafef5f2f1a6d01ef4f93fe6f9192529c0e84b4b736929",
+  "files": [
+    {
+      "path": "author-summary.json",
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-04/preparation-author/summary.json",
+      "sha256": "d8040538bc86c150537da811c4f427b18db8323a924b8bc3525ebd3b7a3f78be",
+      "bytes": 4298
+    },
+    {
+      "path": "author-evidence.json.gz",
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-04/preparation-author/evidence.json.gz",
+      "sha256": "35f5a0659239b53f39ebf4e661493f896e4320f9da5355fa86150d1c5efc21e3",
+      "bytes": 11620
+    },
+    {
+      "path": "reviewer-summary.json",
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-04/preparation-reviewer/summary.json",
+      "sha256": "d8040538bc86c150537da811c4f427b18db8323a924b8bc3525ebd3b7a3f78be",
+      "bytes": 4298
+    },
+    {
+      "path": "reviewer-evidence.json.gz",
+      "original": "/Users/michal/PycharmProjects/iso-model-state/artifacts/e3-04/preparation-reviewer/evidence.json.gz",
+      "sha256": "35f5a0659239b53f39ebf4e661493f896e4320f9da5355fa86150d1c5efc21e3",
+      "bytes": 11620
+    },
+    {
+      "path": "scenario.json",
+      "sha256": "4c90d18b6209617b1b9cb1a514c3a958c89997f00279e2d7af76d69fd609ea22",
+      "bytes": 7705
+    },
+    {
+      "path": "expected-checkpoints.json",
+      "sha256": "89a4a5517bbab803d8b1beff192406fa90d82105830ff1494702543f3d66fac1",
+      "bytes": 49317
+    },
+    {
+      "path": "refusals.json",
+      "sha256": "3f6d62cc530aeedccc3402fd021889595009d8fde3d08838233c9fa739f2ca4d",
+      "bytes": 1128
+    },
+    {
+      "path": "check_preparation.py",
+      "sha256": "14dc6fe09377c69ff8d57ea2a21266f7dc565c5979024d2b5532d89e02df8163",
+      "bytes": 5643
+    },
+    {
+      "path": "consistency.log",
+      "sha256": "2ffcaefa1b439aa723954c4600a4c5d6d81586ab2e0a17dadc6b8dc340f379db",
+      "bytes": 186
+    }
+  ]
+}

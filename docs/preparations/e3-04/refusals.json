@@ -1,0 +1,60 @@
+[
+  {
+    "after_step": 30,
+    "event": {
+      "transition": "T11",
+      "actor": "A",
+      "item": "d1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-T11-d1",
+        "reference": "SIM-REF-T11-d1",
+        "quote": "Demonstracja E3.4: T11-d1"
+      }
+    },
+    "expected_code": "guard"
+  },
+  {
+    "after_step": 30,
+    "event": {
+      "transition": "T13",
+      "actor": "A",
+      "item": "a1"
+    },
+    "expected_code": "state"
+  },
+  {
+    "after_step": 33,
+    "event": {
+      "transition": "T05",
+      "actor": "U",
+      "item": "r1",
+      "question": "q0"
+    },
+    "expected_code": "guard"
+  },
+  {
+    "after_step": 34,
+    "event": {
+      "transition": "T11",
+      "actor": "A",
+      "item": "c1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-T11-c1",
+        "reference": "SIM-REF-T11-c1",
+        "quote": "Demonstracja E3.4: T11-c1"
+      }
+    },
+    "expected_code": "guard"
+  },
+  {
+    "after_step": 41,
+    "event": {
+      "transition": "T11",
+      "actor": "A",
+      "item": "c1"
+    },
+    "expected_code": "evidence"
+  }
+]

@@ -1,0 +1,367 @@
+{
+  "id": "E3.4-PREFLIGHT",
+  "simulation": true,
+  "description": "Przygotowanie: ręczna ścieżka zmiany r1 i a1, przegląd d1/c1; nie wynik TLC.",
+  "inputs": {
+    "checks_ok": {
+      "p1": true,
+      "r1": true,
+      "r2": true,
+      "d1": true,
+      "a1": true,
+      "a2": true,
+      "c1": true,
+      "r3": true
+    },
+    "tests_ok": true
+  },
+  "events": [
+    {
+      "transition": "T00",
+      "actor": "A",
+      "item": "p1"
+    },
+    {
+      "transition": "T01",
+      "actor": "A",
+      "item": "p1"
+    },
+    {
+      "transition": "T02",
+      "actor": "U",
+      "item": "p1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-T02-p1",
+        "reference": "SIM-REF-T02-p1",
+        "quote": "Demonstracja E3.4: T02-p1"
+      }
+    },
+    {
+      "transition": "T04",
+      "actor": "U",
+      "item": "p1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-T04-p1",
+        "reference": "SIM-REF-T04-p1",
+        "quote": "Demonstracja E3.4: T04-p1"
+      }
+    },
+    {
+      "transition": "T00",
+      "actor": "A",
+      "item": "r1"
+    },
+    {
+      "transition": "T01",
+      "actor": "A",
+      "item": "r1"
+    },
+    {
+      "transition": "T02",
+      "actor": "U",
+      "item": "r1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-T02-r1",
+        "reference": "SIM-REF-T02-r1",
+        "quote": "Demonstracja E3.4: T02-r1"
+      }
+    },
+    {
+      "transition": "T04",
+      "actor": "U",
+      "item": "r1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-T04-r1",
+        "reference": "SIM-REF-T04-r1",
+        "quote": "Demonstracja E3.4: T04-r1"
+      }
+    },
+    {
+      "transition": "T00",
+      "actor": "A",
+      "item": "r2"
+    },
+    {
+      "transition": "T01",
+      "actor": "A",
+      "item": "r2"
+    },
+    {
+      "transition": "T02",
+      "actor": "U",
+      "item": "r2",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-T02-r2",
+        "reference": "SIM-REF-T02-r2",
+        "quote": "Demonstracja E3.4: T02-r2"
+      }
+    },
+    {
+      "transition": "T04",
+      "actor": "U",
+      "item": "r2",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-T04-r2",
+        "reference": "SIM-REF-T04-r2",
+        "quote": "Demonstracja E3.4: T04-r2"
+      }
+    },
+    {
+      "transition": "T00",
+      "actor": "A",
+      "item": "d1"
+    },
+    {
+      "transition": "T01",
+      "actor": "A",
+      "item": "d1"
+    },
+    {
+      "transition": "T04",
+      "actor": "U",
+      "item": "d1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-T04-d1",
+        "reference": "SIM-REF-T04-d1",
+        "quote": "Demonstracja E3.4: T04-d1"
+      }
+    },
+    {
+      "transition": "T00",
+      "actor": "A",
+      "item": "a1"
+    },
+    {
+      "transition": "T01",
+      "actor": "A",
+      "item": "a1"
+    },
+    {
+      "transition": "T02",
+      "actor": "U",
+      "item": "a1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-T02-a1",
+        "reference": "SIM-REF-T02-a1",
+        "quote": "Demonstracja E3.4: T02-a1"
+      }
+    },
+    {
+      "transition": "T04",
+      "actor": "U",
+      "item": "a1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-T04-a1",
+        "reference": "SIM-REF-T04-a1",
+        "quote": "Demonstracja E3.4: T04-a1"
+      }
+    },
+    {
+      "transition": "T00",
+      "actor": "A",
+      "item": "a2"
+    },
+    {
+      "transition": "T01",
+      "actor": "A",
+      "item": "a2"
+    },
+    {
+      "transition": "T02",
+      "actor": "U",
+      "item": "a2",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-T02-a2",
+        "reference": "SIM-REF-T02-a2",
+        "quote": "Demonstracja E3.4: T02-a2"
+      }
+    },
+    {
+      "transition": "T04",
+      "actor": "U",
+      "item": "a2",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-T04-a2",
+        "reference": "SIM-REF-T04-a2",
+        "quote": "Demonstracja E3.4: T04-a2"
+      }
+    },
+    {
+      "transition": "T00",
+      "actor": "A",
+      "item": "c1"
+    },
+    {
+      "transition": "T01",
+      "actor": "A",
+      "item": "c1"
+    },
+    {
+      "transition": "T04",
+      "actor": "U",
+      "item": "c1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-T04-c1",
+        "reference": "SIM-REF-T04-c1",
+        "quote": "Demonstracja E3.4: T04-c1"
+      }
+    },
+    {
+      "transition": "P00",
+      "actor": "A",
+      "question": "q0",
+      "attributes": {
+        "kind": "change",
+        "about": "r1",
+        "requested_transition": "T05",
+        "blocking": true
+      }
+    },
+    {
+      "transition": "P01",
+      "actor": "A",
+      "question": "q0"
+    },
+    {
+      "transition": "P02",
+      "actor": "U",
+      "question": "q0",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-P02-q0",
+        "reference": "SIM-REF-P02-q0",
+        "quote": "Demonstracja E3.4: P02-q0"
+      },
+      "inputs": {
+        "unambiguous_answer": true,
+        "resolution": "approved"
+      }
+    },
+    {
+      "transition": "T05",
+      "actor": "U",
+      "item": "r1",
+      "question": "q0"
+    },
+    {
+      "transition": "T01",
+      "actor": "A",
+      "item": "r1"
+    },
+    {
+      "transition": "T02",
+      "actor": "U",
+      "item": "r1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-T02-r1",
+        "reference": "SIM-REF-T02-r1",
+        "quote": "Demonstracja E3.4: T02-r1"
+      }
+    },
+    {
+      "transition": "T04",
+      "actor": "U",
+      "item": "r1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-T04-r1",
+        "reference": "SIM-REF-T04-r1",
+        "quote": "Demonstracja E3.4: T04-r1"
+      }
+    },
+    {
+      "transition": "T11",
+      "actor": "A",
+      "item": "d1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-T11-d1",
+        "reference": "SIM-REF-T11-d1",
+        "quote": "Demonstracja E3.4: T11-d1"
+      }
+    },
+    {
+      "transition": "T12",
+      "actor": "A",
+      "item": "a1",
+      "question": "q1"
+    },
+    {
+      "transition": "P01",
+      "actor": "A",
+      "question": "q1"
+    },
+    {
+      "transition": "P02",
+      "actor": "U",
+      "question": "q1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-P02-q1",
+        "reference": "SIM-REF-P02-q1",
+        "quote": "Demonstracja E3.4: P02-q1"
+      },
+      "inputs": {
+        "unambiguous_answer": true,
+        "resolution": "approved"
+      }
+    },
+    {
+      "transition": "T05",
+      "actor": "U",
+      "item": "a1",
+      "question": "q1"
+    },
+    {
+      "transition": "T01",
+      "actor": "A",
+      "item": "a1"
+    },
+    {
+      "transition": "T02",
+      "actor": "U",
+      "item": "a1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-T02-a1",
+        "reference": "SIM-REF-T02-a1",
+        "quote": "Demonstracja E3.4: T02-a1"
+      }
+    },
+    {
+      "transition": "T04",
+      "actor": "U",
+      "item": "a1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-T04-a1",
+        "reference": "SIM-REF-T04-a1",
+        "quote": "Demonstracja E3.4: T04-a1"
+      }
+    },
+    {
+      "transition": "T11",
+      "actor": "A",
+      "item": "c1",
+      "evidence": {
+        "simulation": true,
+        "decision": "SIM-DEC-T11-c1",
+        "reference": "SIM-REF-T11-c1",
+        "quote": "Demonstracja E3.4: T11-c1"
+      }
+    }
+  ]
+}
