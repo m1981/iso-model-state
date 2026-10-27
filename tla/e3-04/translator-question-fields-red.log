@@ -1,0 +1,75 @@
+FF......F....                                                            [100%]
+=================================== FAILURES ===================================
+_ test_question_effect_target_outside_model_variables_refused[T05-q.id := e.id] _
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+world = {'items': {'p1': {'id': 'p1', 'type': 'PLAN', 'depends_on': [], 'predecessor': 'none', ...}, 'r1': {'id': 'r1', 'type'...n_preparation', 'scope': ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', ...], 'snapshot': None, ...}}, 'current_release': 1, ...}
+transition = 'T05', effect = 'q.id := e.id'
+
+    @pytest.mark.parametrize('transition,effect', [
+        ('T05','q.id := e.id'),
+        ('P02','q.id := q.id'),
+        ('P02','id := q.id'),
+        ('T05','q.state := resolved'),
+        ('P02','q.state := resolved'),
+        ('P02','state := resolved'),
+        ('T05','q.type := e.type'),
+        ('T05','q.depends_on := e.depends_on'),
+    ])
+    def test_question_effect_target_outside_model_variables_refused(model,world,transition,effect):
+        kind='item' if transition.startswith('T') else 'question'
+        definition=next(t for t in model[kind+'_transitions'] if t['id']==transition)
+        definition['effects'].append(effect)
+        definition['guard']='false'  # Cały skutek musi być sprawdzony także przy odmowie guard.
+>       with pytest.raises(ProjectionError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_impact_translation.py:158: Failed
+_ test_question_effect_target_outside_model_variables_refused[P02-q.id := q.id] _
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+world = {'items': {'p1': {'id': 'p1', 'type': 'PLAN', 'depends_on': [], 'predecessor': 'none', ...}, 'r1': {'id': 'r1', 'type'...n_preparation', 'scope': ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', ...], 'snapshot': None, ...}}, 'current_release': 1, ...}
+transition = 'P02', effect = 'q.id := q.id'
+
+    @pytest.mark.parametrize('transition,effect', [
+        ('T05','q.id := e.id'),
+        ('P02','q.id := q.id'),
+        ('P02','id := q.id'),
+        ('T05','q.state := resolved'),
+        ('P02','q.state := resolved'),
+        ('P02','state := resolved'),
+        ('T05','q.type := e.type'),
+        ('T05','q.depends_on := e.depends_on'),
+    ])
+    def test_question_effect_target_outside_model_variables_refused(model,world,transition,effect):
+        kind='item' if transition.startswith('T') else 'question'
+        definition=next(t for t in model[kind+'_transitions'] if t['id']==transition)
+        definition['effects'].append(effect)
+        definition['guard']='false'  # Cały skutek musi być sprawdzony także przy odmowie guard.
+>       with pytest.raises(ProjectionError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_impact_translation.py:158: Failed
+____ test_question_creation_field_outside_model_variables_refused[id-e.id] _____
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+world = {'items': {'p1': {'id': 'p1', 'type': 'PLAN', 'depends_on': [], 'predecessor': 'none', ...}, 'r1': {'id': 'r1', 'type'...n_preparation', 'scope': ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', ...], 'snapshot': None, ...}}, 'current_release': 1, ...}
+field = 'id', expression = 'e.id'
+
+    @pytest.mark.parametrize('field,expression', [('id','e.id'),('type','e.type'),('depends_on','e.depends_on'),('predecessor','e.predecessor')])
+    def test_question_creation_field_outside_model_variables_refused(model,world,field,expression):
+        definition=next(t for t in model['item_transitions'] if t['id']=='T12')
+        definition['effects'][0]=definition['effects'][0][:-1]+f', {field} = {expression})'
+        definition['guard']='false'
+>       with pytest.raises(ProjectionError):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_impact_translation.py:167: Failed
+=========================== short test summary info ============================
+FAILED tests/test_impact_translation.py::test_question_effect_target_outside_model_variables_refused[T05-q.id := e.id]
+FAILED tests/test_impact_translation.py::test_question_effect_target_outside_model_variables_refused[P02-q.id := q.id]
+FAILED tests/test_impact_translation.py::test_question_creation_field_outside_model_variables_refused[id-e.id]
+3 failed, 10 passed, 45 deselected in 0.42s

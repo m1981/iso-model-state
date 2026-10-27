@@ -1,0 +1,40 @@
+Baza: True
+Kontrola renamed True
+Kontrola topology True
+Kontrola version True
+Macierz: False
+Mutant authorization_without_state True
+Mutant authorization_without_kind True
+Mutant authorization_without_resolution True
+Mutant authorization_without_about True
+Mutant authorization_without_about_version True
+Mutant authorization_without_requested_transition True
+Mutant authorization_without_consumed True
+Mutant change_wrong_actor True
+Mutant change_without_consumption True
+Mutant change_without_version True
+Mutant change_without_rejection_reset True
+Mutant change_without_own_flag_reset True
+Mutant change_without_propagation True
+Mutant change_direct_only True
+Mutant change_whole_catalog True
+Mutant review_without_maturity True
+Mutant review_without_dependency_flag True
+Mutant review_without_evidence True
+Mutant request_wrong_about True
+Mutant request_wrong_operation True
+Mutant request_wrong_version True
+Mutant request_without_question True
+Mutant fix_baselined True
+Mutant fix_wrong_actor True
+Mutant fix_changes_version True
+Mutant change_without_helper True
+Mutant without_observer_before_acceptance True
+Mutant without_observer_after_acceptance True
+Mutant observer_overwrites_accepted True
+Mutant change_to_approved_history True
+Mutant ask_without_single_pending True
+Mutant resolve_without_unambiguous True
+Mutant resolve_wrong_resolution True
+Mutant resolve_wrong_dec_binding True
+E3.4: verification_failed ; bez odbioru E3

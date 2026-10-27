@@ -31,7 +31,7 @@ Po korekcie DEC-PRO-006 usunięto wykazane wcześniej luki G3/G6: mutant G3 usuw
 
 `src/isomodel/` wczytuje model i wykonuje przyjęte przejścia, w tym uwagi W03/W05. Korpus ma świadków 28/28 przejść; niezależne wyrocznie S1–S15 badają WIT i generowane sekwencje Hypothesis. Projekcja grafu G1/G3 nie dowodzi całej osiągalności ani braku zakleszczeń. Pełne dowody czasowe pozostają w E3.
 
-**Model v0.7 wdraża DEC-PRO-010.** Późna blokada zatrzymuje odbiór, T10 zachowuje budżet odrzuceń, pusty zakres respektuje globalne bramki, a wpływ zmiany spoza zakresu unieważnia gotowość. [Raport E2](docs/E2-RAPORT.md) zawiera odtwarzalne wyniki i granice badania; **E2 v0.7 odebrano przez DEC-PRO-012**. E3.1–E3.3 wykonane: [lokalne T03](docs/E3-01-RAPORT.md), [wielokrokowy wycinek T01–T03](docs/E3-02-RAPORT.md), [tworzenie i linie bazowe PLAN–REQ](docs/E3-03-RAPORT.md). E3 jako etap pozostaje w toku. [Przyjęty pakiet zmian](model/proposals/e2-hardening.md).
+**Model v0.7 wdraża DEC-PRO-010.** Późna blokada zatrzymuje odbiór, T10 zachowuje budżet odrzuceń, pusty zakres respektuje globalne bramki, a wpływ zmiany spoza zakresu unieważnia gotowość. [Raport E2](docs/E2-RAPORT.md) zawiera odtwarzalne wyniki i granice badania; **E2 v0.7 odebrano przez DEC-PRO-012**. E3.1–E3.4 wykonane: [lokalne T03](docs/E3-01-RAPORT.md), [wielokrokowy wycinek T01–T03](docs/E3-02-RAPORT.md), [tworzenie i linie bazowe PLAN–REQ](docs/E3-03-RAPORT.md), [zgoda i wpływ zmiany](docs/E3-04-RAPORT.md). E3 jako etap pozostaje w toku. [Przyjęty pakiet zmian](model/proposals/e2-hardening.md).
 
 `.venv/bin/python scripts/run_e2.py --output artifacts/e2` odtwarza raport i pełne dane. Kod wyjścia **0** oznacza powodzenie sprawdzeń, **1** niepowodzenie sprawdzeń, **2** błąd przygotowania raportu. Skrypt nie odczytuje decyzji odbioru; generowany status awaiting_acceptance nie zastępuje DEC-PRO-012 i bieżącego STAN.md. Testy diagnostyczne są zielone, gdy prawidłowo odtwarzają znaną lukę — nie są dowodem jej naprawy.
 
@@ -49,9 +49,9 @@ Starszy skrypt spójności E1: `uv run --locked python scripts/check_model.py`. 
 
 `.venv/bin/python scripts/run_e3_catalog.py --output artifacts/e3-03/reproduction` bada T00–T04 na planie i wymaganiu, od rzeczywistego Init. Zależności czyta z bieżącego katalogu: wymaganie można przygotować wcześniej, lecz zweryfikować dopiero po zatwierdzeniu planu, a ustalić jego linię bazową po linii bazowej planu. [Raport](docs/E3-03-RAPORT.md) · [Niezależna recenzja](docs/reviews/E3-03-WYKONANIE-2026-10-27.md) · [Manifest dowodów](tla/e3-03/manifest.json). Dwa aktywne produkty, stała topologia i 16 kroków ograniczają wynik; to nadal część E3.
 
-## Przygotowanie badania wpływu zmiany — E3.4
+## Zgoda i wpływ zmiany — E3.4
 
-[Zakres i oczekiwania](docs/E3-04-MAPOWANIE.md) · [Scenariusz i odtworzenie przygotowania](docs/preparations/e3-04/README.md) · [Niezależny przegląd](docs/reviews/E3-04-PRZYGOTOWANIE-2026-10-27.md). Istniejący E2 wykonał 42 kroki zmiany wymagania i testu oraz przeglądu projektu i kodu; sprawdzono 14 pełnych punktów kontrolnych i 5 odmów. To przygotowanie następnego badania, bez nowego generatora i TLC E3.4.
+`.venv/bin/python scripts/run_e3_impact.py --output artifacts/e3-04/reproduction` bada zgodę na konkretną zmianę, propagację suspect, ponowne przeglądy i skutki dla wydań. Baza: 19 797 stanów / 38 340 krawędzi; 60 prób macierzy, 34 wykryte mutanty, trzy odizolowane monitory, świadek 42 kroków razem z prefiksem. 79 przebiegów TLC odtworzonych niezależnie. [Raport i granice](docs/E3-04-RAPORT.md) · [Recenzja](docs/reviews/E3-04-WYKONANIE-2026-10-27.md) · [Archiwum](tla/e3-04/manifest.json). TLC startuje po jawnym prefiksie; to część E3, bez dowodu pełnych S/L/F. [Historyczne przygotowanie](docs/preparations/e3-04/README.md) pozostaje zachowane.
 
 ## Wykonywalny WIT1
 

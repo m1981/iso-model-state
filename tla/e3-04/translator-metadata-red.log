@@ -1,0 +1,558 @@
+FFFFFFFFFFFFFFFFFFFF                                                     [100%]
+=================================== FAILURES ===================================
+_ test_unrecognized_semantics_prose_refused[False-question_semantics-creation] _
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+world = {'items': {'p1': {'id': 'p1', 'type': 'PLAN', 'depends_on': [], 'predecessor': 'none', ...}, 'r1': {'id': 'r1', 'type'...n_preparation', 'scope': ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', ...], 'snapshot': None, ...}}, 'current_release': 1, ...}
+section = 'question_semantics', field = 'creation', inactive = False
+
+    @pytest.mark.parametrize('section,field', [
+        ('question_semantics','creation'),
+        ('question_semantics','answer'),
+        ('question_semantics','frame'),
+        ('release_semantics','default_target'),
+        ('release_semantics','new_release_target'),
+        ('release_semantics','frame'),
+        ('release_semantics','scope_copy'),
+        ('release_semantics','pending_priority'),
+        ('release_semantics','bounds'),
+    ])
+    @pytest.mark.parametrize('inactive', [False, True])
+    def test_unrecognized_semantics_prose_refused(model,world,section,field,inactive):
+        if inactive:
+            world['questions']={}
+            world['next_release_required']=True
+        model[section][field]='Nieobsługiwana zmiana reguły, także w nieaktywnej gałęzi.'
+>       with pytest.raises(ProjectionError,match=section+'.'+field):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_impact_translation.py:113: Failed
+__ test_unrecognized_semantics_prose_refused[False-question_semantics-answer] __
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+world = {'items': {'p1': {'id': 'p1', 'type': 'PLAN', 'depends_on': [], 'predecessor': 'none', ...}, 'r1': {'id': 'r1', 'type'...n_preparation', 'scope': ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', ...], 'snapshot': None, ...}}, 'current_release': 1, ...}
+section = 'question_semantics', field = 'answer', inactive = False
+
+    @pytest.mark.parametrize('section,field', [
+        ('question_semantics','creation'),
+        ('question_semantics','answer'),
+        ('question_semantics','frame'),
+        ('release_semantics','default_target'),
+        ('release_semantics','new_release_target'),
+        ('release_semantics','frame'),
+        ('release_semantics','scope_copy'),
+        ('release_semantics','pending_priority'),
+        ('release_semantics','bounds'),
+    ])
+    @pytest.mark.parametrize('inactive', [False, True])
+    def test_unrecognized_semantics_prose_refused(model,world,section,field,inactive):
+        if inactive:
+            world['questions']={}
+            world['next_release_required']=True
+        model[section][field]='Nieobsługiwana zmiana reguły, także w nieaktywnej gałęzi.'
+>       with pytest.raises(ProjectionError,match=section+'.'+field):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_impact_translation.py:113: Failed
+__ test_unrecognized_semantics_prose_refused[False-question_semantics-frame] ___
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+world = {'items': {'p1': {'id': 'p1', 'type': 'PLAN', 'depends_on': [], 'predecessor': 'none', ...}, 'r1': {'id': 'r1', 'type'...n_preparation', 'scope': ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', ...], 'snapshot': None, ...}}, 'current_release': 1, ...}
+section = 'question_semantics', field = 'frame', inactive = False
+
+    @pytest.mark.parametrize('section,field', [
+        ('question_semantics','creation'),
+        ('question_semantics','answer'),
+        ('question_semantics','frame'),
+        ('release_semantics','default_target'),
+        ('release_semantics','new_release_target'),
+        ('release_semantics','frame'),
+        ('release_semantics','scope_copy'),
+        ('release_semantics','pending_priority'),
+        ('release_semantics','bounds'),
+    ])
+    @pytest.mark.parametrize('inactive', [False, True])
+    def test_unrecognized_semantics_prose_refused(model,world,section,field,inactive):
+        if inactive:
+            world['questions']={}
+            world['next_release_required']=True
+        model[section][field]='Nieobsługiwana zmiana reguły, także w nieaktywnej gałęzi.'
+>       with pytest.raises(ProjectionError,match=section+'.'+field):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_impact_translation.py:113: Failed
+_ test_unrecognized_semantics_prose_refused[False-release_semantics-default_target] _
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+world = {'items': {'p1': {'id': 'p1', 'type': 'PLAN', 'depends_on': [], 'predecessor': 'none', ...}, 'r1': {'id': 'r1', 'type'...n_preparation', 'scope': ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', ...], 'snapshot': None, ...}}, 'current_release': 1, ...}
+section = 'release_semantics', field = 'default_target', inactive = False
+
+    @pytest.mark.parametrize('section,field', [
+        ('question_semantics','creation'),
+        ('question_semantics','answer'),
+        ('question_semantics','frame'),
+        ('release_semantics','default_target'),
+        ('release_semantics','new_release_target'),
+        ('release_semantics','frame'),
+        ('release_semantics','scope_copy'),
+        ('release_semantics','pending_priority'),
+        ('release_semantics','bounds'),
+    ])
+    @pytest.mark.parametrize('inactive', [False, True])
+    def test_unrecognized_semantics_prose_refused(model,world,section,field,inactive):
+        if inactive:
+            world['questions']={}
+            world['next_release_required']=True
+        model[section][field]='Nieobsługiwana zmiana reguły, także w nieaktywnej gałęzi.'
+>       with pytest.raises(ProjectionError,match=section+'.'+field):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_impact_translation.py:113: Failed
+_ test_unrecognized_semantics_prose_refused[False-release_semantics-new_release_target] _
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+world = {'items': {'p1': {'id': 'p1', 'type': 'PLAN', 'depends_on': [], 'predecessor': 'none', ...}, 'r1': {'id': 'r1', 'type'...n_preparation', 'scope': ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', ...], 'snapshot': None, ...}}, 'current_release': 1, ...}
+section = 'release_semantics', field = 'new_release_target', inactive = False
+
+    @pytest.mark.parametrize('section,field', [
+        ('question_semantics','creation'),
+        ('question_semantics','answer'),
+        ('question_semantics','frame'),
+        ('release_semantics','default_target'),
+        ('release_semantics','new_release_target'),
+        ('release_semantics','frame'),
+        ('release_semantics','scope_copy'),
+        ('release_semantics','pending_priority'),
+        ('release_semantics','bounds'),
+    ])
+    @pytest.mark.parametrize('inactive', [False, True])
+    def test_unrecognized_semantics_prose_refused(model,world,section,field,inactive):
+        if inactive:
+            world['questions']={}
+            world['next_release_required']=True
+        model[section][field]='Nieobsługiwana zmiana reguły, także w nieaktywnej gałęzi.'
+>       with pytest.raises(ProjectionError,match=section+'.'+field):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_impact_translation.py:113: Failed
+___ test_unrecognized_semantics_prose_refused[False-release_semantics-frame] ___
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+world = {'items': {'p1': {'id': 'p1', 'type': 'PLAN', 'depends_on': [], 'predecessor': 'none', ...}, 'r1': {'id': 'r1', 'type'...n_preparation', 'scope': ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', ...], 'snapshot': None, ...}}, 'current_release': 1, ...}
+section = 'release_semantics', field = 'frame', inactive = False
+
+    @pytest.mark.parametrize('section,field', [
+        ('question_semantics','creation'),
+        ('question_semantics','answer'),
+        ('question_semantics','frame'),
+        ('release_semantics','default_target'),
+        ('release_semantics','new_release_target'),
+        ('release_semantics','frame'),
+        ('release_semantics','scope_copy'),
+        ('release_semantics','pending_priority'),
+        ('release_semantics','bounds'),
+    ])
+    @pytest.mark.parametrize('inactive', [False, True])
+    def test_unrecognized_semantics_prose_refused(model,world,section,field,inactive):
+        if inactive:
+            world['questions']={}
+            world['next_release_required']=True
+        model[section][field]='Nieobsługiwana zmiana reguły, także w nieaktywnej gałęzi.'
+>       with pytest.raises(ProjectionError,match=section+'.'+field):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_impact_translation.py:113: Failed
+_ test_unrecognized_semantics_prose_refused[False-release_semantics-scope_copy] _
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+world = {'items': {'p1': {'id': 'p1', 'type': 'PLAN', 'depends_on': [], 'predecessor': 'none', ...}, 'r1': {'id': 'r1', 'type'...n_preparation', 'scope': ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', ...], 'snapshot': None, ...}}, 'current_release': 1, ...}
+section = 'release_semantics', field = 'scope_copy', inactive = False
+
+    @pytest.mark.parametrize('section,field', [
+        ('question_semantics','creation'),
+        ('question_semantics','answer'),
+        ('question_semantics','frame'),
+        ('release_semantics','default_target'),
+        ('release_semantics','new_release_target'),
+        ('release_semantics','frame'),
+        ('release_semantics','scope_copy'),
+        ('release_semantics','pending_priority'),
+        ('release_semantics','bounds'),
+    ])
+    @pytest.mark.parametrize('inactive', [False, True])
+    def test_unrecognized_semantics_prose_refused(model,world,section,field,inactive):
+        if inactive:
+            world['questions']={}
+            world['next_release_required']=True
+        model[section][field]='Nieobsługiwana zmiana reguły, także w nieaktywnej gałęzi.'
+>       with pytest.raises(ProjectionError,match=section+'.'+field):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_impact_translation.py:113: Failed
+_ test_unrecognized_semantics_prose_refused[False-release_semantics-pending_priority] _
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+world = {'items': {'p1': {'id': 'p1', 'type': 'PLAN', 'depends_on': [], 'predecessor': 'none', ...}, 'r1': {'id': 'r1', 'type'...n_preparation', 'scope': ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', ...], 'snapshot': None, ...}}, 'current_release': 1, ...}
+section = 'release_semantics', field = 'pending_priority', inactive = False
+
+    @pytest.mark.parametrize('section,field', [
+        ('question_semantics','creation'),
+        ('question_semantics','answer'),
+        ('question_semantics','frame'),
+        ('release_semantics','default_target'),
+        ('release_semantics','new_release_target'),
+        ('release_semantics','frame'),
+        ('release_semantics','scope_copy'),
+        ('release_semantics','pending_priority'),
+        ('release_semantics','bounds'),
+    ])
+    @pytest.mark.parametrize('inactive', [False, True])
+    def test_unrecognized_semantics_prose_refused(model,world,section,field,inactive):
+        if inactive:
+            world['questions']={}
+            world['next_release_required']=True
+        model[section][field]='Nieobsługiwana zmiana reguły, także w nieaktywnej gałęzi.'
+>       with pytest.raises(ProjectionError,match=section+'.'+field):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_impact_translation.py:113: Failed
+__ test_unrecognized_semantics_prose_refused[False-release_semantics-bounds] ___
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+world = {'items': {'p1': {'id': 'p1', 'type': 'PLAN', 'depends_on': [], 'predecessor': 'none', ...}, 'r1': {'id': 'r1', 'type'...n_preparation', 'scope': ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', ...], 'snapshot': None, ...}}, 'current_release': 1, ...}
+section = 'release_semantics', field = 'bounds', inactive = False
+
+    @pytest.mark.parametrize('section,field', [
+        ('question_semantics','creation'),
+        ('question_semantics','answer'),
+        ('question_semantics','frame'),
+        ('release_semantics','default_target'),
+        ('release_semantics','new_release_target'),
+        ('release_semantics','frame'),
+        ('release_semantics','scope_copy'),
+        ('release_semantics','pending_priority'),
+        ('release_semantics','bounds'),
+    ])
+    @pytest.mark.parametrize('inactive', [False, True])
+    def test_unrecognized_semantics_prose_refused(model,world,section,field,inactive):
+        if inactive:
+            world['questions']={}
+            world['next_release_required']=True
+        model[section][field]='Nieobsługiwana zmiana reguły, także w nieaktywnej gałęzi.'
+>       with pytest.raises(ProjectionError,match=section+'.'+field):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_impact_translation.py:113: Failed
+_ test_unrecognized_semantics_prose_refused[True-question_semantics-creation] __
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+world = {'items': {'p1': {'id': 'p1', 'type': 'PLAN', 'depends_on': [], 'predecessor': 'none', ...}, 'r1': {'id': 'r1', 'type'...n_preparation', 'scope': ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', ...], 'snapshot': None, ...}}, 'current_release': 1, ...}
+section = 'question_semantics', field = 'creation', inactive = True
+
+    @pytest.mark.parametrize('section,field', [
+        ('question_semantics','creation'),
+        ('question_semantics','answer'),
+        ('question_semantics','frame'),
+        ('release_semantics','default_target'),
+        ('release_semantics','new_release_target'),
+        ('release_semantics','frame'),
+        ('release_semantics','scope_copy'),
+        ('release_semantics','pending_priority'),
+        ('release_semantics','bounds'),
+    ])
+    @pytest.mark.parametrize('inactive', [False, True])
+    def test_unrecognized_semantics_prose_refused(model,world,section,field,inactive):
+        if inactive:
+            world['questions']={}
+            world['next_release_required']=True
+        model[section][field]='Nieobsługiwana zmiana reguły, także w nieaktywnej gałęzi.'
+>       with pytest.raises(ProjectionError,match=section+'.'+field):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_impact_translation.py:113: Failed
+__ test_unrecognized_semantics_prose_refused[True-question_semantics-answer] ___
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+world = {'items': {'p1': {'id': 'p1', 'type': 'PLAN', 'depends_on': [], 'predecessor': 'none', ...}, 'r1': {'id': 'r1', 'type'...n_preparation', 'scope': ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', ...], 'snapshot': None, ...}}, 'current_release': 1, ...}
+section = 'question_semantics', field = 'answer', inactive = True
+
+    @pytest.mark.parametrize('section,field', [
+        ('question_semantics','creation'),
+        ('question_semantics','answer'),
+        ('question_semantics','frame'),
+        ('release_semantics','default_target'),
+        ('release_semantics','new_release_target'),
+        ('release_semantics','frame'),
+        ('release_semantics','scope_copy'),
+        ('release_semantics','pending_priority'),
+        ('release_semantics','bounds'),
+    ])
+    @pytest.mark.parametrize('inactive', [False, True])
+    def test_unrecognized_semantics_prose_refused(model,world,section,field,inactive):
+        if inactive:
+            world['questions']={}
+            world['next_release_required']=True
+        model[section][field]='Nieobsługiwana zmiana reguły, także w nieaktywnej gałęzi.'
+>       with pytest.raises(ProjectionError,match=section+'.'+field):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_impact_translation.py:113: Failed
+___ test_unrecognized_semantics_prose_refused[True-question_semantics-frame] ___
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+world = {'items': {'p1': {'id': 'p1', 'type': 'PLAN', 'depends_on': [], 'predecessor': 'none', ...}, 'r1': {'id': 'r1', 'type'...n_preparation', 'scope': ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', ...], 'snapshot': None, ...}}, 'current_release': 1, ...}
+section = 'question_semantics', field = 'frame', inactive = True
+
+    @pytest.mark.parametrize('section,field', [
+        ('question_semantics','creation'),
+        ('question_semantics','answer'),
+        ('question_semantics','frame'),
+        ('release_semantics','default_target'),
+        ('release_semantics','new_release_target'),
+        ('release_semantics','frame'),
+        ('release_semantics','scope_copy'),
+        ('release_semantics','pending_priority'),
+        ('release_semantics','bounds'),
+    ])
+    @pytest.mark.parametrize('inactive', [False, True])
+    def test_unrecognized_semantics_prose_refused(model,world,section,field,inactive):
+        if inactive:
+            world['questions']={}
+            world['next_release_required']=True
+        model[section][field]='Nieobsługiwana zmiana reguły, także w nieaktywnej gałęzi.'
+>       with pytest.raises(ProjectionError,match=section+'.'+field):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_impact_translation.py:113: Failed
+_ test_unrecognized_semantics_prose_refused[True-release_semantics-default_target] _
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+world = {'items': {'p1': {'id': 'p1', 'type': 'PLAN', 'depends_on': [], 'predecessor': 'none', ...}, 'r1': {'id': 'r1', 'type'...n_preparation', 'scope': ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', ...], 'snapshot': None, ...}}, 'current_release': 1, ...}
+section = 'release_semantics', field = 'default_target', inactive = True
+
+    @pytest.mark.parametrize('section,field', [
+        ('question_semantics','creation'),
+        ('question_semantics','answer'),
+        ('question_semantics','frame'),
+        ('release_semantics','default_target'),
+        ('release_semantics','new_release_target'),
+        ('release_semantics','frame'),
+        ('release_semantics','scope_copy'),
+        ('release_semantics','pending_priority'),
+        ('release_semantics','bounds'),
+    ])
+    @pytest.mark.parametrize('inactive', [False, True])
+    def test_unrecognized_semantics_prose_refused(model,world,section,field,inactive):
+        if inactive:
+            world['questions']={}
+            world['next_release_required']=True
+        model[section][field]='Nieobsługiwana zmiana reguły, także w nieaktywnej gałęzi.'
+>       with pytest.raises(ProjectionError,match=section+'.'+field):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_impact_translation.py:113: Failed
+_ test_unrecognized_semantics_prose_refused[True-release_semantics-new_release_target] _
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+world = {'items': {'p1': {'id': 'p1', 'type': 'PLAN', 'depends_on': [], 'predecessor': 'none', ...}, 'r1': {'id': 'r1', 'type'...n_preparation', 'scope': ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', ...], 'snapshot': None, ...}}, 'current_release': 1, ...}
+section = 'release_semantics', field = 'new_release_target', inactive = True
+
+    @pytest.mark.parametrize('section,field', [
+        ('question_semantics','creation'),
+        ('question_semantics','answer'),
+        ('question_semantics','frame'),
+        ('release_semantics','default_target'),
+        ('release_semantics','new_release_target'),
+        ('release_semantics','frame'),
+        ('release_semantics','scope_copy'),
+        ('release_semantics','pending_priority'),
+        ('release_semantics','bounds'),
+    ])
+    @pytest.mark.parametrize('inactive', [False, True])
+    def test_unrecognized_semantics_prose_refused(model,world,section,field,inactive):
+        if inactive:
+            world['questions']={}
+            world['next_release_required']=True
+        model[section][field]='Nieobsługiwana zmiana reguły, także w nieaktywnej gałęzi.'
+>       with pytest.raises(ProjectionError,match=section+'.'+field):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_impact_translation.py:113: Failed
+___ test_unrecognized_semantics_prose_refused[True-release_semantics-frame] ____
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+world = {'items': {'p1': {'id': 'p1', 'type': 'PLAN', 'depends_on': [], 'predecessor': 'none', ...}, 'r1': {'id': 'r1', 'type'...n_preparation', 'scope': ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', ...], 'snapshot': None, ...}}, 'current_release': 1, ...}
+section = 'release_semantics', field = 'frame', inactive = True
+
+    @pytest.mark.parametrize('section,field', [
+        ('question_semantics','creation'),
+        ('question_semantics','answer'),
+        ('question_semantics','frame'),
+        ('release_semantics','default_target'),
+        ('release_semantics','new_release_target'),
+        ('release_semantics','frame'),
+        ('release_semantics','scope_copy'),
+        ('release_semantics','pending_priority'),
+        ('release_semantics','bounds'),
+    ])
+    @pytest.mark.parametrize('inactive', [False, True])
+    def test_unrecognized_semantics_prose_refused(model,world,section,field,inactive):
+        if inactive:
+            world['questions']={}
+            world['next_release_required']=True
+        model[section][field]='Nieobsługiwana zmiana reguły, także w nieaktywnej gałęzi.'
+>       with pytest.raises(ProjectionError,match=section+'.'+field):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_impact_translation.py:113: Failed
+_ test_unrecognized_semantics_prose_refused[True-release_semantics-scope_copy] _
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+world = {'items': {'p1': {'id': 'p1', 'type': 'PLAN', 'depends_on': [], 'predecessor': 'none', ...}, 'r1': {'id': 'r1', 'type'...n_preparation', 'scope': ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', ...], 'snapshot': None, ...}}, 'current_release': 1, ...}
+section = 'release_semantics', field = 'scope_copy', inactive = True
+
+    @pytest.mark.parametrize('section,field', [
+        ('question_semantics','creation'),
+        ('question_semantics','answer'),
+        ('question_semantics','frame'),
+        ('release_semantics','default_target'),
+        ('release_semantics','new_release_target'),
+        ('release_semantics','frame'),
+        ('release_semantics','scope_copy'),
+        ('release_semantics','pending_priority'),
+        ('release_semantics','bounds'),
+    ])
+    @pytest.mark.parametrize('inactive', [False, True])
+    def test_unrecognized_semantics_prose_refused(model,world,section,field,inactive):
+        if inactive:
+            world['questions']={}
+            world['next_release_required']=True
+        model[section][field]='Nieobsługiwana zmiana reguły, także w nieaktywnej gałęzi.'
+>       with pytest.raises(ProjectionError,match=section+'.'+field):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_impact_translation.py:113: Failed
+_ test_unrecognized_semantics_prose_refused[True-release_semantics-pending_priority] _
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+world = {'items': {'p1': {'id': 'p1', 'type': 'PLAN', 'depends_on': [], 'predecessor': 'none', ...}, 'r1': {'id': 'r1', 'type'...n_preparation', 'scope': ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', ...], 'snapshot': None, ...}}, 'current_release': 1, ...}
+section = 'release_semantics', field = 'pending_priority', inactive = True
+
+    @pytest.mark.parametrize('section,field', [
+        ('question_semantics','creation'),
+        ('question_semantics','answer'),
+        ('question_semantics','frame'),
+        ('release_semantics','default_target'),
+        ('release_semantics','new_release_target'),
+        ('release_semantics','frame'),
+        ('release_semantics','scope_copy'),
+        ('release_semantics','pending_priority'),
+        ('release_semantics','bounds'),
+    ])
+    @pytest.mark.parametrize('inactive', [False, True])
+    def test_unrecognized_semantics_prose_refused(model,world,section,field,inactive):
+        if inactive:
+            world['questions']={}
+            world['next_release_required']=True
+        model[section][field]='Nieobsługiwana zmiana reguły, także w nieaktywnej gałęzi.'
+>       with pytest.raises(ProjectionError,match=section+'.'+field):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_impact_translation.py:113: Failed
+___ test_unrecognized_semantics_prose_refused[True-release_semantics-bounds] ___
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+world = {'items': {'p1': {'id': 'p1', 'type': 'PLAN', 'depends_on': [], 'predecessor': 'none', ...}, 'r1': {'id': 'r1', 'type'...n_preparation', 'scope': ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', ...], 'snapshot': None, ...}}, 'current_release': 1, ...}
+section = 'release_semantics', field = 'bounds', inactive = True
+
+    @pytest.mark.parametrize('section,field', [
+        ('question_semantics','creation'),
+        ('question_semantics','answer'),
+        ('question_semantics','frame'),
+        ('release_semantics','default_target'),
+        ('release_semantics','new_release_target'),
+        ('release_semantics','frame'),
+        ('release_semantics','scope_copy'),
+        ('release_semantics','pending_priority'),
+        ('release_semantics','bounds'),
+    ])
+    @pytest.mark.parametrize('inactive', [False, True])
+    def test_unrecognized_semantics_prose_refused(model,world,section,field,inactive):
+        if inactive:
+            world['questions']={}
+            world['next_release_required']=True
+        model[section][field]='Nieobsługiwana zmiana reguły, także w nieaktywnej gałęzi.'
+>       with pytest.raises(ProjectionError,match=section+'.'+field):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_impact_translation.py:113: Failed
+_______________ test_release_semantics_shape_refused[unexpected] _______________
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+world = {'items': {'p1': {'id': 'p1', 'type': 'PLAN', 'depends_on': [], 'predecessor': 'none', ...}, 'r1': {'id': 'r1', 'type'...n_preparation', 'scope': ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', ...], 'snapshot': None, ...}}, 'current_release': 1, ...}
+field = 'unexpected'
+
+    @pytest.mark.parametrize('field', ['unexpected','pending_priority'])
+    def test_release_semantics_shape_refused(model,world,field):
+        if field=='unexpected': model['release_semantics'][field]='Nieznana reguła'
+        else: del model['release_semantics'][field]
+>       with pytest.raises(ProjectionError,match='release_semantics'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_impact_translation.py:121: Failed
+____________ test_release_semantics_shape_refused[pending_priority] ____________
+
+model = {'model': 'iso29110-basic-process', 'version': 0.7, 'status': 'approved', 'notation': {'e': 'element, którego dotyczy ...umeru bieżącego wydania sprzed W06; nie jest zmienną trwałą', 'type(e)': 'typ elementu z sekcji item_types', ...}, ...}
+world = {'items': {'p1': {'id': 'p1', 'type': 'PLAN', 'depends_on': [], 'predecessor': 'none', ...}, 'r1': {'id': 'r1', 'type'...n_preparation', 'scope': ['p1', 'r1', 'r2', 'd1', 'a1', 'a2', ...], 'snapshot': None, ...}}, 'current_release': 1, ...}
+field = 'pending_priority'
+
+    @pytest.mark.parametrize('field', ['unexpected','pending_priority'])
+    def test_release_semantics_shape_refused(model,world,field):
+        if field=='unexpected': model['release_semantics'][field]='Nieznana reguła'
+        else: del model['release_semantics'][field]
+>       with pytest.raises(ProjectionError,match='release_semantics'):
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ProjectionError
+
+tests/test_impact_translation.py:121: Failed
+=========================== short test summary info ============================
+FAILED tests/test_impact_translation.py::test_unrecognized_semantics_prose_refused[False-question_semantics-creation]
+FAILED tests/test_impact_translation.py::test_unrecognized_semantics_prose_refused[False-question_semantics-answer]
+FAILED tests/test_impact_translation.py::test_unrecognized_semantics_prose_refused[False-question_semantics-frame]
+FAILED tests/test_impact_translation.py::test_unrecognized_semantics_prose_refused[False-release_semantics-default_target]
+FAILED tests/test_impact_translation.py::test_unrecognized_semantics_prose_refused[False-release_semantics-new_release_target]
+FAILED tests/test_impact_translation.py::test_unrecognized_semantics_prose_refused[False-release_semantics-frame]
+FAILED tests/test_impact_translation.py::test_unrecognized_semantics_prose_refused[False-release_semantics-scope_copy]
+FAILED tests/test_impact_translation.py::test_unrecognized_semantics_prose_refused[False-release_semantics-pending_priority]
+FAILED tests/test_impact_translation.py::test_unrecognized_semantics_prose_refused[False-release_semantics-bounds]
+FAILED tests/test_impact_translation.py::test_unrecognized_semantics_prose_refused[True-question_semantics-creation]
+FAILED tests/test_impact_translation.py::test_unrecognized_semantics_prose_refused[True-question_semantics-answer]
+FAILED tests/test_impact_translation.py::test_unrecognized_semantics_prose_refused[True-question_semantics-frame]
+FAILED tests/test_impact_translation.py::test_unrecognized_semantics_prose_refused[True-release_semantics-default_target]
+FAILED tests/test_impact_translation.py::test_unrecognized_semantics_prose_refused[True-release_semantics-new_release_target]
+FAILED tests/test_impact_translation.py::test_unrecognized_semantics_prose_refused[True-release_semantics-frame]
+FAILED tests/test_impact_translation.py::test_unrecognized_semantics_prose_refused[True-release_semantics-scope_copy]
+FAILED tests/test_impact_translation.py::test_unrecognized_semantics_prose_refused[True-release_semantics-pending_priority]
+FAILED tests/test_impact_translation.py::test_unrecognized_semantics_prose_refused[True-release_semantics-bounds]
+FAILED tests/test_impact_translation.py::test_release_semantics_shape_refused[unexpected]
+FAILED tests/test_impact_translation.py::test_release_semantics_shape_refused[pending_priority]
+20 failed, 24 deselected in 0.62s

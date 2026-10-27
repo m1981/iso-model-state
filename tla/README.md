@@ -78,3 +78,25 @@ tar -xOf tla/e3-03/author.tar.gz baseline/Catalog.tla
 ```
 
 Wynik nie dowodzi całego procesu, nie bada L przy F ani nie zamyka E3. Historyczne archiwa E3.1/E3.2 pozostają niezmienione.
+
+## Zgoda i wpływ zmiany — E3.4
+
+[Raport](../docs/E3-04-RAPORT.md), [mapowanie](../docs/E3-04-MAPOWANIE.md), [niezależna wyrocznia](../docs/E3-04-WYROCZNIA.md), [przypadki i czułość](../docs/E3-04-CZULOSC.md). Pełny stan katalogu, pytań i wydań; aktywne r1/d1/a1/c1. T05 i T11–T13, P01/P02 oraz powrót przez T01/T02/T04. TLC zaczyna od jawnego prefiksu 29 kroków E2, z historią ID/wersja; główny graf ma głębokość 16. Wydania bada osobna macierz kontekstów, bez generowania pełnego cyklu W.
+
+```sh
+.venv/bin/python scripts/run_e3_impact.py --help
+.venv/bin/python scripts/run_e3_impact.py --output artifacts/e3-04/reproduction
+```
+
+Ten sam przypięty toolchain, nowy/pusty katalog, niezmienne źródła podczas badania i kody 0/1/2/3. Pełne badanie wykonuje 79 uruchomień TLC: cztery grafy, dwie grupy macierzy, granice, wykrycia i świadki 34 mutantów, trzy odizolowane monitory i pełny świadek. Pojedyncze TLC ma limit 60 s; cały runner wykonuje także porównania w Pythonie i trwa dłużej. `--baseline-only` mierzy wyłącznie bazę, nie realizuje DoD E3.4.
+
+Granica eksploracji nie jest odmową procesu. Pełny następnik kroku przekraczającego limit nadal podlega kontroli, po czym nie jest rozwijany. Runner zachowuje oryginalne `ExplorationBoundary` E2 i osobny odczyt tego następnika na kopii z większymi samymi bounds. Kod 0 nie oznacza pełnego dowodu S/L/F ani odbioru etapu.
+
+Dowody autora i niezależnego odtworzenia: `e3-04/author.tar.gz`, `e3-04/reviewer.tar.gz`; [manifest](e3-04/manifest.json) przechowuje hashe archiwów, każdego pliku wewnątrz i źródeł. Pominięty jest wyłącznie roboczy katalog TLC `states/`. Logi RED/GREEN i regresji są obok. Przykład odczytu:
+
+```sh
+tar -xOf tla/e3-04/author.tar.gz report.md
+tar -xOf tla/e3-04/author.tar.gz baseline/Impact.tla
+```
+
+Przy równoległych niezależnych badaniach warto przydzielić każdemu procesowi własny istniejący katalog tymczasowy Javy przez `JAVA_TOOL_OPTIONS=-Djava.io.tmpdir=/bezwzgledna/sciezka`. W E3.4 pojedynczy przebieg zgłosił brak standardowego modułu Sequences we wspólnym katalogu; pełne ponowienie z izolacją przeszło. Przyczyna kolizji pozostaje hipotezą. Nieudane próby RMI i SANY zachowano w `e3-04/tool-errors.tar.gz`; nie są zaliczone jako kontrprzykłady modelu. Końcowy autor użył katalogu `artifacts/e3-04/author-isolated-tmp` z pełną ścieżką repozytorium; ustawienie jest widoczne w zapisanej wersji Javy i logach. Nie zmieniono globalnej konfiguracji Javy.

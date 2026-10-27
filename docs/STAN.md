@@ -1,19 +1,19 @@
 # Stan prac
 
-Nadpisywany na końcu każdej sesji. Zaktualizowano: **2026-10-27**. Model **v0.7 / DEC-PRO-010**. Pakiet korekt przyjęty i zweryfikowany; niezależny przegląd bez otwartych ustaleń blokujących. **E2 v0.7 odebrane przez użytkownika — DEC-PRO-012.** Wykonano E3.3: T00–T04 na PLAN/REQ od rzeczywistego Init, z bieżącą dojrzałością zależności. Przygotowano zakres E3.4 i sprawdzono scenariusz istniejącym E2; generator/TLC E3.4 jeszcze niewykonane. E3 pozostaje w toku.
+Nadpisywany na końcu każdej sesji. Zaktualizowano: **2026-10-27**. Model **v0.7 / DEC-PRO-010**. Pakiet korekt przyjęty i zweryfikowany; niezależny przegląd bez otwartych ustaleń blokujących. **E2 v0.7 odebrane przez użytkownika — DEC-PRO-012.** Wykonano E3.1–E3.4. Najnowsze E3.4 sprawdza zgodę na zmianę, wpływ na zależne produkty i wydania; generator, badanie TLC, czułość mutantów i niezależne odtworzenie są ukończone. E3 pozostaje w toku.
 
 ## Gdzie jesteśmy
 
 - **Cel:** kontrola kontekstu, zatwierdzeń i skutków zmian we współpracy operatora z agentem; dokument zamiaru `docs/KARTA-CELU-I-ZAKRESU.md`. Plan E2–E5 i DoD zachowane.
-- **Polecenie bieżące:** „wykonaj Dalej zgodnie ze sztuka” po zapowiedzi przygotowania dokładnego scenariusza i oczekiwań badania wpływu **przed rozszerzeniem generatora**. Dostawa przygotowania E3.4, nie wykonanie pełnego badania ani odbiór E3. Zgoda na narzędzia DEC-PRO-013 i odbiór E2 DEC-PRO-012 pozostają bez zmian.
+- **Polecenie bieżące:** „wykonaj zgodnie z powyzszym”: wykonanie całego przygotowanego E3.4, z TDD, niezależną wyrocznią, recenzją i commit/push na e3-checks. Nie jest to odbiór E3. Zgody DEC-PRO-012/013 zachowane.
 - **Wdrożono:** W04 blokuje późne pytania; T10 zachowuje licznik; W01 ma globalne bramki również przy pustym zakresie; nowe suspect w zakresie cofa ready/reviewed nawet po zmianie spoza zakresu. Accepted pozostaje niezmienne.
 - **Sprawdzenia:** 28/28 przejść i T04 dla pięciu typów; niezależne wyrocznie 16 właściwości S1–S15 (S7a/S7b); 43 próby WIT i 5 regresji korekty, trzy instancje maszyny Hypothesis (zakres podstawowy, bez p1, pusty).
 - **Niezależność:** S14/S15 napisał osobny subagent; drugi rozszerzył sekwencje i atomowość obserwatorów. Końcowy recenzent zbadał repozytorium bez historii tworzenia i zamknął jedyną uwagę dotyczącą brakującej macierzy W01.
 - **E3.1 wykonane:** [raport](E3-01-RAPORT.md), [instrukcja](../tla/README.md), [niezależna recenzja](reviews/E3-01-WYKONANIE-2026-10-27.md). 417 testów passed, 413 kontroli spójności OK; baza, pięć kontroli danych i trzy mutanty w TLC, osobne świadki ich skutków. Model v0.7 i wykonawca E2 bez zmian.
 - **E3.2 wykonane:** [raport](E3-02-RAPORT.md), [wyrocznia](E3-02-WYROCZNIA.md), [recenzja](reviews/E3-02-WYKONANIE-2026-10-27.md). 433 testy passed, 413 kontroli spójności OK, 31 przebiegów TLC odtworzonych niezależnie; 8 kontekstów, 3 kontrole danych, 8 mutantów z wykonanymi świadkami, 3 osobne monitory historii i zatwierdzenie po dwóch odrzuceniach.
 - **E3.3 wykonane:** [raport](E3-03-RAPORT.md), [wyrocznia](E3-03-WYROCZNIA.md), [recenzja](reviews/E3-03-WYKONANIE-2026-10-27.md). 449 testów passed, 413 kontroli spójności OK, 27 przebiegów TLC odtworzonych niezależnie; baza 83 stany / 298 krawędzi, osiem mutantów z wykonanymi świadkami, osiem kroków PLAN–REQ i dwie odmowy.
-- **E3.4 przygotowane:** [mapowanie](E3-04-MAPOWANIE.md), [pakiet scenariusza](preparations/e3-04/README.md), [niezależny przegląd](reviews/E3-04-PRZYGOTOWANIE-2026-10-27.md). Istniejący E2: 42 kroki, 14 pełnych punktów kontrolnych, 5 odmów i dwa warianty I03; 413 kontroli spójności. To nie nowe TLC ani niezależna wyrocznia generatora.
-- **Następny krok / A:** osobny autor wyroczni według mapowania E3.4, potem RED/GREEN translacji T05/T11–T13 i P01/P02, skutków globalnych oraz badanie i recenzja. Przed zmianą zamrożonego zakresu zaktualizować mapowanie i przegląd. Java/TLC dostępne zgodnie z DEC-PRO-013; nie pytać ponownie o tę samą zgodę.
+- **E3.4 wykonane:** [raport](E3-04-RAPORT.md), [wyrocznia](E3-04-WYROCZNIA.md), [czułość](E3-04-CZULOSC.md), [recenzja](reviews/E3-04-WYKONANIE-2026-10-27.md). 514 testów passed, 413 kontroli OK; 79 przebiegów TLC odtworzonych niezależnie. Baza 19 797 stanów / 38 340 krawędzi; 60 prób, 34 mutanty, trzy monitory. [Przygotowanie](preparations/e3-04/README.md) zachowane bez zmian.
+- **Następny krok / A:** przygotować mapowanie pozostałych przejść T06–T10/T14 i W/P, w tym pełnego cyklu wydań, przed dalszym generatorem. Potem pełne S/L/F, jawna metoda CTL L1 i OBS. Osobny R ocenia zakres przed kodem; Java/TLC dostępne zgodnie z DEC-PRO-013.
 - **Materiały:** `docs/E2-RAPORT.md`, `docs/reviews/E2-V07-PRZEGLAD-2026-10-26.md`, przyjęty pakiet `model/proposals/e2-hardening.md`. Polecenie `.venv/bin/python scripts/run_e2.py --output artifacts/e2`: 0 = sprawdzenia OK, 1 = niepowodzenie, 2 = błąd raportu. Skrypt nie odczytuje decyzji odbioru; jego status awaiting_acceptance nie jest aktualnym statusem projektu. Odbiór E2 zapisuje DEC-PRO-012.
 
 ## Powrót do celu i przyszłe CLI — DEC-PRO-011
@@ -69,6 +69,14 @@ Poniższy stan poprzedza DEC-PRO-013. Zgoda została udzielona, a wykonanie opis
 - R wskazał błędne oczekiwanie I03: po T13 szkicu T01 nie bada suspect dojrzałych zależności. Dodano jawne dozwolone T01 przy baselined+suspect oraz odrębną odmowę przy bezpośredniej zależności draft. Korekta oczekiwań, bez zmiany v0.7. Autor poprawił też nazwę rodzaju wyjścia records na istniejące decision; nie wprowadzono nowego kontraktu DEC.
 - [Niezależny przegląd przygotowania](reviews/E3-04-PRZYGOTOWANIE-2026-10-27.md) ocenia mapowanie i wykonalność; nie odbiera E3. Hash 21 źródeł preflight: `26e63b7d4d94dac480dafef5f2f1a6d01ef4f93fe6f9192529c0e84b4b736929`.
 - Decyzje A E3-DA15–18 w mapowaniu: granica bieżącego polecenia, pełny stan/prefiks, oddzielne próby globalne, osobny pakiet przygotowania. Właściciel A: niezależna wyrocznia i wykonanie E3.4; R: recenzja wyniku; U: tylko nowa luka/zmiana zamiaru albo przyszły odbiór E3. Reszta E3–E5 pozostaje w dotychczasowej kolejności.
+
+## Wykonanie E3.4 — 2026-10-27
+
+- Zakres z gotowego mapowania wykonany w całości: prefiks E2, pełny graf, trzy kontrole danych, 60 przypadków A/I/R, 12 prefiksów wydań, 34 mutanty i osobne świadki, trzy monitory, granice i 42-krokowy przykład. [Raport](E3-04-RAPORT.md) podaje wyniki i ograniczenia; model, właściwości, interpretacje oraz istniejące E2 bez zmian.
+- Niezależny autor zamroził wyrocznię; osobny autor translatora wykonał poprawki granic z rzeczywistym RED/GREEN. R znalazł milcząco pomijane opisy semantyki, maskowanie priorytetu W06 oraz przyjmowanie technicznego question.id. Wszystkie ustalenia zamknięte; poprawiono badanie, bez zmiany przyjętych reguł procesu.
+- 514 testów passed, 413 kontroli spójności. Autor i R wykonali po 79 przebiegów TLC: 42 poprawne, 37 oczekiwanych kontrprzykładów; bez tool_error/timeout w końcowych zestawach. Wcześniejsze błędy RMI i standardowego modułu Sequences zachowane jako błędy narzędzi, nie mutanty. Końcowy autor użył izolowanego java.io.tmpdir.
+- [Manifest](../tla/e3-04/manifest.json): 30 źródeł, hash `1557a8bf09ff358895958e38893308c93818320e22b9c3db6c1e8714b0ad5706`; pełne surowe archiwa autora i R, logi TDD/regresji. Komenda `.venv/bin/python scripts/run_e3_impact.py --output artifacts/e3-04/reproduction`, nowy/pusty katalog; kody 0/1/2/3, bez odbioru E3.
+- Decyzje A E3-DA19–21 w raporcie: pełny następnik granicy, cache wyłącznie kompilacji AST, izolacja czułości algorytmu/kontraktu/pól/historii. A odpowiada za kolejne mapowanie, R za przegląd; U dopiero za zmianę przyjętego zamiaru lub odbiór całego E3. API/CLI nadal czekają na E4/E5.
 
 ## Kontrakt API procesu — propozycja architektoniczna, rewizja 2
 
@@ -242,15 +250,15 @@ Poniższy opis zachowano historycznie; aktualne uzupełnienia i ograniczenia są
 ## Repozytorium
 
 - Użytkownik scalił poprzednią gałąź e1-model do main (PR #1, eceaf0e). Model v0.3 opublikowano na e1-model w 7e4856d; akceptację E1 i pierwszy przyrost E2 na e2-checks w c38a4b7.
-- Bieżąca gałąź: `e3-checks`, utworzona z `e2-checks` po przygotowaniu E3.1 (8a1987e); WIT1 zapisano w 2b830e0, WIT2/WIT4 w 9bfebae, kartę celu w 360a90d. WIT5 i v0.5 zapisano i wypchnięto w e5fc842; propozycję WIT3 zapisano w 7424b73, a przyjęty przyrost v0.6 w ffa68d6. Sprawdzenia i propozycję korekty E2 zapisano w de94da9; przyjęta korekta v0.7 została dostarczona na e2-checks. E3.1 zapisano i wypchnięto w 790b822. E3.2 zapisano i wypchnięto w 1585449. E3.3 zapisano i wypchnięto w 3195a84. Przygotowanie E3.4 jest dostarczane na tej samej gałęzi e3-checks. Scalenie do main wymaga osobnej zgody użytkownika.
+- Bieżąca gałąź: `e3-checks`, utworzona z `e2-checks` po przygotowaniu E3.1 (8a1987e); WIT1 zapisano w 2b830e0, WIT2/WIT4 w 9bfebae, kartę celu w 360a90d. WIT5 i v0.5 zapisano i wypchnięto w e5fc842; propozycję WIT3 zapisano w 7424b73, a przyjęty przyrost v0.6 w ffa68d6. Sprawdzenia i propozycję korekty E2 zapisano w de94da9; przyjęta korekta v0.7 została dostarczona na e2-checks. E3.1 zapisano i wypchnięto w 790b822. E3.2 zapisano i wypchnięto w 1585449. E3.3 zapisano i wypchnięto w 3195a84. Przygotowanie E3.4 zapisano w f728940. Wykonanie E3.4 jest dostarczane na tej samej gałęzi e3-checks. Scalenie do main wymaga osobnej zgody użytkownika.
 
 ## Sprawy otwarte
 
 | Sprawa | Właściciel | Następny krok |
 |---|---|---|
 | Kierunek architektury API/CLI | agent | po E4 wrócić z oceną potrzeby AX01–AX06 według DEC-PRO-011; teraz bez decyzji U i implementacji API |
-| Wykonanie E3.4 i pozostałe dowody E3 | agent | niezależna wyrocznia i TDD według gotowego mapowania wpływu zmian, potem pozostałe reguły, S/L/F i OBS; L1 CTL wymaga jawnej metody |
-| Odbiór E3 | użytkownik | po dostawie całego etapu i niezależnej recenzji; E3.1–E3.3 nie wystarczają do tej bramki |
+| Pozostałe dowody E3 | agent | mapowanie T06–T10/T14 oraz W/P i pełnego cyklu wydań; następnie pełna relacja, S/L/F i OBS; L1 CTL wymaga jawnej metody |
+| Odbiór E3 | użytkownik | po dostawie całego etapu i niezależnej recenzji; E3.1–E3.4 nie wystarczają do tej bramki |
 | Wywiad kontynuującej sesji vcs_lite | agent | trzy rundy zapisane; przed gotową rundą 4 ponownie sprawdzić /usage; 26.10 o 19:20 limit 5h = 100%; kontynuować tylko fork 3407bcbe…; wywiad-8f641/STATUS.md |
 | Wnioski wywiadu vcs_lite R1–R3 | agent | przy przygotowaniu E4/E5 użyć WNIOSKI.md i dowodów; najpierw zestaw kontrolny R1, bez ponawiania poprawnych zgód |
 | Historyczne materiały informative/ | agent | przy E5 uwzględnić INT-017 w nowym materiale; nie przepisywać migawek sesji 2026-10-23 |
@@ -259,6 +267,8 @@ Poniższy opis zachowano historycznie; aktualne uzupełnienia i ograniczenia są
 | Porządki w vcs-lite | użytkownik | decyzja, czy i kiedy |
 
 ## Decyzje agenta do podważenia
+
+- 2026-10-27 (wykonanie E3.4): E3-DA19–21 w `docs/E3-04-RAPORT.md`; obserwacja granic, izolowany cache AST oraz osobna czułość mutantów i monitorów.
 
 - 2026-10-27 (przygotowanie E3.4): E3-DA15–18 w `docs/E3-04-MAPOWANIE.md`; zakres przygotowania, pełny stan/prefiks, oddzielne próby globalne oraz zachowanie dowodów preflight.
 
